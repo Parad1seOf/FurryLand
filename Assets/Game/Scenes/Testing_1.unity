@@ -9146,7 +9146,6 @@ GameObject:
   - component: {fileID: 8400290909874810400}
   - component: {fileID: 5946092786563040141}
   - component: {fileID: 6468238034354746956}
-  - component: {fileID: 8400290909874810401}
   m_Layer: 0
   m_Name: BulletImpactWoodEffect
   m_TagString: Untagged
@@ -18830,6 +18829,7 @@ GameObject:
   - component: {fileID: 4404434681917670251}
   - component: {fileID: 2126573740879975933}
   - component: {fileID: 1593390285463448180}
+  - component: {fileID: 6382830042393688818}
   m_Layer: 0
   m_Name: Decal
   m_TagString: Untagged
@@ -18837,6 +18837,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6382830042393688818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382830042393688817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9872ba1984e8c244bcc35ae8709e364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecalDestroyer
+  lifeTime: 5
 --- !u!199 &6468238034354746956
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -19161,19 +19174,6 @@ Transform:
   - {fileID: 4404434681917670251}
   m_Father: {fileID: 9066681698889673339}
   m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
---- !u!114 &8400290909874810401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3886651471704175084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9872ba1984e8c244bcc35ae8709e364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DecalDestroyer
-  lifeTime: 5
 --- !u!1 &8410481291352986241
 GameObject:
   m_ObjectHideFlags: 0
@@ -19315,7 +19315,6 @@ MonoBehaviour:
   keyRun: 304
   keyJump: 32
   maxHealth: 100
-  maxShield: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
