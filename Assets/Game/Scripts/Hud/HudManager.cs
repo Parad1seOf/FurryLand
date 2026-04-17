@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class HUDManager : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class HUDManager : MonoBehaviour
     public Color ammoColorNormal = Color.white;
     public Color ammoColorLow    = new Color(1f, 0.4f, 0.1f);
 
+    [Header("Interact Label")]
+    public TextMeshProUGUI interactLabel;
+
+    [Header("Message")]
+    public TextMeshProUGUI messageText;     // TextMeshPro para el mensaje de interacción
+
     [Header("GameManager UI")]
     public Image fadeImage;
     public Image hitFlashImage;
@@ -34,11 +41,12 @@ public class HUDManager : MonoBehaviour
 
     #region Private State
 
-    private float       delayedFillValue;
-    private float       delayTimer;
-    private float       previousHealth;
-    private CanvasGroup staminaGroup;
+    private float        delayedFillValue;
+    private float        delayTimer;
+    private float        previousHealth;
+    private CanvasGroup  staminaGroup;
     private HealthSystem healthSystem;
+    private Coroutine    messageCoroutine;
 
     #endregion
 
@@ -57,13 +65,15 @@ public class HUDManager : MonoBehaviour
             if (hideStaminaWhenFull)
                 staminaGroup.alpha = 0f;
         }
+
+        if (interactLabel != null) interactLabel.enabled = false;
+        if (messageText   != null) messageText.enabled   = false;
     }
 
     private void Start()
     {
         if (playerController != null)
         {
-            // Start garantiza que HealthSystem ya inicializó Health en su Awake
             healthSystem = playerController.GetComponent<HealthSystem>();
             if (healthSystem != null)
                 healthSystem.OnHealthChanged += OnHealthChanged;
@@ -96,7 +106,6 @@ public class HUDManager : MonoBehaviour
 
     #region Health
 
-    // El evento dispara solo cuando cambia la salud — aquí registramos el trigger del delay
     private void OnHealthChanged(float newHealth)
     {
         float normalised = playerController.HealthNormalised;
@@ -176,11 +185,41 @@ public class HUDManager : MonoBehaviour
 
     #endregion
 
+    #region Interact Label
+
+    public void SetInteractLabel(string text)
+    {
+        if (interactLabel == null) return;
+        interactLabel.enabled = !string.IsNullOrEmpty(text);
+        interactLabel.text    = text ?? "";
+    }
+
+    #endregion
+
+    #region Message
+
+    public void ShowMessage(string text, float duration)
+    {
+        if (messageText == null) return;
+        if (messageCoroutine != null) StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(MessageRoutine(text, duration));
+    }
+
+    private IEnumerator MessageRoutine(string text, float duration)
+    {
+        messageText.text    = text;
+        messageText.enabled = true;
+        yield return new WaitForSeconds(duration);
+        messageText.enabled = false;
+        messageCoroutine    = null;
+    }
+
+    #endregion
+
     #region Public API
 
     public void Setup(PlayerController player, GunSystem gun)
     {
-        // Desuscribirse del anterior si existía
         if (healthSystem != null)
             healthSystem.OnHealthChanged -= OnHealthChanged;
 
