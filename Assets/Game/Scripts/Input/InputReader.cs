@@ -11,22 +11,22 @@ public class InputReader : MonoBehaviour
     public KeyCode keyRun      = KeyCode.LeftShift;
     public KeyCode keyJump     = KeyCode.Space;
     public KeyCode keyReload   = KeyCode.R;
-    public KeyCode keyInteract = KeyCode.E;         
+    public KeyCode keyInteract = KeyCode.E;
 
-    // Movimiento
-    public Vector2 MoveInput      { get; private set; }
-    public Vector2 LookInput      { get; private set; }
-    public bool    WantsToRun     { get; private set; }
-    public bool    JumpPressed    { get; private set; }
-    public bool    FireHeld       { get; private set; }
-    public bool    FirePressed    { get; private set; }
-    public bool    ReloadPressed  { get; private set; }
-    public bool    InteractPressed { get; private set; } 
+    public Vector2 MoveInput       { get; private set; }
+    public Vector2 LookInput       { get; private set; }
+    public bool    WantsToRun      { get; private set; }
+    public bool    JumpPressed     { get; private set; }
+    public bool    FireHeld        { get; private set; }
+    public bool    FirePressed     { get; private set; }
+    public bool    ReloadPressed   { get; private set; }
+    public bool    InteractPressed { get; private set; }
+    public bool    InteractHeld    { get; private set; }   // ← NUEVO
 
     public event Action OnJump;
     public event Action OnReload;
     public event Action OnFirePressed;
-    public event Action OnInteract;                      
+    public event Action OnInteract;
 
     private void Update()
     {
@@ -40,15 +40,16 @@ public class InputReader : MonoBehaviour
         LookInput  = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         WantsToRun = Input.GetKey(keyRun);
 
-        JumpPressed    = Input.GetKeyDown(keyJump);
-        FireHeld       = Input.GetKey(KeyCode.Mouse0);
-        FirePressed    = Input.GetKeyDown(KeyCode.Mouse0);
-        ReloadPressed  = Input.GetKeyDown(keyReload);
+        JumpPressed     = Input.GetKeyDown(keyJump);
+        FireHeld        = Input.GetKey(KeyCode.Mouse0);
+        FirePressed     = Input.GetKeyDown(KeyCode.Mouse0);
+        ReloadPressed   = Input.GetKeyDown(keyReload);
         InteractPressed = Input.GetKeyDown(keyInteract);
+        InteractHeld    = Input.GetKey(keyInteract);       // ← NUEVO
 
-        if (JumpPressed)    OnJump?.Invoke();
-        if (ReloadPressed)  OnReload?.Invoke();
-        if (FirePressed)    OnFirePressed?.Invoke();
-        if (InteractPressed) OnInteract?.Invoke();     
+        if (JumpPressed)     OnJump?.Invoke();
+        if (ReloadPressed)   OnReload?.Invoke();
+        if (FirePressed)     OnFirePressed?.Invoke();
+        if (InteractPressed) OnInteract?.Invoke();
     }
 }

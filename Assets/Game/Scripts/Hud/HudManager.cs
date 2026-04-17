@@ -30,8 +30,12 @@ public class HUDManager : MonoBehaviour
     [Header("Interact Label")]
     public TextMeshProUGUI interactLabel;
 
+    [Header("Hold Progress")]
+    [Tooltip("Image tipo Filled · Fill Method: Radial 360 · Fill Origin: Top")]
+    public Image holdProgressRing;          // asignar en Inspector
+
     [Header("Message")]
-    public TextMeshProUGUI messageText;     // TextMeshPro para el mensaje de interacción
+    public TextMeshProUGUI messageText;
 
     [Header("GameManager UI")]
     public Image fadeImage;
@@ -66,8 +70,9 @@ public class HUDManager : MonoBehaviour
                 staminaGroup.alpha = 0f;
         }
 
-        if (interactLabel != null) interactLabel.enabled = false;
-        if (messageText   != null) messageText.enabled   = false;
+        if (interactLabel    != null) interactLabel.enabled    = false;
+        if (messageText      != null) messageText.enabled      = false;
+        if (holdProgressRing != null) holdProgressRing.enabled = false;
     }
 
     private void Start()
@@ -117,7 +122,6 @@ public class HUDManager : MonoBehaviour
     private void UpdateHealthBar()
     {
         if (healthSlider == null) return;
-
         float realHealth   = playerController.HealthNormalised;
         healthSlider.value = realHealth;
 
@@ -134,7 +138,6 @@ public class HUDManager : MonoBehaviour
         {
             delayedFillValue = realHealth;
         }
-
         SetDelayedRect(delayedFillValue);
     }
 
@@ -154,7 +157,6 @@ public class HUDManager : MonoBehaviour
     private void UpdateStaminaBar()
     {
         if (staminaSlider == null) return;
-
         staminaSlider.value = playerController.StaminaNormalised;
 
         if (hideStaminaWhenFull && staminaGroup != null)
@@ -172,15 +174,11 @@ public class HUDManager : MonoBehaviour
     private void UpdateAmmoText()
     {
         if (ammoText == null) return;
-
         int    bullets  = gunSystem.BulletsLeft;
         int    capacity = gunSystem.MagazineCapacity;
         string mags     = gunSystem.InfiniteAmmo ? "∞" : gunSystem.MagazinesLeft.ToString();
-
         ammoText.text  = $"{bullets}  <size=70%><color=#AAAAAA>| {mags}</color></size>";
-        ammoText.color = bullets <= Mathf.CeilToInt(capacity * 0.3f)
-                         ? ammoColorLow
-                         : ammoColorNormal;
+        ammoText.color = bullets <= Mathf.CeilToInt(capacity * 0.3f) ? ammoColorLow : ammoColorNormal;
     }
 
     #endregion
@@ -192,6 +190,18 @@ public class HUDManager : MonoBehaviour
         if (interactLabel == null) return;
         interactLabel.enabled = !string.IsNullOrEmpty(text);
         interactLabel.text    = text ?? "";
+    }
+
+    #endregion
+
+    #region Hold Progress
+
+    // progress: 0-1 · visible: si se muestra o no
+    public void SetHoldProgress(float progress, bool visible)
+    {
+        if (holdProgressRing == null) return;
+        holdProgressRing.enabled   = visible;
+        holdProgressRing.fillAmount = progress;
     }
 
     #endregion
