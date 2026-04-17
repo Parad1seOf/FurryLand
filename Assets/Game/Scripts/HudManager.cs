@@ -1,6 +1,3 @@
-// Puente entre el Canvas y el resto del juego. Le datos de PlayerController y GunSystem
-// cada frame para actualizar las barras de vida, stamina y el texto de municion.
-// En su Awake registra las imágenes de fade y hit flash en GameManager.
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -37,10 +34,11 @@ public class HUDManager : MonoBehaviour
 
     #region Private State
 
-    private float       delayedFillValue = 1f;
-    private float       delayTimer       = 0f;
-    private float       previousHealth   = 1f;
+    private float       delayedFillValue;
+    private float       delayTimer;
+    private float       previousHealth;
     private CanvasGroup staminaGroup;
+    private HealthSystem healthSystem;
 
     #endregion
 
@@ -59,14 +57,27 @@ public class HUDManager : MonoBehaviour
             if (hideStaminaWhenFull)
                 staminaGroup.alpha = 0f;
         }
+    }
 
+    private void Start()
+    {
         if (playerController != null)
         {
+            // Start garantiza que HealthSystem ya inicializó Health en su Awake
+            healthSystem = playerController.GetComponent<HealthSystem>();
+            if (healthSystem != null)
+                healthSystem.OnHealthChanged += OnHealthChanged;
+
             delayedFillValue = playerController.HealthNormalised;
             previousHealth   = playerController.HealthNormalised;
+            SetDelayedRect(delayedFillValue);
         }
+    }
 
-        SetDelayedRect(delayedFillValue);
+    private void OnDestroy()
+    {
+        if (healthSystem != null)
+            healthSystem.OnHealthChanged -= OnHealthChanged;
     }
 
     private void Update()
@@ -83,7 +94,16 @@ public class HUDManager : MonoBehaviour
 
     #endregion
 
-    #region Barras
+    #region Health
+
+    // El evento dispara solo cuando cambia la salud — aquí registramos el trigger del delay
+    private void OnHealthChanged(float newHealth)
+    {
+        float normalised = playerController.HealthNormalised;
+        if (normalised < previousHealth - 0.001f)
+            delayTimer = delayBeforeDrop;
+        previousHealth = normalised;
+    }
 
     private void UpdateHealthBar()
     {
@@ -92,27 +112,21 @@ public class HUDManager : MonoBehaviour
         float realHealth   = playerController.HealthNormalised;
         healthSlider.value = realHealth;
 
-        if (healthDelayedRect != null)
+        if (healthDelayedRect == null) return;
+
+        if (delayedFillValue > realHealth)
         {
-            if (realHealth < previousHealth - 0.001f)
-                delayTimer = delayBeforeDrop;
-
-            previousHealth = realHealth;
-
-            if (delayedFillValue > realHealth)
-            {
-                delayTimer -= Time.deltaTime;
-                if (delayTimer <= 0f)
-                    delayedFillValue = Mathf.Lerp(delayedFillValue, realHealth,
-                                                  Time.deltaTime * delayedDropSpeed);
-            }
-            else
-            {
-                delayedFillValue = realHealth;
-            }
-
-            SetDelayedRect(delayedFillValue);
+            delayTimer -= Time.deltaTime;
+            if (delayTimer <= 0f)
+                delayedFillValue = Mathf.Lerp(delayedFillValue, realHealth,
+                                              Time.deltaTime * delayedDropSpeed);
         }
+        else
+        {
+            delayedFillValue = realHealth;
+        }
+
+        SetDelayedRect(delayedFillValue);
     }
 
     private void SetDelayedRect(float value)
@@ -123,6 +137,10 @@ public class HUDManager : MonoBehaviour
         healthDelayedRect.anchorMax = aMax;
         healthDelayedRect.offsetMax = new Vector2(0f, healthDelayedRect.offsetMax.y);
     }
+
+    #endregion
+
+    #region Stamina
 
     private void UpdateStaminaBar()
     {
@@ -140,7 +158,7 @@ public class HUDManager : MonoBehaviour
 
     #endregion
 
-    #region Municion
+    #region Ammo
 
     private void UpdateAmmoText()
     {
@@ -162,10 +180,20 @@ public class HUDManager : MonoBehaviour
 
     public void Setup(PlayerController player, GunSystem gun)
     {
+        // Desuscribirse del anterior si existía
+        if (healthSystem != null)
+            healthSystem.OnHealthChanged -= OnHealthChanged;
+
         playerController = player;
         gunSystem        = gun;
+
+        healthSystem = player.GetComponent<HealthSystem>();
+        if (healthSystem != null)
+            healthSystem.OnHealthChanged += OnHealthChanged;
+
         delayedFillValue = player.HealthNormalised;
         previousHealth   = player.HealthNormalised;
+        SetDelayedRect(delayedFillValue);
     }
 
     #endregion

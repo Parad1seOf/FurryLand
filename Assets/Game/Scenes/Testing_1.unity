@@ -18949,6 +18949,11 @@ GameObject:
   - component: {fileID: 9066681698889673339}
   - component: {fileID: 2190504286540024623}
   - component: {fileID: 9066681698889673340}
+  - component: {fileID: 9066681698889673345}
+  - component: {fileID: 9066681698889673344}
+  - component: {fileID: 9066681698889673343}
+  - component: {fileID: 9066681698889673342}
+  - component: {fileID: 9066681698889673341}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -19281,26 +19286,88 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   s_gameManager: {fileID: 1042331803}
   s_audioManager: {fileID: 69312410}
-  pitchController: {fileID: 8288722743163401920}
-  yawSpeed: 360
-  pitchSpeed: 700
-  minPitch: -80
-  maxPitch: 80
   walkSpeed: 6
   runSpeed: 12
   canJump: 0
   jumpSpeed: 8
+--- !u!114 &9066681698889673341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656620631745922334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5852dece56f0fbe4e926032a2eac269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepController
+  audioManager: {fileID: 69312410}
+--- !u!114 &9066681698889673342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656620631745922334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07db205395d0e54ead3680365a3dc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
   maxStamina: 100
   staminaDrainRate: 20
   staminaRechargeRate: 15
   staminaRechargeDelay: 2
+--- !u!114 &9066681698889673343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656620631745922334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 100
+--- !u!114 &9066681698889673344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656620631745922334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532834a65ea1b9a41945bfca796be829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirstPersonLook
+  pitchController: {fileID: 8288722743163401920}
+  yawSpeed: 120
+  pitchSpeed: 120
+  minPitch: -80
+  maxPitch: 80
+--- !u!114 &9066681698889673345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656620631745922334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b51538f98959a440b9ff6ecf244280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputReader
   keyLeft: 97
   keyRight: 100
   keyUp: 119
   keyDown: 115
   keyRun: 304
   keyJump: 32
-  maxHealth: 100
+  keyReload: 114
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
