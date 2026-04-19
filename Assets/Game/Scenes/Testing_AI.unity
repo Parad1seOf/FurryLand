@@ -281,9 +281,13 @@ MonoBehaviour:
   viewAngle: 45
   detectionDistance: 5
   escapeDetectionDistance: 6
-  suspiciousDistance: 2
   actionDistance: 0
-  playerSus: {fileID: 0}
+  eyeOffset: {x: 0, y: 0.8, z: 0}
+  visionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hearingDistance: 10
+  lowerRate: 20
 --- !u!114 &221792928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateMachine
   detection: {fileID: 221792927}
+  suspicion: {fileID: 0}
+  agent: {fileID: 0}
+  waypoints: []
   state: 
 --- !u!136 &221792929
 CapsuleCollider:
@@ -430,9 +437,13 @@ MonoBehaviour:
   viewAngle: 45
   detectionDistance: 5
   escapeDetectionDistance: 6
-  suspiciousDistance: 2
   actionDistance: 0
-  playerSus: {fileID: 0}
+  eyeOffset: {x: 0, y: 0.8, z: 0}
+  visionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hearingDistance: 10
+  lowerRate: 20
 --- !u!114 &398015397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +457,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateMachine
   detection: {fileID: 398015396}
+  suspicion: {fileID: 0}
+  agent: {fileID: 0}
+  waypoints: []
   state: 
 --- !u!136 &398015398
 CapsuleCollider:

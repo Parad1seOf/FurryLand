@@ -1,31 +1,71 @@
-using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour, IChangeState
 {
     private IEnemyState currentState;
     private IEnemyState previousState;
+    private AIContext   context;
 
     [SerializeField] private DetectionComponent detection;
+    [SerializeField] private SuspicionComponent  suspicion;
+    [SerializeField] private NavMeshAgent        agent;
+    [SerializeField] private Transform[]         waypoints;
 
-    [SerializeField]
-    [Tooltip("No tocar.")]
-    private string state;
+    [SerializeField] private string state; // debug
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public string CurrentStateName => currentState?.GetType().Name ?? "None";
+    public float  SuspicionLevel   => suspicion != null ? suspicion.GetSuspicionLevel() : 0f;
+
+    private void Awake()
     {
-        if (detection == null)
-            detection = GetComponent<DetectionComponent>();
+        if (detection == null) detection = GetComponent<DetectionComponent>();
+        if (suspicion  == null) suspicion  = GetComponent<SuspicionComponent>();
+        if (agent      == null) agent      = GetComponent<NavMeshAgent>();
 
-        ChangeState(new EnemyIdleState(new AIContext(this, detection)));
+        // Inyectar player en DetectionComponent — centralizado aquí
+        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        Transform                  playerTransform = playerGO?.transform;
+        SuspiciousActionsComponent playerActions   = playerGO?.GetComponent<SuspiciousActionsComponent>();
+
+        if (detection != null && playerTransform != null)
+            detection.Init(playerTransform, playerActions);
+
+        // Contexto único — se reutiliza en todos los estados
+        context = new AIContext(this, detection, suspicion,
+                                playerTransform, agent, waypoints);
+
+        // Si tiene waypoints empieza patrullando, si no en idle
+        ChangeState(waypoints != null && waypoints.Length > 0
+            ? (IEnemyState)new EnemyPatrolState(context)
+            : new EnemyIdleState(context));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        currentState.Update();
+        if (AlertSystem.Instance != null)
+        {
+            AlertSystem.Instance.OnAlertTriggered += GoToAlert;
+            AlertSystem.Instance.Register(suspicion);
+        }
+
+        if (suspicion != null)
+            suspicion.OnMaxSuspicion += OnMaxSuspicionReached;
     }
+
+    private void OnDestroy()
+    {
+        if (AlertSystem.Instance != null)
+        {
+            AlertSystem.Instance.OnAlertTriggered -= GoToAlert;
+            AlertSystem.Instance.Unregister(suspicion);
+        }
+
+        if (suspicion != null)
+            suspicion.OnMaxSuspicion -= OnMaxSuspicionReached;
+    }
+
+    private void Update() => currentState?.Update();
 
     public void ChangeState(IEnemyState newState)
     {
@@ -33,8 +73,14 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         previousState?.Exit();
         currentState = newState;
         currentState.Enter();
-
-        //Development
         state = currentState.GetType().Name;
+    }
+
+    private void OnMaxSuspicionReached() => AlertSystem.Instance?.TriggerAlert();
+
+    private void GoToAlert()
+    {
+        if (currentState is EnemyAlertState) return;
+        ChangeState(new EnemyAlertState(context));
     }
 }

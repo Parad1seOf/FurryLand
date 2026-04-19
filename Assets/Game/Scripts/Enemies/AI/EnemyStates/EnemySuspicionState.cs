@@ -1,41 +1,39 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySuspicionState : IEnemyState
 {
-    private AIContext context;
-    private IChangeState changeState;
+    private AIContext          context;
     private DetectionComponent detection;
+    private SuspicionComponent suspicion;
+    private IChangeState       changeState;
 
-
-    private float time = 60f;
-    private float timer;
+    private float minTimer;
+    private const float MinStateDuration = 2f;
 
     public EnemySuspicionState(AIContext context)
     {
-        this.context = context;
-        detection = context.detection;
-        changeState = context.changeState;
+        this.context     = context;
+        this.detection   = context.detection;
+        this.suspicion   = context.suspicion;
+        this.changeState = context.changeState;
     }
 
     public void Enter()
     {
-        timer = time;
+        minTimer = MinStateDuration;
+        if (context.agent != null) context.agent.ResetPath();
     }
 
-    public void Exit()
-    {
-        
-    }
+    public void Exit() { }
 
-    public  void Update()
+    public void Update()
     {
-        timer -= Time.deltaTime;
-        if (detection.HasPlayerEscapedSuspicion())
+        minTimer -= Time.deltaTime;
+
+        detection.TickSuspicion(suspicion);
+
+        // No puede volver a Idle hasta que pasen los 2 segundos mínimos
+        if (minTimer <= 0f && !suspicion.IsSuspicious())
             changeState.ChangeState(new EnemyIdleState(context));
-
-        if (timer <= 0)
-            //changeState.ChangeState(new EnemyAlertState(context))
-            ;
     }
 }
