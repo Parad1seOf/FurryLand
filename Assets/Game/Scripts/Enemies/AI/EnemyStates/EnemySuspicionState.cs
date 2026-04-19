@@ -35,7 +35,7 @@ public class EnemySuspicionState : IEnemyState
             changeState.ChangeState(new EnemyIdleState(context));
 
         if (timer <= 0)
-            //changeState.ChangeState(new EnemyIdleState(context))
+            //changeState.ChangeState(new EnemyAlertState(context))
             ;
     }
 }
