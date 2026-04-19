@@ -2,22 +2,14 @@ using UnityEngine;
 
 public class ForbiddenArea : MonoBehaviour
 {
-    [SerializeField]
-    private float suspicionValue;
+    [SerializeField] private float suspicionValue = 50f;
 
     private void OnTriggerEnter(Collider other)
     {
-        SuspicionComponent sus = other.GetComponent<SuspicionComponent>();
-        if (sus == null) return;
+        if (!other.CompareTag("Player")) return;
 
-        sus.RiseSuspicion(suspicionValue);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        SuspicionComponent sus = other.GetComponent<SuspicionComponent>();
-        if (sus == null) return;
-
-        sus.LowerSuspicion(suspicionValue);
+        if (AlertSystem.Instance == null) return;
+        foreach (var sus in AlertSystem.Instance.GetAllSuspicions())
+            sus.RiseSuspicion(suspicionValue);
     }
 }

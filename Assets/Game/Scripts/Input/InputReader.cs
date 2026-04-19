@@ -12,6 +12,7 @@ public class InputReader : MonoBehaviour
     public KeyCode keyJump     = KeyCode.Space;
     public KeyCode keyReload   = KeyCode.R;
     public KeyCode keyInteract = KeyCode.E;
+    public KeyCode keyWeapon   = KeyCode.T;
 
     public Vector2 MoveInput       { get; private set; }
     public Vector2 LookInput       { get; private set; }
@@ -21,7 +22,8 @@ public class InputReader : MonoBehaviour
     public bool    FirePressed     { get; private set; }
     public bool    ReloadPressed   { get; private set; }
     public bool    InteractPressed { get; private set; }
-    public bool    InteractHeld    { get; private set; }   // ← NUEVO
+    public bool    InteractHeld    { get; private set; }
+    public bool    WeaponPressed   { get; private set; }
 
     public event Action OnJump;
     public event Action OnReload;
@@ -45,7 +47,8 @@ public class InputReader : MonoBehaviour
         FirePressed     = Input.GetKeyDown(KeyCode.Mouse0);
         ReloadPressed   = Input.GetKeyDown(keyReload);
         InteractPressed = Input.GetKeyDown(keyInteract);
-        InteractHeld    = Input.GetKey(keyInteract);       // ← NUEVO
+        InteractHeld    = Input.GetKey(keyInteract);
+        WeaponPressed   = Input.GetKeyDown(keyWeapon);
 
         if (JumpPressed)     OnJump?.Invoke();
         if (ReloadPressed)   OnReload?.Invoke();
