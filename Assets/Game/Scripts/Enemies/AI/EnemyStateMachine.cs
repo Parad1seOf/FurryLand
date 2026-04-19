@@ -8,14 +8,15 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     [SerializeField] private DetectionComponent detection;
 
-
-
-    [SerializeField] private string state;
+    [SerializeField]
+    [Tooltip("No tocar.")]
+    private string state;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        if (detection == null)
+            detection = GetComponent<DetectionComponent>();
 
         ChangeState(new EnemyIdleState(new AIContext(this, detection)));
     }
@@ -24,7 +25,6 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     void Update()
     {
         currentState.Update();
-        state = currentState.GetType().Name;
     }
 
     public void ChangeState(IEnemyState newState)
@@ -33,10 +33,8 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         previousState?.Exit();
         currentState = newState;
         currentState.Enter();
-    }
 
-    public DetectionComponent GetDetectionComponent()
-    {
-        return detection;
+        //Development
+        state = currentState.GetType().Name;
     }
 }

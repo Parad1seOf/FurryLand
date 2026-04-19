@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class DetectionComponent : MonoBehaviour
 {
-    [SerializeField] private float viewAngle;
-    [SerializeField] private float detectionDistance;
-    [SerializeField] private float escapeDetectionDistance;
-    [SerializeField] private float suspiciousDistance;
+    [SerializeField]
+    [Tooltip("Angulo de vision del enemigo.")]
+    private float viewAngle = 45f;
 
-    [SerializeField] private float actionDistance;
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo detecta a su objetivo.")]
+    private float detectionDistance = 5f;
+
+    [SerializeField]
+    [Tooltip("A que distancia tiene que estar el jugador como minimo para escapar de las sospechas una vez ha parecido sospechoso.")]
+    private float escapeDetectionDistance = 7f;
+
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo empieza a sospechar del jugador sin ningun motivo.")]
+    private float suspiciousDistance = 2f;
+
+
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo puede atacar al jugador.")]
+    private float actionDistance = 2.5f;
 
     [SerializeField] private SuspicionComponent playerSus;
     [SerializeField] private ITarget playerTarget;
@@ -39,18 +53,21 @@ public class DetectionComponent : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, suspiciousDistance);
 
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, actionDistance);
+
         Gizmos.color = Color.pink;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward*detectionDistance);
     }
 
     public bool SeesSuspiciousConduct()
     {
-        return playerSus.isSuspicious() && SeesPlayer() && IsPlayerInDetectionDistance();
+        return playerSus.IsSuspicious() && SeesPlayer() && IsPlayerInDetectionDistance();
     }
 
     public bool HasPlayerEscapedSuspicion()
     {
-        return !playerSus.isSuspicious() || !SeesPlayer() || PlayerEscapedDetection();
+        return !playerSus.IsSuspicious() || !SeesPlayer() || PlayerEscapedDetection();
     }
 
     public bool SeesPlayer()
