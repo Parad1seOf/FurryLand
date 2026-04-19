@@ -117,5 +117,10 @@ public class PlayerController : MonoBehaviour
     private void OnDeath()
     {
         Debug.Log("[PlayerController] Player died.");
+        GameOverUI gameOver = FindFirstObjectByType<GameOverUI>();
+        if (gameOver != null)
+        {
+            gameOver.ShowGameOverUI();
+        }
     }
 }
