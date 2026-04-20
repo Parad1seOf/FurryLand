@@ -262,6 +262,8 @@ GameObject:
   - component: {fileID: 221792927}
   - component: {fileID: 221792934}
   - component: {fileID: 221792935}
+  - component: {fileID: 221792937}
+  - component: {fileID: 221792936}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -391,7 +393,7 @@ Transform:
   m_GameObject: {fileID: 221792926}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.92, y: 1.06, z: -2.56}
+  m_LocalPosition: {x: 4.4, y: 1.06, z: -1.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -447,6 +449,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlertableComponent
   stateMachine: {fileID: 221792928}
+--- !u!114 &221792936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221792926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 1
+--- !u!114 &221792937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221792926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a57b5d51a0e2e741bfb134cd74c39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropComponent
+  drop: {fileID: 1617913490}
+  probability: 100
 --- !u!1 &517239522
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2f4a9bb00ff72409ad48485f1ed663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuspicionComponent
-  suspicionLevel: 10
+  suspicionLevel: 100
   minSuspicionLevel: 0
   maxSuspicionLevel: 10
 --- !u!143 &517239524
