@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class InteractiveButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject colorFilter; 
-    [SerializeField] float increasedScale = 1.01f;
+    [SerializeField] float increasedScale = 1.05f;
     [SerializeField] float speed = 10f;
 
     private Vector3 originalScale;
