@@ -33,6 +33,10 @@ public class Timer : MonoBehaviour
     private float time = 0;
     private bool isRunning = false;
 
+    public void Start()
+    {
+        StartTimer();
+    }
 
     public void Update()
     {
