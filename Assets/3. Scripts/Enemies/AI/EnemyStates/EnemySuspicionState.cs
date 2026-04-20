@@ -8,8 +8,9 @@ public class EnemySuspicionState : IEnemyState
     private DetectionComponent detection;
 
 
-    private float time = 1f;
+    private float time = 10f;
     private float timer;
+    private float duration;
 
     public EnemySuspicionState(AIContext context)
     {
@@ -30,11 +31,28 @@ public class EnemySuspicionState : IEnemyState
 
     public  void Update()
     {
-        timer -= Time.deltaTime;
-        if (detection.HasPlayerEscapedSuspicion())
-            changeState.ChangeState(new EnemyIdleState(context));
+        UpdateSuspicionProgress();
+        CheckPlayer();
 
+        Rotate();
+    }
+
+    private void UpdateSuspicionProgress()
+    {
+        timer -= detection.GetPlayerSuspicionLevel() * Time.deltaTime;
         if (timer <= 0)
             changeState.ChangeState(new EnemyAlertState(context));
+    }
+
+    private void CheckPlayer()
+    {
+        if (detection.HasPlayerEscapedSuspicion())
+            changeState.ChangeState(new EnemyIdleState(context));
+    }
+
+    private void Rotate()
+    {
+        //Mal
+        detection.transform.forward = detection.GetTargetDirection();
     }
 }

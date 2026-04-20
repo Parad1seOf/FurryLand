@@ -14,8 +14,10 @@ public class EnemyAlertState : IEnemyState
 
     public void Enter()
     {
+        AlertSystem alert = AlertSystem.Instance;
+        if (!alert.IsAlreadyTriggered) alert.TriggerAlert();
+
         time = timer;
-        //Mostrar exclamacion
     }
 
     public void Exit()

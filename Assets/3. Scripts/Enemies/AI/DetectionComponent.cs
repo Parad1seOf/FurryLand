@@ -101,4 +101,16 @@ public class DetectionComponent : MonoBehaviour
     {
         return playerPos.position;
     }
+
+    public Vector3 GetTargetDirection()
+    {
+        return playerPos.position - transform.position;
+    }
+
+    public float GetPlayerSuspicionLevel()
+    {
+        if (playerSus == null) return 0;
+
+        return playerSus.GetSuspicionLevel();
+    }
 }
