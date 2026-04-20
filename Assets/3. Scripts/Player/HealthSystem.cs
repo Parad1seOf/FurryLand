@@ -40,4 +40,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
     }
 
     private void Die() => OnDeath?.Invoke();
+
+    [ContextMenu("Kill")]
+    public void Kill()
+    {
+        Die();
+    }
 }
