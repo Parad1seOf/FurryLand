@@ -1,35 +1,41 @@
 using UnityEngine;
-using System;
 
 public class SuspicionComponent : MonoBehaviour
 {
-    [SerializeField] private float suspicionLevel    = 0f;
-    [SerializeField] private float minSuspicionLevel = 0f;
-    [SerializeField] private float maxSuspicionLevel = 100f;
+    [SerializeField]
+    [Tooltip("Como de sospechoso es el jugador. No tocar manualmente")]
+    private float suspicionLevel = 0;
 
-    public event Action OnMaxSuspicion;
+    [SerializeField]
+    [Tooltip("Nivel de sospecha minimo. Si Suspicion Level tiene este valor, el jugador no esta siendo sospechoso")]
+    private float minSuspicionLevel = 0;
 
-    public float SuspicionNormalised => maxSuspicionLevel > 0f
-        ? suspicionLevel / maxSuspicionLevel : 0f;
+    [SerializeField]
+    [Tooltip("Valor maximo de sospecha.")]
+    private float maxSuspicionLevel = 100;
 
     public void RiseSuspicion(float amount)
     {
-        float prev = suspicionLevel;
-        suspicionLevel = Mathf.Clamp(suspicionLevel + amount,
-                                     minSuspicionLevel, maxSuspicionLevel);
-
-        if (prev < maxSuspicionLevel && suspicionLevel >= maxSuspicionLevel)
-            OnMaxSuspicion?.Invoke();
+        suspicionLevel = Mathf.Clamp(suspicionLevel + amount, minSuspicionLevel, maxSuspicionLevel);
     }
 
     public void LowerSuspicion(float amount)
     {
-        suspicionLevel = Mathf.Clamp(suspicionLevel - amount,
-                                     minSuspicionLevel, maxSuspicionLevel);
+        suspicionLevel = Mathf.Clamp(suspicionLevel - amount, minSuspicionLevel, maxSuspicionLevel);
     }
 
-    public float GetSuspicionLevel()   => suspicionLevel;
-    public bool  IsSuspicious()        => suspicionLevel > minSuspicionLevel;
-    public bool  IsMaxSuspicion()      => suspicionLevel >= maxSuspicionLevel;
-    public void  ResetSuspicionLevel() => suspicionLevel = minSuspicionLevel;
+    public float GetSuspicionLevel()
+    {
+        return suspicionLevel;
+    }
+
+    public bool IsSuspicious()
+    {
+        return suspicionLevel > minSuspicionLevel;
+    }
+
+    public void ResetSuspicionLevel()
+    {
+        suspicionLevel = minSuspicionLevel;
+    }
 }

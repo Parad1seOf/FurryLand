@@ -33,7 +33,7 @@ public class EnemyStateDisplay : MonoBehaviour
             label.transform.forward = cam.transform.forward;
 
         // Texto + sospecha
-        string stateName = stateMachine.CurrentStateName;
+        /*string stateName = stateMachine.CurrentStateName;
         float  sus       = stateMachine.SuspicionLevel;
 
         label.text = sus > 0f
@@ -47,6 +47,6 @@ public class EnemyStateDisplay : MonoBehaviour
             nameof(EnemySuspicionState) => Color.yellow,
             nameof(EnemyAlertState)     => Color.red,
             _                           => Color.white
-        };
+        };*/
     }
 }

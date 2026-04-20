@@ -1,158 +1,104 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DetectionComponent : MonoBehaviour
 {
-    [Header("Detección")]
-    [SerializeField] private float viewAngle               = 45f;
-    [SerializeField] private float detectionDistance       = 5f;
-    [SerializeField] private float escapeDetectionDistance = 7f;
-    [SerializeField] private float actionDistance          = 2.5f;
+    [SerializeField]
+    [Tooltip("Angulo de vision del enemigo.")]
+    private float viewAngle = 45f;
 
-    [Header("Visión")]
-    [SerializeField] private Vector3   eyeOffset  = new Vector3(0f, 0.8f, 0f);
-    [SerializeField] private LayerMask visionMask = ~0;
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo detecta a su objetivo.")]
+    private float detectionDistance = 5f;
 
-    [Header("Sonido")]
-    [SerializeField] private float hearingDistance = 10f;
+    [SerializeField]
+    [Tooltip("A que distancia tiene que estar el jugador como minimo para escapar de las sospechas una vez ha parecido sospechoso.")]
+    private float escapeDetectionDistance = 7f;
 
-    [Header("Bajar sospecha")]
-    [SerializeField] private float lowerRate = 20f;
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo empieza a sospechar del jugador sin ningun motivo.")]
+    private float suspiciousDistance = 2f;
 
-    private Transform                  playerPos;
-    private SuspiciousActionsComponent playerActions;
-    private SuspicionComponent         suspicion;
 
-    // Llamado desde EnemyStateMachine.Awake()
-    public void Init(Transform player, SuspiciousActionsComponent actions)
+    [SerializeField]
+    [Tooltip("A que distancia el enemigo puede atacar al jugador.")]
+    private float actionDistance = 2.5f;
+
+    [SerializeField] private SuspicionComponent playerSus;
+    [SerializeField] private ITarget playerTarget;
+    private Transform playerPos;
+
+    public void Start()
     {
-        playerPos     = player;
-        playerActions = actions;
-        suspicion     = GetComponent<SuspicionComponent>();
+        //ESTO ES JODIDAMENTE HORRIBLE Y HAY QUE CAMBIARLO
+        if (playerSus == null)
+            playerSus = GameObject.FindGameObjectWithTag("Player").GetComponent<SuspicionComponent>();
+        if (playerTarget == null)
+            playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<ITarget>();
 
-        if (playerActions != null)
-        {
-            playerActions.OnSoundAction  += OnSoundHeard;
-            playerActions.OnVisionAction += OnVisionDetected;
-        }
+
+
+        playerPos = playerTarget.GetTransform();
     }
 
-    private void OnDestroy()
+    void OnDrawGizmosSelected()
     {
-        if (playerActions != null)
-        {
-            playerActions.OnSoundAction  -= OnSoundHeard;
-            playerActions.OnVisionAction -= OnVisionDetected;
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionDistance);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, escapeDetectionDistance);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, suspiciousDistance);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, actionDistance);
+
+        Gizmos.color = Color.pink;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward*detectionDistance);
     }
 
-    private void OnSoundHeard(float amount)
+    public bool SeesSuspiciousConduct()
     {
-        if (suspicion == null) return;
-        if (IsPlayerInHearingDistance())
-            suspicion.RiseSuspicion(amount);
+        return playerSus.IsSuspicious() && SeesPlayer() && IsPlayerInDetectionDistance();
     }
 
-    private void OnVisionDetected(float amount)
+    public bool HasPlayerEscapedSuspicion()
     {
-        if (suspicion == null) return;
-        if (SeesPlayer() && IsPlayerInDetectionDistance())
-            suspicion.RiseSuspicion(amount);
-    }
-
-    public void TickSuspicion(SuspicionComponent sus)
-    {
-        if (playerPos == null) return;
-
-        if (!SeesPlayer() || !IsPlayerInDetectionDistance())
-        {
-            sus.LowerSuspicion(lowerRate * Time.deltaTime);
-            return;
-        }
-
-        float rate = playerActions != null ? playerActions.GetContinuousRate() : 0f;
-
-        if (rate > 0f)
-            sus.RiseSuspicion(rate * Time.deltaTime);
-        else
-            sus.LowerSuspicion(lowerRate * Time.deltaTime);
+        return !playerSus.IsSuspicious() || !SeesPlayer() || PlayerEscapedDetection();
     }
 
     public bool SeesPlayer()
     {
-        if (playerPos == null) return false;
-
-        Vector3 origin = transform.position + eyeOffset;
-        Vector3 dir    = playerPos.position - origin;
-        float   angle  = Vector3.Angle(transform.forward, dir);
-
-        if (angle > viewAngle * 0.5f) return false;
-
-        if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit,
-                            detectionDistance, visionMask))
-        {
-            return hit.transform == playerPos ||
-                   hit.transform.IsChildOf(playerPos);
-        }
-
-        return false;
+        Vector3 playerDirection = playerPos.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, playerDirection);
+        return angle <= viewAngle * 0.5f;
     }
 
-    public bool IsPlayerInDetectionDistance() =>
-        playerPos != null &&
-        (playerPos.position - transform.position).magnitude < detectionDistance;
-
-    public bool IsPlayerInHearingDistance() =>
-        playerPos != null &&
-        (playerPos.position - transform.position).magnitude < hearingDistance;
-
-    public bool PlayerEscapedDetection() =>
-        playerPos == null ||
-        (playerPos.position - transform.position).magnitude > escapeDetectionDistance;
-
-    public bool PlayerIsInActionDistance() =>
-        playerPos != null &&
-        (playerPos.position - transform.position).magnitude < actionDistance;
-
-    private void OnDrawGizmosSelected()
+    public bool IsPlayerInDetectionDistance()
     {
-        Vector3 origin    = transform.position + eyeOffset;
-        float   halfAngle = viewAngle * 0.5f;
+        return (playerPos.position - transform.position).magnitude < detectionDistance;
+    }
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionDistance);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, escapeDetectionDistance);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, actionDistance);
-        Gizmos.color = new Color(1f, 0.5f, 0f);
-        Gizmos.DrawWireSphere(transform.position, hearingDistance);
+    public bool PlayerEscapedDetection()
+    {
+        return (playerPos.position - transform.position).magnitude > escapeDetectionDistance;
+    }
 
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(origin, origin + transform.forward * detectionDistance);
+    public bool PlayerIsTooClose()
+    {
+        return (playerPos.position - transform.position).magnitude < suspiciousDistance;
+    }
 
-        Vector3 leftDir  = Quaternion.Euler(0f, -halfAngle, 0f) * transform.forward;
-        Vector3 rightDir = Quaternion.Euler(0f,  halfAngle, 0f) * transform.forward;
-        Gizmos.DrawLine(origin, origin + leftDir  * detectionDistance);
-        Gizmos.DrawLine(origin, origin + rightDir * detectionDistance);
+    public bool PlayerIsInActionDistance()
+    {
+        return (playerPos.position - transform.position).magnitude < actionDistance;
+    }
 
-        int steps = 10;
-        for (int i = 0; i <= steps; i++)
-        {
-            float   t   = (float)i / steps;
-            float   a   = Mathf.Lerp(-halfAngle, halfAngle, t);
-            Vector3 dir = Quaternion.Euler(0f, a, 0f) * transform.forward;
-            Vector3 end = origin + dir * detectionDistance;
-
-            if (i > 0)
-            {
-                float   tPrev   = (float)(i - 1) / steps;
-                float   aPrev   = Mathf.Lerp(-halfAngle, halfAngle, tPrev);
-                Vector3 dirPrev = Quaternion.Euler(0f, aPrev, 0f) * transform.forward;
-                Vector3 endPrev = origin + dirPrev * detectionDistance;
-                Gizmos.DrawLine(end, endPrev);
-            }
-
-            Gizmos.DrawLine(origin, end);
-        }
+    public Vector3 GetTargetPosition()
+    {
+        return playerPos.position;
     }
 }

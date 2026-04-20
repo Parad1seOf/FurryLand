@@ -2,32 +2,32 @@ using UnityEngine;
 
 public class EnemyIdleState : IEnemyState
 {
-    private AIContext          context;
+    private AIContext context;
+    private IChangeState changeState;
     private DetectionComponent detection;
-    private SuspicionComponent suspicion;
-    private IChangeState       changeState;
 
     public EnemyIdleState(AIContext context)
     {
-        this.context     = context;
-        this.detection   = context.detection;
-        this.suspicion   = context.suspicion;
+        this.context = context;
+        this.detection = context.detection;
         this.changeState = context.changeState;
     }
 
-    public void Enter()
-    {
-        suspicion.ResetSuspicionLevel();
-        if (context.agent != null) context.agent.ResetPath();
-    }
+    public void Enter() {}
 
-    public void Exit() { }
+    public void Exit() {}
 
     public void Update()
     {
-        detection.TickSuspicion(suspicion);
+        LookForSuspiciousActivity();
+        
 
-        if (suspicion.IsSuspicious())
+        //Algo mas?
+    }
+
+    private void LookForSuspiciousActivity()
+    {
+        if (detection.SeesSuspiciousConduct())
             changeState.ChangeState(new EnemySuspicionState(context));
     }
 }
