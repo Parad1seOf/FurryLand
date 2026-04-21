@@ -17,4 +17,9 @@ public class AIMovementComponent : MonoBehaviour
     {
         agent.SetDestination(destination);
     }
+
+    public void Stop()
+    {
+        agent.isStopped = true;
+    }
 }

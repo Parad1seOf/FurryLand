@@ -23,7 +23,10 @@ public class DetectionComponent : MonoBehaviour
 
     [SerializeField]
     [Tooltip("A que distancia el enemigo puede atacar al jugador.")]
-    private float actionDistance = 2.5f;
+    private float attackDistance = 2.5f;
+
+    [SerializeField]
+    private float escapeAttackDistance = 3f;
 
     [SerializeField] private SuspicionComponent playerSus;
     [SerializeField] private ITarget playerTarget;
@@ -54,7 +57,7 @@ public class DetectionComponent : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, suspiciousDistance);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, actionDistance);
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
 
         Gizmos.color = Color.pink;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward*detectionDistance);
@@ -94,7 +97,7 @@ public class DetectionComponent : MonoBehaviour
 
     public bool PlayerIsInActionDistance()
     {
-        return (playerPos.position - transform.position).magnitude < actionDistance;
+        return (playerPos.position - transform.position).magnitude < attackDistance;
     }
 
     public Vector3 GetTargetPosition()
@@ -112,5 +115,10 @@ public class DetectionComponent : MonoBehaviour
         if (playerSus == null) return 0;
 
         return playerSus.GetSuspicionLevel();
+    }
+
+    public bool PlayerEscapedAttack()
+    {
+        return (playerPos.position - transform.position).magnitude > escapeAttackDistance;
     }
 }

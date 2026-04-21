@@ -8,6 +8,7 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     [SerializeField] private DetectionComponent detection;
     [SerializeField] private AIMovementComponent movement;
+    [SerializeField] private IAttack attack;
     private AIContext context;
 
     [SerializeField]
@@ -18,8 +19,12 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     {
         if (detection == null)
             detection = GetComponent<DetectionComponent>();
+        if (movement == null)
+            movement = GetComponent<AIMovementComponent>();
+        if (attack == null)
+            attack = GetComponent<IAttack>();
 
-        context = new AIContext(this, detection, movement);
+        context = new AIContext(this, detection, movement, attack);
         ChangeState(new EnemyIdleState(context));
     }
 

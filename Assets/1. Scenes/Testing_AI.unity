@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 221792935}
   - component: {fileID: 221792937}
   - component: {fileID: 221792936}
+  - component: {fileID: 221792938}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -287,7 +288,8 @@ MonoBehaviour:
   detectionDistance: 5
   escapeDetectionDistance: 6
   suspiciousDistance: 2
-  actionDistance: 0
+  attackDistance: 1.25
+  escapeAttackDistance: 2
   playerSus: {fileID: 0}
 --- !u!114 &221792928
 MonoBehaviour:
@@ -476,6 +478,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropComponent
   drop: {fileID: 1617913490}
   probability: 100
+--- !u!114 &221792938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221792926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
+  damage: 10
+  distance: 2
 --- !u!1 &517239522
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +506,8 @@ GameObject:
   - component: {fileID: 517239524}
   - component: {fileID: 517239523}
   - component: {fileID: 517239528}
+  - component: {fileID: 517239530}
+  - component: {fileID: 517239529}
   m_Layer: 0
   m_Name: Player (no se mueve)
   m_TagString: Player
@@ -622,6 +640,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTarget
   targetPoint: {fileID: 517239527}
+--- !u!114 &517239529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517239522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a57b5d51a0e2e741bfb134cd74c39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropComponent
+  drop: {fileID: 1617913490}
+  probability: 0
+--- !u!114 &517239530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517239522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 1
 --- !u!1 &717495220
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +1022,8 @@ MonoBehaviour:
   detectionDistance: 5
   escapeDetectionDistance: 6
   suspiciousDistance: 2
-  actionDistance: 0
+  attackDistance: 2.5
+  escapeAttackDistance: 3
   playerSus: {fileID: 0}
 --- !u!114 &1396250490
 MonoBehaviour:
