@@ -54,6 +54,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
+        if (ScoreManager.instance != null) ScoreManager.instance.scoreKill();
+
         OnDeath?.Invoke(this);
         SpawnDeathVFX();
         Destroy(gameObject, deathDelay);

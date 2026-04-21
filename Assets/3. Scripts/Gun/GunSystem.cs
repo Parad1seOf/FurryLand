@@ -2,6 +2,7 @@
 // despacha daño a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GunSystem : MonoBehaviour
 {
@@ -78,6 +79,9 @@ public class GunSystem : MonoBehaviour
 
     private void HandleInput()
     {
+        if (Time.timeScale == 0f) return;
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
         bool trigger = allowHoldToFire
             ? Input.GetKey(KeyCode.Mouse0)
             : Input.GetKeyDown(KeyCode.Mouse0);

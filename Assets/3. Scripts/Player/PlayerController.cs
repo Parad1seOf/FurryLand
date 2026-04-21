@@ -66,6 +66,13 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         stamina.Tick(IsRunning);
         footsteps.Tick(IsWalking || IsRunning);
+
+        if (Time.timeScale == 0f)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
     }
 
     private void HandleMovement()
@@ -117,10 +124,9 @@ public class PlayerController : MonoBehaviour
     private void OnDeath()
     {
         Debug.Log("[PlayerController] Player died.");
-        GameOverUI gameOver = FindFirstObjectByType<GameOverUI>();
-        if (gameOver != null)
-        {
-            gameOver.ShowGameOverUI();
-        }
+
+        GameResultUI resultsUI = FindFirstObjectByType<GameResultUI>();
+
+        if (resultsUI != null) resultsUI.ShowResults(false);
     }
 }
