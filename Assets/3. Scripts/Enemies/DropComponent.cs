@@ -20,6 +20,8 @@ public class DropComponent : MonoBehaviour
 
         if (Lucky())
             Instantiate(drop);
+
+        gameObject.SetActive(false);
     }
 
     private bool Lucky()
