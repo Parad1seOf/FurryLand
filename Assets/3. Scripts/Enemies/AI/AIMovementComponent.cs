@@ -21,5 +21,6 @@ public class AIMovementComponent : MonoBehaviour
     public void Stop()
     {
         agent.isStopped = true;
+        agent.velocity = Vector3.zero;
     }
 }

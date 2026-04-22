@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     [Header("Clips — Combate")]
     public AudioClip headShotClip;
     public AudioClip bodyHitClip;
+    public AudioClip meleeSwipeClip;
 
     #endregion
 
@@ -44,6 +45,7 @@ public class AudioManager : MonoBehaviour
     public void PlayerHit()   => PlayOneShot(sfxSource, playerHitClip);
     public void Headshot()    => PlayOneShot(sfxSource, headShotClip);
     public void BodyHit()     => PlayOneShot(sfxSource, bodyHitClip);
+    public void MeleeSwipe()  => PlayOneShot(sfxSource, meleeSwipeClip);
 
     public void Walking()
     {

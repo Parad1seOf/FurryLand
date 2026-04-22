@@ -25,6 +25,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(Health);
 
         if (!IsAlive) Die();
+        Debug.Log("dañado");
     }
 
     public void Restore(float amount)

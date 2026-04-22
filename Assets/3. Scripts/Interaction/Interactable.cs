@@ -15,11 +15,12 @@ public class Interactable : MonoBehaviour, IInteractable
     public bool   HoldToInteract => holdToInteract;
     public float  HoldDuration   => holdDuration;
 
-    private InteractableAction action;
+    [SerializeField] private InteractableAction action;
 
     private void Awake()
     {
-        action = GetComponent<InteractableAction>();
+        if(action == null)
+            action = GetComponent<InteractableAction>();
         if (action == null)
             Debug.LogWarning($"[Interactable] '{gameObject.name}' no tiene ninguna InteractableAction en el mismo GameObject.");
     }

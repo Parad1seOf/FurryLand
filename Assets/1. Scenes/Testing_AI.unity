@@ -490,8 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 10
+  damage: 1
   distance: 2
+  cooldown: 1
 --- !u!1 &517239522
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2f4a9bb00ff72409ad48485f1ed663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuspicionComponent
-  suspicionLevel: 100
+  suspicionLevel: 10
   minSuspicionLevel: 0
   maxSuspicionLevel: 10
 --- !u!143 &517239524
@@ -666,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 1
+  maxHealth: 3
 --- !u!1 &717495220
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1396250487
 MonoBehaviour:
   m_ObjectHideFlags: 0

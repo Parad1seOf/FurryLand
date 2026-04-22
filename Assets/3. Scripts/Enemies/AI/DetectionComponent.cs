@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class DetectionComponent : MonoBehaviour
 {
@@ -77,7 +78,23 @@ public class DetectionComponent : MonoBehaviour
     {
         Vector3 playerDirection = playerPos.position - transform.position;
         float angle = Vector3.Angle(transform.forward, playerDirection);
+        if (!HasLineOfSight()) return false;
         return angle <= viewAngle * 0.5f;
+    }
+
+    public bool HasLineOfSight()
+    {
+        RaycastHit hit;
+        Vector3 direction = transform.forward;
+
+        if (Physics.Raycast(transform.position, direction, out hit, detectionDistance))
+        {
+
+            ITarget target = hit.collider.GetComponent<ITarget>();
+
+            return ReferenceEquals(this.playerTarget, target);
+        }
+        return false;
     }
 
     public bool IsPlayerInDetectionDistance()
