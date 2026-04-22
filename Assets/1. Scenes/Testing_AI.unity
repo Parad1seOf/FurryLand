@@ -490,8 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 10
+  damage: 1
   distance: 2
+  cooldown: 1
 --- !u!1 &517239522
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2f4a9bb00ff72409ad48485f1ed663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuspicionComponent
-  suspicionLevel: 100
+  suspicionLevel: 10
   minSuspicionLevel: 0
   maxSuspicionLevel: 10
 --- !u!143 &517239524
@@ -666,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 1
+  maxHealth: 3
 --- !u!1 &717495220
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1396250487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,6 +1567,63 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &1671025577946351294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1954169055706507891, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_Name
+      value: DrillSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.08574
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177438714104088055, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef63666fe4130a34a84cd7ae89a2890a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1580,3 +1638,4 @@ SceneRoots:
   - {fileID: 517239527}
   - {fileID: 717495222}
   - {fileID: 1834520347}
+  - {fileID: 1671025577946351294}

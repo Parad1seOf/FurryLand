@@ -21,7 +21,7 @@ public class EnemyTravelState : IEnemyState
 
     public void Exit()
     {
-        //movement.Stop();
+        movement.Stop();
     }
 
     public void Update()

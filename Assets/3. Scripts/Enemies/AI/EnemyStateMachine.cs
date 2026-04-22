@@ -48,4 +48,9 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     {
         ChangeState(new EnemyAlertState(context));
     }
+
+    public void Respawn()
+    {
+
+    }
 }
