@@ -16,10 +16,8 @@ public class AlertSystem : MonoBehaviour
     {
         if (Instance != null && Instance != this) { 
             Destroy(gameObject);
-            Debug.Log("Adios");
             return; 
         }
-        Debug.Log(gameObject.name);
         Instance = this;
         //DontDestroyOnLoad(gameObject);
     }

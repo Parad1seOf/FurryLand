@@ -19,7 +19,6 @@ public class HedgehogAttack : MonoBehaviour, IAttack
 
         if (Physics.Raycast(transform.position, direction, out hit, distance))
         {
-
             HealthSystem health = hit.collider.GetComponent<HealthSystem>();
 
             if (health != null)

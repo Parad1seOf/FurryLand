@@ -4,12 +4,14 @@ using UnityEngine.AI;
 public class EnemyAlertState : IEnemyState
 {
     private AIContext context;
+    private DetectionComponent detection;
     private float timer = 1f;
     private float time = 0f;
 
     public EnemyAlertState(AIContext context)
     {
         this.context = context;
+        detection = context.detection;
     }
 
     public void Enter()
@@ -18,6 +20,7 @@ public class EnemyAlertState : IEnemyState
         if (!alert.IsAlreadyTriggered) alert.TriggerAlert();
 
         time = timer;
+        detection.transform.forward = detection.GetTargetDirection();
     }
 
     public void Exit()

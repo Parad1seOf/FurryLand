@@ -7,7 +7,7 @@ public class DetectionComponent : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Angulo de vision del enemigo.")]
-    private float viewAngle = 45f;
+    private float viewAngle = 90f;
 
     [SerializeField]
     [Tooltip("A que distancia el enemigo detecta a su objetivo.")]
@@ -66,7 +66,7 @@ public class DetectionComponent : MonoBehaviour
 
     public bool SeesSuspiciousConduct()
     {
-        return playerSus.IsSuspicious() && SeesPlayer() && IsPlayerInDetectionDistance();
+        return IsPlayerInDetectionDistance() && SeesPlayer() && playerSus.IsSuspicious();
     }
 
     public bool HasPlayerEscapedSuspicion()

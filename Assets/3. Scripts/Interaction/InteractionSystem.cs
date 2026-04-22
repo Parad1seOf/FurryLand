@@ -23,6 +23,8 @@ public class InteractionSystem : MonoBehaviour
     private Interactable     currentInteractable;  // versión concreta para leer holdToInteract
     private float            holdTimer;
 
+    private bool suspicionAdded = false;
+
     #endregion
 
     #region Unity Lifecycle
@@ -89,6 +91,7 @@ public class InteractionSystem : MonoBehaviour
             ResetHold();
             return;
         }
+        RiseSuspicion();
 
         bool needsHold = currentInteractable != null && currentInteractable.HoldToInteract;
 
@@ -111,6 +114,7 @@ public class InteractionSystem : MonoBehaviour
             {
                 // Soltó E antes de completar — resetea
                 ResetHold();
+                LowerSuspicion();
             }
         }
         else
@@ -142,4 +146,27 @@ public class InteractionSystem : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactRange);
     }
 #endif
+
+
+    private void RiseSuspicion()
+    {
+        if (suspicionAdded) return;
+        SuspicionComponent sus = GetComponent<SuspicionComponent>();
+        if (sus == null) return;
+
+        sus.RiseSuspicion(currentInteractable.suspiciousness);
+
+        suspicionAdded = true;
+    }
+
+    private void LowerSuspicion()
+    {
+        if (!suspicionAdded) return;
+        SuspicionComponent sus = GetComponent<SuspicionComponent>();
+        if (sus == null) return;
+
+        sus.LowerSuspicion(currentInteractable.suspiciousness);
+
+        suspicionAdded = false;
+    }
 }

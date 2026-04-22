@@ -26,6 +26,8 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
         context = new AIContext(this, detection, movement, attack);
         ChangeState(new EnemyIdleState(context));
+
+        GetComponent<HealthSystem>().OnDeath += Die;
     }
 
     void Update()
@@ -49,8 +51,16 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         ChangeState(new EnemyAlertState(context));
     }
 
-    public void Respawn()
+    public void Die()
     {
+        ChangeState(new EnemyDeadState(context));
+        EnemyPool.instance.AddEnemy(gameObject);
+    }
 
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
+        ChangeState(new EnemyTravelState(context));
+        GetComponent<HealthSystem>().Restore(1000);
     }
 }

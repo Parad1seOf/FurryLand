@@ -1,5 +1,6 @@
 // Pon este script en el trigger collider junto a la acción (OpenDoorAction, ShowMessageAction…).
 // Coge la acción automáticamente del mismo GameObject — no hace falta arrastrar nada.
+using System;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour, IInteractable
@@ -10,6 +11,7 @@ public class Interactable : MonoBehaviour, IInteractable
     [Header("Interacción")]
     public bool  holdToInteract = false;
     public float holdDuration   = 1.5f;
+    public float suspiciousness;
 
     public string InteractLabel  => interactLabel;
     public bool   HoldToInteract => holdToInteract;

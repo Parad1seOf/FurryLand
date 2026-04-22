@@ -1,15 +1,18 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Drill : InteractableAction
 {
     [SerializeField] private float timeToDrill;
-    [SerializeField] private GameObject drilledObject;
+    [SerializeField] private GameObject retrievedObject;
+    [SerializeField] private GameObject objectToExplode;
     public float timer;
 
 
     public void OnEnable()
     {
         timer = timeToDrill;
+        AlertSystem.Instance.TriggerAlert();
     }
 
     public void Update()
@@ -24,7 +27,8 @@ public class Drill : InteractableAction
 
     public void EndDrilling()
     {
-        Instantiate(drilledObject, transform.position, transform.rotation);
+        Instantiate(retrievedObject, transform.position, transform.rotation);
+        objectToExplode.SetActive(false);
         gameObject.SetActive(false);
     }
 

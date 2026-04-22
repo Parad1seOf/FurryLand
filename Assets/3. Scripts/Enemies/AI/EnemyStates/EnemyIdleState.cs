@@ -27,6 +27,9 @@ public class EnemyIdleState : IEnemyState
 
     private void LookForSuspiciousActivity()
     {
+        if (detection.PlayerIsTooClose())
+            changeState.ChangeState(new EnemyAlertState(context));
+
         if (detection.SeesSuspiciousConduct())
             changeState.ChangeState(new EnemySuspicionState(context));
     }
