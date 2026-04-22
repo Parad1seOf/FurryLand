@@ -32,6 +32,8 @@ public class ScoreManager : MonoBehaviour
 
     private int killCount;
 
+    private bool hasFurryConstitution;
+
     public void scoreKill()
     {
         killCount++;
@@ -40,5 +42,15 @@ public class ScoreManager : MonoBehaviour
     public int GetKillCount()
     {
         return killCount;
+    }
+
+    public void ObtainFurryConstitution()
+    {
+        hasFurryConstitution = true;
+    }
+
+    public bool HasFurryConstitution()
+    {
+        return hasFurryConstitution;
     }
 }

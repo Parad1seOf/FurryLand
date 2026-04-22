@@ -5,7 +5,7 @@ public class AIMovementComponent : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
 
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed = 3;
 
     public void Start()
     {
