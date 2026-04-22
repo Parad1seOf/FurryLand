@@ -15,6 +15,7 @@ public class AIMovementComponent : MonoBehaviour
 
     public void MoveTo(Vector3 destination)
     {
+        agent.isStopped = false;
         agent.SetDestination(destination);
     }
 

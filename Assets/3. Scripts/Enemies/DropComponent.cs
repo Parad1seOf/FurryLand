@@ -19,7 +19,7 @@ public class DropComponent : MonoBehaviour
         if (drop == null) return;
 
         if (Lucky())
-            Instantiate(drop);
+            Instantiate(drop, transform.position, transform.rotation);
     }
 
     private bool Lucky()
