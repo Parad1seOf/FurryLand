@@ -5,6 +5,7 @@ public class EnemyAlertState : IEnemyState
 {
     private AIContext context;
     private DetectionComponent detection;
+    private EnemyDisplay display;
     private float timer = 1f;
     private float time = 0f;
 
@@ -12,6 +13,7 @@ public class EnemyAlertState : IEnemyState
     {
         this.context = context;
         detection = context.detection;
+        display = context.display;
     }
 
     public void Enter()
@@ -21,11 +23,12 @@ public class EnemyAlertState : IEnemyState
 
         time = timer;
         detection.transform.forward = detection.GetTargetDirection();
+        display.ChangeLabel("!", Color.red);
     }
 
     public void Exit()
     {
-        //Ocultar exclamacion
+        display.ChangeLabel("", Color.white);
     }
 
     public void Update()

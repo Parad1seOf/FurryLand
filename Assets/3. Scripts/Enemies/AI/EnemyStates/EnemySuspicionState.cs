@@ -1,14 +1,16 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemySuspicionState : IEnemyState
 {
     private AIContext context;
     private IChangeState changeState;
     private DetectionComponent detection;
+    private EnemyDisplay display;
 
 
-    private float time = 10f;
+    private float time = 100f;
     private float timer;
     private float duration;
 
@@ -17,16 +19,17 @@ public class EnemySuspicionState : IEnemyState
         this.context = context;
         detection = context.detection;
         changeState = context.changeState;
+        display = context.display;
     }
 
     public void Enter()
     {
-        timer = time;
+        timer = 0;
     }
 
     public void Exit()
     {
-        
+        display.ChangeLabel("", Color.white);
     }
 
     public  void Update()
@@ -35,12 +38,13 @@ public class EnemySuspicionState : IEnemyState
         CheckPlayer();
 
         Rotate();
+        UpdateDisplay();
     }
 
     private void UpdateSuspicionProgress()
     {
-        timer -= detection.GetPlayerSuspicionLevel() * Time.deltaTime;
-        if (timer <= 0)
+        timer += detection.GetPlayerSuspicionLevel() * Time.deltaTime;
+        if (timer >= time)
             changeState.ChangeState(new EnemyAlertState(context));
     }
 
@@ -54,5 +58,24 @@ public class EnemySuspicionState : IEnemyState
     {
         //Mal
         detection.transform.forward = detection.GetTargetDirection();
+    }
+
+    private void UpdateDisplay()
+    {
+        string str = "";
+        if (timer > 75)
+        {
+            str = "???";
+        }
+        else if (timer > 50)
+        {
+            str = "??";
+        }
+        else if (timer > 25)
+        {
+            str = "??";
+        }
+
+        display.ChangeLabel(str, Color.darkViolet);
     }
 }

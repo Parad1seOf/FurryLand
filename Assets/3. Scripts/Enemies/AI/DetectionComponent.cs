@@ -1,7 +1,4 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class DetectionComponent : MonoBehaviour
 {
@@ -32,6 +29,7 @@ public class DetectionComponent : MonoBehaviour
     [SerializeField] private SuspicionComponent playerSus;
     [SerializeField] private ITarget playerTarget;
     private Transform playerPos;
+    [SerializeField] private Transform eyes;
 
     public void Start()
     {
@@ -40,7 +38,8 @@ public class DetectionComponent : MonoBehaviour
             playerSus = GameObject.FindGameObjectWithTag("Player").GetComponent<SuspicionComponent>();
         if (playerTarget == null)
             playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<ITarget>();
-
+        if (eyes == null)
+            eyes = transform;
 
 
         playerPos = playerTarget.GetTransform();
@@ -49,19 +48,19 @@ public class DetectionComponent : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionDistance);
+        Gizmos.DrawWireSphere(eyes.position, detectionDistance);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, escapeDetectionDistance);
+        Gizmos.DrawWireSphere(eyes.position, escapeDetectionDistance);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, suspiciousDistance);
+        Gizmos.DrawWireSphere(eyes.position, suspiciousDistance);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, attackDistance);
+        Gizmos.DrawWireSphere(eyes.position, attackDistance);
 
         Gizmos.color = Color.pink;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward*detectionDistance);
+        Gizmos.DrawLine(eyes.position, eyes.position + eyes.forward*detectionDistance);
     }
 
     public bool SeesSuspiciousConduct()
@@ -76,8 +75,8 @@ public class DetectionComponent : MonoBehaviour
 
     public bool SeesPlayer()
     {
-        Vector3 playerDirection = playerPos.position - transform.position;
-        float angle = Vector3.Angle(transform.forward, playerDirection);
+        Vector3 playerDirection = playerPos.position - eyes.position;
+        float angle = Vector3.Angle(eyes.forward, playerDirection);
         if (!HasLineOfSight()) return false;
         return angle <= viewAngle * 0.5f;
     }
@@ -85,36 +84,36 @@ public class DetectionComponent : MonoBehaviour
     public bool HasLineOfSight()
     {
         RaycastHit hit;
-        Vector3 direction = transform.forward;
+        Vector3 direction = eyes.forward;
 
-        if (Physics.Raycast(transform.position, direction, out hit, detectionDistance))
+        if (Physics.Raycast(eyes.position, direction, out hit, detectionDistance))
         {
-
+            Debug.Log("aa");
             ITarget target = hit.collider.GetComponent<ITarget>();
 
-            return ReferenceEquals(this.playerTarget, target);
+            return ReferenceEquals(playerTarget, target);
         }
         return false;
     }
 
     public bool IsPlayerInDetectionDistance()
     {
-        return (playerPos.position - transform.position).magnitude < detectionDistance;
+        return (playerPos.position - eyes.position).magnitude < detectionDistance;
     }
 
     public bool PlayerEscapedDetection()
     {
-        return (playerPos.position - transform.position).magnitude > escapeDetectionDistance;
+        return (playerPos.position - eyes.position).magnitude > escapeDetectionDistance;
     }
 
     public bool PlayerIsTooClose()
     {
-        return (playerPos.position - transform.position).magnitude < suspiciousDistance;
+        return (playerPos.position - eyes.position).magnitude < suspiciousDistance;
     }
 
     public bool PlayerIsInActionDistance()
     {
-        return (playerPos.position - transform.position).magnitude < attackDistance;
+        return (playerPos.position - eyes.position).magnitude < attackDistance;
     }
 
     public Vector3 GetTargetPosition()
@@ -124,7 +123,7 @@ public class DetectionComponent : MonoBehaviour
 
     public Vector3 GetTargetDirection()
     {
-        return playerPos.position - transform.position;
+        return playerPos.position - eyes.position;
     }
 
     public float GetPlayerSuspicionLevel()
@@ -136,6 +135,6 @@ public class DetectionComponent : MonoBehaviour
 
     public bool PlayerEscapedAttack()
     {
-        return (playerPos.position - transform.position).magnitude > escapeAttackDistance;
+        return (playerPos.position - eyes.position).magnitude > escapeAttackDistance;
     }
 }

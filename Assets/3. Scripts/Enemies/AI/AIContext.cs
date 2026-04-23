@@ -5,12 +5,15 @@ public class AIContext
     public AIMovementComponent movement;
     public ITarget target;
     public IAttack attack;
+    public EnemyDisplay display;
 
-    public AIContext(IChangeState changeState ,DetectionComponent detection, AIMovementComponent movement, IAttack attack)
+    public AIContext(IChangeState changeState ,DetectionComponent detection, 
+        AIMovementComponent movement, IAttack attack, EnemyDisplay display)
     {
         this.changeState = changeState;
         this.detection = detection;
         this.movement = movement;
         this.attack = attack;
+        this.display = display;
     }
 }

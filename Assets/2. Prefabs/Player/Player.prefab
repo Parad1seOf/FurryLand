@@ -4812,8 +4812,8 @@ GameObject:
   - component: {fileID: 1634002587720715652}
   - component: {fileID: 2036638204846599081}
   - component: {fileID: 850858617409661531}
-  - component: {fileID: 2009365097333165869}
   - component: {fileID: 1992181409279355404}
+  - component: {fileID: 6145791883403990671}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4861,7 +4861,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 2.96
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -4993,6 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponToggle
   weaponObject: {fileID: 4321300985517358224}
+  suspiciousness: 0
 --- !u!114 &850858617409661531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5006,40 +5007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTarget
   targetPoint: {fileID: 0}
---- !u!114 &2009365097333165869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231762710971154228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f84f37e2c082941b3aa85fe7060167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunSystem
-  audioManager: {fileID: 0}
-  playerController: {fileID: 0}
-  fpsCam: {fileID: 0}
-  muzzlePoint: {fileID: 0}
-  damage: 25
-  range: 100
-  timeBetweenShots: 0.1
-  allowHoldToFire: 1
-  idleSpread: 0
-  walkSpread: 0.02
-  runSpread: 0.05
-  magazineCapacity: 30
-  totalMagazines: 3
-  reloadTime: 1.8
-  muzzleFlashPrefab: {fileID: 0}
-  bulletHolePrefab: {fileID: 0}
-  weaponAnimation: {fileID: 0}
-  idleClip: {fileID: 0}
-  shootClip: {fileID: 0}
-  reloadClip: {fileID: 0}
-  shootBlendIn: 0.05
-  shootBlendOut: 0.1
 --- !u!114 &1992181409279355404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,6 +5022,18 @@ MonoBehaviour:
   suspicionLevel: 0
   minSuspicionLevel: 0
   maxSuspicionLevel: 100
+--- !u!114 &6145791883403990671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231762710971154228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75eefe13b5b73b4ca83c859dc00500f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathHandler
 --- !u!1 &1685784303718246658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,7 +5045,6 @@ GameObject:
   - component: {fileID: 5885036772315741054}
   - component: {fileID: 2375694287924908666}
   - component: {fileID: 2439530078226258592}
-  - component: {fileID: 3665362019043921141}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -5146,29 +5124,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3665362019043921141
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685784303718246658}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3400587053566267830
 GameObject:
   m_ObjectHideFlags: 0
@@ -10001,6 +9956,7 @@ GameObject:
   - component: {fileID: 9004171886538045374}
   - component: {fileID: 1183039612802929891}
   - component: {fileID: 5837020467595578345}
+  - component: {fileID: 2991190238141108468}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -10141,6 +10097,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2991190238141108468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321300985517358224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f84f37e2c082941b3aa85fe7060167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunSystem
+  audioManager: {fileID: 0}
+  playerController: {fileID: 8168884295756889035}
+  fpsCam: {fileID: 7138904850985994041}
+  muzzlePoint: {fileID: 0}
+  damage: 25
+  range: 100
+  timeBetweenShots: 0.1
+  allowHoldToFire: 1
+  idleSpread: 0
+  walkSpread: 0.02
+  runSpread: 0.05
+  magazineCapacity: 30
+  totalMagazines: 3
+  reloadTime: 1.8
+  muzzleFlashPrefab: {fileID: 0}
+  bulletHolePrefab: {fileID: 0}
+  weaponAnimation: {fileID: 0}
+  idleClip: {fileID: 0}
+  shootClip: {fileID: 0}
+  reloadClip: {fileID: 0}
+  shootBlendIn: 0.05
+  shootBlendOut: 0.1
 --- !u!1 &5008594316290734875
 GameObject:
   m_ObjectHideFlags: 0

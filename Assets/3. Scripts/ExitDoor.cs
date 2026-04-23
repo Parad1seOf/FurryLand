@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitDoor : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (canExit && other.CompareTag("Player")) FinishGame();
+        //if (canExit && other.CompareTag("Player")) FinishGame();
+        if (ScoreManager.instance.HasFurryConstitution()) ToMainMenu();
     }
 
     private void FinishGame()
@@ -32,5 +34,12 @@ public class ExitDoor : MonoBehaviour
         GameResultUI resultsUI = FindFirstObjectByType<GameResultUI>();
 
         if (resultsUI != null) resultsUI.ShowResults(true);
+    }
+
+    private void ToMainMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene(0);
     }
 }

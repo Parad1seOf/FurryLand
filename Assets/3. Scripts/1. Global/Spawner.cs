@@ -36,6 +36,7 @@ public class Spawner : InteractableAction
         {
             spawnTimer -= Time.deltaTime;
             if (spawnTimer < 0) wantsToSpawn = true;
+            return;
         }
 
 
@@ -68,6 +69,6 @@ public class Spawner : InteractableAction
 
     public void Alarmed()
     {
-
+        alarmed = true;
     }
 }

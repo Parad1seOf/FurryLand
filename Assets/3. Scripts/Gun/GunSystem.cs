@@ -129,6 +129,11 @@ public class GunSystem : MonoBehaviour
 
         if (resetShotCoroutine != null) StopCoroutine(resetShotCoroutine);
         resetShotCoroutine = StartCoroutine(ResetShotRoutine());
+
+
+
+
+        AlertSystem.Instance.TriggerAlert();
     }
 
     private void ProcessHit(RaycastHit hit)

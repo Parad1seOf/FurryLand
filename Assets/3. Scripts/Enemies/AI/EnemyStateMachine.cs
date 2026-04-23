@@ -9,6 +9,7 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     [SerializeField] private DetectionComponent detection;
     [SerializeField] private AIMovementComponent movement;
     [SerializeField] private IAttack attack;
+    [SerializeField] private EnemyDisplay display;
     private AIContext context;
 
     [SerializeField]
@@ -23,8 +24,10 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
             movement = GetComponent<AIMovementComponent>();
         if (attack == null)
             attack = GetComponent<IAttack>();
+        if (display == null) 
+            display = GetComponent<EnemyDisplay>();
 
-        context = new AIContext(this, detection, movement, attack);
+        context = new AIContext(this, detection, movement, attack, display);
         ChangeState(new EnemyIdleState(context));
 
         GetComponent<HealthSystem>().OnDeath += Die;
@@ -48,6 +51,7 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     public void Alert()
     {
+        if (currentState is EnemyDeadState) return;
         ChangeState(new EnemyAlertState(context));
     }
 

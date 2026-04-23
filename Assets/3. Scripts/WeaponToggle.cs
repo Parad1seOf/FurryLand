@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponToggle : MonoBehaviour
 {
     [SerializeField] private GameObject weaponObject;
+    [SerializeField] private float suspiciousness;
 
     private InputReader input;
 
@@ -17,6 +18,14 @@ public class WeaponToggle : MonoBehaviour
     private void Update()
     {
         if (input.WeaponPressed)
-            weaponObject?.SetActive(!weaponObject.activeSelf);
+            Toggle();
+    }
+
+    private void Toggle()
+    {
+        weaponObject?.SetActive(!weaponObject.activeSelf);
+        SuspicionComponent sus = GetComponent<SuspicionComponent>();
+        if (weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
+        else sus?.LowerSuspicion(suspiciousness);
     }
 }
