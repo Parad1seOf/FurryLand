@@ -11,6 +11,7 @@ public class Spawner : InteractableAction
     [SerializeField] GameObject blockingObject;
     [SerializeField] Interactable activator;
     private bool alarmed;
+    private bool alreadyBroken = false;
 
     private EnemyPool pool;
 
@@ -60,10 +61,12 @@ public class Spawner : InteractableAction
     {
         isBlocked = false;
         blockingObject.SetActive(false);
+        alreadyBroken = true;
     }
 
     public override void Execute(PlayerController player)
     {
+        if (alreadyBroken) return;
         Block();
     }
 
