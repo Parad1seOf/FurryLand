@@ -364,8 +364,8 @@ Transform:
   m_GameObject: {fileID: 47830219}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.99989176, z: -0, w: 0.014712459}
-  m_LocalPosition: {x: -970.9999, y: 411, z: 187.96402}
-  m_LocalScale: {x: 75.76254, y: 75.76254, z: 75.76254}
+  m_LocalPosition: {x: -0.05, y: -0.13, z: 1.47}
+  m_LocalScale: {x: 0.120074205, y: 0.120074205, z: 0.120074205}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319026639}
@@ -2455,7 +2455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade1d8db411652f4bbde239cb26a97e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
-  timeToDrill: 120
+  timeToDrill: 45
   retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
   objectToExplode: {fileID: 889344728}
   trigger: {fileID: 968156740}
@@ -6841,7 +6841,7 @@ MonoBehaviour:
   footstepsClip: {fileID: 0}
   headShotClip: {fileID: 8300000, guid: 9668153a9bc14234e8f74508bcbf25b4, type: 3}
   bodyHitClip: {fileID: 0}
-  meleeSwipeClip: {fileID: 0}
+  meleeSwipeClip: {fileID: 8300000, guid: c9eb136ffbc9fce4db5432b2b2990188, type: 3}
 --- !u!4 &1149559008
 Transform:
   m_ObjectHideFlags: 0
