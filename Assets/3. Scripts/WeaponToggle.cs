@@ -15,6 +15,11 @@ public class WeaponToggle : MonoBehaviour
         weaponObject?.SetActive(false); // empieza guardada
     }
 
+    private void Start()
+    {
+        AlertSystem.Instance.OnAlertTriggered += Alarm;
+    }
+
     private void Update()
     {
         if (input.WeaponPressed)
@@ -23,9 +28,14 @@ public class WeaponToggle : MonoBehaviour
 
     private void Toggle()
     {
-        weaponObject?.SetActive(!weaponObject.activeSelf);
+        weaponObject?.SetActive(true);
         SuspicionComponent sus = GetComponent<SuspicionComponent>();
         if (weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
         else sus?.LowerSuspicion(suspiciousness);
+    }
+
+    public void Alarm()
+    {
+        Toggle();
     }
 }

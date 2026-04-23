@@ -210,6 +210,11 @@ public class GunSystem : MonoBehaviour
         PlayAnimation(idleClip);
     }
 
+    public void AddMagazines(int amount)
+    {
+        magazinesLeft += amount;
+    }
+
     public int  BulletsLeft      => bulletsLeft;
     public int  MagazineCapacity => magazineCapacity;
     public int  MagazinesLeft    => magazinesLeft;
