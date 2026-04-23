@@ -504,6 +504,8 @@ MonoBehaviour:
   interactLabel: Door
   holdToInteract: 1
   holdDuration: 2
+  suspiciousness: 0
+  action: {fileID: 0}
 --- !u!65 &170958517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19705,6 +19707,8 @@ MonoBehaviour:
   interactLabel: Puerta
   holdToInteract: 0
   holdDuration: 1.5
+  suspiciousness: 0
+  action: {fileID: 0}
 --- !u!65 &1749059148
 BoxCollider:
   m_ObjectHideFlags: 0
