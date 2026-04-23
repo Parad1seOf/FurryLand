@@ -10,5 +10,6 @@ public class AmmoItem : MonoBehaviour
         if (weapon == null) return;
 
         weapon.GrabMagazine(amount);
+        Destroy(gameObject);
     }
 }
