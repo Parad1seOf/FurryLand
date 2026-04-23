@@ -5,6 +5,7 @@ public class Drill : InteractableAction
     [SerializeField] private float timeToDrill;
     [SerializeField] private GameObject retrievedObject;
     [SerializeField] private GameObject objectToExplode;
+    [SerializeField] private GameObject trigger;
     public float timer;
 
 
@@ -34,6 +35,7 @@ public class Drill : InteractableAction
     public override void Execute(PlayerController player)
     {
         gameObject.SetActive(true);
+        trigger.SetActive(false);
     }
 
     [ContextMenu("Ejecutar")]
