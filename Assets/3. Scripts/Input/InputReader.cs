@@ -12,7 +12,7 @@ public class InputReader : MonoBehaviour
     public KeyCode keyJump     = KeyCode.Space;
     public KeyCode keyReload   = KeyCode.R;
     public KeyCode keyInteract = KeyCode.E;
-    public KeyCode keyWeapon   = KeyCode.T;
+    public KeyCode keyWeapon   = KeyCode.F;
 
     public Vector2 MoveInput       { get; private set; }
     public Vector2 LookInput       { get; private set; }
