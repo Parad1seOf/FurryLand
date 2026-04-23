@@ -12,7 +12,6 @@ public class EnemySuspicionState : IEnemyState
 
     private float time = 100f;
     private float timer;
-    private float duration;
 
     public EnemySuspicionState(AIContext context)
     {
@@ -34,11 +33,12 @@ public class EnemySuspicionState : IEnemyState
 
     public  void Update()
     {
+        UpdateDisplay();
         UpdateSuspicionProgress();
         CheckPlayer();
 
         Rotate();
-        UpdateDisplay();
+        
     }
 
     private void UpdateSuspicionProgress()
@@ -63,7 +63,7 @@ public class EnemySuspicionState : IEnemyState
     private void UpdateDisplay()
     {
         string str = "";
-        if (timer > 75)
+        /*if (timer > 75)
         {
             str = "???";
         }
@@ -73,9 +73,10 @@ public class EnemySuspicionState : IEnemyState
         }
         else if (timer > 25)
         {
-            str = "??";
-        }
+            str = "?";
+        }*/
 
-        display.ChangeLabel(str, Color.darkViolet);
+
+        display.ChangeLabel(Mathf.FloorToInt(timer).ToSafeString(), Color.darkViolet);
     }
 }

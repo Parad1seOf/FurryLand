@@ -84,7 +84,7 @@ public class DetectionComponent : MonoBehaviour
     public bool HasLineOfSight()
     {
         RaycastHit hit;
-        Vector3 direction = eyes.forward;
+        Vector3 direction = playerPos.position - eyes.position;
 
         if (Physics.Raycast(eyes.position, direction, out hit, detectionDistance))
         {
