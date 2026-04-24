@@ -6,6 +6,9 @@ public class VolumeController : MonoBehaviour
     [Header("Referencia")]
     public Volume volume;
 
+    [Header("Input")]
+    public KeyCode triggerKey = KeyCode.X; // ← ahora es configurable
+
     [Header("Configuración")]
     public float currentValue = 0f; // 0 a 1
     public float increaseAmount = 0.1f;
@@ -17,8 +20,8 @@ public class VolumeController : MonoBehaviour
 
     void Update()
     {
-        // Pulsar X → subir
-        if (Input.GetKeyDown(KeyCode.X))
+        // Pulsar tecla configurada → subir
+        if (Input.GetKeyDown(triggerKey))
         {
             currentValue += increaseAmount;
 
