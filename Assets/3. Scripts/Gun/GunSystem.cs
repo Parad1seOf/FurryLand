@@ -32,6 +32,11 @@ public class GunSystem : MonoBehaviour
     public int   totalMagazines   = 3;
     public float reloadTime       = 1.8f;
 
+    [Header("Recoil")]
+    public CharacterController characterController;
+    public float recoilForce = 25f;
+    private Vector3 impactVelocity;
+
     [Header("VFX")]
     public GameObject muzzleFlashPrefab;
     public GameObject bulletHolePrefab;
@@ -71,6 +76,12 @@ public class GunSystem : MonoBehaviour
     private void Update()
     {
         HandleInput();
+
+        if (impactVelocity.magnitude > 0.2f)
+        {
+            characterController.Move(impactVelocity * Time.deltaTime);
+            impactVelocity = Vector3.Lerp(impactVelocity, Vector3.zero, 5f * Time.deltaTime);
+        }
     }
 
     #endregion
@@ -120,6 +131,15 @@ public class GunSystem : MonoBehaviour
         Vector3 direction = fpsCam.transform.forward
                           + fpsCam.transform.right * x
                           + fpsCam.transform.up    * y;
+
+        if (characterController != null)
+        {
+            if (!characterController.isGrounded)
+            {
+                impactVelocity += -direction.normalized * recoilForce;
+            }
+        }
+
 
         if (Physics.Raycast(fpsCam.transform.position, direction, out RaycastHit hit, range,
                             ~0, QueryTriggerInteraction.Ignore))
