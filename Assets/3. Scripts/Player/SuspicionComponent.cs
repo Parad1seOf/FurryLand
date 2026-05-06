@@ -16,17 +16,17 @@ public class SuspicionComponent : MonoBehaviour
 
     public void RiseSuspicion(float amount)
     {
-        suspicionLevel = Mathf.Clamp(suspicionLevel + amount, minSuspicionLevel, maxSuspicionLevel);
+        suspicionLevel += amount;
     }
 
     public void LowerSuspicion(float amount)
     {
-        suspicionLevel = Mathf.Clamp(suspicionLevel - amount, minSuspicionLevel, maxSuspicionLevel);
+        suspicionLevel -= amount;
     }
 
     public float GetSuspicionLevel()
     {
-        return suspicionLevel;
+        return Mathf.Clamp(suspicionLevel, minSuspicionLevel, maxSuspicionLevel);
     }
 
     public bool IsSuspicious()
