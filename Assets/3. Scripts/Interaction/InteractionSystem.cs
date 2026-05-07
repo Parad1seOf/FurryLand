@@ -91,6 +91,9 @@ public class InteractionSystem : MonoBehaviour
             ResetHold();
             return;
         }
+
+        if (!currentTarget.CanInteract(player)) return;
+
         RiseSuspicion();
 
         bool needsHold = currentInteractable != null && currentInteractable.HoldToInteract;

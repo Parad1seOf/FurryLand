@@ -88,7 +88,6 @@ public class DetectionComponent : MonoBehaviour
 
         if (Physics.Raycast(eyes.position, direction, out hit, detectionDistance))
         {
-            Debug.Log("aa");
             ITarget target = hit.collider.GetComponent<ITarget>();
 
             return ReferenceEquals(playerTarget, target);

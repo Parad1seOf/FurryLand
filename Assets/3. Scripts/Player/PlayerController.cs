@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -6,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(HealthSystem))]
 [RequireComponent(typeof(StaminaSystem))]
 [RequireComponent(typeof(FootstepController))]
+[RequireComponent(typeof(InventorySystem))]
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private HealthSystem        health;
     private StaminaSystem       stamina;
     private FootstepController  footsteps;
+    private InventorySystem     inventory;
     private float               verticalSpeed;
 
     private void Awake()
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
         health    = GetComponent<HealthSystem>();
         stamina   = GetComponent<StaminaSystem>();
         footsteps = GetComponent<FootstepController>();
+        inventory = GetComponent<InventorySystem>();
 
         health.OnDamaged     += () => { s_audioManager?.PlayerHit(); s_gameManager?.ShowHitFlash(); };
         health.OnDeath       += OnDeath;
@@ -129,4 +133,6 @@ public class PlayerController : MonoBehaviour
 
         if (resultsUI != null) resultsUI.ShowResults(false);
     }
+
+    public InventorySystem GetInventory() { return inventory; }
 }

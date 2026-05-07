@@ -4,4 +4,5 @@ public interface IInteractable
 {
     string InteractLabel { get; }          // Texto que verá el jugador en el HUD
     void   Interact(PlayerController player);
+    bool CanInteract(PlayerController player);
 }

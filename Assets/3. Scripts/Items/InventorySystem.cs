@@ -34,4 +34,9 @@ public class InventorySystem : MonoBehaviour
     {
         return items.TryGetValue(type, out int current) ? current : 0;
     }
+
+    public void Start()
+    {
+        AddItem(ItemType.Wood, 1);
+    }
 }

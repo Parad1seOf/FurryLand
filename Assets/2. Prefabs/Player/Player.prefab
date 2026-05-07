@@ -4815,6 +4815,7 @@ GameObject:
   - component: {fileID: 1992181409279355404}
   - component: {fileID: 6145791883403990671}
   - component: {fileID: 6945758425866561783}
+  - component: {fileID: 8645754521709445335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5048,6 +5049,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
   gun: {fileID: 2991190238141108468}
+--- !u!114 &8645754521709445335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231762710971154228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91480039e2446db4c9b3aadee312820d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySystem
 --- !u!1 &1685784303718246658
 GameObject:
   m_ObjectHideFlags: 0
@@ -10249,6 +10262,8 @@ MonoBehaviour:
   magazineCapacity: 30
   totalMagazines: 3
   reloadTime: 1.8
+  characterController: {fileID: 0}
+  recoilForce: 25
   muzzleFlashPrefab: {fileID: 3400587053566267830}
   bulletHolePrefab: {fileID: 650487376429825820}
   weaponAnimation: {fileID: 1183039612802929891}
