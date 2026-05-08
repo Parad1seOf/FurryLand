@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(StaminaSystem))]
 [RequireComponent(typeof(FootstepController))]
 [RequireComponent(typeof(InventorySystem))]
+[RequireComponent(typeof(GroundCheck))]
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private StaminaSystem       stamina;
     private FootstepController  footsteps;
     private InventorySystem     inventory;
+    private GroundCheck         groundCheck;
     private float               verticalSpeed;
 
     private void Awake()
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         stamina   = GetComponent<StaminaSystem>();
         footsteps = GetComponent<FootstepController>();
         inventory = GetComponent<InventorySystem>();
+        groundCheck = GetComponent<GroundCheck>();
 
         health.OnDamaged     += () => { s_audioManager?.PlayerHit(); s_gameManager?.ShowHitFlash(); };
         health.OnDeath       += OnDeath;
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = (forward * input.MoveInput.y + right * input.MoveInput.x).normalized;
 
-        if (canJump && cc.isGrounded && input.JumpPressed)
+        if (canJump && groundCheck.IsGrounded() && input.JumpPressed)
             verticalSpeed = jumpSpeed;
 
         verticalSpeed += Physics.gravity.y * Time.deltaTime;
