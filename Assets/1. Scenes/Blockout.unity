@@ -1722,6 +1722,112 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 75e9f070d3d20ea4c982ddb600591cfa, type: 3}
+--- !u!1 &265020991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265020995}
+  - component: {fileID: 265020994}
+  - component: {fileID: 265020993}
+  - component: {fileID: 265020992}
+  - component: {fileID: 265020996}
+  m_Layer: 0
+  m_Name: PuertaSpawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &265020992
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265020991}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &265020993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265020991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256ced79eb90d96499da1f74867be67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  interactLabel: Puerta madera
+  holdToInteract: 1
+  holdDuration: 1
+  suspiciousness: 40
+  oneTimeInteraction: 0
+  action: {fileID: 265020994}
+  condition: {fileID: 265020996}
+--- !u!114 &265020994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265020991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f9085a61e20bd4caa0080c06000e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  timeToSpawn: 5
+  timeToBreakBlock: 25
+  blockingObject: {fileID: 1112239615}
+  activator: {fileID: 265020993}
+--- !u!4 &265020995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265020991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.3, y: 86.040245, z: -24.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265020996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265020991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12ada99b0cc254459fe7d52f99d8389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceCondition
+  requiredResource: 0
+  amount: 1
+  consumesItem: 1
 --- !u!1001 &269690583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1916,7 +2022,9 @@ MonoBehaviour:
   holdToInteract: 1
   holdDuration: 1.5
   suspiciousness: 0
+  oneTimeInteraction: 0
   action: {fileID: 0}
+  condition: {fileID: 0}
 --- !u!65 &325110805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4137,6 +4245,7 @@ GameObject:
   - component: {fileID: 887537625}
   - component: {fileID: 887537627}
   - component: {fileID: 887537628}
+  - component: {fileID: 887537629}
   m_Layer: 0
   m_Name: PuertaSpawner
   m_TagString: Untagged
@@ -4187,11 +4296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256ced79eb90d96499da1f74867be67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  interactLabel: Interactuar
+  interactLabel: Puerta madera
   holdToInteract: 1
   holdDuration: 1
   suspiciousness: 40
+  oneTimeInteraction: 0
   action: {fileID: 887537625}
+  condition: {fileID: 887537629}
 --- !u!135 &887537628
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4213,6 +4324,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &887537629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887537624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12ada99b0cc254459fe7d52f99d8389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceCondition
+  requiredResource: 0
+  amount: 1
+  consumesItem: 1
 --- !u!1 &889344728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4830,7 +4956,9 @@ MonoBehaviour:
   holdToInteract: 1
   holdDuration: 2
   suspiciousness: 70
+  oneTimeInteraction: 0
   action: {fileID: 367187353}
+  condition: {fileID: 0}
 --- !u!135 &968156742
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6751,6 +6879,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9022087257044242543, guid: 190844aac67baf74e843afba5b947d89, type: 3}
   m_PrefabInstance: {fileID: 1314962140}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1326694549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326694551}
+  - component: {fileID: 1326694550}
+  m_Layer: 0
+  m_Name: Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1326694550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326694549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63c5672715236c498217b2b6128f7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugShortcuts
+  playerController: {fileID: 1730230984}
+  healthStep: 10
+--- !u!4 &1326694551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326694549}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1331454067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784631705101733723, guid: 75e9f070d3d20ea4c982ddb600591cfa, type: 3}
@@ -6980,6 +7154,7 @@ GameObject:
   - component: {fileID: 1387560724}
   - component: {fileID: 1387560723}
   - component: {fileID: 1387560722}
+  - component: {fileID: 1387560726}
   m_Layer: 0
   m_Name: PuertaSpawner (1)
   m_TagString: Untagged
@@ -7020,11 +7195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256ced79eb90d96499da1f74867be67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  interactLabel: Interactuar
+  interactLabel: Puerta madera
   holdToInteract: 1
   holdDuration: 1
   suspiciousness: 40
+  oneTimeInteraction: 0
   action: {fileID: 1387560724}
+  condition: {fileID: 1387560726}
 --- !u!114 &1387560724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7056,6 +7233,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1387560726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387560721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12ada99b0cc254459fe7d52f99d8389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceCondition
+  requiredResource: 0
+  amount: 1
+  consumesItem: 1
 --- !u!4 &1389288343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784631705101733723, guid: 75e9f070d3d20ea4c982ddb600591cfa, type: 3}
@@ -7844,6 +8036,7 @@ GameObject:
   - component: {fileID: 1549142631}
   - component: {fileID: 1549142630}
   - component: {fileID: 1549142629}
+  - component: {fileID: 1549142633}
   m_Layer: 0
   m_Name: PuertaSpawner
   m_TagString: Untagged
@@ -7884,11 +8077,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256ced79eb90d96499da1f74867be67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  interactLabel: Interactuar
-  holdToInteract: 1
+  interactLabel: Puerta madera
+  holdToInteract: 0
   holdDuration: 1
   suspiciousness: 40
+  oneTimeInteraction: 0
   action: {fileID: 1549142631}
+  condition: {fileID: 1549142633}
 --- !u!114 &1549142631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7920,6 +8115,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1549142633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549142628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12ada99b0cc254459fe7d52f99d8389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceCondition
+  requiredResource: 0
+  amount: 1
+  consumesItem: 1
 --- !u!1001 &1553656970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10484,6 +10694,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2208308593204047857, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1730230984}
     - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: gunSystem
       value: 
@@ -10616,6 +10830,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1326694551}
   - {fileID: 54951417}
   - {fileID: 987987009}
   - {fileID: 2126720089}
@@ -10633,6 +10848,7 @@ SceneRoots:
   - {fileID: 1696383843}
   - {fileID: 887537626}
   - {fileID: 1387560725}
+  - {fileID: 265020995}
   - {fileID: 1549142632}
   - {fileID: 1445973369}
   - {fileID: 985328665}
