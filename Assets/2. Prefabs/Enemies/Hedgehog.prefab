@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 180121487598353076}
   - component: {fileID: 246250823651906233}
   - component: {fileID: 2495594599035051977}
+  - component: {fileID: 218654775497032892}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -524,6 +525,7 @@ MonoBehaviour:
   detection: {fileID: 1075867560159628006}
   movement: {fileID: 5461932846081453450}
   display: {fileID: 0}
+  awareness: {fileID: 0}
   state: 
 --- !u!114 &1075867560159628006
 MonoBehaviour:
@@ -629,3 +631,18 @@ MonoBehaviour:
   label: {fileID: 7589807855546261101}
   offset: {x: 0, y: 2.2, z: 0}
   faceCamera: 1
+--- !u!114 &218654775497032892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cf4bb5a9cbf4b47ae0a2ff8be767a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
+  maxAwareness: 100
+  awarenessDecayPerSecond: 100
+  display: {fileID: 0}

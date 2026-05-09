@@ -41,6 +41,9 @@ public class HUDManager : MonoBehaviour
     public Image fadeImage;
     public Image hitFlashImage;
 
+    [Header("Enemy suspicion")]
+    [SerializeField] private TextMeshProUGUI enemySuspicion;
+
     #endregion
 
     #region Private State
@@ -105,6 +108,9 @@ public class HUDManager : MonoBehaviour
 
         if (gunSystem != null)
             UpdateAmmoText();
+
+        if (enemyAwareness != null)
+            UpdateEnemySuspicion();
     }
 
     #endregion
@@ -246,4 +252,27 @@ public class HUDManager : MonoBehaviour
     }
 
     #endregion
+
+
+    public static EnemyAwarenessComponent enemyAwareness;
+
+    public static void UpdateMostAwareEnemy(EnemyAwarenessComponent awareness)
+    {
+        if (enemyAwareness == null)
+        {
+            enemyAwareness = awareness;
+            return;
+        }
+        if (enemyAwareness.GetAwareness() < awareness.GetAwareness()) enemyAwareness = awareness;
+    }
+
+    private void UpdateEnemySuspicion()
+    {
+        enemySuspicion.text = Mathf.FloorToInt(enemyAwareness.GetAwareness()).ToString();
+        if (enemyAwareness.GetAwareness() == 0)
+        {
+            enemyAwareness = null;
+            enemySuspicion.text = "";
+        }
+    }
 }

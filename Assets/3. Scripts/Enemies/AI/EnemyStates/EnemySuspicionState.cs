@@ -8,10 +8,7 @@ public class EnemySuspicionState : IEnemyState
     private IChangeState changeState;
     private DetectionComponent detection;
     private EnemyDisplay display;
-
-
-    private float time = 100f;
-    private float timer;
+    private EnemyAwarenessComponent awareness;
 
     public EnemySuspicionState(AIContext context)
     {
@@ -19,15 +16,18 @@ public class EnemySuspicionState : IEnemyState
         detection = context.detection;
         changeState = context.changeState;
         display = context.display;
+        awareness = context.awareness;
     }
 
     public void Enter()
     {
-        timer = 0;
+
     }
 
     public void Exit()
     {
+        awareness.BecomeUnaware();
+
         display.ChangeLabel("", Color.white);
     }
 
@@ -43,8 +43,7 @@ public class EnemySuspicionState : IEnemyState
 
     private void UpdateSuspicionProgress()
     {
-        timer += detection.GetPlayerSuspicionLevel() * Time.deltaTime;
-        if (timer >= time)
+        if (awareness.UpdateAwareness(detection.GetPlayerSuspicionLevel()))
             changeState.ChangeState(new EnemyAlertState(context));
     }
 
@@ -62,21 +61,6 @@ public class EnemySuspicionState : IEnemyState
 
     private void UpdateDisplay()
     {
-        string str = "";
-        /*if (timer > 75)
-        {
-            str = "???";
-        }
-        else if (timer > 50)
-        {
-            str = "??";
-        }
-        else if (timer > 25)
-        {
-            str = "?";
-        }*/
-
-
-        display.ChangeLabel(Mathf.FloorToInt(timer).ToSafeString(), Color.darkViolet);
+        display.ChangeLabel(Mathf.FloorToInt(awareness.GetAwareness()).ToSafeString(), Color.darkViolet);
     }
 }
