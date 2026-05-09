@@ -44,6 +44,10 @@ public class HUDManager : MonoBehaviour
     [Header("Enemy suspicion")]
     [SerializeField] private TextMeshProUGUI enemySuspicion;
 
+    [Header("ExplosivesProgression")]
+    [SerializeField] private Slider explosivesProgressionSlider;
+    [SerializeField] private Explosives explosives;
+
     #endregion
 
     #region Private State
@@ -76,6 +80,7 @@ public class HUDManager : MonoBehaviour
         if (interactLabel    != null) interactLabel.enabled    = false;
         if (messageText      != null) messageText.enabled      = false;
         if (holdProgressRing != null) holdProgressRing.enabled = false;
+        if (explosivesProgressionSlider != null) explosivesProgressionSlider.enabled = false;
     }
 
     private void Start()
@@ -111,6 +116,8 @@ public class HUDManager : MonoBehaviour
 
         if (enemyAwareness != null)
             UpdateEnemySuspicion();
+
+        UpdateExplosivesProgression();
     }
 
     #endregion
@@ -274,5 +281,12 @@ public class HUDManager : MonoBehaviour
             enemyAwareness = null;
             enemySuspicion.text = "";
         }
+    }
+
+    private void UpdateExplosivesProgression()
+    {
+        if (explosives.GetProgress() == 0) return;
+        explosivesProgressionSlider.enabled = true;
+        explosivesProgressionSlider.value = explosives.GetProgress();
     }
 }

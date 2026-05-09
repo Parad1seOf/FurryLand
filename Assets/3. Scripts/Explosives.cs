@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Drill : InteractableAction
+public class Explosives : InteractableAction
 {
-    [SerializeField] private float timeToDrill;
+    [SerializeField] private float timeToExplode;
+    [SerializeField] private int explosionCount = 3;
+    private int currentExplosions;
     [SerializeField] private GameObject retrievedObject;
     [SerializeField] private GameObject objectToExplode;
     [SerializeField] private GameObject trigger;
@@ -11,7 +13,7 @@ public class Drill : InteractableAction
 
     public void OnEnable()
     {
-        timer = timeToDrill;
+        timer = timeToExplode;
         AlertSystem.Instance.TriggerAlert();
     }
 
@@ -21,15 +23,23 @@ public class Drill : InteractableAction
 
         if (timer < 0)
         {
-            EndDrilling();
+            Explode();
         }
     }
 
-    public void EndDrilling()
+    public void Explode()
     {
+        currentExplosions++;
+        gameObject.SetActive(false);
+        timer = timeToExplode;
+
+        if (currentExplosions < explosionCount)
+            trigger.SetActive(true);
+
+        if (currentExplosions < explosionCount) return;
+
         Instantiate(retrievedObject, transform.position, transform.rotation);
         objectToExplode.SetActive(false);
-        gameObject.SetActive(false);
     }
 
     public override void Execute(PlayerController player)
@@ -42,5 +52,14 @@ public class Drill : InteractableAction
     public void Execuuute()
     {
         Execute(null);
+    }
+
+    public float GetProgress()
+    {
+        float progress = 0f;
+
+        progress = Mathf.Min((currentExplosions * timeToExplode + (timeToExplode - timer)) / (timeToExplode * explosionCount), 1f);
+
+        return progress;
     }
 }

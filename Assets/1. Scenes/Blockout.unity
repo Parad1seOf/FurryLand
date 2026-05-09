@@ -2206,7 +2206,7 @@ GameObject:
   - component: {fileID: 367187354}
   - component: {fileID: 367187353}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Explosivos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2239,7 +2239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade1d8db411652f4bbde239cb26a97e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
-  timeToDrill: 45
+  timeToExplode: 0
+  explosionCount: 3
   retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
   objectToExplode: {fileID: 889344728}
   trigger: {fileID: 968156740}
@@ -4941,7 +4942,7 @@ GameObject:
   - component: {fileID: 968156742}
   - component: {fileID: 968156741}
   m_Layer: 0
-  m_Name: Dinamita
+  m_Name: DinamitaInteractuable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10895,6 +10896,10 @@ PrefabInstance:
       propertyPath: gunSystem
       value: 
       objectReference: {fileID: 611684543}
+    - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+      propertyPath: explosives
+      value: 
+      objectReference: {fileID: 367187353}
     - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: playerController
       value: 
