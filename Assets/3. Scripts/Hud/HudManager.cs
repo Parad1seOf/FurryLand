@@ -126,7 +126,7 @@ public class HUDManager : MonoBehaviour
 
     private void OnHealthChanged(float newHealth)
     {
-        float normalised = playerController.HealthNormalised;
+        float normalised = healthSystem.HealthNormalised;
         if (normalised < previousHealth - 0.001f)
             delayTimer = delayBeforeDrop;
         previousHealth = normalised;
@@ -135,7 +135,7 @@ public class HUDManager : MonoBehaviour
     private void UpdateHealthBar()
     {
         if (healthSlider == null) return;
-        float realHealth   = playerController.HealthNormalised;
+        float realHealth   = healthSystem.HealthNormalised;
         healthSlider.value = realHealth;
 
         if (healthDelayedRect == null) return;
