@@ -383,6 +383,8 @@ GameObject:
   - component: {fileID: 246250823651906233}
   - component: {fileID: 2495594599035051977}
   - component: {fileID: 218654775497032892}
+  - component: {fileID: 2922210252297536664}
+  - component: {fileID: 1683090914013198987}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -522,10 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5393ddf4afdb249b53360f9c4a878b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateMachine
-  detection: {fileID: 1075867560159628006}
-  movement: {fileID: 5461932846081453450}
-  display: {fileID: 0}
-  awareness: {fileID: 0}
   state: 
 --- !u!114 &1075867560159628006
 MonoBehaviour:
@@ -646,3 +644,32 @@ MonoBehaviour:
   maxAwareness: 100
   awarenessDecayPerSecond: 100
   display: {fileID: 0}
+--- !u!114 &2922210252297536664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2180575ae7f0264187f2aa5ebdf28ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RabbitBehaviour
+  context: {fileID: 1683090914013198987}
+--- !u!114 &1683090914013198987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe0cab35b285b7449cb9036ba3e6f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIContext
+  detection: {fileID: 0}
+  movement: {fileID: 0}
+  display: {fileID: 0}
+  awareness: {fileID: 0}

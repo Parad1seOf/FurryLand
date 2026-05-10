@@ -6,12 +6,7 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     private IEnemyState currentState;
     private IEnemyState previousState;
 
-    [SerializeField] private DetectionComponent detection;
-    [SerializeField] private AIMovementComponent movement;
-    [SerializeField] private IAttack attack;
-    [SerializeField] private EnemyDisplay display;
-    [SerializeField] private EnemyAwarenessComponent awareness;
-    private AIContext context;
+    private IAIBehaviour behaviour;
 
     [SerializeField]
     [Tooltip("No tocar.")]
@@ -19,19 +14,8 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     void Start()
     {
-        if (detection == null)
-            detection = GetComponent<DetectionComponent>();
-        if (movement == null)
-            movement = GetComponent<AIMovementComponent>();
-        if (attack == null)
-            attack = GetComponent<IAttack>();
-        if (display == null) 
-            display = GetComponent<EnemyDisplay>();
-        if (awareness == null)
-            awareness = GetComponent<EnemyAwarenessComponent>();
-
-        context = new AIContext(this, detection, movement, attack, display, awareness);
-        ChangeState(new EnemyIdleState(context));
+        behaviour = GetComponent<IAIBehaviour>();
+        ChangeState(behaviour.OnStart());
 
         GetComponent<HealthSystem>().OnDeath += Die;
     }
@@ -53,22 +37,24 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         state = currentState.GetType().Name;
     }
 
+    public IEnemyState PreviousState() { return previousState; }
+
     public void Alert()
     {
         if (currentState is EnemyDeadState) return;
-        ChangeState(new EnemyAlertState(context));
+        ChangeState(behaviour.OnAlert());
     }
 
     public void Die()
     {
-        ChangeState(new EnemyDeadState(context));
+        ChangeState(behaviour.OnDie());
         EnemyPool.instance.AddEnemy(gameObject);
     }
 
     public void Respawn(Vector3 position)
     {
         transform.position = position;
-        ChangeState(new EnemyTravelState(context));
+        ChangeState(behaviour.OnRespawn());
         GetComponent<HealthSystem>().Restore(1000);
     }
 }

@@ -1,18 +1,20 @@
 using UnityEngine;
 
-public class EnemyTravelState : IEnemyState
+public class EnemyChaseState : IEnemyState
 {
     private AIContext context;
     private DetectionComponent detection;
     private AIMovementComponent movement;
     private IChangeState changeState;
+    private IAIBehaviour behaviour;
 
-    public EnemyTravelState(AIContext context)
+    public EnemyChaseState(AIContext context)
     {
         this.context = context;
         detection = context.detection;
         movement = context.movement;
         changeState = context.changeState;
+        behaviour = context.behaviour;
     }
     public void Enter()
     {
@@ -38,6 +40,6 @@ public class EnemyTravelState : IEnemyState
     private void CheckTarget()
     {
         if (detection.PlayerIsInActionDistance())
-            changeState.ChangeState(new EnemyAttackState(context));
+            changeState.ChangeState(behaviour.OnDestination());
     }
 }

@@ -36,7 +36,7 @@ public class EnemyAttackState : IEnemyState
     {
         if (detection.PlayerEscapedAttack())
         {
-            changeState.ChangeState(new EnemyTravelState(context));
+            changeState.ChangeState(changeState.PreviousState());
         }
     }
 
