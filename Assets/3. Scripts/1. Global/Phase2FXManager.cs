@@ -6,28 +6,34 @@ public class Phase2FXManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Volume phase2Volume;
-    [SerializeField] private WeaponToggle weaponToggle;
+    [SerializeField] private Volume healthVolume;
     [SerializeField] private HealthSystem healthSystem;
 
     [Header("Damage Configuration")]
-    [SerializeField] float increaseAmount = 0.5f;
-    [SerializeField] float decaySpeed = 0.5f;
-    [SerializeField] float delay = 3f;
+    [SerializeField] private float increaseAmount = 0.2f;
+    [SerializeField] private float decaySpeed = 0.25f;
+    [SerializeField] private float delay = 3f;
 
     private float currentWeight = 0f;
     private float timer = 0f;
+
+    private bool phase2Active = false;
 
     void Start()
     {
         if (phase2Volume != null)
         {
             phase2Volume.gameObject.SetActive(false);
-            phase2Volume.weight = 0;
+            phase2Volume.weight = 0f;
         }
 
-        if (healthSystem != null)
-            healthSystem.OnDamaged += OnPlayerTakeDamage;
+        if (healthVolume != null)
+            healthVolume.weight = 0f;
 
+        if (healthSystem != null)
+        {
+            healthSystem.OnDamaged += OnPlayerTakeDamage;
+        }
 
         if (AlertSystem.Instance != null)
             AlertSystem.Instance.OnAlertTriggered += EnablePhase2FX;
@@ -35,42 +41,59 @@ public class Phase2FXManager : MonoBehaviour
 
     void Update()
     {
-        if (phase2Volume == null) return;
+        if (phase2Volume != null)
+        {
+            bool active = phase2Active;
 
-       bool active = weaponToggle.IsWeaponDrawn || currentWeight > 0.01f;
-            
-        if (phase2Volume.gameObject.activeSelf != active)
-            phase2Volume.gameObject.SetActive(active);
+            if (phase2Volume.gameObject.activeSelf != active)
+                phase2Volume.gameObject.SetActive(active);
 
-        if (timer < delay)
-            timer += Time.deltaTime;
+            phase2Volume.weight = active ? 1f : 0f;
+        }
 
-        else if (currentWeight > 0f)
+        timer += Time.deltaTime;
+
+        if (timer >= delay && healthSystem.Health < healthSystem.maxHealth)
         {
             currentWeight -= decaySpeed * Time.deltaTime;
-            currentWeight = Mathf.Max(currentWeight, 0f);
+            currentWeight = Mathf.Clamp01(currentWeight);
+
+            if (healthSystem != null)
+                healthSystem.Restore(decaySpeed * Time.deltaTime);
+
+            UpdateHealthFX();
         }
     }
 
     private void EnablePhase2FX()
     {
-        OnPlayerTakeDamage();
-        /*if (phase2Volume != null)
-            phase2Volume.SetActive(true);*/
-    }
-
-    private void OnDestroy()
-    {
-        if(healthSystem != null)
-            healthSystem.OnDamaged -= OnPlayerTakeDamage;
-
-        if (AlertSystem.Instance != null)
-            AlertSystem.Instance.OnAlertTriggered -= EnablePhase2FX;
+        phase2Active = true;
     }
 
     public void OnPlayerTakeDamage()
     {
-        currentWeight = Mathf.Clamp01(currentWeight + increaseAmount);
+        currentWeight += increaseAmount;
+        currentWeight = Mathf.Clamp01(currentWeight);
+
         timer = 0f;
+
+        UpdateHealthFX();
+    }
+
+    private void UpdateHealthFX()
+    {
+        if (healthVolume != null)
+        {
+            healthVolume.weight = currentWeight;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (healthSystem != null)
+            healthSystem.OnDamaged -= OnPlayerTakeDamage;
+
+        if (AlertSystem.Instance != null)
+            AlertSystem.Instance.OnAlertTriggered -= EnablePhase2FX;
     }
 }
