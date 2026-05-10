@@ -9,6 +9,7 @@ public class EnemySuspicionState : IEnemyState
     private DetectionComponent detection;
     private EnemyDisplay display;
     private EnemyAwarenessComponent awareness;
+    private IAIBehaviour behaviour;
 
     public EnemySuspicionState(AIContext context)
     {
@@ -17,6 +18,7 @@ public class EnemySuspicionState : IEnemyState
         changeState = context.changeState;
         display = context.display;
         awareness = context.awareness;
+        behaviour = context.behaviour;
     }
 
     public void Enter()
@@ -44,13 +46,13 @@ public class EnemySuspicionState : IEnemyState
     private void UpdateSuspicionProgress()
     {
         if (awareness.UpdateAwareness(detection.GetPlayerSuspicionLevel()))
-            changeState.ChangeState(new EnemyAlertState(context));
+            changeState.ChangeState(behaviour.OnAlert());
     }
 
     private void CheckPlayer()
     {
         if (detection.HasPlayerEscapedSuspicion())
-            changeState.ChangeState(new EnemyIdleState(context));
+            changeState.ChangeState(changeState.PreviousState());
     }
 
     private void Rotate()

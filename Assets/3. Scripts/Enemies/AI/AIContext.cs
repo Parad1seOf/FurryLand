@@ -1,4 +1,6 @@
-public class AIContext
+using UnityEngine;
+
+public class AIContext : MonoBehaviour
 {
     public IChangeState changeState;
     public DetectionComponent detection;
@@ -7,16 +9,25 @@ public class AIContext
     public IAttack attack;
     public EnemyDisplay display;
     public EnemyAwarenessComponent awareness;
+    public IAIBehaviour behaviour;
 
-    public AIContext(IChangeState changeState ,DetectionComponent detection, 
-        AIMovementComponent movement, IAttack attack, EnemyDisplay display,
-        EnemyAwarenessComponent awareness)
+
+    void Start()
     {
-        this.changeState = changeState;
-        this.detection = detection;
-        this.movement = movement;
-        this.attack = attack;
-        this.display = display;
-        this.awareness = awareness;
+        if (detection == null)
+            detection = GetComponent<DetectionComponent>();
+        if (movement == null)
+            movement = GetComponent<AIMovementComponent>();
+        if (attack == null)
+            attack = GetComponent<IAttack>();
+        if (display == null)
+            display = GetComponent<EnemyDisplay>();
+        if (awareness == null)
+            awareness = GetComponent<EnemyAwarenessComponent>();
+        if (changeState == null)
+            changeState = GetComponent<IChangeState>();
+        if (behaviour == null)
+            behaviour = GetComponent<IAIBehaviour>();
+
     }
 }

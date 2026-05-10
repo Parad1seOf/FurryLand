@@ -5,12 +5,14 @@ public class EnemyIdleState : IEnemyState
     private AIContext context;
     private IChangeState changeState;
     private DetectionComponent detection;
+    private IAIBehaviour behaviour;
 
     public EnemyIdleState(AIContext context)
     {
         this.context = context;
-        this.detection = context.detection;
-        this.changeState = context.changeState;
+        detection = context.detection;
+        changeState = context.changeState;
+        behaviour = context.behaviour;
     }
 
     public void Enter() {}
@@ -20,17 +22,19 @@ public class EnemyIdleState : IEnemyState
     public void Update()
     {
         LookForSuspiciousActivity();
-        
+
 
         //Algo mas?
+        if (changeState == null)
+            Debug.Log("noup");
     }
 
     private void LookForSuspiciousActivity()
     {
-        if (detection.PlayerIsTooClose())
-            changeState.ChangeState(new EnemyAlertState(context));
-
         if (detection.SeesSuspiciousConduct())
-            changeState.ChangeState(new EnemySuspicionState(context));
+            changeState.ChangeState(behaviour.OnSuspicion());
+
+        if (detection.PlayerIsTooClose())
+            changeState.ChangeState(behaviour.OnAlert());
     }
 }

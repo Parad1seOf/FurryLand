@@ -8,12 +8,14 @@ public class EnemyAlertState : IEnemyState
     private EnemyDisplay display;
     private float timer = 1f;
     private float time = 0f;
+    private IAIBehaviour behaviour;
 
     public EnemyAlertState(AIContext context)
     {
         this.context = context;
         detection = context.detection;
         display = context.display;
+        behaviour = context.behaviour;
     }
 
     public void Enter()
@@ -36,7 +38,7 @@ public class EnemyAlertState : IEnemyState
         time -= Time.deltaTime;
 
         if (time < 0f) {
-            context.changeState.ChangeState(new EnemyTravelState(context));
+            context.changeState.ChangeState(behaviour.AfterAlert());
         }
     }
 }
