@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &8444993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5192802131551001999, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
+  m_PrefabInstance: {fileID: 1431493552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade1d8db411652f4bbde239cb26a97e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drill
 --- !u!1 &8623551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &202507381
 Transform:
   m_ObjectHideFlags: 0
@@ -3498,7 +3509,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 6f4245d8803f08641aa48e1a00e781d3, type: 2}
 --- !u!1 &204363846
 GameObject:
@@ -17709,6 +17720,10 @@ PrefabInstance:
       propertyPath: gunSystem
       value: 
       objectReference: {fileID: 1850325130}
+    - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+      propertyPath: explosives
+      value: 
+      objectReference: {fileID: 8444993}
     - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: playerController
       value: 
@@ -33906,10 +33921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2733e3a574557a14083691ec5f0c5605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Phase2FXManager
-  phase2Volume: {fileID: 202507382}
-  weaponToggle: {fileID: 1850325132}
+  phase2Volume: {fileID: 343981522}
+  healthVolume: {fileID: 471128898}
   healthSystem: {fileID: 1850325156}
-  increaseAmount: 0.5
+  increaseAmount: 0.2
   decaySpeed: 0.5
   delay: 3
 --- !u!1 &1674475798
@@ -36342,17 +36357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef46f772995f6de449c853e76acfdc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
---- !u!114 &1850325132 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2036638204846599081, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
-  m_PrefabInstance: {fileID: 1850325129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286b798be5bb300409fa11371d97f60d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponToggle
 --- !u!143 &1850325146 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 6817095767988083907, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}

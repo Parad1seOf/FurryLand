@@ -53,13 +53,14 @@ public class Phase2FXManager : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= delay && healthSystem.Health < healthSystem.maxHealth)
+        if (healthSystem != null && timer >= delay && healthSystem.Health < healthSystem.maxHealth)
         {
-            currentWeight -= decaySpeed * Time.deltaTime;
-            currentWeight = Mathf.Clamp01(currentWeight);
+            float decayAmount = decaySpeed * Time.deltaTime;
 
-            if (healthSystem != null)
-                healthSystem.Restore(decaySpeed * Time.deltaTime);
+            currentWeight = Mathf.Max(currentWeight - decayAmount, 0f);
+
+            float healthToRestore = decayAmount * healthSystem.maxHealth;
+            healthSystem.Restore(healthToRestore);
 
             UpdateHealthFX();
         }
