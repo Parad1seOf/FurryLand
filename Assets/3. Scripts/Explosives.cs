@@ -30,6 +30,7 @@ public class Explosives : InteractableAction
     public void Explode()
     {
         currentExplosions++;
+        ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
         gameObject.SetActive(false);
         timer = timeToExplode;
 
@@ -46,6 +47,7 @@ public class Explosives : InteractableAction
     {
         gameObject.SetActive(true);
         trigger.SetActive(false);
+        ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
     }
 
     [ContextMenu("Ejecutar")]

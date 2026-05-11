@@ -11,6 +11,6 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
 }

@@ -8,7 +8,7 @@ public class Madera : InteractableAction
     {
         if (firstTimePicking)
         {
-            ComicPanelManager.Instance.ShowPhrase("¡Madera! Puede ser útil...");
+            ComicPanelManager.Instance.ShowPhraseByID("Wood_Pickup");
             firstTimePicking = false;
         }
 
