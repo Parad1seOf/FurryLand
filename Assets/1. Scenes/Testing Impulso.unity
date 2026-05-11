@@ -57142,6 +57142,10 @@ PrefabInstance:
       propertyPath: characterController
       value: 
       objectReference: {fileID: 1850325146}
+    - target: {fileID: 3862255646430922192, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4009875101557066465, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: maxStamina
       value: 200
@@ -57153,6 +57157,10 @@ PrefabInstance:
     - target: {fileID: 4009875101557066465, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: staminaRechargeDelay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321300985517358224, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7387494417593716080, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: yawSpeed
