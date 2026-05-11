@@ -1,5 +1,5 @@
-// Sistema de disparo por raycast. Lee el estado de PlayerController para calcular la dispersión,
-// despacha daño a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
+// Sistema de disparo por raycast. Lee el estado de PlayerController para calcular la dispersiÃ³n,
+// despacha daÃ±o a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,6 +40,12 @@ public class GunSystem : MonoBehaviour
     [Header("VFX")]
     public GameObject muzzleFlashPrefab;
     public GameObject bulletHolePrefab;
+
+    [Header("Shot Alert")]
+    [Tooltip("Radio dentro del cual los enemigos 'oyen' el disparo y se alertan.")]
+    public float shotHearingRadius = 15f;
+    [Tooltip("Capa en la que están los enemigos para detectar si oyen el disparo.")]
+    public LayerMask enemyHearingLayer = ~0;
 
     [Header("Animation")]
     public Animation     weaponAnimation;
@@ -153,7 +159,8 @@ public class GunSystem : MonoBehaviour
 
 
 
-        AlertSystem.Instance.TriggerAlert();
+        if (AnyEnemyInHearingRange())
+            AlertSystem.Instance.TriggerAlert();
     }
 
     private void ProcessHit(RaycastHit hit)
@@ -180,6 +187,19 @@ public class GunSystem : MonoBehaviour
         {
             SpawnBulletHole(hit);
         }
+    }
+
+    private bool AnyEnemyInHearingRange()
+    {
+        Vector3 origin = muzzlePoint != null ? muzzlePoint.position : transform.position;
+        Collider[] hits = Physics.OverlapSphere(origin, shotHearingRadius, enemyHearingLayer, QueryTriggerInteraction.Ignore);
+
+        foreach (Collider c in hits)
+        {
+            if (c.GetComponentInParent<AlertableComponent>() != null)
+                return true;
+        }
+        return false;
     }
 
     private IEnumerator ResetShotRoutine()
@@ -283,4 +303,13 @@ public class GunSystem : MonoBehaviour
     }
 
     #endregion
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Vector3 origin = muzzlePoint != null ? muzzlePoint.position : transform.position;
+        Gizmos.DrawWireSphere(origin, shotHearingRadius);
+    }
+#endif
 }

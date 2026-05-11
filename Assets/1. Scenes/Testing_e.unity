@@ -2494,6 +2494,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1149559007}
+    - target: {fileID: 2991190238141108468, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: shotHearingRadius
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12014,6 +12018,53 @@ PrefabInstance:
       addedObject: {fileID: 489761252}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+--- !u!4 &4058490044905786847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597291472221322704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.05857, y: 85.04025, z: 133.062}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4632854901710279036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597291472221322704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a881d91daabd1ec4dab4e9a2b634e99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProximityEnemySpawner
+  enemyPrefab: {fileID: 0}
+  playerDetectionRadius: 8
+  playerTag: Player
+--- !u!1 &5597291472221322704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4058490044905786847}
+  - component: {fileID: 4632854901710279036}
+  m_Layer: 0
+  m_Name: PerezosoSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &5762734898783302257 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
@@ -12053,3 +12104,4 @@ SceneRoots:
   - {fileID: 325110808}
   - {fileID: 1967856038}
   - {fileID: 1994918145}
+  - {fileID: 4058490044905786847}
