@@ -32,6 +32,7 @@ public class RabbitBehaviour : MonoBehaviour, IAIBehaviour
 
     public IEnemyState OnStart()
     {
+        if (context.pathing != null) return new EnemyPatrolState(context);
         return new EnemyIdleState(context);
     }
 
