@@ -2,7 +2,7 @@
 // Expone el evento OnDeath para que GameManager u otros sistemas reaccionen a su muerte.
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
     #region Inspector Fields
 
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float Health  { get; private set; }
     public bool  IsAlive => Health > 0f;
 
-    public event System.Action<Enemy> OnDeath;
+    public event System.Action<EnemyHealth> OnDeath;
 
     #endregion
 

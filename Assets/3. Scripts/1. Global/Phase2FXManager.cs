@@ -14,8 +14,6 @@ public class Phase2FXManager : MonoBehaviour
     [SerializeField] private float decaySpeed = 0.25f;
     [SerializeField] private float delay = 3f;
 
-    private float currentWeight = 0f;
-    private float timer = 0f;
 
     private bool phase2Active = false;
 
@@ -32,7 +30,7 @@ public class Phase2FXManager : MonoBehaviour
 
         if (healthSystem != null)
         {
-            healthSystem.OnDamaged += OnPlayerTakeDamage;
+            healthSystem.OnHealthChanged += UpdateHealthFX;
         }
 
         if (AlertSystem.Instance != null)
@@ -50,20 +48,6 @@ public class Phase2FXManager : MonoBehaviour
 
             phase2Volume.weight = active ? 1f : 0f;
         }
-
-        timer += Time.deltaTime;
-
-        if (healthSystem != null && timer >= delay && healthSystem.Health < healthSystem.maxHealth)
-        {
-            float decayAmount = decaySpeed * Time.deltaTime;
-
-            currentWeight = Mathf.Max(currentWeight - decayAmount, 0f);
-
-            float healthToRestore = decayAmount * healthSystem.maxHealth;
-            healthSystem.Restore(healthToRestore);
-
-            UpdateHealthFX();
-        }
     }
 
     private void EnablePhase2FX()
@@ -71,28 +55,18 @@ public class Phase2FXManager : MonoBehaviour
         phase2Active = true;
     }
 
-    public void OnPlayerTakeDamage()
-    {
-        currentWeight += increaseAmount;
-        currentWeight = Mathf.Clamp01(currentWeight);
-
-        timer = 0f;
-
-        UpdateHealthFX();
-    }
-
-    private void UpdateHealthFX()
+    private void UpdateHealthFX(float amount)
     {
         if (healthVolume != null)
         {
-            healthVolume.weight = currentWeight;
+            healthVolume.weight = 1 - healthSystem.HealthNormalised;
         }
     }
 
     private void OnDestroy()
     {
         if (healthSystem != null)
-            healthSystem.OnDamaged -= OnPlayerTakeDamage;
+            healthSystem.OnHealthChanged -= UpdateHealthFX;
 
         if (AlertSystem.Instance != null)
             AlertSystem.Instance.OnAlertTriggered -= EnablePhase2FX;

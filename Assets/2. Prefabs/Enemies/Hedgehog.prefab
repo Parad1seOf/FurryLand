@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyPart
   partType: 1
-  damageMultiplier: 10
+  damageMultiplier: 2
 --- !u!135 &4875838518817482953
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -375,16 +375,19 @@ GameObject:
   - component: {fileID: 5326136791108475703}
   - component: {fileID: 7536341328384775773}
   - component: {fileID: 5828759451654906270}
+  - component: {fileID: 4433164744795035053}
   - component: {fileID: 1075867560159628006}
   - component: {fileID: 5461932846081453450}
   - component: {fileID: 6545636926300966620}
   - component: {fileID: 165699655449253451}
-  - component: {fileID: 180121487598353076}
   - component: {fileID: 246250823651906233}
   - component: {fileID: 2495594599035051977}
   - component: {fileID: 218654775497032892}
   - component: {fileID: 2922210252297536664}
   - component: {fileID: 1683090914013198987}
+  - component: {fileID: 5435275507315649456}
+  - component: {fileID: 654305908190356389}
+  - component: {fileID: 8336128633823904682}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -525,6 +528,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateMachine
   state: 
+--- !u!114 &4433164744795035053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 50
 --- !u!114 &1075867560159628006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementComponent
   agent: {fileID: 7536341328384775773}
   moveSpeed: 5
+  path: {fileID: 0}
 --- !u!114 &6545636926300966620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,21 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a57b5d51a0e2e741bfb134cd74c39ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropComponent
-  drop: {fileID: 4382254791961025057, guid: 3cc3326d19f3fbc4f885d93940435dd1, type: 3}
+  drop: {fileID: 522999274769759036, guid: 98c0025bc6b4d1d409f31c1b96c9359e, type: 3}
   probability: 100
---- !u!114 &180121487598353076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5699544787704082387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 1
 --- !u!114 &246250823651906233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,3 +677,52 @@ MonoBehaviour:
   movement: {fileID: 0}
   display: {fileID: 0}
   awareness: {fileID: 0}
+  pathing: {fileID: 0}
+--- !u!114 &5435275507315649456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57812960ff883f74190ad2fb75d2e4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPart
+  partType: 0
+  damageMultiplier: 1
+--- !u!114 &654305908190356389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be342d7f1a766054cbf682eea5257127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
+  explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
+  vfxLifetime: 5
+  explosionRadius: 3
+  explosionForce: 500
+  upwardsModifier: 1
+  affectedLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  damageRadius: 0
+  damageAmount: 0
+--- !u!114 &8336128633823904682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699544787704082387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2033f55b5f84dfd49bfd38b7499a5359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

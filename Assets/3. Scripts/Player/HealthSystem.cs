@@ -16,7 +16,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     private void Awake() => Health = maxHealth;
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount)
     {
         if (!IsAlive) return;
 
@@ -25,7 +25,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(Health);
 
         if (!IsAlive) Die();
-        Debug.Log("dañado");
     }
 
     public void Restore(float amount)
@@ -40,11 +39,13 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(Health);
     }
 
-    private void Die() => OnDeath?.Invoke();
+    protected virtual void Die() => OnDeath?.Invoke();
 
     [ContextMenu("Kill")]
     public void Kill()
     {
         Die();
     }
+
+    public bool IsFullHealth() { return Health == maxHealth; }
 }

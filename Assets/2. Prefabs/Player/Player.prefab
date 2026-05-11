@@ -4692,7 +4692,7 @@ GameObject:
   - component: {fileID: 8168884295756889035}
   - component: {fileID: 307611619991684844}
   - component: {fileID: 7387494417593716080}
-  - component: {fileID: 2190319570837022029}
+  - component: {fileID: 4326845685980898860}
   - component: {fileID: 4009875101557066465}
   - component: {fileID: 8000953258653889016}
   - component: {fileID: 1634002587720715652}
@@ -4811,7 +4811,7 @@ MonoBehaviour:
   pitchSpeed: 240
   minPitch: -80
   maxPitch: 80
---- !u!114 &2190319570837022029
+--- !u!114 &4326845685980898860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4820,10 +4820,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231762710971154228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
+  m_Script: {fileID: 11500000, guid: b7009119392b8de44a25bd936ddd8c56, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+  timeToStartHealing: 3
+  healingPerSecond: 10
 --- !u!114 &4009875101557066465
 MonoBehaviour:
   m_ObjectHideFlags: 0
