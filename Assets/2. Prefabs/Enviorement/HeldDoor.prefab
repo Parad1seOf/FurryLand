@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2630781510665632512}
   - component: {fileID: 6484915354338510579}
   - component: {fileID: 5380038179212326294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,9 @@ MonoBehaviour:
   holdToInteract: 1
   holdDuration: 2
   suspiciousness: 0
+  oneTimeInteraction: 0
   action: {fileID: 0}
+  condition: {fileID: 0}
 --- !u!114 &5380038179212326294
 MonoBehaviour:
   m_ObjectHideFlags: 0
