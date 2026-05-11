@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &896663003355503862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6019695595011312158}
+  - component: {fileID: 8962515497868814794}
+  m_Layer: 0
+  m_Name: HeadshotComboTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6019695595011312158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896663003355503862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.05857, y: 85.04025, z: 133.06198}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8962515497868814794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896663003355503862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be163712173d5884a875b5705021b1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadshotComboTracker
+  comboWindow: 3
+  maxCombo: 5
+  minComboToShow: 2
+  audioSource: {fileID: 0}
+  comboClips:
+  - {fileID: 8300000, guid: f27c588e639f08b4880b48d65faa7cf0, type: 3}
+  - {fileID: 8300000, guid: cd1ce743ad94b2749b5f9b531603da14, type: 3}
+  - {fileID: 8300000, guid: 05fa0327d98e9fc4cb559d378dcd0857, type: 3}
+  - {fileID: 8300000, guid: 136afdf420932d64f8907b1cdd29a8ed, type: 3}
+  - {fileID: 8300000, guid: 4d2eed2674d8e3e42812b8d9d8fee93f, type: 3}
+  hud: {fileID: 0}
+  messageDuration: 1.2

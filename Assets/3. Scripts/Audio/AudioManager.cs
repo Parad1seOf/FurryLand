@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance { get; private set; }
 
+    public static event System.Action OnHeadshotPerformed;
+
     #endregion
 
     #region Inspector Fields
@@ -43,9 +45,14 @@ public class AudioManager : MonoBehaviour
 
     public void Shooting()    => PlayOneShot(sfxSource, shootClip);
     public void PlayerHit()   => PlayOneShot(sfxSource, playerHitClip);
-    public void Headshot()    => PlayOneShot(sfxSource, headShotClip);
     public void BodyHit()     => PlayOneShot(sfxSource, bodyHitClip);
     public void MeleeSwipe()  => PlayOneShot(sfxSource, meleeSwipeClip);
+
+    public void Headshot()
+    {
+        PlayOneShot(sfxSource, headShotClip);
+        OnHeadshotPerformed?.Invoke();
+    }
 
     public void Walking()
     {
