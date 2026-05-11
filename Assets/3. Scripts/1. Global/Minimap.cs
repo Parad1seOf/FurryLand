@@ -56,14 +56,11 @@ public class Minimap : MonoBehaviour
 
     private void SyncMarkers()
     {
-        // Anadir nuevos
         foreach (MinimapTarget t in MinimapTarget.All)
         {
             if (t != null && !markers.ContainsKey(t))
                 markers[t] = CreateMarker(t);
         }
-
-        // Quitar los que se fueron (muertos / desactivados / null)
         List<MinimapTarget> toRemove = null;
         foreach (var kvp in markers)
         {
@@ -121,7 +118,6 @@ public class Minimap : MonoBehaviour
 
             if (rotateWithPlayer)
             {
-                // Rota el mundo para que el forward del jugador sea +Y en la UI
                 float rx = dx * cos - dz * sin;
                 float rz = dx * sin + dz * cos;
                 dx = rx; dz = rz;
@@ -146,8 +142,6 @@ public class Minimap : MonoBehaviour
 
             rt.anchoredPosition = pos;
             rt.sizeDelta = new Vector2(t.size, t.size);
-
-            // Por si cambias el color en runtime
             Image img = rt.GetComponent<Image>();
             if (img != null && img.color != t.color) img.color = t.color;
         }
@@ -157,15 +151,11 @@ public class Minimap : MonoBehaviour
     {
         if (playerMarker == null) return;
 
-        // Si el mapa rota con el jugador, el marcador siempre apunta arriba.
-        // Si no, gira segun el yaw del jugador.
         if (rotateWithPlayer || playerLook == null)
             playerMarker.localRotation = Quaternion.identity;
         else
             playerMarker.localRotation = Quaternion.Euler(0f, 0f, -playerLook.Yaw);
     }
-
-    // Helpers publicos por si quieres zoom dinamico desde otro sitio
     public void SetZoom(float newWorldRadius) => worldRadius = Mathf.Max(1f, newWorldRadius);
     public void ToggleRotation() => rotateWithPlayer = !rotateWithPlayer;
 }
