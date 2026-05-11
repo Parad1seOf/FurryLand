@@ -1,5 +1,5 @@
 // Lee el estado de movimiento de PlayerController para animar el crosshair del HUD... idle andando etc
-// Funciona de forma autónoma; no depende de GunSystem ni de GameManager... rectangulos ene l canvas...
+// Funciona de forma autonoma; no depende de GunSystem ni de GameManager... 4 esquinas en el canvas.
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +10,13 @@ public class Crosshair : MonoBehaviour
     [Header("References")]
     public PlayerController playerController;
 
-    [Header("Líneas del Crosshair")]
-    public RectTransform lineTop;
-    public RectTransform lineBottom;
-    public RectTransform lineLeft;
-    public RectTransform lineRight;
+    [Header("Esquinas del Crosshair")]
+    public RectTransform cornerTopLeft;
+    public RectTransform cornerTopRight;
+    public RectTransform cornerBottomLeft;
+    public RectTransform cornerBottomRight;
 
-    [Header("Tamaños")]
+    [Header("Tamanos")]
     public float idleSize = 0f;
     public float walkSize = 30f;
     public float runSize  = 60f;
@@ -24,7 +24,7 @@ public class Crosshair : MonoBehaviour
     [Header("Gap")]
     public float gap = 0f;
 
-    [Header("Animación")]
+    [Header("Animacion")]
     public float animationSpeed = 5f;
 
     #endregion
@@ -68,10 +68,10 @@ public class Crosshair : MonoBehaviour
     private void Apply(float size)
     {
         float offset = size + gap;
-        if (lineTop    != null) lineTop.anchoredPosition    = new Vector2( 0,       offset);
-        if (lineBottom != null) lineBottom.anchoredPosition = new Vector2( 0,      -offset);
-        if (lineLeft   != null) lineLeft.anchoredPosition   = new Vector2(-offset,  0);
-        if (lineRight  != null) lineRight.anchoredPosition  = new Vector2( offset,  0);
+        if (cornerTopLeft     != null) cornerTopLeft.anchoredPosition     = new Vector2(-offset,  offset);
+        if (cornerTopRight    != null) cornerTopRight.anchoredPosition    = new Vector2( offset,  offset);
+        if (cornerBottomLeft  != null) cornerBottomLeft.anchoredPosition  = new Vector2(-offset, -offset);
+        if (cornerBottomRight != null) cornerBottomRight.anchoredPosition = new Vector2( offset, -offset);
     }
 
     #endregion
