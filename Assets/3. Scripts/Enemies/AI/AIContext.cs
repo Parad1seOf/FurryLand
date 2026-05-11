@@ -10,6 +10,7 @@ public class AIContext : MonoBehaviour
     public EnemyDisplay display;
     public EnemyAwarenessComponent awareness;
     public IAIBehaviour behaviour;
+    public AIPathingComponent pathing;
 
 
     void Start()
@@ -28,6 +29,8 @@ public class AIContext : MonoBehaviour
             changeState = GetComponent<IChangeState>();
         if (behaviour == null)
             behaviour = GetComponent<IAIBehaviour>();
+        if (pathing == null)
+            pathing = GetComponent<AIPathingComponent>();
 
     }
 }

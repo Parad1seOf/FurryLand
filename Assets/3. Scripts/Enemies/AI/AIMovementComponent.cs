@@ -7,6 +7,8 @@ public class AIMovementComponent : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3;
 
+    [SerializeField] private AIPath path;
+
     public void Start()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
