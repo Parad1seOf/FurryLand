@@ -82,5 +82,7 @@ public class PlayerWeapon : MonoBehaviour
                 impactVelocity += -direction.normalized * recoilForce;
             }
         }
+
+        AlertSystem.Instance.TriggerAlert();
     }
 }

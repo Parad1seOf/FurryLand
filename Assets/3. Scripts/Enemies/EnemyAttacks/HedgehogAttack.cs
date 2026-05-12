@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class HedgehogAttack : MonoBehaviour, IAttack
+public class HedgehogAttack : EnemyAttack
 {
-    [SerializeField] private float damage;
+    
     [SerializeField] private float distance;
     [SerializeField] private float cooldown;
     private float cooldownTimer;
 
-    public void Attack(Vector3 targetDirection)
+    public override void Attack(Vector3 targetDirection)
     {
         if (cooldownTimer > 0)
         {

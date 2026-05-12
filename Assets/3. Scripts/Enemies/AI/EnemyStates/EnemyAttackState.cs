@@ -4,7 +4,7 @@ public class EnemyAttackState : IEnemyState
 {
     private AIContext context;
     private DetectionComponent detection;
-    private IAttack attack;
+    private EnemyAttack attack;
     private IChangeState changeState;
 
     public EnemyAttackState(AIContext context)
@@ -27,6 +27,7 @@ public class EnemyAttackState : IEnemyState
 
     public void Update()
     {
+        if (attack.isAttacking) return; 
         Rotate();
         CheckTarget();
         Attack();

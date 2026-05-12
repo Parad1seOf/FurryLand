@@ -6,7 +6,7 @@ public class AIContext : MonoBehaviour
     public DetectionComponent detection;
     public AIMovementComponent movement;
     public ITarget target;
-    public IAttack attack;
+    public EnemyAttack attack;
     public EnemyDisplay display;
     public EnemyAwarenessComponent awareness;
     public IAIBehaviour behaviour;
@@ -20,7 +20,7 @@ public class AIContext : MonoBehaviour
         if (movement == null)
             movement = GetComponent<AIMovementComponent>();
         if (attack == null)
-            attack = GetComponent<IAttack>();
+            attack = GetComponent<EnemyAttack>();
         if (display == null)
             display = GetComponent<EnemyDisplay>();
         if (awareness == null)
