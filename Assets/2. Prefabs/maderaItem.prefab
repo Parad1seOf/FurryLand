@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 5291239852635919465}
   - component: {fileID: 5291263352726858353}
   - component: {fileID: 1410320771664141058}
-  - component: {fileID: 5420017150452153466}
-  m_Layer: 0
+  - component: {fileID: 3596834446638286448}
+  - component: {fileID: 8759226859253316018}
+  - component: {fileID: 2873712466751536940}
+  m_Layer: 8
   m_Name: maderaItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +94,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5420017150452153466
+--- !u!114 &3596834446638286448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,6 +103,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 5522287282920155144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd14cfaf74a7e4b4d93ac11add0875b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 256ced79eb90d96499da1f74867be67b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Madera
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  interactLabel: Interactuar
+  holdToInteract: 1
+  holdDuration: 1.5
+  suspiciousness: 0
+  oneTimeInteraction: 0
+  action: {fileID: 0}
+  condition: {fileID: 0}
+--- !u!114 &8759226859253316018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522287282920155144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06465949d2b0f9d4a91ed2ddd94bc77a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupAction
+  itemType: 0
+  amount: 1
+--- !u!65 &2873712466751536940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522287282920155144}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7542356, y: 1.1249318, z: 0.26298848}
+  m_Center: {x: -0.8184448, y: -0.0002931655, z: 0.13149424}
