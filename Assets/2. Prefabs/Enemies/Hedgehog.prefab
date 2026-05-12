@@ -573,8 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementComponent
   agent: {fileID: 7536341328384775773}
-  moveSpeed: 5
-  path: {fileID: 0}
+  moveSpeed: 0
 --- !u!114 &6545636926300966620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,6 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
   damage: 2
+  isAttacking: 0
   distance: 2
   cooldown: 1
 --- !u!114 &2495594599035051977
@@ -674,9 +674,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIContext
   detection: {fileID: 0}
   movement: {fileID: 0}
+  attack: {fileID: 0}
   display: {fileID: 0}
   awareness: {fileID: 0}
   pathing: {fileID: 0}
+  waterGun: {fileID: 0}
 --- !u!114 &5435275507315649456
 MonoBehaviour:
   m_ObjectHideFlags: 0

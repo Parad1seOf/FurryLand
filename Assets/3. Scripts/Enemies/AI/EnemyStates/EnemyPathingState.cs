@@ -22,6 +22,7 @@ public class EnemyPathingState : IEnemyState
     public void Enter()
     {
         nextPoint = pathing.GetClosestPoint();
+        movement.MoveTo(nextPoint);
     }
 
     public void Exit()
@@ -34,7 +35,7 @@ public class EnemyPathingState : IEnemyState
         if (!pathing.HasArrived()) return;
 
         nextPoint = pathing.GetNextPoint();
-        if (nextPoint == null)
+        if (nextPoint == Vector3.zero)
         {
             changeState.ChangeState(behaviour.OnDestination());
             return;

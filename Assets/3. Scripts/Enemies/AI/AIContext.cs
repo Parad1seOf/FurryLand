@@ -11,6 +11,7 @@ public class AIContext : MonoBehaviour
     public EnemyAwarenessComponent awareness;
     public IAIBehaviour behaviour;
     public AIPathingComponent pathing;
+    public WaterGun waterGun;
 
 
     void Start()
@@ -31,6 +32,8 @@ public class AIContext : MonoBehaviour
             behaviour = GetComponent<IAIBehaviour>();
         if (pathing == null)
             pathing = GetComponent<AIPathingComponent>();
+        if (waterGun == null)
+            waterGun = GetComponent<WaterGun>();
 
     }
 }

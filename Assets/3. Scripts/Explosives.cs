@@ -64,4 +64,10 @@ public class Explosives : InteractableAction
 
         return progress;
     }
+
+    public void GetWatered(float amount)
+    {
+        timer += amount * Time.deltaTime;
+        if (timer > timeToExplode) timer = timeToExplode;
+    }
 }

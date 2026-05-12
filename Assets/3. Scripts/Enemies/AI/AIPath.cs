@@ -47,6 +47,8 @@ public class AIPath : MonoBehaviour
 
     public Vector3 GetPointByIndex(int index)
     {
-        return points.ElementAt(index).position;
+        if (index < points.Count) return points.ElementAt(index).position;
+
+        return Vector3.zero;
     }
 }

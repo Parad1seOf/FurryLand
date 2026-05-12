@@ -22,7 +22,7 @@ public class ElephantBehaviour : MonoBehaviour, IAIBehaviour
 
     public IEnemyState OnDestination()
     {
-        throw new System.NotImplementedException();
+        return new EnemyWatergunState(context);
     }
 
     public IEnemyState OnDie()
