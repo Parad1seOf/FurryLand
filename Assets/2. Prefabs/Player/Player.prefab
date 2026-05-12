@@ -4703,6 +4703,7 @@ GameObject:
   - component: {fileID: 6945758425866561783}
   - component: {fileID: 8645754521709445335}
   - component: {fileID: 4434051876657936551}
+  - component: {fileID: 7005855739671212911}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4939,6 +4940,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
   gun: {fileID: 2991190238141108468}
+  audioManager: {fileID: 0}
+  playerController: {fileID: 8168884295756889035}
+  fpsCam: {fileID: 0}
+  walkSpread: 0.02
+  runSpread: 0.05
+  characterController: {fileID: 0}
+  recoilForce: 25
 --- !u!114 &8645754521709445335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4968,6 +4976,29 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 128
+--- !u!136 &7005855739671212911
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231762710971154228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1685784303718246658
 GameObject:
   m_ObjectHideFlags: 0
@@ -10123,28 +10154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f84f37e2c082941b3aa85fe7060167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
-  audioManager: {fileID: 0}
-  playerController: {fileID: 8168884295756889035}
-  fpsCam: {fileID: 7138904850985994041}
   muzzlePoint: {fileID: 9205398471241345179}
   damage: 25
   range: 25
   timeBetweenShots: 0.7
   allowHoldToFire: 0
-  idleSpread: 0
-  walkSpread: 0.02
-  runSpread: 0.05
+  spread: 0
   magazineCapacity: 30
   totalMagazines: 3
   reloadTime: 1.8
-  characterController: {fileID: 0}
-  recoilForce: 25
   muzzleFlashPrefab: {fileID: 3400587053566267830}
   bulletHolePrefab: {fileID: 650487376429825820}
-  shotHearingRadius: 15
-  enemyHearingLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
   weaponAnimation: {fileID: 1183039612802929891}
   idleClip: {fileID: 7400000, guid: 1ff222dfc2342e040b491ad3d7dab5df, type: 2}
   shootClip: {fileID: 7400000, guid: bbe6bce257673954eb82b937b2009dea, type: 2}

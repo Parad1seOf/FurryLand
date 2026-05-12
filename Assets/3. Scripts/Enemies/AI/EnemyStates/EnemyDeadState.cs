@@ -12,6 +12,7 @@ public class EnemyDeadState : IEnemyState
 
     public void Enter()
     {
+        if (ScoreManager.instance != null) ScoreManager.instance.scoreKill();
         context.detection.gameObject.SetActive(false);
     }
 

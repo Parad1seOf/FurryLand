@@ -1,5 +1,6 @@
 // Sistema de disparo por raycast. Lee el estado de PlayerController para calcular la dispersiÃ³n,
 // despacha daÃ±o a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,9 +10,6 @@ public class GunSystem : MonoBehaviour
     #region Inspector Fields
 
     [Header("References")]
-    public AudioManager     audioManager;
-    public PlayerController playerController;
-    public Camera           fpsCam;
     public Transform        muzzlePoint;
 
     [Header("Damage")]
@@ -23,29 +21,18 @@ public class GunSystem : MonoBehaviour
     public bool  allowHoldToFire  = true;
 
     [Header("Spread")]
-    public float idleSpread = 0.00f;
-    public float walkSpread = 0.02f;
-    public float runSpread  = 0.05f;
+    public float spread = 0.00f;
+    private float currentSpread;
 
     [Header("Magazine")]
     public int   magazineCapacity = 30;
     public int   totalMagazines   = 3;
     public float reloadTime       = 1.8f;
 
-    [Header("Recoil")]
-    public CharacterController characterController;
-    public float recoilForce = 25f;
-    private Vector3 impactVelocity;
-
     [Header("VFX")]
     public GameObject muzzleFlashPrefab;
     public GameObject bulletHolePrefab;
 
-    [Header("Shot Alert")]
-    [Tooltip("Radio dentro del cual los enemigos 'oyen' el disparo y se alertan.")]
-    public float shotHearingRadius = 15f;
-    [Tooltip("Capa en la que están los enemigos para detectar si oyen el disparo.")]
-    public LayerMask enemyHearingLayer = ~0;
 
     [Header("Animation")]
     public Animation     weaponAnimation;
@@ -79,88 +66,71 @@ public class GunSystem : MonoBehaviour
         PlayAnimation(idleClip);
     }
 
-    private void Update()
-    {
-        HandleInput();
-
-        if (impactVelocity.magnitude > 0.2f)
-        {
-            characterController.Move(impactVelocity * Time.deltaTime);
-            impactVelocity = Vector3.Lerp(impactVelocity, Vector3.zero, 5f * Time.deltaTime);
-        }
-    }
-
-    #endregion
-
-    #region Input
-
-    private void HandleInput()
-    {
-        if (Time.timeScale == 0f) return;
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
-
-        bool trigger = allowHoldToFire
-            ? Input.GetKey(KeyCode.Mouse0)
-            : Input.GetKeyDown(KeyCode.Mouse0);
-
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && bulletsLeft < magazineCapacity)
-            StartReload();
-
-        if (readyToShoot && trigger && !isReloading)
-        {
-            if (bulletsLeft > 0)
-                Shoot();
-            else
-                StartReload();
-        }
-    }
-
     #endregion
 
     #region Shooting
 
-    private void Shoot()
+    public bool TryShoot(Vector3 origin, Vector3 direction)
+    {
+        if (Time.timeScale == 0f) return false;
+        
+        if (readyToShoot  && !isReloading)
+        {
+            if (bulletsLeft > 0)
+            {
+                Shoot(origin, direction);
+                return true;
+            }
+            else
+                Reload();
+        }
+        return false;
+    }
+
+    private void Shoot(Vector3 origin, Vector3 direction)
     {
         readyToShoot = false;
         bulletsLeft--;
 
+
         PlayShootAnimation();
         SpawnMuzzleFlash();
-        audioManager?.Shooting();
 
-        float spread = idleSpread;
-        if      (playerController != null && playerController.IsRunning) spread = runSpread;
-        else if (playerController != null && playerController.IsWalking) spread = walkSpread;
+        float   x         = UnityEngine.Random.Range(-spread, spread);
+        float   y         = UnityEngine.Random.Range(-spread, spread);
 
-        float   x         = Random.Range(-spread, spread);
-        float   y         = Random.Range(-spread, spread);
-        Vector3 direction = fpsCam.transform.forward
-                          + fpsCam.transform.right * x
-                          + fpsCam.transform.up    * y;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        Vector3 spreadDirection = rotation * new Vector3(x, y, 1f);
+        spreadDirection.Normalize();
 
-        if (characterController != null)
+        ResetSpread();
+
+        try
         {
-            if (!characterController.isGrounded)
+            if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
+                            ~0, QueryTriggerInteraction.Ignore))
             {
-                impactVelocity += -direction.normalized * recoilForce;
+                ProcessHit(hit);
             }
         }
-
-
-        if (Physics.Raycast(fpsCam.transform.position, direction, out RaycastHit hit, range,
-                            ~0, QueryTriggerInteraction.Ignore))
+        catch (Exception e)
         {
-            ProcessHit(hit);
+            Debug.LogException(e);
         }
+        
 
         if (resetShotCoroutine != null) StopCoroutine(resetShotCoroutine);
         resetShotCoroutine = StartCoroutine(ResetShotRoutine());
+    }
 
+    public void IncreaseSpread(float amount)
+    {
+        currentSpread = spread + amount;
+    }
 
-
-
-        if (AnyEnemyInHearingRange())
-            AlertSystem.Instance.TriggerAlert();
+    private void ResetSpread()
+    {
+        currentSpread = spread;
     }
 
     private void ProcessHit(RaycastHit hit)
@@ -175,10 +145,10 @@ public class GunSystem : MonoBehaviour
             if (bodyPart != null)
             {
                 finalDamage *= bodyPart.damageMultiplier;
-                if (bodyPart.partType == BodyPartType.Head)
+                /*if (bodyPart.partType == BodyPartType.Head)
                     audioManager?.Headshot();
                 else
-                    audioManager?.BodyHit();
+                    audioManager?.BodyHit();*/
             }
 
             damageable.TakeDamage(finalDamage);
@@ -187,19 +157,6 @@ public class GunSystem : MonoBehaviour
         {
             SpawnBulletHole(hit);
         }
-    }
-
-    private bool AnyEnemyInHearingRange()
-    {
-        Vector3 origin = muzzlePoint != null ? muzzlePoint.position : transform.position;
-        Collider[] hits = Physics.OverlapSphere(origin, shotHearingRadius, enemyHearingLayer, QueryTriggerInteraction.Ignore);
-
-        foreach (Collider c in hits)
-        {
-            if (c.GetComponentInParent<AlertableComponent>() != null)
-                return true;
-        }
-        return false;
     }
 
     private IEnumerator ResetShotRoutine()
@@ -213,7 +170,13 @@ public class GunSystem : MonoBehaviour
 
     #region Reload
 
-    private void StartReload()
+    public void TryReload()
+    {
+        if (!isReloading && bulletsLeft < magazineCapacity)
+            Reload();
+    }
+
+    private void Reload()
     {
         if (totalMagazines != -1 && magazinesLeft <= 0) return;
         if (isReloading) return;
@@ -309,7 +272,6 @@ public class GunSystem : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Vector3 origin = muzzlePoint != null ? muzzlePoint.position : transform.position;
-        Gizmos.DrawWireSphere(origin, shotHearingRadius);
     }
 #endif
 }

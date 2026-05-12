@@ -387,7 +387,6 @@ GameObject:
   - component: {fileID: 1683090914013198987}
   - component: {fileID: 5435275507315649456}
   - component: {fileID: 654305908190356389}
-  - component: {fileID: 8336128633823904682}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -714,15 +713,3 @@ MonoBehaviour:
     m_Bits: 4294967295
   damageRadius: 0
   damageAmount: 0
---- !u!114 &8336128633823904682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5699544787704082387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2033f55b5f84dfd49bfd38b7499a5359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
