@@ -45,6 +45,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemySuspicion;
 
     [Header("ExplosivesProgression")]
+    [SerializeField] private GameObject explosivesProgressionSliderGameObject;
     [SerializeField] private Slider explosivesProgressionSlider;
     [SerializeField] private Explosives explosives;
 
@@ -80,7 +81,7 @@ public class HUDManager : MonoBehaviour
         if (interactLabel    != null) interactLabel.enabled    = false;
         if (messageText      != null) messageText.enabled      = false;
         if (holdProgressRing != null) holdProgressRing.enabled = false;
-        if (explosivesProgressionSlider != null) explosivesProgressionSlider.enabled = false;
+        if (explosivesProgressionSliderGameObject != null) explosivesProgressionSliderGameObject.SetActive(false);
     }
 
     private void Start()
@@ -286,6 +287,7 @@ public class HUDManager : MonoBehaviour
     private void UpdateExplosivesProgression()
     {
         if (explosives.GetProgress() == 0) return;
+        explosivesProgressionSliderGameObject.SetActive(explosives.inProgress);
         explosivesProgressionSlider.enabled = true;
         explosivesProgressionSlider.value = explosives.GetProgress();
     }

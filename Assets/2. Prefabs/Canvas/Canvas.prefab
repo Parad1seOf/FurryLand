@@ -320,7 +320,7 @@ RectTransform:
   m_Father: {fileID: 488233116943089761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -395,7 +395,7 @@ RectTransform:
   m_Father: {fileID: 1572795823687447028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1, y: -0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -851,7 +851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7973551269329366913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2334,10 +2334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crosshair
   playerController: {fileID: 0}
-  lineTop: {fileID: 6300458568332968289}
-  lineBottom: {fileID: 2722990286943863042}
-  lineLeft: {fileID: 4812505615423791166}
-  lineRight: {fileID: 937840590809397440}
+  cornerTopLeft: {fileID: 0}
+  cornerTopRight: {fileID: 0}
+  cornerBottomLeft: {fileID: 0}
+  cornerBottomRight: {fileID: 0}
   idleSize: 0
   walkSize: 30
   runSize: 60
@@ -2608,6 +2608,7 @@ MonoBehaviour:
   fadeImage: {fileID: 0}
   hitFlashImage: {fileID: 0}
   enemySuspicion: {fileID: 7286244632741494503}
+  explosivesProgressionSliderGameObject: {fileID: 2301400011165090451}
   explosivesProgressionSlider: {fileID: 2336101109070902992}
   explosives: {fileID: 0}
 --- !u!1 &8992451770791615890

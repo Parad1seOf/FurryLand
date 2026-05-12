@@ -9,6 +9,7 @@ public class Explosives : InteractableAction
     [SerializeField] private GameObject objectToExplode;
     [SerializeField] private GameObject trigger;
     public float timer;
+    public bool inProgress;
 
 
     public void OnEnable()
@@ -41,10 +42,12 @@ public class Explosives : InteractableAction
 
         Instantiate(retrievedObject, transform.position, transform.rotation);
         objectToExplode.SetActive(false);
+        inProgress = false;
     }
 
     public override void Execute(PlayerController player)
     {
+        inProgress = true;
         gameObject.SetActive(true);
         trigger.SetActive(false);
         ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
