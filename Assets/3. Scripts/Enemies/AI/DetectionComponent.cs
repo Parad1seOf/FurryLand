@@ -75,9 +75,12 @@ public class DetectionComponent : MonoBehaviour
 
     public bool SeesPlayer()
     {
+        if (!HasLineOfSight())
+        {
+            return false;
+        }
         Vector3 playerDirection = playerPos.position - eyes.position;
         float angle = Vector3.Angle(eyes.forward, playerDirection);
-        if (!HasLineOfSight()) return false;
         return angle <= viewAngle * 0.5f;
     }
 
@@ -86,10 +89,9 @@ public class DetectionComponent : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = playerPos.position - eyes.position;
 
-        if (Physics.Raycast(eyes.position, direction, out hit, detectionDistance))
+        if (Physics.Raycast(eyes.position, direction, out hit))
         {
             ITarget target = hit.collider.GetComponent<ITarget>();
-
             return ReferenceEquals(playerTarget, target);
         }
         return false;

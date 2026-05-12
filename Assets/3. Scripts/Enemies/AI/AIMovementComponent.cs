@@ -7,6 +7,8 @@ public class AIMovementComponent : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3;
 
+    [SerializeField] private float rotationSpeed;
+
     public void Start()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
@@ -23,5 +25,24 @@ public class AIMovementComponent : MonoBehaviour
     {
         agent.isStopped = true;
         agent.velocity = Vector3.zero;
+    }
+
+    public void LookAt(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+
+        direction.y = 0f;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation =
+                Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
+        }
     }
 }
