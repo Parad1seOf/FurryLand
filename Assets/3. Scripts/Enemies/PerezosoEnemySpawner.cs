@@ -3,7 +3,8 @@ using UnityEngine;
 public class PerezosoEnemySpawner : MonoBehaviour
 {
     [Header("Spawn")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private EnemyStateMachine sloth;
+    [SerializeField] private Transform spawnPoint;
 
     [Header("Detección del jugador")]
     [Tooltip("Radio alrededor del spawner. Si el jugador está dentro, NO se spawnea.")]
@@ -20,20 +21,23 @@ public class PerezosoEnemySpawner : MonoBehaviour
     [SerializeField] private float maxRespawnDelay = 7f;
 
     private Transform player;
-    private GameObject currentEnemy;
-    private HealthSystem currentEnemyHealth;
-
-    private float respawnTimer = 0f;
+    public bool isDead = false;
+    public float respawnTimer = 0f;
 
     private void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag(playerTag);
         if (playerObj != null) player = playerObj.transform;
+
+        if (sloth != null)
+            sloth.GetComponent<HealthSystem>().OnDeath += HandleSpawnedEnemyDeath;
+
+        if (spawnPoint == null) spawnPoint = transform;
     }
 
     private void Update()
     {
-        if (currentEnemy != null) return;
+        if (!isDead) return;
         if (respawnTimer > 0f)
         {
             respawnTimer -= Time.deltaTime;
@@ -53,30 +57,20 @@ public class PerezosoEnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (enemyPrefab == null) return;
-
-        currentEnemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
-
-        currentEnemyHealth = currentEnemy.GetComponent<HealthSystem>();
-        if (currentEnemyHealth != null)
-            currentEnemyHealth.OnDeath += HandleSpawnedEnemyDeath;
+        sloth.Respawn(spawnPoint.position);
+        isDead = false;
     }
 
     private void HandleSpawnedEnemyDeath()
     {
-        if (currentEnemyHealth != null)
-            currentEnemyHealth.OnDeath -= HandleSpawnedEnemyDeath;
-
-        currentEnemy = null;
-        currentEnemyHealth = null;
-
         respawnTimer = Random.Range(minRespawnDelay, maxRespawnDelay);
+        isDead = true;
     }
 
     private void OnDisable()
     {
-        if (currentEnemyHealth != null)
-            currentEnemyHealth.OnDeath -= HandleSpawnedEnemyDeath;
+        if (sloth != null)
+            sloth.GetComponent<HealthSystem>().OnDeath -= HandleSpawnedEnemyDeath;
     }
 
     private void OnDrawGizmosSelected()

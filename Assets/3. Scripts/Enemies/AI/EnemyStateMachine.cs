@@ -48,7 +48,6 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     public void Die()
     {
         ChangeState(behaviour.OnDie());
-        EnemyPool.instance.AddEnemy(gameObject);
     }
 
     public void Respawn(Vector3 position)
