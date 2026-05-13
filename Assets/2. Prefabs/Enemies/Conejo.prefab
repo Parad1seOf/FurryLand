@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ef06d3d37b4943953b9da3016c5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 100
+  maxHealth: 1
 --- !u!114 &8385236165593996864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   detectionDistance: 5
   escapeDetectionDistance: 7
   suspiciousDistance: 2
-  attackDistance: 2.5
+  attackDistance: 1.2
   escapeAttackDistance: 3
   playerSus: {fileID: 0}
   eyes: {fileID: 1344905317336346341}
@@ -489,10 +489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 0
+  damage: 10
   isAttacking: 0
-  distance: 0
-  cooldown: 0
+  distance: 2
+  cooldown: 1
 --- !u!114 &8881172715360659621
 MonoBehaviour:
   m_ObjectHideFlags: 0
