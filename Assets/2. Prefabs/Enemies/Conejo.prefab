@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 101.356834
       objectReference: {fileID: 0}
@@ -46,6 +58,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7700011969509423789, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
@@ -244,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementComponent
   agent: {fileID: 0}
   moveSpeed: 3
-  path: {fileID: 0}
+  rotationSpeed: 0
 --- !u!114 &2068536838184627172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +365,7 @@ MonoBehaviour:
   display: {fileID: 0}
   awareness: {fileID: 0}
   pathing: {fileID: 0}
+  waterGun: {fileID: 0}
 --- !u!114 &5016585785609343930
 MonoBehaviour:
   m_ObjectHideFlags: 0
