@@ -55,5 +55,6 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         transform.position = position;
         ChangeState(behaviour.OnRespawn());
         GetComponent<HealthSystem>().Restore(1000);
+        GetComponent<DeathExplosion>()?.Reset();
     }
 }

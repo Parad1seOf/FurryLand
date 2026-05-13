@@ -2400,6 +2400,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1231762710971154228, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2132187096}
+    - targetCorrespondingSourceObject: {fileID: 6565082802825529674, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1897220932438867129, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
 --- !u!1 &386342694
 GameObject:
@@ -2608,6 +2614,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -2740,7 +2754,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 81995931a176b984d9733ce1067740df, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: eff57c4b4f077614c8229c799acb0c93, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &427649287
 Transform:
@@ -3493,6 +3507,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -4229,6 +4251,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -5979,6 +6009,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -8261,6 +8299,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -12159,6 +12205,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &2341335057970622430
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7451177165894328651, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_Name
+      value: EnemyTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 86.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 196.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794665026120481777, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a23da2039c999a4aac58e2103131e14, type: 3}
 --- !u!222 &2354617579599682738
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12558,11 +12661,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881d91daabd1ec4dab4e9a2b634e99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximityEnemySpawner
-  enemyPrefab: {fileID: 0}
+  sloth: {fileID: 0}
+  spawnPoint: {fileID: 0}
   playerDetectionRadius: 8
   playerTag: Player
   minRespawnDelay: 3
   maxRespawnDelay: 7
+  isDead: 0
+  respawnTimer: 0
 --- !u!1 &5597291472221322704
 GameObject:
   m_ObjectHideFlags: 0
@@ -12817,3 +12923,4 @@ SceneRoots:
   - {fileID: 1994918145}
   - {fileID: 4058490044905786847}
   - {fileID: 8453872744236674072}
+  - {fileID: 2341335057970622430}
