@@ -11,10 +11,10 @@ public class GunSystem : MonoBehaviour
 
     [Header("References")]
     public Transform        muzzlePoint;
-
-    [Header("Damage")]
-    public int   damage = 25;
-    public float range  = 100f;
+[Header("Damage")]
+public int   damage = 25;
+public float range  = 100f;
+public LayerMask hitMask = ~0;   // <— nuevo
 
     [Header("Fire Rate")]
     public float timeBetweenShots = 0.1f;
@@ -107,12 +107,14 @@ public class GunSystem : MonoBehaviour
 
         try
         {
-            if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
-                            ~0, QueryTriggerInteraction.Ignore))
-            {
-                ProcessHit(hit);
-            }
-        }
+if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
+                hitMask, QueryTriggerInteraction.Ignore))
+{
+    Debug.Log($"HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
+    ProcessHit(hit);
+    
+}
+}
         catch (Exception e)
         {
             Debug.LogException(e);
@@ -150,6 +152,11 @@ public class GunSystem : MonoBehaviour
                 else
                     audioManager?.BodyHit();*/
             }
+
+            // Notificar al DeathExplosion del enemigo qué zona se ha impactado
+            DeathExplosion de = hit.collider.GetComponentInParent<DeathExplosion>();
+            if (de != null)
+                de.NotifyHit(bodyPart != null ? bodyPart.partType : BodyPartType.Default);
 
             damageable.TakeDamage(finalDamage);
         }
