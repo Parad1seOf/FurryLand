@@ -9,8 +9,15 @@ public class Explosives : InteractableAction
     [SerializeField] private GameObject objectToExplode;
     [SerializeField] private GameObject trigger;
     public float timer;
-    public bool inProgress;
+    public bool inProgress;    
 
+    [SerializeField] private GameObject brazo;
+    [SerializeField] private GameObject oreja;
+    [SerializeField] private GameObject ortaoreja;
+    [SerializeField] private GameObject cabeza;
+    [SerializeField] private GameObject torso;
+    [SerializeField] private GameObject pierna;
+    [SerializeField] private GameObject otro_brazo;
 
     public void OnEnable()
     {
@@ -31,15 +38,35 @@ public class Explosives : InteractableAction
     public void Explode()
     {
         currentExplosions++;
+
         ElephantManager.instance.startSpawningElephants = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
+
+        if (currentExplosions == 1)
+        {
+            brazo.SetActive(false);
+            oreja.SetActive(false);
+        }
+        else if (currentExplosions == 2)
+        {
+            cabeza.SetActive(false);
+            otro_brazo.SetActive(false);
+            ortaoreja.SetActive(false);
+        }
+        else if (currentExplosions == 3)
+        {
+            torso.SetActive(false);
+            pierna.SetActive(false);
+        }
+
         gameObject.SetActive(false);
         timer = timeToExplode;
 
         if (currentExplosions < explosionCount)
+        {
             trigger.SetActive(true);
-
-        if (currentExplosions < explosionCount) return;
+            return;
+        }
 
         Instantiate(retrievedObject, transform.position, transform.rotation);
         objectToExplode.SetActive(false);
