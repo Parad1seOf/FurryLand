@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1534845757427116451}
   - component: {fileID: 4895537175126393409}
   - component: {fileID: 862702784803962351}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260809382875669997}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 475725009171124584}
   - component: {fileID: 2735840296143931868}
   - component: {fileID: 4944752368024775681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sloth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,12 +286,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DetectionComponent
   viewAngle: 45
   detectionDistance: 5
-  escapeDetectionDistance: 7
+  escapeDetectionDistance: 179.3
   suspiciousDistance: 3
-  attackDistance: 30
+  attackDistance: 140
   escapeAttackDistance: 35
   playerSus: {fileID: 0}
   eyes: {fileID: 8961574393670686684}
+  detectingMark: {fileID: 0}
 --- !u!114 &2876964178516681941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,9 +340,9 @@ MonoBehaviour:
   isAttacking: 0
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
-  distance: 500
-  followSpeed: 5
-  timeToShoot: 2
+  distance: 1000
+  followSpeed: 1
+  timeToShoot: 0.5
   timer: 0
 --- !u!114 &5598460371897832367
 MonoBehaviour:
@@ -357,10 +358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
   muzzlePoint: {fileID: 0}
   damage: 50
-  range: 100
+  range: 500
   hitMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   timeBetweenShots: 0.1
   allowHoldToFire: 1
   spread: 0
@@ -590,7 +591,7 @@ GameObject:
   - component: {fileID: 8961574393670686684}
   - component: {fileID: 1176505109603768990}
   - component: {fileID: 9065958958228585842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +681,7 @@ GameObject:
   - component: {fileID: 388676600486304195}
   - component: {fileID: 8478829200160842558}
   - component: {fileID: 4131768485242358627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: State
   m_TagString: Untagged
   m_Icon: {fileID: 0}

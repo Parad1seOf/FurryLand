@@ -231,9 +231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   timeToSpawn: 5
   spawnpoint: {fileID: 958565956001836874}
-  timeToBreakBlock: 5
+  timeToBreakBlock: 20
   blockingObject: {fileID: 8856890680052198569}
   activator: {fileID: 7452387510339424157}
+  elephant: {fileID: 0}
 --- !u!114 &7452387510339424157
 MonoBehaviour:
   m_ObjectHideFlags: 0
