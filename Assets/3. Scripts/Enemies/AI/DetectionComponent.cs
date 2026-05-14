@@ -31,6 +31,8 @@ public class DetectionComponent : MonoBehaviour
     private Transform playerPos;
     [SerializeField] private Transform eyes;
 
+    [SerializeField] private GameObject detectingMark;
+
     public void Awake()
     {
         //ESTO ES JODIDAMENTE HORRIBLE Y HAY QUE CAMBIARLO
@@ -48,6 +50,10 @@ public class DetectionComponent : MonoBehaviour
         
     }
 
+    public void Update()
+    {
+        UpdateDetectionIcon();
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -141,5 +147,15 @@ public class DetectionComponent : MonoBehaviour
     public bool PlayerEscapedAttack()
     {
         return (playerPos.position - eyes.position).magnitude > escapeAttackDistance;
+    }
+
+    private void UpdateDetectionIcon()
+    {
+        bool seesPlayer = SeesPlayer();
+        bool suspicious = playerSus != null && playerSus.IsSuspicious();
+
+        if (detectingMark != null)
+            detectingMark.SetActive(seesPlayer && !suspicious);
+        
     }
 }
