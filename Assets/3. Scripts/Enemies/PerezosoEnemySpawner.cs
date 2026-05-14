@@ -33,6 +33,8 @@ public class PerezosoEnemySpawner : MonoBehaviour
             sloth.GetComponent<HealthSystem>().OnDeath += HandleSpawnedEnemyDeath;
 
         if (spawnPoint == null) spawnPoint = transform;
+
+        if (!sloth.gameObject.activeSelf) AlertSystem.Instance.OnAlertTriggered += HandleSpawnedEnemyDeath;
     }
 
     private void Update()
@@ -57,6 +59,7 @@ public class PerezosoEnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        sloth.gameObject.SetActive(true);
         sloth.Respawn(spawnPoint.position);
         isDead = false;
     }

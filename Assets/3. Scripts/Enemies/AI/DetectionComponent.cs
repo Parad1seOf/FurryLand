@@ -31,7 +31,7 @@ public class DetectionComponent : MonoBehaviour
     private Transform playerPos;
     [SerializeField] private Transform eyes;
 
-    public void Start()
+    public void Awake()
     {
         //ESTO ES JODIDAMENTE HORRIBLE Y HAY QUE CAMBIARLO
         if (playerSus == null)
@@ -40,9 +40,12 @@ public class DetectionComponent : MonoBehaviour
             playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<ITarget>();
         if (eyes == null)
             eyes = transform;
-
-
         playerPos = playerTarget.GetTransform();
+    }
+
+    public void Start()
+    {
+        
     }
 
     void OnDrawGizmosSelected()
@@ -79,6 +82,7 @@ public class DetectionComponent : MonoBehaviour
         {
             return false;
         }
+
         Vector3 playerDirection = playerPos.position - eyes.position;
         float angle = Vector3.Angle(eyes.forward, playerDirection);
         return angle <= viewAngle * 0.5f;

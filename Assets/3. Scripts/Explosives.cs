@@ -31,6 +31,7 @@ public class Explosives : InteractableAction
     public void Explode()
     {
         currentExplosions++;
+        ElephantManager.instance.startSpawningElephants = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
         gameObject.SetActive(false);
         timer = timeToExplode;

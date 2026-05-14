@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     private LinkedList<GameObject> pool;
+    [SerializeField] private GameObject rabbit;
 
     public static EnemyPool instance { get; private set; }
 
@@ -28,12 +29,18 @@ public class EnemyPool : MonoBehaviour
 
     public GameObject GetEnemy()
     {
-        if (pool.Count == 0) return null;
+        if (pool.Count == 0) 
+            return NewEnemy();
 
         GameObject enemy;
         enemy = pool.First.Value;
         pool.RemoveFirst();
 
         return enemy;
+    }
+
+    private GameObject NewEnemy()
+    {
+        return Instantiate(rabbit, transform.position, transform.rotation);
     }
 }

@@ -3,8 +3,9 @@ using UnityEngine;
 public class HedgehogAttack : EnemyAttack
 {
     
-    [SerializeField] private float distance;
-    [SerializeField] private float cooldown;
+    [SerializeField] private float distance = 2f;
+    [SerializeField] private float cooldown = 1f;
+    [SerializeField] private Transform origin;
     private float cooldownTimer;
 
     public override void Attack(Vector3 targetDirection)
@@ -17,9 +18,9 @@ public class HedgehogAttack : EnemyAttack
         RaycastHit hit;
         Vector3 direction = transform.forward;
 
-        if (Physics.Raycast(transform.position, direction, out hit, distance))
+        if (Physics.Raycast(origin.position, direction, out hit, distance))
         {
-            HealthSystem health = hit.collider.GetComponent<HealthSystem>();
+            HealthSystem health = hit.collider.GetComponent<PlayerHealth>();
 
             if (health != null)
             {

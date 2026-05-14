@@ -5,9 +5,14 @@ public class AlertableComponent : MonoBehaviour, IAlertable
 {
     [SerializeField] private EnemyStateMachine stateMachine;
 
-    public void Start()
+    void Awake()
     {
         if (stateMachine == null) stateMachine = GetComponent<EnemyStateMachine>();
+        
+    }
+
+    public void Start()
+    {
         AlertSystem.Instance.OnAlertTriggered += GetAlerted;
     }
 

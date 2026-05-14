@@ -9,20 +9,27 @@ public class AIMovementComponent : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
 
-    public void Start()
+    public void Awake()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
+    }
+
+    public void Start()
+    {
+        agent.Warp(transform.position);
         agent.speed = moveSpeed;
     }
 
     public void MoveTo(Vector3 destination)
     {
+        if (!agent.isOnNavMesh) return;
         agent.isStopped = false;
         agent.SetDestination(destination);
     }
 
     public void Stop()
     {
+        if (!agent.isOnNavMesh) return;
         agent.isStopped = true;
         agent.velocity = Vector3.zero;
     }

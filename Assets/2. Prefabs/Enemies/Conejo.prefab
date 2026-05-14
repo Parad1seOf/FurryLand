@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &629988972195713915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465875343441286744}
+  m_Layer: 6
+  m_Name: Ojos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1465875343441286744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629988972195713915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.805, z: 0.301}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4438028335883130996}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5304507438094221745
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +358,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       insertIndex: 0
       addedObject: {fileID: 7262862271016142290}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1465875343441286744}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       insertIndex: -1
@@ -374,11 +408,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7961445093402171464}
   m_SourcePrefab: {fileID: 100100000, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
---- !u!4 &1344905317336346341 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6289379691718635142, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
-  m_PrefabInstance: {fileID: 4187699201470365599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3953276385587282638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
@@ -471,10 +500,10 @@ MonoBehaviour:
   detectionDistance: 5
   escapeDetectionDistance: 7
   suspiciousDistance: 2
-  attackDistance: 2.5
-  escapeAttackDistance: 3
+  attackDistance: 1
+  escapeAttackDistance: 1.5
   playerSus: {fileID: 0}
-  eyes: {fileID: 1344905317336346341}
+  eyes: {fileID: 1465875343441286744}
 --- !u!114 &7959133361852928321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,10 +558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 0
+  damage: 10
   isAttacking: 0
-  distance: 0
-  cooldown: 0
+  distance: 2
+  cooldown: 1
+  origin: {fileID: 1465875343441286744}
 --- !u!114 &8881172715360659621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +653,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1

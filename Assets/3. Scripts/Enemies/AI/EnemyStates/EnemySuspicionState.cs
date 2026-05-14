@@ -57,8 +57,7 @@ public class EnemySuspicionState : IEnemyState
 
     private void Rotate()
     {
-        //Mal
-        detection.transform.forward = detection.GetTargetDirection();
+        context.movement.LookAt(detection.GetTargetDirection());
     }
 
     private void UpdateDisplay()

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Spawner : InteractableAction
 {
     [SerializeField] private float timeToSpawn = 5f;
+    [SerializeField] private Transform spawnpoint;
     private float spawnTimer;
     private bool wantsToSpawn = false;
     private bool isBlocked = false;
@@ -12,6 +13,8 @@ public class Spawner : InteractableAction
     [SerializeField] Interactable activator;
     private bool alarmed;
     private bool alreadyBroken = false;
+
+    [SerializeField] private GameObject elephant;
 
     private EnemyPool pool;
 
@@ -44,7 +47,7 @@ public class Spawner : InteractableAction
         GameObject enemy = pool.GetEnemy();
         if (enemy == null) return;
 
-        enemy.GetComponent<EnemyStateMachine>().Respawn(transform.position);
+        enemy.GetComponent<EnemyStateMachine>().Respawn(spawnpoint.position);
         wantsToSpawn = false;
         spawnTimer = timeToSpawn;
     }
@@ -73,5 +76,15 @@ public class Spawner : InteractableAction
     public void Alarmed()
     {
         alarmed = true;
+    }
+
+    public HealthSystem SpawnElephant()
+    {
+        if (!alarmed) return null;
+        if (isBlocked) return null;
+
+        elephant.SetActive(true);
+        elephant.GetComponent<EnemyStateMachine>().Respawn(spawnpoint.position);
+        return elephant.GetComponent<HealthSystem>();
     }
 }

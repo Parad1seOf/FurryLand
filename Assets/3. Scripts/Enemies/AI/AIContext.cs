@@ -14,7 +14,7 @@ public class AIContext : MonoBehaviour
     public WaterGun waterGun;
 
 
-    void Start()
+    void Awake()
     {
         if (detection == null)
             detection = GetComponent<DetectionComponent>();

@@ -14,12 +14,10 @@ public class AlertSystem : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { 
+        if (Instance == null)
+            Instance = this;
+        else
             Destroy(gameObject);
-            return; 
-        }
-        Instance = this;
-        //DontDestroyOnLoad(gameObject);
     }
 
     public void Register(IAlertable alertable)

@@ -6,8 +6,8 @@ public class EnemyAlertState : IEnemyState
     private AIContext context;
     private DetectionComponent detection;
     private EnemyDisplay display;
-    private float timer = 1f;
-    private float time = 0f;
+    private float time = 1f;
+    private float timer = 0f;
     private IAIBehaviour behaviour;
 
     public EnemyAlertState(AIContext context)
@@ -23,8 +23,8 @@ public class EnemyAlertState : IEnemyState
         AlertSystem alert = AlertSystem.Instance;
         if (!alert.IsAlreadyTriggered) alert.TriggerAlert();
 
-        time = timer;
-        detection.transform.forward = detection.GetTargetDirection();
+        timer = time;
+        context.movement.LookAt(detection.GetTargetDirection());
         display.ChangeLabel("!", Color.red);
     }
 
@@ -35,9 +35,9 @@ public class EnemyAlertState : IEnemyState
 
     public void Update()
     {
-        time -= Time.deltaTime;
+        timer -= Time.deltaTime;
 
-        if (time < 0f) {
+        if (timer < 0f) {
             context.changeState.ChangeState(behaviour.AfterAlert());
         }
     }

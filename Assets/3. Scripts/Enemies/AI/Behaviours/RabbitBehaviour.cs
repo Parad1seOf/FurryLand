@@ -4,7 +4,7 @@ public class RabbitBehaviour : MonoBehaviour, IAIBehaviour
 {
     [SerializeField] private AIContext context;
 
-    public void Start()
+    public void Awake()
     {
         if (context == null)
             context = GetComponent<AIContext>();

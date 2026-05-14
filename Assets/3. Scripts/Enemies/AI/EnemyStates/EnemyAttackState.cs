@@ -27,8 +27,8 @@ public class EnemyAttackState : IEnemyState
 
     public void Update()
     {
-        if (attack.isAttacking) return; 
         Rotate();
+        if (attack.isAttacking) return; 
         CheckTarget();
         Attack();
     }
@@ -48,7 +48,6 @@ public class EnemyAttackState : IEnemyState
 
     private void Rotate()
     {
-        //Mal
-        detection.transform.forward = detection.GetTargetDirection();
+        context.movement.LookAt(detection.GetTargetDirection());
     }
 }

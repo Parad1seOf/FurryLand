@@ -12,12 +12,20 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
     [Tooltip("No tocar.")]
     private string state;
 
-    void Start()
+    void Awake()
     {
         behaviour = GetComponent<IAIBehaviour>();
-        ChangeState(behaviour.OnStart());
+        
+    }
 
+    void Start()
+    {
         GetComponent<HealthSystem>().OnDeath += Die;
+        if (AlertSystem.Instance.IsAlreadyTriggered) ChangeState(behaviour.OnRespawn());
+        else ChangeState(behaviour.OnStart());
+
+        if (!gameObject.activeSelf) ChangeState(behaviour.OnDie());
+
     }
 
 

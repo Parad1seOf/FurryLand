@@ -3,7 +3,7 @@ using UnityEngine;
 public class AIPathingComponent : MonoBehaviour
 {
     [SerializeField] AIPath path;
-    [SerializeField] float reachDistance;
+    [SerializeField] float reachDistance = 1f;
     private int index;
 
     public Vector3 GetClosestPoint()
