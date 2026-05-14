@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Bits: 1
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 2, y: 2, z: 0.5}
+  m_Size: {x: 2.5, y: 2.5, z: 0.5}
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
@@ -73,4 +73,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9872ba1984e8c244bcc35ae8709e364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecalDestroyer
-  lifeTime: 5
+  lifeTime: 8
+  maxLifeTime: 30

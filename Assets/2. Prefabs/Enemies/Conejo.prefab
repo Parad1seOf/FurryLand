@@ -1,5 +1,73 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &432782383219565768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8308774064744736797}
+  - component: {fileID: 8284091804284601384}
+  - component: {fileID: 7483927801855691273}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8308774064744736797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432782383219565768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.828, z: 0}
+  m_LocalScale: {x: 0.44139, y: 0.44139, z: 0.44139}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4438028335883130996}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8284091804284601384
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432782383219565768}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7483927801855691273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432782383219565768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57812960ff883f74190ad2fb75d2e4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPart
+  partType: 1
+  damageMultiplier: 4
 --- !u!1 &629988972195713915
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +425,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 8308774064744736797}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 7262862271016142290}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       insertIndex: -1
@@ -406,7 +477,10 @@ PrefabInstance:
       addedObject: {fileID: 5016585785609343930}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7961445093402171464}
+      addedObject: {fileID: 6696323086778652888}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3928644071774524818}
   m_SourcePrefab: {fileID: 100100000, guid: f84d5883fa8fe744caf1806338703a70, type: 3}
 --- !u!1 &3953276385587282638 stripped
 GameObject:
@@ -639,7 +713,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BodyPart
   partType: 0
   damageMultiplier: 1
---- !u!114 &7961445093402171464
+--- !u!114 &6696323086778652888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953276385587282638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceb18da3bf031e41822011bb40a95ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIPathingComponent
+  path: {fileID: 0}
+  reachDistance: 2
+--- !u!114 &3928644071774524818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

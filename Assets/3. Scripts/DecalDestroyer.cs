@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class DecalDestroyer : MonoBehaviour
 {
-    public float lifeTime = 5.0f;
+    public float lifeTime = 1.0f;     
+    public float maxLifeTime = 10.0f;  
 
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(lifeTime);
+        float randomTime = Random.Range(lifeTime, maxLifeTime);
+        yield return new WaitForSeconds(randomTime);
         Destroy(gameObject);
     }
 }

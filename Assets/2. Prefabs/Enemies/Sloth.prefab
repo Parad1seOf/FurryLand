@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 5367407883784332306}
   - component: {fileID: 475725009171124584}
   - component: {fileID: 2735840296143931868}
+  - component: {fileID: 4944752368024775681}
   m_Layer: 0
   m_Name: Sloth
   m_TagString: Untagged
@@ -338,7 +339,7 @@ MonoBehaviour:
   isAttacking: 0
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
-  distance: 50
+  distance: 500
   followSpeed: 5
   timeToShoot: 2
   timer: 0
@@ -357,6 +358,9 @@ MonoBehaviour:
   muzzlePoint: {fileID: 0}
   damage: 50
   range: 100
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   timeBetweenShots: 0.1
   allowHoldToFire: 1
   spread: 0
@@ -545,6 +549,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1
@@ -553,6 +565,20 @@ MonoBehaviour:
     m_Bits: 4294967295
   damageRadius: 0
   damageAmount: 0
+--- !u!114 &4944752368024775681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999828997862323489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a57b5d51a0e2e741bfb134cd74c39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropComponent
+  drop: {fileID: 0}
+  probability: 0
 --- !u!1 &4238478995638358348
 GameObject:
   m_ObjectHideFlags: 0

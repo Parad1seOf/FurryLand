@@ -25,7 +25,7 @@ public class InventorySystem : MonoBehaviour
         return true;
     }
 
-    public bool HasItem(ItemType type, int amount = 1)
+    public bool HasItem(ItemType type, int amount = 0)
     {
         return items.TryGetValue(type, out int current) && current >= amount;
     }
