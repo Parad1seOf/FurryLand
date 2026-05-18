@@ -77,7 +77,7 @@ public class PlayerWeapon : MonoBehaviour
         audioManager?.Shooting();
         if (characterController != null)
         {
-            if (true)
+            if (!characterController.isGrounded)
             {
                 impactVelocity += -direction.normalized * recoilForce;
             }
