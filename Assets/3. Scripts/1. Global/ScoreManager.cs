@@ -22,6 +22,9 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager instance { get; private set; }
 
+    private int totalShots = 0;
+    private int hitShots = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,5 +55,22 @@ public class ScoreManager : MonoBehaviour
     public bool HasFurryConstitution()
     {
         return hasFurryConstitution;
+    }
+
+    public void RegisterShot()
+    {
+        totalShots++;
+    }
+
+    public void RegisterHit()
+    {
+        hitShots++;
+    }
+
+    public int GetAccuracy()
+    {
+        if (totalShots == 0) return 0;
+
+        return Mathf.RoundToInt(((float) hitShots / totalShots) * 100f);
     }
 }

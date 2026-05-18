@@ -74,6 +74,8 @@ public class PlayerWeapon : MonoBehaviour
         Vector3 direction = fpsCam.transform.forward;
 
         if (!gun.TryShoot(fpsCam.transform.position, direction)) return;
+        if (ScoreManager.instance != null) ScoreManager.instance.RegisterShot();
+
         audioManager?.Shooting();
         if (characterController != null)
         {

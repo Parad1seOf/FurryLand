@@ -1,10 +1,12 @@
 using UnityEngine;
 using System;
+using UnityEngine.Rendering;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     public float maxHealth = 100f;
+    public float totalDamage = 0;
 
     public float Health          { get; private set; }
     public bool  IsAlive         => Health > 0f;
@@ -20,11 +22,18 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         if (!IsAlive) return;
 
+        totalDamage += amount;
+
         Health = Mathf.Max(Health - amount, 0f);
         OnDamaged?.Invoke();
         OnHealthChanged?.Invoke(Health);
 
         if (!IsAlive) Die();
+
+        if (!CompareTag("Player") && ScoreManager.instance != null)
+        {
+            ScoreManager.instance.RegisterHit();
+        }
     }
 
     public void Restore(float amount)

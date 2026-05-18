@@ -12,6 +12,8 @@ public class GameResultUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI numberOfKills;
     [SerializeField] TextMeshProUGUI totalTime;
     [SerializeField] TextMeshProUGUI detectiveLevel;
+    [SerializeField] TextMeshProUGUI shootingAccuracy;
+    [SerializeField] TextMeshProUGUI totalReceivedDamage;
 
     [Header("Result sprites")]
     [SerializeField] Sprite victorySprite;
@@ -29,12 +31,27 @@ public class GameResultUI : MonoBehaviour
         int kills = ScoreManager.instance.GetKillCount();
         int minutes = Timer.instance.GetMinutes();
         int seconds = Timer.instance.GetSeconds();
+        int accuracy = ScoreManager.instance.GetAccuracy();
+
+        float damage = 0f;
+        GameObject player = GameObject.FindWithTag("Player");
+
+        if (player != null)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                damage = playerHealth.totalDamage;
+            }
+        }
 
         numberOfKills.text = "Kills: " + kills;
-        totalTime.text = string.Format("Time: {0:00}:{1:00}", minutes, seconds);
+        totalTime.text = string.Format("Tiempo: {0:00}:{1:00}", minutes, seconds);
+        shootingAccuracy.text = "Precisión: " + accuracy + "%";
+        totalReceivedDamage.text = "Daño recibido: " + Mathf.RoundToInt(damage) + " HP";
 
         //Falta calcular el nivel de detective
-        detectiveLevel.text = "Detective level: x%";
+        detectiveLevel.text = "Nivel detective: x%";
 
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
