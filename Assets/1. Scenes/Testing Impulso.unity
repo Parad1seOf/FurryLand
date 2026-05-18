@@ -24059,7 +24059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1042561033232252519, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2595331832569343455, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: gunSystem
@@ -53726,6 +53726,18 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 847008994}
+    - target: {fileID: 2991190238141108468, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: spread
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991190238141108468, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: maxPellets
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991190238141108468, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: minPellets
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2991190238141108468, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: recoilForce
       value: 25

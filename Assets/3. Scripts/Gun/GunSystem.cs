@@ -1,5 +1,5 @@
-// Sistema de disparo por raycast. Lee el estado de PlayerController para calcular la dispersiÃ³n,
-// despacha daÃ±o a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
+// Sistema de disparo por raycast. Lee el estado de PlayerController para calcular la dispersión,
+// despacha daño a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,10 +11,10 @@ public class GunSystem : MonoBehaviour
 
     [Header("References")]
     public Transform        muzzlePoint;
-[Header("Damage")]
-public int   damage = 25;
-public float range  = 100f;
-public LayerMask hitMask = ~0;   // <— nuevo
+    [Header("Damage")]
+    public int   damage = 25;
+    public float range  = 100f;
+    public LayerMask hitMask = ~0;   // <— nuevo
 
     [Header("Fire Rate")]
     public float timeBetweenShots = 0.1f;
@@ -23,6 +23,12 @@ public LayerMask hitMask = ~0;   // <— nuevo
     [Header("Spread")]
     public float spread = 0.00f;
     private float currentSpread;
+
+    [Header("Shotgun Pellets")]
+    [Tooltip("Mínimo de perdigones por disparo (inclusive).")]
+    public int minPellets = 6;
+    [Tooltip("Máximo de perdigones por disparo (inclusive).")]
+    public int maxPellets = 10;
 
     [Header("Magazine")]
     public int   magazineCapacity = 30;
@@ -90,36 +96,41 @@ public LayerMask hitMask = ~0;   // <— nuevo
     private void Shoot(Vector3 origin, Vector3 direction)
     {
         readyToShoot = false;
-        bulletsLeft--;
-
+        bulletsLeft--;   // sólo 1 bala consumida por disparo, aunque salgan N perdigones
 
         PlayShootAnimation();
         SpawnMuzzleFlash();
 
-        float   x         = UnityEngine.Random.Range(-spread, spread);
-        float   y         = UnityEngine.Random.Range(-spread, spread);
+        // Número de perdigones aleatorio dentro del margen
+        int pellets = UnityEngine.Random.Range(minPellets, maxPellets + 1);
 
         Quaternion rotation = Quaternion.LookRotation(direction);
-        Vector3 spreadDirection = rotation * new Vector3(x, y, 1f);
-        spreadDirection.Normalize();
 
-        ResetSpread();
+        for (int i = 0; i < pellets; i++)
+        {
+            // Dispersión cuadrada: X e Y independientes => coincide con el hitmarker cuadrado
+            float x = UnityEngine.Random.Range(-spread, spread);
+            float y = UnityEngine.Random.Range(-spread, spread);
 
-        try
-        {
-if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
-                hitMask, QueryTriggerInteraction.Ignore))
-{
-    Debug.Log($"HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
-    ProcessHit(hit);
-    
-}
-}
-        catch (Exception e)
-        {
-            Debug.LogException(e);
+            Vector3 spreadDirection = rotation * new Vector3(x, y, 1f);
+            spreadDirection.Normalize();
+
+            try
+            {
+                if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
+                                    hitMask, QueryTriggerInteraction.Ignore))
+                {
+                    Debug.Log($"PELLET HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
+                    ProcessHit(hit);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
         }
-        
+
+        ResetSpread();   // se llama una sola vez, al final
 
         if (resetShotCoroutine != null) StopCoroutine(resetShotCoroutine);
         resetShotCoroutine = StartCoroutine(ResetShotRoutine());
