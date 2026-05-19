@@ -24,6 +24,7 @@ public class InputReader : MonoBehaviour
     public bool    InteractPressed { get; private set; }
     public bool    InteractHeld    { get; private set; }
     public bool    WeaponPressed   { get; private set; }
+    public bool    WeaponHeld      { get; private set; }
 
     public event Action OnJump;
     public event Action OnReload;
@@ -49,6 +50,7 @@ public class InputReader : MonoBehaviour
         InteractPressed = Input.GetKeyDown(keyInteract);
         InteractHeld    = Input.GetKey(keyInteract);
         WeaponPressed   = Input.GetKeyDown(keyWeapon);
+        WeaponHeld      = Input.GetKey(keyWeapon);
 
         if (JumpPressed)     OnJump?.Invoke();
         if (ReloadPressed)   OnReload?.Invoke();

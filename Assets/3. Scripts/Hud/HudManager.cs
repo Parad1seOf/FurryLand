@@ -34,6 +34,10 @@ public class HUDManager : MonoBehaviour
     [Tooltip("Image tipo Filled · Fill Method: Radial 360 · Fill Origin: Top")]
     public Image holdProgressRing;          // asignar en Inspector
 
+    [Header("Weapon Hold Progress")]
+    [Tooltip("Image tipo Filled · Fill Method: Radial 360 · Fill Origin: Top — radial específico para sacar el arma")]
+    public Image weaponHoldProgressRing;    // asignar en Inspector
+
     [Header("Message")]
     public TextMeshProUGUI messageText;
 
@@ -78,10 +82,16 @@ public class HUDManager : MonoBehaviour
                 staminaGroup.alpha = 0f;
         }
 
-        if (interactLabel    != null) interactLabel.enabled    = false;
-        if (messageText      != null) messageText.enabled      = false;
-        if (holdProgressRing != null) holdProgressRing.enabled = false;
-        if (explosivesProgressionSliderGameObject != null) explosivesProgressionSliderGameObject.SetActive(false);
+        if (interactLabel          != null) interactLabel.enabled          = false;
+        if (messageText            != null) messageText.enabled            = false;
+        if (holdProgressRing       != null) holdProgressRing.enabled       = false;
+        if (weaponHoldProgressRing != null)
+        {
+            weaponHoldProgressRing.enabled    = false;
+            weaponHoldProgressRing.fillAmount = 0f;
+        }
+        if (explosivesProgressionSliderGameObject != null)
+            explosivesProgressionSliderGameObject.SetActive(false);
     }
 
     private void Start()
@@ -214,8 +224,17 @@ public class HUDManager : MonoBehaviour
     public void SetHoldProgress(float progress, bool visible)
     {
         if (holdProgressRing == null) return;
-        holdProgressRing.enabled   = visible;
+        holdProgressRing.enabled    = visible;
         holdProgressRing.fillAmount = progress;
+    }
+
+    // Radial específico para "sacar el arma" — separado del de interacción
+    // para evitar que InteractionSystem lo pise cuando no hay target.
+    public void SetWeaponHoldProgress(float progress, bool visible)
+    {
+        if (weaponHoldProgressRing == null) return;
+        weaponHoldProgressRing.enabled    = visible;
+        weaponHoldProgressRing.fillAmount = progress;
     }
 
     #endregion
