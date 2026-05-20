@@ -4,7 +4,7 @@ public class ElephantBehaviour : MonoBehaviour, IAIBehaviour
 {
     [SerializeField] private AIContext context;
 
-    public void Start()
+    public void Awake()
     {
         if (context == null)
             context = GetComponent<AIContext>();
@@ -42,7 +42,7 @@ public class ElephantBehaviour : MonoBehaviour, IAIBehaviour
 
     public IEnemyState OnStart()
     {
-        return new EnemyPathingState(context);
+        return new EnemyDeadState(context);
     }
 
     public IEnemyState OnSuspicion()

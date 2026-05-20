@@ -7,7 +7,7 @@ public class AIMovementComponent : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3;
 
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float rotationSpeed = 3;
 
     public void Awake()
     {
@@ -51,5 +51,21 @@ public class AIMovementComponent : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
+    }
+
+    public void LookAtDirection(Vector3 direction)
+    {
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude <= 0.001f)
+            return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 }

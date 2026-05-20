@@ -78,13 +78,13 @@ public class Spawner : InteractableAction
         alarmed = true;
     }
 
-    public HealthSystem SpawnElephant()
+    public GameObject SpawnElephant()
     {
-        if (!alarmed) return null;
+        //if (!alarmed) return null;
         if (isBlocked) return null;
 
         elephant.SetActive(true);
         elephant.GetComponent<EnemyStateMachine>().Respawn(spawnpoint.position);
-        return elephant.GetComponent<HealthSystem>();
+        return elephant;
     }
 }

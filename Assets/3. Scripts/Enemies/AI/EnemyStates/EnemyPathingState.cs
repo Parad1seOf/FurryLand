@@ -17,6 +17,7 @@ public class EnemyPathingState : IEnemyState
         behaviour = context.behaviour;
         movement = context.movement;
         changeState = context.changeState;
+        
     }
 
     public void Enter()

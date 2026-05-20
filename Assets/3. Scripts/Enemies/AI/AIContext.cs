@@ -12,6 +12,7 @@ public class AIContext : MonoBehaviour
     public IAIBehaviour behaviour;
     public AIPathingComponent pathing;
     public WaterGun waterGun;
+    public IdleMovements idle;
 
 
     void Awake()
@@ -34,6 +35,8 @@ public class AIContext : MonoBehaviour
             pathing = GetComponent<AIPathingComponent>();
         if (waterGun == null)
             waterGun = GetComponent<WaterGun>();
+        if (idle == null)
+            idle = GetComponent<IdleMovements>();
 
     }
 }

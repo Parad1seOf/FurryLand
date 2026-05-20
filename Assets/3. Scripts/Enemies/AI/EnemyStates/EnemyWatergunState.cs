@@ -11,12 +11,12 @@ public class EnemyWatergunState : IEnemyState
 
     public void Enter()
     {
-        
+        waterGun.StartWaterGun();
     }
 
     public void Exit()
     {
-        
+        waterGun.StopWaterGun();
     }
 
     public void Update()

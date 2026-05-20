@@ -7,8 +7,10 @@ using UnityEngine;
 public class ElephantManager : MonoBehaviour
 {
     [SerializeField] private List<Spawner> spawners;
-    public bool startSpawningElephants;
-    private HealthSystem currentElephant;
+    public bool wantsToSpawnElephant;
+    [SerializeField] private float timeToSpawnMin = 1f, timeToSpawnMax = 7f;
+    public float timer;
+    private GameObject currentElephant;
 
     public static ElephantManager instance { get; private set; }
 
@@ -18,24 +20,49 @@ public class ElephantManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+        ResetTimer();
     }
 
     public void Update()
     {
-        if (!startSpawningElephants) return;
-        if (currentElephant != null) return;
+        if (!wantsToSpawnElephant) return;
 
-        Spawner spawner = spawners.ElementAt(Random.Range(0, spawners.Count));
-        currentElephant = spawner.SpawnElephant();
-        if (currentElephant == null) return;
-        currentElephant.OnDeath += ElephantDies;
+        if (Timer())
+            SpawnElephant();
     }
+
+    private void SpawnElephant()
+    {
+        if (currentElephant == null)
+        {
+            Spawner spawner = spawners.ElementAt(Random.Range(0, spawners.Count));
+            currentElephant = spawner.SpawnElephant();
+            return;
+        }
+
+        currentElephant.GetComponent<HealthSystem>().OnDeath += ElephantDies;
+        wantsToSpawnElephant = false;
+        ResetTimer();
+    }
+
 
     public void ElephantDies()
     {
-        currentElephant.OnDeath -= ElephantDies;
+        Debug.Log("elefante sa muerto");
+        currentElephant.GetComponent<HealthSystem>().OnDeath -= ElephantDies;
         currentElephant = null;
+        wantsToSpawnElephant = true;
+        timer = Random.Range(timeToSpawnMin, timeToSpawnMax);
     }
 
-    
+    private bool Timer()
+    {
+        timer -= Time.deltaTime;
+        return (timer < 0);
+    }
+
+    private void ResetTimer()
+    {
+        timer = Random.Range(timeToSpawnMin, timeToSpawnMax);
+    }
 }

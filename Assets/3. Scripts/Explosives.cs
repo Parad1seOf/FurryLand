@@ -39,7 +39,7 @@ public class Explosives : InteractableAction
     {
         currentExplosions++;
 
-        ElephantManager.instance.startSpawningElephants = true;
+        ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
 
         if (currentExplosions == 1)

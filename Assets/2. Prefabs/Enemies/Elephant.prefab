@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 400
+  totalDamage: 0
 --- !u!114 &2229373352807754951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0570a29f7183404485b53362c62e928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElephantBehaviour
-  context: {fileID: 0}
+  context: {fileID: 4550081739599994186}
 --- !u!114 &4550081739599994186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,8 +272,8 @@ MonoBehaviour:
   attack: {fileID: 0}
   display: {fileID: 0}
   awareness: {fileID: 0}
-  pathing: {fileID: 0}
-  waterGun: {fileID: 0}
+  pathing: {fileID: 2522859799425631673}
+  waterGun: {fileID: 1011826335600939795}
 --- !u!114 &517745880945137364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaterGun
   damagePerSecond: 2
   target: {fileID: 0}
+  particles: {fileID: 0}
 --- !u!114 &1361910781987924292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +332,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  attachedHead: {fileID: 0}
+  headBone: {fileID: 0}
+  detachedHeadPrefab: {fileID: 0}
+  headLaunchForce: 6
+  headExtraTorque: 8
+  detachedHeadLifetime: 8
+  ragdoll: {fileID: 0}
+  bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
   upwardsModifier: 1

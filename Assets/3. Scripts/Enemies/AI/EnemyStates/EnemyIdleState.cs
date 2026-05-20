@@ -15,9 +15,17 @@ public class EnemyIdleState : IEnemyState
         behaviour = context.behaviour;
     }
 
-    public void Enter() {}
+    public void Enter()
+    {
+        if (context.idle != null)
+            context.idle.active = true;
+    }
 
-    public void Exit() {}
+    public void Exit()
+    {
+        if (context.idle != null)
+            context.idle.active = false;
+    }
 
     public void Update()
     {
