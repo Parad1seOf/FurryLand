@@ -25,8 +25,6 @@ public class MainMenu : MonoBehaviour
         if(optionsPanel != null) optionsPanel.SetActive(false);
         if(extrasPanel != null) extrasPanel.SetActive(false);
 
-        LoadConfig();
-
         if(endingCinematicButton != null)
         {
             bool gameCompleted = PlayerPrefs.GetInt("GameCompleted", 0) == 1;
@@ -39,8 +37,8 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         // Time.timeScale = 1f;
-        if (GameManager.Instance != null)
-            GameManager.Instance.FadeToScene("Testing Impulso");
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.ChangeSceneFade(1);
 
         else
             SceneManager.LoadScene(1);
@@ -59,39 +57,6 @@ public class MainMenu : MonoBehaviour
     public void ShowExtras(bool show) => extrasPanel.SetActive(show);
     public void ShowCredits(bool show) => creditsPanel.SetActive(show);
 
-    #endregion
-
-    #region Options Logic
-    public void ChangeVolume(float value)
-    {
-        AudioListener.volume = value;
-        PlayerPrefs.SetFloat("GeneralVolume", value);
-    }
-
-    public void ChangeFOV(float value)
-    {
-        PlayerPrefs.SetFloat("FOVConfig", value);
-    }
-
-    public void ChangeFog(bool activate)
-    {
-        RenderSettings.fog = activate;
-        PlayerPrefs.SetInt("FogConfig", activate ? 1 : 0);
-    }
-
-    private void LoadConfig()
-    {
-        float vol = PlayerPrefs.GetFloat("GeneralVolume", 1f);
-        if(volumeSlider != null) volumeSlider.value = vol;
-        AudioListener.volume = vol;
-
-        float fov = PlayerPrefs.GetFloat("FOVConfig", 60f);
-        if(FOVSlider != null) FOVSlider.value = fov;
-
-        bool fogActive = PlayerPrefs.GetInt("FogConfig", 1) == 1;
-        if(fogToggle != null) fogToggle.isOn = fogActive;
-        RenderSettings.fog = fogActive;
-    }
     #endregion
 
     #region Cinematics

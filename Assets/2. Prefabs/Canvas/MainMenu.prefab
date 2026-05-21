@@ -6235,6 +6235,7 @@ GameObject:
   - component: {fileID: 3813327759660038662}
   - component: {fileID: 4106376117596342620}
   - component: {fileID: 7112153435869289348}
+  - component: {fileID: 4818299424719595744}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -6351,6 +6352,22 @@ MonoBehaviour:
   volumeSlider: {fileID: 8587219331930002417}
   FOVSlider: {fileID: 250939264449004840}
   fogToggle: {fileID: 5654552272052138305}
+--- !u!114 &4818299424719595744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301740686473450835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c2bffd4f0dd7140928016da9578af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  volumeSlider: {fileID: 8587219331930002417}
+  FOVSlider: {fileID: 250939264449004840}
+  fogToggle: {fileID: 5654552272052138305}
+  mainCamera: {fileID: 0}
 --- !u!1 &6335312728864611382
 GameObject:
   m_ObjectHideFlags: 0

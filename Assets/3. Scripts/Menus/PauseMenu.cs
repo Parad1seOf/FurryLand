@@ -10,6 +10,13 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject controlsPanel;
     public bool isPaused { get { return gamePaused; }}
 
+    private void Start()
+    {
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
+        if (optionsPanel != null) optionsPanel.SetActive(false);
+        if (controlsPanel != null) controlsPanel.SetActive(false);
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
