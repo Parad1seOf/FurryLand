@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] bool gamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject controlsPanel;
     public bool isPaused { get { return gamePaused; }}
 
     void Update()
@@ -30,7 +32,11 @@ public class PauseMenu : MonoBehaviour
     public void Continue()
     {
         gamePaused = false;
+        
         pauseMenuUI.SetActive(false);
+        if(optionsPanel != null) optionsPanel.SetActive(false);
+        if(controlsPanel != null) controlsPanel.SetActive(false);
+
         Time.timeScale = 1f;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,24 +49,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-   /* private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        gamePaused = false;
-
-        if(pauseMenuUI != null) pauseMenuUI.SetActive(false);
-
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }*/
+    public void ShowOptions(bool show) => optionsPanel.SetActive(show);
+    public void ShowControls(bool show) => controlsPanel.SetActive(show);
 }
