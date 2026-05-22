@@ -6,13 +6,27 @@ public class HedgehogAttack : EnemyAttack
     [SerializeField] private float distance = 2f;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private Transform origin;
+
+    [SerializeField] private Animator animator;
+
     private float cooldownTimer;
+
+    private void Awake()
+    {
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+    }
 
     public override void Attack(Vector3 targetDirection)
     {
         if (cooldownTimer > 0)
         {
             return;
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
         }
 
         RaycastHit hit;

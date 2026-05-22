@@ -9,15 +9,28 @@ public class AIMovementComponent : MonoBehaviour
 
     [SerializeField] private float rotationSpeed = 3;
 
+    [SerializeField] private Animator animator;
+
     public void Awake()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
     public void Start()
     {
         agent.Warp(transform.position);
         agent.speed = moveSpeed;
+    }
+
+    private void Update()
+    {
+        if (animator == null || agent == null) return;
+
+        float speed01 = agent.velocity.magnitude / moveSpeed;
+        speed01 = Mathf.Clamp01(speed01);
+
+        animator.SetFloat("Speed", speed01);
     }
 
     public void MoveTo(Vector3 destination)
