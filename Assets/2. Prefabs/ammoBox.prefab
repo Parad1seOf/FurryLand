@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4580144500152441670}
   - component: {fileID: 6480406800279053848}
   - component: {fileID: 3669984698565434131}
+  - component: {fileID: 2555799447977624420}
   m_Layer: 0
   m_Name: ammoBox
   m_TagString: Untagged
@@ -126,3 +127,25 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.15
   m_Center: {x: -0.11865447, y: -0.0004739125, z: -0.1188866}
+--- !u!95 &2555799447977624420
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067011286007837141}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13a7e718fbd0c4f4fae389cddef3f523, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

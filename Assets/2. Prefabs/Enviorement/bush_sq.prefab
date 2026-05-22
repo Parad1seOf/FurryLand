@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3964962669799241946}
   - component: {fileID: 3059902306896338158}
   - component: {fileID: 2698353726046273974}
+  - component: {fileID: 2144886679120981319}
   m_Layer: 9
   m_Name: bush_sq
-  m_TagString: Untagged
+  m_TagString: Arbusto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,3 +92,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2144886679120981319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200491795013369067}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02164478, y: 0.021705126, z: 0.021558762}
+  m_Center: {x: 0.000022704262, y: 0.000014462514, z: -0.000095217954}
