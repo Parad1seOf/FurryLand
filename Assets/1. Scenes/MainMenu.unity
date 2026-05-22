@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &947857905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,8 +746,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 722720588495772876, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 722720588495772876, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288692770832631711, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: Programadores
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288692770832631711, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_margin.x
+      value: -223.407
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308021240211617392, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: Artistas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404412202670704992, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.723097
+      objectReference: {fileID: 0}
     - target: {fileID: 1658375051244550150, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177608901399160052, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: "Joel Pacheco\nGerard De la Torre \nArnau Segu\xED"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177608901399160052, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_margin.x
+      value: -282.96408
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186240497234088740, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198493336112423992, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198493336112423992, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2224954188102819517, guid: b76835941384caa4695a45701a81111b, type: 3}
@@ -842,9 +886,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 9.471802
       objectReference: {fileID: 0}
+    - target: {fileID: 4940828865840601938, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_Name
+      value: Programing
+      objectReference: {fileID: 0}
     - target: {fileID: 4942136629446499099, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957705401297810720, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.472715
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544354330146143622, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 799
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544354330146143622, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -142
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604776860457712008, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604776860457712008, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604776860457712008, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -124
       objectReference: {fileID: 0}
     - target: {fileID: 5647637092514145618, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_LocalScale.x
@@ -861,6 +933,12 @@ PrefabInstance:
     - target: {fileID: 5647637092514145618, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666411761806890717, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: 'Eric Fenollar
+
+        Enric Genovart'
       objectReference: {fileID: 0}
     - target: {fileID: 6249981034028736332, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_fontColor.b
@@ -881,6 +959,10 @@ PrefabInstance:
     - target: {fileID: 6301740686473450835, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526209394741984112, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_Name
+      value: ArtistasCredits
       objectReference: {fileID: 0}
     - target: {fileID: 6636406674741908081, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -906,6 +988,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4279374466
       objectReference: {fileID: 0}
+    - target: {fileID: 7264858075563682249, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_Name
+      value: ArtistasTitle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7879289049703101586, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -913,6 +999,36 @@ PrefabInstance:
     - target: {fileID: 7879289049703101586, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284379909222975232, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_Name
+      value: ArtistasTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457104011322661128, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: 'Adrian Valero
+
+        Noelia Bocardo'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457104011322661128, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_margin.x
+      value: -194.83617
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457104011322661128, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_margin.z
+      value: 73.28342
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887502629521138244, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: Artistas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982228715292304690, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_text
+      value: Programadores
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982228715292304690, guid: b76835941384caa4695a45701a81111b, type: 3}
+      propertyPath: m_margin.x
+      value: -223.27911
       objectReference: {fileID: 0}
     - target: {fileID: 9046856350813676923, guid: b76835941384caa4695a45701a81111b, type: 3}
       propertyPath: m_AnchorMax.x
