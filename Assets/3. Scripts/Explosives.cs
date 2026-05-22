@@ -41,6 +41,7 @@ public class Explosives : InteractableAction
 
         ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
+        EnemyPool.instance.Explosion();
 
         if (currentExplosions == 1)
         {

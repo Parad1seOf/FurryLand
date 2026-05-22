@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    private LinkedList<GameObject> pool;
+    private LinkedList<GameObject> deadRabbits;
+    [SerializeField] private List<int> maxLivingRabbits = new() { 30, 40, 50 };
+    private int stage = 0;
+    private LinkedList<GameObject> currentLivingRabbits;
     [SerializeField] private GameObject rabbit;
 
     public static EnemyPool instance { get; private set; }
@@ -19,22 +22,26 @@ public class EnemyPool : MonoBehaviour
 
     public void Start()
     {
-        pool = new LinkedList<GameObject>();
+        currentLivingRabbits = new LinkedList<GameObject>();
+        deadRabbits = new LinkedList<GameObject>();
     }
 
-    public void AddEnemy(GameObject enemy)
+    public void AddDeadRabbit(GameObject enemy)
     {
-        pool.AddLast(enemy);
+        if (currentLivingRabbits.Contains(enemy)) currentLivingRabbits.Remove(enemy);
+        deadRabbits.AddLast(enemy);
     }
 
     public GameObject GetEnemy()
     {
-        if (pool.Count == 0) 
+        if (currentLivingRabbits.Count > maxLivingRabbits[stage]) return null;
+
+        if (deadRabbits.Count == 0) 
             return NewEnemy();
 
         GameObject enemy;
-        enemy = pool.First.Value;
-        pool.RemoveFirst();
+        enemy = deadRabbits.First.Value;
+        deadRabbits.RemoveFirst();
 
         return enemy;
     }
@@ -42,5 +49,16 @@ public class EnemyPool : MonoBehaviour
     private GameObject NewEnemy()
     {
         return Instantiate(rabbit, transform.position, transform.rotation);
+    }
+
+    public void AddLivingRabbit(GameObject rabbit)
+    {
+        currentLivingRabbits.AddLast(rabbit);
+    }
+
+    public void Explosion()
+    {
+        if (currentLivingRabbits.Count <= stage) return;
+        stage++;
     }
 }

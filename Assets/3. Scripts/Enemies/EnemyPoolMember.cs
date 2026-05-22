@@ -6,10 +6,11 @@ public class EnemyPoolMember : MonoBehaviour
     public void Start()
     {
         GetComponent<HealthSystem>().OnDeath += Die;
+        EnemyPool.instance.AddLivingRabbit(gameObject);
     }
 
     public void Die()
     {
-        EnemyPool.instance.AddEnemy(gameObject);
+        EnemyPool.instance.AddDeadRabbit(gameObject);
     }
 }

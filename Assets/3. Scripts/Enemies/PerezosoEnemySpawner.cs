@@ -20,9 +20,14 @@ public class PerezosoEnemySpawner : MonoBehaviour
     [Tooltip("Tiempo máximo (segundos) que espera el spawner tras la muerte del anterior antes de volver a spawnear.")]
     [SerializeField] private float maxRespawnDelay = 7f;
 
+    [SerializeField] private float minSecondDelay = 1f;
+    [SerializeField] private float maxSecondDelay = 2f;
+
     private Transform player;
-    public bool isDead = false;
-    public float respawnTimer = 0f;
+    private bool isDead = false;
+    private float respawnTimer = 0f;
+    private float secondTimer = 0f;
+
 
     private void Start()
     {
@@ -45,7 +50,17 @@ public class PerezosoEnemySpawner : MonoBehaviour
             respawnTimer -= Time.deltaTime;
             return;
         }
-        if (IsPlayerInsideRadius()) return;
+        if (IsPlayerInsideRadius())
+        {
+            secondTimer = Random.Range(minSecondDelay, maxSecondDelay);
+            return;
+        }
+
+        if (secondTimer > 0f)
+        {
+            secondTimer -= Time.deltaTime;
+            return;
+        }
 
         SpawnEnemy();
     }
