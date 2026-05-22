@@ -24,7 +24,7 @@ public class GameResultUI : MonoBehaviour
     public void ShowResults(bool isVictory)
     {
         mainPanel.SetActive(true);
-        resultText.text = isVictory ? "SUCCESS":"GAME OVER";
+        resultText.text = isVictory ? "VICTORIA":"DERROTA";
         resultImage.sprite = isVictory ? victorySprite : defeatSprite;
 
 
