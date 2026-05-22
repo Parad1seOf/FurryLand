@@ -481,14 +481,14 @@ RectTransform:
   m_GameObject: {fileID: 426239834873865946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8395061, y: 9.403826, z: 4.199998}
+  m_LocalScale: {x: 2.1568727, y: 7.1430926, z: 3.1902945}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 215581004950139933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.288208, y: -22.389648}
+  m_AnchoredPosition: {x: 88, y: -22.389648}
   m_SizeDelta: {x: 61, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &307816636719006269
@@ -519,10 +519,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Detective level: -%'
+  m_text: 'Nivel Detective: -%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
-  m_sharedMaterial: {fileID: 3743619356640912904, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
+  m_sharedMaterial: {fileID: 8610938632409797074, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -546,13 +546,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -52.29972, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -885,7 +885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.288208, y: -22.389648}
+  m_AnchoredPosition: {x: 39, y: -22.389648}
   m_SizeDelta: {x: 61, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6969431088914212840
@@ -918,8 +918,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Precisi\xF3n: -%"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
-  m_sharedMaterial: {fileID: 3743619356640912904, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
+  m_sharedMaterial: {fileID: 8610938632409797074, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,13 +943,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3050,7 +3050,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3507165355072441271}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: UpdateVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2718926157945943906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,14 +3755,14 @@ RectTransform:
   m_GameObject: {fileID: 3204502430946186939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.00024504738}
-  m_LocalScale: {x: 2.5841496, y: 8.558141, z: 3.8222926}
+  m_LocalScale: {x: 1.954136, y: 6.471673, z: 2.890421}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8626292576767230883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 35, y: -23}
+  m_AnchoredPosition: {x: -14, y: -23}
   m_SizeDelta: {x: 61, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3638003709399631971
@@ -3781,10 +3793,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Da\xF1o recibido: "
+  m_text: "Da\xF1o recibido:  100HP"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
-  m_sharedMaterial: {fileID: 3743619356640912904, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
+  m_sharedMaterial: {fileID: 8610938632409797074, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3814,7 +3826,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3847,7 +3859,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -13.709198, w: 0}
+  m_margin: {x: 0, y: 0, z: -67.20593, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4699,7 +4711,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3507165355072441271}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: UpdateFOV
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3968346759875767832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,14 +5178,14 @@ RectTransform:
   m_GameObject: {fileID: 4174279262212210121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8395061, y: 9.403826, z: 4.199998}
+  m_LocalScale: {x: 2.4379148, y: 8.073842, z: 3.605992}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8900477289269714477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.288208, y: -22.389648}
+  m_AnchoredPosition: {x: -112, y: -22.389648}
   m_SizeDelta: {x: 61, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4167484741662215628
@@ -5192,10 +5216,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time:  '
+  m_text: 'Tiempo:  00:00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
-  m_sharedMaterial: {fileID: 3743619356640912904, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
+  m_sharedMaterial: {fileID: 8610938632409797074, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5219,13 +5243,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5258,7 +5282,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 55.20531, y: 0, z: -74.095825, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7940,7 +7964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.288208, y: -22.389648}
+  m_AnchoredPosition: {x: -52, y: -22.389648}
   m_SizeDelta: {x: 61, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7355460917170093185
@@ -7973,8 +7997,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Kills: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
-  m_sharedMaterial: {fileID: 3743619356640912904, guid: 933e177c91cc6bd409e3de48396666d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
+  m_sharedMaterial: {fileID: 8610938632409797074, guid: 6f43bb913c7b0c44faea81454d216bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8004,7 +8028,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8037,7 +8061,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 71.18579, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9390,7 +9414,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3507165355072441271}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: UpdateFog
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &8887494356259290368
 GameObject:
