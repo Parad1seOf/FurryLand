@@ -39,6 +39,7 @@ public class MeleeAttack : MonoBehaviour
     private void Attack()
     {
         if (AudioManager.Instance != null) AudioManager.Instance.MeleeSwipe();
+        if (ScoreManager.instance != null) ScoreManager.instance.RegisterShot();
 
         StopAllCoroutines();
         StartCoroutine(ShowAndHideArm());
@@ -61,7 +62,11 @@ public class MeleeAttack : MonoBehaviour
             }
         }
 
-        if (hasHitEnemy) StartCoroutine(ShowAndHideSlash());
+        if (hasHitEnemy)
+        {
+            StartCoroutine(ShowAndHideSlash());
+            if (ScoreManager.instance != null) ScoreManager.instance.RegisterHit();
+        }
     }
 
     private IEnumerator ShowAndHideArm()
