@@ -6,13 +6,17 @@ public class RagdollController : MonoBehaviour
     [Header("Refs principales (desactivar al hacer ragdoll)")]
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Collider mainCollider;   // el collider "principal" del enemigo, el de detección/movimiento
+    [SerializeField] private Collider mainCollider;
 
     [Header("Huesos del ragdoll")]
     [Tooltip("Si está vacío se auto-rellena con todos los Rigidbody hijos.")]
     [SerializeField] private Rigidbody[] ragdollBodies;
     [Tooltip("Si está vacío se auto-rellena con todos los Collider hijos (excluye mainCollider).")]
     [SerializeField] private Collider[] ragdollColliders;
+
+    [Header("Comportamiento")]
+    [Tooltip("Si true, al activar ragdoll resetea la velocidad de los huesos. Déjalo en false si quieres conservar la inercia del cuerpo (correr, caer, etc.).")]
+    [SerializeField] private bool zeroVelocityOnEnable = false;
 
     private void Awake()
     {
@@ -34,18 +38,14 @@ public class RagdollController : MonoBehaviour
         foreach (Rigidbody rb in ragdollBodies)
         {
             if (rb == null) continue;
-            rb.isKinematic     = !active;
+            rb.isKinematic      = !active;
             rb.detectCollisions = active;
-            if (active) rb.linearVelocity = Vector3.zero;
+            if (active && zeroVelocityOnEnable) rb.linearVelocity = Vector3.zero;
         }
 
         foreach (Collider col in ragdollColliders)
         {
             if (col == null || col == mainCollider) continue;
-            // los colliders del ragdoll están desactivados mientras anima (no chocan entre sí),
-            // pero se activan al morir para que el ragdoll choque con el mundo.
-            // Si quieres mantenerlos siempre activos para que el raycast los detecte vivo,
-            // comenta la siguiente línea.
             col.enabled = active ? true : col.enabled;
         }
     }
@@ -57,5 +57,18 @@ public class RagdollController : MonoBehaviour
             if (rb == null || rb.isKinematic) continue;
             rb.AddExplosionForce(force, origin, radius, upMod);
         }
+    }
+
+    public Rigidbody GetClosestBone(Vector3 worldPos)
+    {
+        Rigidbody best = null;
+        float bestDist = float.MaxValue;
+        foreach (Rigidbody rb in ragdollBodies)
+        {
+            if (rb == null) continue;
+            float d = (rb.worldCenterOfMass - worldPos).sqrMagnitude;
+            if (d < bestDist) { bestDist = d; best = rb; }
+        }
+        return best;
     }
 }
