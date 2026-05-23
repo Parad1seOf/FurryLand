@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 1
+  totalDamage: 0
 --- !u!114 &6181132321637595918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementComponent
   agent: {fileID: 0}
   moveSpeed: 0
-  rotationSpeed: 1
+  rotationSpeed: 5
+  animator: {fileID: 0}
 --- !u!114 &9216503724008643117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,11 +287,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectionComponent
   viewAngle: 45
-  detectionDistance: 5
-  escapeDetectionDistance: 179.3
+  detectionDistance: 8.1
+  escapeDetectionDistance: 67
   suspiciousDistance: 3
-  attackDistance: 140
-  escapeAttackDistance: 35
+  attackDistance: 45
+  escapeAttackDistance: 50
   playerSus: {fileID: 0}
   eyes: {fileID: 8961574393670686684}
   detectingMark: {fileID: 0}
@@ -312,6 +314,7 @@ MonoBehaviour:
   awareness: {fileID: 0}
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
+  idle: {fileID: 0}
 --- !u!114 &3993688958312960704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,10 +343,14 @@ MonoBehaviour:
   isAttacking: 0
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
-  distance: 1000
-  followSpeed: 1
-  timeToShoot: 0.5
-  timer: 0
+  distance: 10
+  followSpeed: 6
+  timeToShoot: 1.5
+  aimingColor: {r: 0, g: 0.7768485, b: 0.9019608, a: 1}
+  warningColor: {r: 0.9169811, g: 0.07742937, b: 0.046714056, a: 1}
+  shootColor1: {r: 1, g: 1, b: 1, a: 1}
+  shootColor2: {r: 1, g: 0.78665775, b: 0, a: 1}
+  timer: 9
 --- !u!114 &5598460371897832367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,14 +364,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
   muzzlePoint: {fileID: 0}
-  damage: 50
-  range: 500
+  damage: 33
+  range: 40
   hitMask:
     serializedVersion: 2
     m_Bits: 191
+  bulletImpactForce: 15
   timeBetweenShots: 0.1
   allowHoldToFire: 1
   spread: 0
+  minPellets: 6
+  maxPellets: 10
   magazineCapacity: 30
   totalMagazines: 3
   reloadTime: 1.8
@@ -402,7 +412,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -436,20 +446,29 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1731093
-        inSlope: 0
-        outSlope: 0
+        value: 0.31928974
+        inSlope: -0.33889952
+        outSlope: -0.33889952
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.15400296
+      - serializedVersion: 3
+        time: 1
+        value: 0.05000019
+        inSlope: -0.54886365
+        outSlope: -0.54886365
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.15155008
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0.050905704, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -477,11 +496,11 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 90
     alignment: 0
-    textureMode: 0
+    textureMode: 4
     textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    shadowBias: 0
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
@@ -551,12 +570,14 @@ MonoBehaviour:
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
   attachedHead: {fileID: 0}
+  attachedHeadExtras: []
   headBone: {fileID: 0}
   detachedHeadPrefab: {fileID: 0}
   headLaunchForce: 6
   headExtraTorque: 8
   detachedHeadLifetime: 8
   ragdoll: {fileID: 0}
+  hitImpulseMultiplier: 1
   bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500

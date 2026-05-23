@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class EnemyDeadState : IEnemyState
 {
-    AIContext context;
+    private AIContext context;
 
     public EnemyDeadState(AIContext context)
     {
         this.context = context;
-
     }
 
     public void Enter()
     {
-        if (ScoreManager.instance != null) ScoreManager.instance.scoreKill();
-        context.gameObject.SetActive(false);
+        if (ScoreManager.instance != null)
+            ScoreManager.instance.scoreKill();
+
+        RagdollController ragdoll = context.gameObject.GetComponent<RagdollController>();
+
+        if (ragdoll == null)
+        {
+            context.gameObject.SetActive(false);
+        }
     }
 
     public void Exit()
@@ -23,6 +29,5 @@ public class EnemyDeadState : IEnemyState
 
     public void Update()
     {
-        
     }
 }

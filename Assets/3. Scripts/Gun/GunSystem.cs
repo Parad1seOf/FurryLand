@@ -16,6 +16,10 @@ public class GunSystem : MonoBehaviour
     public float range  = 100f;
     public LayerMask hitMask = ~0;   // <— nuevo
 
+    [Header("Impact")]
+    [Tooltip("Fuerza con la que el disparo empuja al ragdoll cuando mata a un enemigo. Subir para efecto más cinematográfico.")]
+    public float bulletImpactForce = 15f;
+
     [Header("Fire Rate")]
     public float timeBetweenShots = 0.1f;
     public bool  allowHoldToFire  = true;
@@ -106,6 +110,8 @@ public class GunSystem : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
+        bool hasDamagedPlayerThisShot = false;  //evita golpear más de una vez al player
+
         for (int i = 0; i < pellets; i++)
         {
             // Dispersión cuadrada: X e Y independientes => coincide con el hitmarker cuadrado
@@ -120,8 +126,15 @@ public class GunSystem : MonoBehaviour
                 if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
                                     hitMask, QueryTriggerInteraction.Ignore))
                 {
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        if (hasDamagedPlayerThisShot) continue;
+
+                        hasDamagedPlayerThisShot = true;
+                    }
+
                     Debug.Log($"PELLET HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
-                    ProcessHit(hit);
+                    ProcessHit(hit, spreadDirection);
                 }
             }
             catch (Exception e)
@@ -146,7 +159,7 @@ public class GunSystem : MonoBehaviour
         currentSpread = spread;
     }
 
-    private void ProcessHit(RaycastHit hit)
+    private void ProcessHit(RaycastHit hit, Vector3 shotDirection)
     {
         IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
 
@@ -164,10 +177,14 @@ public class GunSystem : MonoBehaviour
                     audioManager?.BodyHit();*/
             }
 
-            // Notificar al DeathExplosion del enemigo qué zona se ha impactado
+            // Notificar al DeathExplosion del enemigo qué zona se ha impactado,
+            // dónde, en qué dirección y con cuánta fuerza, para que el ragdoll reaccione bien.
             DeathExplosion de = hit.collider.GetComponentInParent<DeathExplosion>();
             if (de != null)
-                de.NotifyHit(bodyPart != null ? bodyPart.partType : BodyPartType.Default);
+            {
+                BodyPartType partType = bodyPart != null ? bodyPart.partType : BodyPartType.Default;
+                de.NotifyHit(partType, hit.point, shotDirection, bulletImpactForce);
+            }
 
             damageable.TakeDamage(finalDamage);
         }

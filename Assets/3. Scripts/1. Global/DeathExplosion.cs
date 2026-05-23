@@ -12,6 +12,8 @@ public class DeathExplosion : MonoBehaviour
     [Header("Cabeza")]
     [Tooltip("GameObject de la cabeza skinneada (la separada en 3ds Max). Se oculta al recibir headshot.")]
     [SerializeField] private GameObject attachedHead;
+    [Tooltip("Objetos extra que deben ocultarse junto con la cabeza (orejas, pelo, gafas, etc.).")]
+    [SerializeField] private GameObject[] attachedHeadExtras;
     [Tooltip("Hueso de la cabeza — referencia para spawnear el VFX y la cabeza física en su posición.")]
     [SerializeField] private Transform headBone;
     [Tooltip("Prefab de la cabeza física: mesh + Rigidbody + Collider.")]
@@ -22,11 +24,13 @@ public class DeathExplosion : MonoBehaviour
 
     [Header("Ragdoll")]
     [SerializeField] private RagdollController ragdoll;
+    [Tooltip("Multiplicador aplicado a la fuerza del disparo cuando se traduce a impulso del ragdoll.")]
+    [SerializeField] private float hitImpulseMultiplier = 1f;
 
     [Header("Bodyshot — desaparición del cuerpo entero")]
     [SerializeField] private float bodyDespawnDelay = 6f;
 
-    [Header("Empuje (opcional)")]
+    [Header("Empuje en área (afecta a otros, no a sí mismo)")]
     [SerializeField] private float explosionRadius = 3f;
     [SerializeField] private float explosionForce = 500f;
     [SerializeField] private float upwardsModifier = 1f;
@@ -39,7 +43,10 @@ public class DeathExplosion : MonoBehaviour
 
     private HealthSystem health;
     private BodyPartType lastHitPart = BodyPartType.Default;
-    private Coroutine despawnRoutine;
+    private Vector3      lastHitPoint;
+    private Vector3      lastHitDirection;
+    private float        lastHitForce;
+    private Coroutine    despawnRoutine;
 
     private void Awake()
     {
@@ -57,10 +64,12 @@ public class DeathExplosion : MonoBehaviour
         if (health != null) health.OnDeath -= OnDeath;
     }
 
-    // Llamado por GunSystem.ProcessHit justo antes de aplicar daño.
-    public void NotifyHit(BodyPartType part)
+    public void NotifyHit(BodyPartType part, Vector3 hitPoint, Vector3 hitDirection, float force)
     {
-        lastHitPart = part;
+        lastHitPart      = part;
+        lastHitPoint     = hitPoint;
+        lastHitDirection = hitDirection.sqrMagnitude > 0.0001f ? hitDirection.normalized : -transform.forward;
+        lastHitForce     = force;
     }
 
     private void OnDeath()
@@ -75,32 +84,32 @@ public class DeathExplosion : MonoBehaviour
         Quaternion spawnRot = transform.rotation;
         if (headBone != null) { spawnPos = headBone.position; spawnRot = headBone.rotation; }
 
-        // 1. Ocultar la cabeza pegada al cuerpo
-        if (attachedHead != null) attachedHead.SetActive(false);
+        SetHeadPiecesActive(false);
 
-        // 2. Spawn cabeza física + impulso
         if (detachedHeadPrefab != null)
         {
             GameObject head = Instantiate(detachedHeadPrefab, spawnPos, spawnRot);
             Rigidbody  rb   = head.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 dir = (-transform.forward + Vector3.up * 1.2f).normalized;
-                rb.AddForce (dir * headLaunchForce,                          ForceMode.Impulse);
-                rb.AddTorque(Random.insideUnitSphere * headExtraTorque,      ForceMode.Impulse);
+                Vector3 baseDir = lastHitDirection.sqrMagnitude > 0.0001f
+                                  ? lastHitDirection
+                                  : -transform.forward;
+                Vector3 dir = (baseDir + Vector3.up * 1.2f).normalized;
+                rb.AddForce (dir * headLaunchForce,                     ForceMode.Impulse);
+                rb.AddTorque(Random.insideUnitSphere * headExtraTorque, ForceMode.Impulse);
             }
             if (detachedHeadLifetime > 0f) Destroy(head, detachedHeadLifetime);
         }
 
-        // 3. VFX (partículas de sangre + decals)
         if (explosionVFX != null)
         {
             GameObject vfx = Instantiate(explosionVFX, spawnPos, Quaternion.identity);
             Destroy(vfx, vfxLifetime);
         }
 
-        // 4. Ragdoll del cuerpo (sin despawn)
         if (ragdoll != null) ragdoll.SetRagdoll(true);
+        ApplyHitImpulseToRagdoll();
 
         ApplyAreaEffects();
     }
@@ -108,38 +117,61 @@ public class DeathExplosion : MonoBehaviour
     private void DeathByBodyshot()
     {
         if (ragdoll != null) ragdoll.SetRagdoll(true);
+        ApplyHitImpulseToRagdoll();
 
         ApplyAreaEffects();
 
-        // Desaparecer el cuerpo entero tras X segundos
         if (despawnRoutine != null) StopCoroutine(despawnRoutine);
         despawnRoutine = StartCoroutine(DespawnRoutine(bodyDespawnDelay));
+    }
+
+    private void ApplyHitImpulseToRagdoll()
+    {
+        if (ragdoll == null || lastHitForce <= 0f) return;
+
+        Rigidbody target = ragdoll.GetClosestBone(lastHitPoint);
+        if (target == null) return;
+
+        target.AddForceAtPosition(lastHitDirection * lastHitForce * hitImpulseMultiplier,
+                                  lastHitPoint,
+                                  ForceMode.Impulse);
+    }
+
+    private void SetHeadPiecesActive(bool active)
+    {
+        if (attachedHead != null) attachedHead.SetActive(active);
+
+        if (attachedHeadExtras != null)
+        {
+            for (int i = 0; i < attachedHeadExtras.Length; i++)
+            {
+                if (attachedHeadExtras[i] != null)
+                    attachedHeadExtras[i].SetActive(active);
+            }
+        }
     }
 
     private IEnumerator DespawnRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        // OJO: no Destroy — EnemyStateMachine ya mete el gameObject al pool en Die().
-        // Lo dejamos desactivado para que Spawner pueda reutilizarlo con Respawn().
         gameObject.SetActive(false);
         despawnRoutine = null;
     }
 
     private void ApplyAreaEffects()
     {
-        // 1. Empuje a rigidbodies cercanos
         if (explosionRadius > 0f && explosionForce > 0f)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, affectedLayers);
             foreach (Collider hit in hits)
             {
                 Rigidbody rb = hit.attachedRigidbody;
-                if (rb != null)
-                    rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier);
+                if (rb == null) continue;
+                if (rb.transform == transform || rb.transform.IsChildOf(transform)) continue;
+                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier);
             }
         }
 
-        // 2. Daño en área (opcional)
         if (damageRadius > 0f && damageAmount > 0f)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, damageRadius, affectedLayers);
@@ -152,13 +184,16 @@ public class DeathExplosion : MonoBehaviour
         }
     }
 
-    // Llamado desde EnemyStateMachine.Respawn() para reutilizar el enemigo del pool.
     public void Reset()
     {
         if (despawnRoutine != null) { StopCoroutine(despawnRoutine); despawnRoutine = null; }
 
-        lastHitPart = BodyPartType.Default;
-        if (attachedHead != null) attachedHead.SetActive(true);
+        lastHitPart      = BodyPartType.Default;
+        lastHitPoint     = Vector3.zero;
+        lastHitDirection = Vector3.zero;
+        lastHitForce     = 0f;
+
+        SetHeadPiecesActive(true);
         if (ragdoll != null) ragdoll.SetRagdoll(false);
         if (!gameObject.activeSelf) gameObject.SetActive(true);
     }
