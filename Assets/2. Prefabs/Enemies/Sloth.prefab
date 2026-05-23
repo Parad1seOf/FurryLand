@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 1
+  totalDamage: 0
 --- !u!114 &6181132321637595918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   moveSpeed: 0
   rotationSpeed: 1
+  animator: {fileID: 0}
 --- !u!114 &9216503724008643117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +314,7 @@ MonoBehaviour:
   awareness: {fileID: 0}
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
+  idle: {fileID: 0}
 --- !u!114 &3993688958312960704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,9 +365,12 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 191
+  bulletImpactForce: 15
   timeBetweenShots: 0.1
   allowHoldToFire: 1
   spread: 0
+  minPellets: 6
+  maxPellets: 10
   magazineCapacity: 30
   totalMagazines: 3
   reloadTime: 1.8
@@ -551,12 +557,14 @@ MonoBehaviour:
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
   attachedHead: {fileID: 0}
+  attachedHeadExtras: []
   headBone: {fileID: 0}
   detachedHeadPrefab: {fileID: 0}
   headLaunchForce: 6
   headExtraTorque: 8
   detachedHeadLifetime: 8
   ragdoll: {fileID: 0}
+  hitImpulseMultiplier: 1
   bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
