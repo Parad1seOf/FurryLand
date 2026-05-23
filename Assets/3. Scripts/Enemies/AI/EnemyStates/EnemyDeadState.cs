@@ -7,13 +7,13 @@ public class EnemyDeadState : IEnemyState
     public EnemyDeadState(AIContext context)
     {
         this.context = context;
-
     }
 
     public void Enter()
     {
-        if (ScoreManager.instance != null) ScoreManager.instance.scoreKill();
-        context.gameObject.SetActive(false);
+        if (ScoreManager.instance != null)
+            ScoreManager.instance.scoreKill();
+        
     }
 
     public void Exit()
@@ -23,6 +23,5 @@ public class EnemyDeadState : IEnemyState
 
     public void Update()
     {
-        
     }
 }

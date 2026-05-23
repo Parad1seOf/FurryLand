@@ -20428,6 +20428,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3928644071774524818, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
+      propertyPath: explosionForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928644071774524818, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
+      propertyPath: bodyDespawnDelay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928644071774524818, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
+      propertyPath: hitImpulseMultiplier
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3953276385587282638, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
       propertyPath: m_Name
       value: Conejo (6)
@@ -59297,15 +59309,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053738690538351993, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 246.1
+      value: 288.03
       objectReference: {fileID: 0}
     - target: {fileID: 1053738690538351993, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61
+      value: 50.19
       objectReference: {fileID: 0}
     - target: {fileID: 1053738690538351993, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 306.2
+      value: 253.36
       objectReference: {fileID: 0}
     - target: {fileID: 1053738690538351993, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_LocalRotation.w

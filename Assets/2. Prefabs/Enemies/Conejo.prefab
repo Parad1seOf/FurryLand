@@ -868,12 +868,14 @@ MonoBehaviour:
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
   attachedHead: {fileID: 0}
+  attachedHeadExtras: []
   headBone: {fileID: 0}
   detachedHeadPrefab: {fileID: 0}
   headLaunchForce: 6
   headExtraTorque: 8
   detachedHeadLifetime: 8
   ragdoll: {fileID: 5990308610741306820}
+  hitImpulseMultiplier: 0.08
   bodyDespawnDelay: 6
   explosionRadius: 3
   explosionForce: 500
@@ -900,6 +902,7 @@ MonoBehaviour:
   mainCollider: {fileID: 2327830755521584065}
   ragdollBodies: []
   ragdollColliders: []
+  zeroVelocityOnEnable: 0
 --- !u!1 &4002025979601686883
 GameObject:
   m_ObjectHideFlags: 0
