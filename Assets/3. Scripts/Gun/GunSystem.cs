@@ -110,6 +110,8 @@ public class GunSystem : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
+        bool hasDamagedPlayerThisShot = false;  //evita golpear más de una vez al player
+
         for (int i = 0; i < pellets; i++)
         {
             // Dispersión cuadrada: X e Y independientes => coincide con el hitmarker cuadrado
@@ -124,6 +126,13 @@ public class GunSystem : MonoBehaviour
                 if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
                                     hitMask, QueryTriggerInteraction.Ignore))
                 {
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        if (hasDamagedPlayerThisShot) continue;
+
+                        hasDamagedPlayerThisShot = true;
+                    }
+
                     Debug.Log($"PELLET HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
                     ProcessHit(hit, spreadDirection);
                 }
