@@ -37216,15 +37216,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216503724008643117, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: attackDistance
-      value: 43.3
+      value: 45.4
       objectReference: {fileID: 0}
     - target: {fileID: 9216503724008643117, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: detectionDistance
       value: 7.95
       objectReference: {fileID: 0}
     - target: {fileID: 9216503724008643117, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: escapeAttackDistance
+      value: 52.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216503724008643117, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: escapeDetectionDistance
-      value: 46.3
+      value: 67.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56820,7 +56824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1685919297
 MonoBehaviour:
   m_ObjectHideFlags: 0
