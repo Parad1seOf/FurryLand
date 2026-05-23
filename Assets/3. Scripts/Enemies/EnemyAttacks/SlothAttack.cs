@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SlothAttack : EnemyAttack
 {
@@ -7,12 +8,20 @@ public class SlothAttack : EnemyAttack
     [SerializeField] private float distance = 50f;
     [SerializeField] private float followSpeed = 1f;
     [SerializeField] private float timeToShoot = 2;
+
+    [SerializeField] private Color aimingColor = Color.blue;
+    [SerializeField] private Color warningColor = Color.red;
+    [SerializeField] private Color shootColor1 = Color.black;
+    [SerializeField] private Color shootColor2 = Color.white;
+
     private Vector3 target;
     private Vector3 follow;
     public float timer;
-    
 
     private LineRenderer beam;
+
+    private bool warningActive;
+    private bool shootingFlash;
 
     public void Start()
     {
@@ -28,6 +37,13 @@ public class SlothAttack : EnemyAttack
             follow = target;
             isAttacking = true;
             timer = timeToShoot;
+
+            warningActive = false;
+            shootingFlash = false;
+
+            beam.startColor = aimingColor;
+            beam.endColor = aimingColor;
+
             beam.enabled = true;
         }
 
@@ -37,36 +53,81 @@ public class SlothAttack : EnemyAttack
     public void Update()
     {
         if (!isAttacking) return;
+        if (shootingFlash) return;
 
-        follow = Vector3.MoveTowards( follow, target, followSpeed * Time.deltaTime);
+        follow = Vector3.MoveTowards(follow, target, followSpeed * Time.deltaTime);
         Beam();
 
         if (timer < 0)
         {
-            gun.TryShoot(origin.position, target - origin.position);
-            EndAttack();
+            StartCoroutine(ShootFlash());
         }
     }
 
     private void Beam()
     {
         Vector3 direction = follow - origin.position;
-
         direction.Normalize();
 
         beam.SetPosition(0, origin.position);
 
         if (Physics.Raycast(origin.position, direction, out RaycastHit hit))
         {
-            
             beam.SetPosition(1, hit.point);
-                
 
             PlayerTarget player = hit.collider.GetComponent<PlayerTarget>();
-            if (player == null) timer = timeToShoot;
-            else timer -= Time.deltaTime;
+
+            if (player == null)
+            {
+                timer = timeToShoot;
+
+                if (warningActive)
+                {
+                    warningActive = false;
+                    beam.startColor = aimingColor;
+                    beam.endColor = aimingColor;
+                }
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+
+                if (!warningActive && timer <= 1f)
+                {
+                    warningActive = true;
+                    beam.startColor = warningColor;
+                    beam.endColor = warningColor;
+                }
+            }
         }
-        else beam.SetPosition(1, origin.position + direction.normalized * 100);
+        else
+        {
+            beam.SetPosition(1, origin.position + direction * 100);
+        }
+    }
+
+    private IEnumerator ShootFlash()
+    {
+        shootingFlash = true;
+
+        // NEGRO
+        beam.startColor = shootColor1;
+        beam.endColor = shootColor1;
+        yield return new WaitForSeconds(0.03f);
+
+        // BLANCO
+        beam.startColor = shootColor2;
+        beam.endColor = shootColor2;
+        yield return new WaitForSeconds(0.03f);
+
+        // ROJO
+        beam.startColor = warningColor;
+        beam.endColor = warningColor;
+        yield return new WaitForSeconds(0.05f);
+
+        gun.TryShoot(origin.position, target - origin.position);
+
+        EndAttack();
     }
 
     public override void EndAttack()

@@ -70,6 +70,9 @@ public class DetectionComponent : MonoBehaviour
 
         Gizmos.color = Color.pink;
         Gizmos.DrawLine(eyes.position, eyes.position + eyes.forward*detectionDistance);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(eyes.position, escapeAttackDistance);
     }
 
     public bool SeesSuspiciousConduct()
