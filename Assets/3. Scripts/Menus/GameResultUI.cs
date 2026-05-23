@@ -57,4 +57,18 @@ public class GameResultUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+
+        if (FadeManager.Instance != null)
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            FadeManager.Instance.ChangeSceneFade(currentSceneIndex);
+        }
+        
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
