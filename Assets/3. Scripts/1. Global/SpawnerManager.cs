@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-    private List<Spawner> spawns;
+    private List<Spawner> spawners;
     private List<Spawner> blockedDoors;
     private bool alerted;
     [SerializeField] private float timeToBreakBlock = 20f;
@@ -20,7 +20,7 @@ public class SpawnerManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        spawns = new List<Spawner>();
+        spawners = new List<Spawner>();
         blockedDoors = new List<Spawner>();
         
     }
@@ -50,7 +50,7 @@ public class SpawnerManager : MonoBehaviour
 
     public void AddSpawner(Spawner spawner)
     {
-        spawns.Add(spawner);
+        spawners.Add(spawner);
     }
 
     public void AddBlockedDoor(Spawner spawner)
@@ -60,7 +60,9 @@ public class SpawnerManager : MonoBehaviour
 
     public Spawner GetRandomElephantSpawner()
     {
-        return null;
+        List<Spawner> filtered = spawners.Where(x => x.HasElephant()).ToList();
+
+        return filtered.ElementAt(Random.Range(0, filtered.Count));
     }
 
     public void BreakBlock()

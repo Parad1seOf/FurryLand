@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ElephantManager : MonoBehaviour
 {
-    [SerializeField] private List<Spawner> spawners;
     public bool wantsToSpawnElephant;
     [SerializeField] private float timeToSpawnMin = 1f, timeToSpawnMax = 7f;
     public float timer;
@@ -35,7 +34,7 @@ public class ElephantManager : MonoBehaviour
     {
         if (currentElephant == null)
         {
-            Spawner spawner = spawners.ElementAt(Random.Range(0, spawners.Count));
+            Spawner spawner = SpawnerManager.instance.GetRandomElephantSpawner();
             currentElephant = spawner.SpawnElephant();
             return;
         }
@@ -48,7 +47,6 @@ public class ElephantManager : MonoBehaviour
 
     public void ElephantDies()
     {
-        Debug.Log("elefante sa muerto");
         currentElephant.GetComponent<HealthSystem>().OnDeath -= ElephantDies;
         currentElephant = null;
         wantsToSpawnElephant = true;

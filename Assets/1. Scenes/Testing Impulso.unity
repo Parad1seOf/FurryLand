@@ -1043,11 +1043,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
   m_PrefabInstance: {fileID: 673255756}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &36607244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1685784303718246658, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
-  m_PrefabInstance: {fileID: 1850325129}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &38484012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
@@ -15066,17 +15061,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 055b026d529bb7749955199a90854588, type: 3}
---- !u!114 &473406087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8837440231122077556, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
-  m_PrefabInstance: {fileID: 1325110162}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f9085a61e20bd4caa0080c06000e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spawner
 --- !u!1001 &476356155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44316,6 +44300,7 @@ GameObject:
   - component: {fileID: 1300673416}
   - component: {fileID: 1300673415}
   - component: {fileID: 1300673418}
+  - component: {fileID: 1300673419}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -44377,13 +44362,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dfd9b5428997e4c8f99daf1c8d1d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  spawners:
-  - {fileID: 473406087}
-  - {fileID: 1819265907}
-  - {fileID: 1689815345}
   wantsToSpawnElephant: 0
   timeToSpawnMin: 1
   timeToSpawnMax: 7
+  timer: 0
+--- !u!114 &1300673419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300673414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6202917aa9b4e4486efe91e7cd47b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
+  timeToBreakBlock: 20
   timer: 0
 --- !u!1 &1301801264
 GameObject:
@@ -56926,17 +56921,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 41518379706584723, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
   m_PrefabInstance: {fileID: 1884136098}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1689815345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8837440231122077556, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
-  m_PrefabInstance: {fileID: 268744378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f9085a61e20bd4caa0080c06000e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spawner
 --- !u!1001 &1690430973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60174,17 +60158,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
   m_PrefabInstance: {fileID: 1437289847}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1819265907 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8837440231122077556, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
-  m_PrefabInstance: {fileID: 1105005233}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f9085a61e20bd4caa0080c06000e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spawner
 --- !u!1 &1819716962
 GameObject:
   m_ObjectHideFlags: 0
@@ -61463,9 +61436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc4502e9734b454caf75070e712a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArbustoSlower
-  reduccionVelocidad: 5
-  player: {fileID: 36607244}
-  playerMovement: {fileID: 1850325131}
 --- !u!4 &1851844572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
