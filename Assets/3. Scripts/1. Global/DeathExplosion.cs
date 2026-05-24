@@ -66,7 +66,15 @@ public class DeathExplosion : MonoBehaviour
 
     public void NotifyHit(BodyPartType part, Vector3 hitPoint, Vector3 hitDirection, float force)
     {
-        lastHitPart      = part;
+        // PARCHE (Bug fix sangre headshot): priorizamos Head. Si ya registramos un impacto en la
+        // cabeza durante la vida del enemigo, no permitimos que un perdigón posterior del shotgun
+        // que impacte en otra zona lo "sobrescriba". Así, basta con que UN solo perdigón del disparo
+        // dé en la cabeza para que muera por headshot y se spawnee el VFX de sangre.
+        // hitPoint / hitDirection / hitForce se siguen actualizando para que el ragdoll reaccione
+        // al último impacto físico real (lo único que conservamos es el "tipo" como Head).
+        bool keepAsHead = (lastHitPart == BodyPartType.Head && part != BodyPartType.Head);
+
+        lastHitPart      = keepAsHead ? BodyPartType.Head : part;
         lastHitPoint     = hitPoint;
         lastHitDirection = hitDirection.sqrMagnitude > 0.0001f ? hitDirection.normalized : -transform.forward;
         lastHitForce     = force;
