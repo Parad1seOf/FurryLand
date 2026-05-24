@@ -7,8 +7,6 @@ public class Spawner : InteractableAction
     private float spawnTimer;
     private bool wantsToSpawn = false;
     private bool isBlocked = false;
-    [SerializeField] private float timeToBreakBlock;
-    private float breakBlockTimer;
     [SerializeField] GameObject blockingObject;
     [SerializeField] Interactable activator;
     private bool alarmed;
@@ -20,6 +18,7 @@ public class Spawner : InteractableAction
 
     public void Start()
     {
+        SpawnerManager.instance.AddSpawner(this);
         pool = EnemyPool.instance;
         AlertSystem.Instance.OnAlertTriggered += Alarmed;
         spawnTimer = timeToSpawn;
@@ -27,14 +26,7 @@ public class Spawner : InteractableAction
 
     public void Update()
     {
-        if (!alarmed) return;
-
-        if (isBlocked)
-        {
-            breakBlockTimer -= Time.deltaTime;
-            if (breakBlockTimer < 0) BreakBlock();
-            return;
-        }
+        if (!alarmed || isBlocked) return;
 
         if (!wantsToSpawn)
         {
@@ -52,15 +44,16 @@ public class Spawner : InteractableAction
         spawnTimer = timeToSpawn;
     }
 
+    [ContextMenu("Block")]
     public void Block()
     {
         isBlocked = true;
-        breakBlockTimer = timeToBreakBlock;
+        SpawnerManager.instance.AddBlockedDoor(this);
         blockingObject.SetActive(true);
         activator.enabled = false;
     }
 
-    private void BreakBlock()
+    public void BreakBlock()
     {
         isBlocked = false;
         blockingObject.SetActive(false);
@@ -76,6 +69,11 @@ public class Spawner : InteractableAction
     public void Alarmed()
     {
         alarmed = true;
+    }
+
+    public bool HasElephant()
+    {
+        return elephant != null;
     }
 
     public GameObject SpawnElephant()

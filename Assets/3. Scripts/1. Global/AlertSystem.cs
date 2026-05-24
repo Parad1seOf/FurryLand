@@ -29,6 +29,7 @@ public class AlertSystem : MonoBehaviour
 
     public IReadOnlyList<IAlertable> GetAllSuspicions() => registry;
 
+    [ContextMenu("TriggerAlert")]
     public void TriggerAlert()
     {
         if (IsAlreadyTriggered) return;
