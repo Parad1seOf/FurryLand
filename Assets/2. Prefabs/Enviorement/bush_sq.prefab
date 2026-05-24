@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3059902306896338158}
   - component: {fileID: 2698353726046273974}
   - component: {fileID: 2144886679120981319}
+  - component: {fileID: 5039929264498278890}
   m_Layer: 9
   m_Name: bush_sq
-  m_TagString: Arbusto
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,3 +114,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02164478, y: 0.021705126, z: 0.021558762}
   m_Center: {x: 0.000022704262, y: 0.000014462514, z: -0.000095217954}
+--- !u!114 &5039929264498278890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200491795013369067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26182ff5c7499b14fbee6bebeb51c271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bush
+  speedReduction: 5

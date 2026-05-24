@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
@@ -16,8 +19,11 @@ public class PlayerController : MonoBehaviour
     public AudioManager s_audioManager;
 
     [Header("Movement")]
-    public float walkSpeed = 6f;
-    public float runSpeed  = 12f;
+    [SerializeField] private float walkSpeed = 6f;
+    [SerializeField] private float runSpeed  = 12f;
+
+    private float currentWalkSpeed;
+    private float currentRunSpeed;
 
     [Header("Jump")]
     public bool  canJump   = true;
@@ -45,6 +51,8 @@ public class PlayerController : MonoBehaviour
     private GroundCheck         groundCheck;
     private float               verticalSpeed;
 
+    private List<ISpeedModifier> speedModifiers = new();
+
     private void Awake()
     {
         cc        = GetComponent<CharacterController>();
@@ -64,6 +72,9 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible   = false;
+
+        currentWalkSpeed = walkSpeed;
+        currentRunSpeed = runSpeed;
     }
 
     private void Update()
@@ -100,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
         verticalSpeed += Physics.gravity.y * Time.deltaTime;
 
-        move   *= (IsRunning ? runSpeed : walkSpeed) * Time.deltaTime;
+        move   *= (IsRunning ? currentRunSpeed : currentWalkSpeed) * Time.deltaTime;
         move.y  = verticalSpeed * Time.deltaTime;
 
         CollisionFlags flags = cc.Move(move);
@@ -138,4 +149,32 @@ public class PlayerController : MonoBehaviour
     }
 
     public InventorySystem GetInventory() { return inventory; }
+
+    public void AddSpeedModifier(ISpeedModifier speedModifier)
+    {
+        if (!speedModifiers.Any(m => m.GetType() == speedModifier.GetType()))
+            speedModifiers.Add(speedModifier);
+
+        ModifySpeed();
+    }
+
+    public void RemoveSpeedModifier(ISpeedModifier speedModifier)
+    {
+        speedModifiers.RemoveAll(m => m.GetType() == speedModifier.GetType());
+
+        ModifySpeed();
+    }
+
+    private void ModifySpeed()
+    {
+        float modifier = 0;
+
+        foreach (ISpeedModifier speedModifier in speedModifiers)
+        {
+            modifier += speedModifier.GetValue();
+        }
+
+        currentWalkSpeed = Mathf.Max(walkSpeed + modifier, 0);
+        currentRunSpeed = Mathf.Max(runSpeed + modifier, 0);
+    }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArbustoSlower : MonoBehaviour
 {
-    public float reduccionVelocidad = 2f;
+    /*public float reduccionVelocidad = 2f;
     public GameObject player;
     public PlayerController playerMovement;
 
@@ -36,5 +36,5 @@ public class ArbustoSlower : MonoBehaviour
 
             dentroDelArbusto = false;
         }
-    }
+    }*/
 }

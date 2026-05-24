@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 764780739456519089}
   - component: {fileID: 5645050189698980722}
   - component: {fileID: 7735339209424912080}
+  - component: {fileID: 3988713514252820280}
   m_Layer: 9
   m_Name: bush_rnd
-  m_TagString: Arbusto
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,3 +116,16 @@ CapsuleCollider:
   m_Height: 0.02661405
   m_Direction: 1
   m_Center: {x: 0.0001163619, y: 0.004323895, z: -0.000102564656}
+--- !u!114 &3988713514252820280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159462784174982715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26182ff5c7499b14fbee6bebeb51c271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bush
+  speedReduction: 5
