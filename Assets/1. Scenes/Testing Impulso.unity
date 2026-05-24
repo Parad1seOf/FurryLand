@@ -8139,7 +8139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   timeToSpawn: 5
   spawnpoint: {fileID: 0}
-  timeToBreakBlock: 25
   blockingObject: {fileID: 0}
   activator: {fileID: 255455018}
   elephant: {fileID: 0}
@@ -10043,10 +10042,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sloth (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1999828997862323489, guid: e584a0624924e954baecfb862801f927, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2045832084910133810, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: m_LocalPosition.x
       value: 233.718
@@ -10086,14 +10081,6 @@ PrefabInstance:
     - target: {fileID: 2045832084910133810, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4944752368024775681, guid: e584a0624924e954baecfb862801f927, type: 3}
-      propertyPath: drop
-      value: 
-      objectReference: {fileID: 5067011286007837141, guid: f643580923b38b742a5709491f27c068, type: 3}
-    - target: {fileID: 4944752368024775681, guid: e584a0624924e954baecfb862801f927, type: 3}
-      propertyPath: probability
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44361,6 +44348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463c980a42d2c794c812b49fb7296a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  maxLivingRabbits: 1e0000002800000032000000
   rabbit: {fileID: 3953276385587282638, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
 --- !u!4 &1300673417
 Transform:
@@ -47050,7 +47038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   timeToSpawn: 5
   spawnpoint: {fileID: 0}
-  timeToBreakBlock: 25
   blockingObject: {fileID: 945459255}
   activator: {fileID: 1377273676}
   elephant: {fileID: 0}
@@ -58150,6 +58137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463c980a42d2c794c812b49fb7296a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  maxLivingRabbits: 1e0000002800000032000000
   rabbit: {fileID: 3953276385587282638, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
 --- !u!114 &1739233691
 MonoBehaviour:
@@ -62335,7 +62323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   timeToSpawn: 5
   spawnpoint: {fileID: 0}
-  timeToBreakBlock: 25
   blockingObject: {fileID: 0}
   activator: {fileID: 1885110006}
   elephant: {fileID: 0}
