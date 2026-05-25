@@ -73,11 +73,27 @@ public class GunSystem : MonoBehaviour
         bulletsLeft   = magazineCapacity;
         magazinesLeft = totalMagazines;
         readyToShoot  = true;
+
+        RegisterClip(idleClip);
+        RegisterClip(shootClip);
+        RegisterClip(reloadClip);
+
         PlayAnimation(idleClip);
     }
 
     #endregion
+    private void RegisterClip(AnimationClip clip)
+    {
+        if (weaponAnimation == null || clip == null) return;
 
+        // Borra cualquier estado con ese nombre por si está mal registrado
+        weaponAnimation.RemoveClip(clip.name);
+
+        // Lo vuelve a añadir con el nombre exacto que usa CrossFade/Play
+        weaponAnimation.AddClip(clip, clip.name);
+
+        Debug.Log("Registrado clip en Animation: " + clip.name);
+    }
     #region Shooting
 
     public bool TryShoot(Vector3 origin, Vector3 direction)
@@ -216,6 +232,8 @@ public class GunSystem : MonoBehaviour
         if (totalMagazines != -1 && magazinesLeft <= 0) return;
         if (isReloading) return;
 
+        Debug.Log("Recargando con clip: " + (reloadClip != null ? reloadClip.name : "NULL"));
+
         isReloading = true;
         PlayAnimation(reloadClip);
         QueueAnimation(idleClip);
@@ -291,6 +309,13 @@ public class GunSystem : MonoBehaviour
     private void QueueAnimation(AnimationClip clip, float fadeTime = 0.1f)
     {
         if (weaponAnimation == null || clip == null) return;
+
+        if (weaponAnimation.GetClip(clip.name) == null)
+        {
+            Debug.LogWarning("No existe en Animation: " + clip.name);
+            return;
+        }
+
         weaponAnimation.CrossFadeQueued(clip.name, fadeTime);
     }
 

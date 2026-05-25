@@ -14,6 +14,8 @@ public class SlothAttack : EnemyAttack
     [SerializeField] private Color shootColor1 = Color.black;
     [SerializeField] private Color shootColor2 = Color.white;
 
+    [SerializeField] private SniperAnimationController sniperAnimation;
+
     private Vector3 target;
     private Vector3 follow;
     public float timer;
@@ -22,6 +24,12 @@ public class SlothAttack : EnemyAttack
 
     private bool warningActive;
     private bool shootingFlash;
+
+    public void Awake()
+    {
+        if (sniperAnimation == null)
+            sniperAnimation = GetComponent<SniperAnimationController>();
+    }
 
     public void Start()
     {
@@ -45,6 +53,9 @@ public class SlothAttack : EnemyAttack
             beam.endColor = aimingColor;
 
             beam.enabled = true;
+
+            if (sniperAnimation != null)
+                sniperAnimation.SetAiming(true);
         }
 
         this.target = target;
@@ -125,6 +136,9 @@ public class SlothAttack : EnemyAttack
         beam.endColor = warningColor;
         yield return new WaitForSeconds(0.05f);
 
+        if (sniperAnimation != null)
+            sniperAnimation.Shoot();
+
         gun.TryShoot(origin.position, target - origin.position);
 
         EndAttack();
@@ -134,5 +148,8 @@ public class SlothAttack : EnemyAttack
     {
         base.EndAttack();
         beam.enabled = false;
+
+        if (sniperAnimation != null)
+            sniperAnimation.SetAiming(false);
     }
 }
