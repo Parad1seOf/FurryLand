@@ -1548,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf113081036d6cc499ac51b859ef1eca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1523741383955371639, guid: cf113081036d6cc499ac51b859ef1eca, type: 3}
       propertyPath: m_Layer
@@ -49575,6 +49575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock_big (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 5529693874115441880, guid: 5a137377e5df1b140bc4dc53c825ea1b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7071278900148660164, guid: 5a137377e5df1b140bc4dc53c825ea1b, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.4088964
@@ -58519,7 +58523,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 447
+    m_Bits: 16447
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -65973,6 +65977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8805490306489551512, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 251.03
@@ -66013,9 +66021,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7934893637353928924, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -5298314126120914946, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -3616886260703760471, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -3498694445517897083, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -1782603744939056965, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 455071916734927313, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
       propertyPath: m_Name
       value: MapTerrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504287136262980039, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463431155306187379, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206618990582548783, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206352185048201678, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254523107675371003, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183324845718829332, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
