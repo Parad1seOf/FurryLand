@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &588175216354949009
+--- !u!1001 &2115264998785598851
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d6c3ba8ec278d154bb9bc3bd6bdeab80, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dcfaeeb5317719a4393955de313fca5c, type: 2}
     - target: {fileID: 919132149155446097, guid: d6c3ba8ec278d154bb9bc3bd6bdeab80, type: 3}
       propertyPath: m_Name
       value: MuroRocas_low
