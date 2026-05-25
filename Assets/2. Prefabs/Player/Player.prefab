@@ -4828,6 +4828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+  totalDamage: 0
   timeToStartHealing: 3
   healingPerSecond: 10
 --- !u!114 &4009875101557066465
@@ -4890,6 +4891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponToggle
   weaponObject: {fileID: 4321300985517358224}
   suspiciousness: 50
+  drawHoldTime: 1.2
+  hudManager: {fileID: 0}
 --- !u!114 &850858617409661531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10160,9 +10163,15 @@ MonoBehaviour:
   muzzlePoint: {fileID: 9205398471241345179}
   damage: 25
   range: 10
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  bulletImpactForce: 15
   timeBetweenShots: 0.7
   allowHoldToFire: 0
   spread: 0
+  minPellets: 6
+  maxPellets: 10
   magazineCapacity: 30
   totalMagazines: 3
   reloadTime: 1.8
@@ -10691,7 +10700,7 @@ Transform:
   m_GameObject: {fileID: 7182954791939277666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

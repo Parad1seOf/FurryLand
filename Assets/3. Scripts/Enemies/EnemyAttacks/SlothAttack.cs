@@ -9,6 +9,9 @@ public class SlothAttack : EnemyAttack
     [SerializeField] private float followSpeed = 1f;
     [SerializeField] private float timeToShoot = 2;
 
+    // NUEVO: layers con los que sí puede colisionar el raycast
+    [SerializeField] private LayerMask beamCollisionMask = ~0;
+
     [SerializeField] private Color aimingColor = Color.blue;
     [SerializeField] private Color warningColor = Color.red;
     [SerializeField] private Color shootColor1 = Color.black;
@@ -82,7 +85,8 @@ public class SlothAttack : EnemyAttack
 
         beam.SetPosition(0, origin.position);
 
-        if (Physics.Raycast(origin.position, direction, out RaycastHit hit))
+        // AQUÍ se aplica el LayerMask
+        if (Physics.Raycast(origin.position, direction, out RaycastHit hit, Mathf.Infinity, beamCollisionMask))
         {
             beam.SetPosition(1, hit.point);
 
