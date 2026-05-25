@@ -93,7 +93,10 @@ public class DetectionComponent : MonoBehaviour
         }
 
         Vector3 playerDirection = playerPos.position - eyes.position;
-        float angle = Vector3.Angle(eyes.forward, playerDirection);
+        playerDirection.y = 0;
+        Vector3 direction = eyes.forward;
+        direction.y = 0;
+        float angle = Vector3.Angle(direction, playerDirection);
         return angle <= viewAngle * 0.5f;
     }
 
