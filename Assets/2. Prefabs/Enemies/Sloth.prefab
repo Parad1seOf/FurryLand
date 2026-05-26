@@ -328,6 +328,9 @@ MonoBehaviour:
   escapeAttackDistance: 50
   playerSus: {fileID: 0}
   eyes: {fileID: 8961574393670686684}
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 4164
   detectingMark: {fileID: 0}
 --- !u!114 &2876964178516681941
 MonoBehaviour:
@@ -382,7 +385,7 @@ MonoBehaviour:
   timeToShoot: 1.5
   beamCollisionMask:
     serializedVersion: 2
-    m_Bits: 8383
+    m_Bits: 8379
   aimingColor: {r: 0, g: 0.7768485, b: 0.9019608, a: 1}
   warningColor: {r: 0.9169811, g: 0.07742937, b: 0.046714056, a: 1}
   shootColor1: {r: 1, g: 1, b: 1, a: 1}

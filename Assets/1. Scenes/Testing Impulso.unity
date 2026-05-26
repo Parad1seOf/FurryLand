@@ -3612,6 +3612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fence (249)
       objectReference: {fileID: 0}
+    - target: {fileID: 664469881648052296, guid: 055b026d529bb7749955199a90854588, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.71
@@ -6183,7 +6187,7 @@ GameObject:
   - component: {fileID: 176733526}
   - component: {fileID: 176733525}
   - component: {fileID: 176733524}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10973,6 +10977,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 055b026d529bb7749955199a90854588, type: 3}
+--- !u!1001 &286330484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3953276385587282638, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_Name
+      value: ConejoDominguero (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 243.39558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 43.497826
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 234.45592
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438028335883130996, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385236165593996864, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: ignoreLayers.m_Bits
+      value: 4164
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5304507438094221745, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
 --- !u!4 &287077447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
@@ -11824,7 +11892,7 @@ GameObject:
   - component: {fileID: 318082016}
   - component: {fileID: 318082015}
   - component: {fileID: 318082014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15351,7 +15419,7 @@ GameObject:
   - component: {fileID: 424936531}
   - component: {fileID: 424936530}
   - component: {fileID: 424936529}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20782,7 +20850,7 @@ GameObject:
   - component: {fileID: 580330585}
   - component: {fileID: 580330584}
   - component: {fileID: 580330583}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23251,7 +23319,7 @@ GameObject:
   - component: {fileID: 660555333}
   - component: {fileID: 660555332}
   - component: {fileID: 660555331}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas esfericas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31811,7 +31879,7 @@ GameObject:
   - component: {fileID: 778147665}
   - component: {fileID: 778147664}
   - component: {fileID: 778147663}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34604,74 +34672,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
   m_PrefabInstance: {fileID: 1607193779}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &849010428
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3953276385587282638, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_Name
-      value: Conejo (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 243.63773
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 42.743584
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 234.28224
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696323086778652888, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: path
-      value: 
-      objectReference: {fileID: 1265500241}
-    - target: {fileID: 6696323086778652888, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      propertyPath: reachDistance
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5304507438094221745, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-  m_SourcePrefab: {fileID: 100100000, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
 --- !u!4 &849209066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
@@ -42382,7 +42382,7 @@ GameObject:
   - component: {fileID: 1051616838}
   - component: {fileID: 1051616837}
   - component: {fileID: 1051616836}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas esfericas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45725,7 +45725,7 @@ GameObject:
   - component: {fileID: 1155803099}
   - component: {fileID: 1155803098}
   - component: {fileID: 1155803097}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48768,7 +48768,7 @@ GameObject:
   - component: {fileID: 1248965045}
   - component: {fileID: 1248965044}
   - component: {fileID: 1248965043}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50491,7 +50491,7 @@ GameObject:
   - component: {fileID: 1295214953}
   - component: {fileID: 1295214952}
   - component: {fileID: 1295214951}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55192,7 +55192,7 @@ GameObject:
   - component: {fileID: 1392850619}
   - component: {fileID: 1392850618}
   - component: {fileID: 1392850617}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas esfericas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57499,7 +57499,7 @@ GameObject:
   - component: {fileID: 1444762218}
   - component: {fileID: 1444762217}
   - component: {fileID: 1444762216}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61617,7 +61617,7 @@ GameObject:
   - component: {fileID: 1572448819}
   - component: {fileID: 1572448818}
   - component: {fileID: 1572448817}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66292,7 +66292,7 @@ GameObject:
   - component: {fileID: 1715898365}
   - component: {fileID: 1715898364}
   - component: {fileID: 1715898363}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas esfericas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75538,7 +75538,7 @@ GameObject:
   - component: {fileID: 1952735301}
   - component: {fileID: 1952735300}
   - component: {fileID: 1952735299}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zonas sospechosas cuadradas (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78144,10 +78144,6 @@ PrefabInstance:
       propertyPath: probability
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 8699683402124516408, guid: e584a0624924e954baecfb862801f927, type: 3}
-      propertyPath: beamCollisionMask.m_Bits
-      value: 24767
-      objectReference: {fileID: 0}
     - target: {fileID: 9216503724008643117, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: viewAngle
       value: 80.7
@@ -80383,6 +80379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conejo
       objectReference: {fileID: 0}
+    - target: {fileID: 3953276385587282638, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4438028335883130996, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 182.54395
@@ -80426,10 +80426,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5304507438094221745, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26dcac3b4de08064c8677939436d68de, type: 3}
 --- !u!1001 &2095713899
 PrefabInstance:
@@ -82972,6 +82969,9 @@ MonoBehaviour:
   escapeAttackDistance: 1.5
   playerSus: {fileID: 0}
   eyes: {fileID: 9150175602531277906}
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
   detectingMark: {fileID: 7269426870536382641}
 --- !u!54 &1644163197493703310
 Rigidbody:
@@ -87462,7 +87462,6 @@ SceneRoots:
   - {fileID: 7486987174617206208}
   - {fileID: 1747893749}
   - {fileID: 681466714}
-  - {fileID: 849010428}
   - {fileID: 71378930}
   - {fileID: 254405423}
   - {fileID: 351391224}
@@ -87662,3 +87661,4 @@ SceneRoots:
   - {fileID: 3180542460540261189}
   - {fileID: 2036366078}
   - {fileID: 1871073758}
+  - {fileID: 286330484}

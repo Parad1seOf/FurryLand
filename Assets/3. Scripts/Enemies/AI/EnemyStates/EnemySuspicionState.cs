@@ -23,7 +23,7 @@ public class EnemySuspicionState : IEnemyState
 
     public void Enter()
     {
-
+        context.movement.Stop();
     }
 
     public void Exit()
@@ -57,7 +57,7 @@ public class EnemySuspicionState : IEnemyState
 
     private void Rotate()
     {
-        context.movement.LookAt(detection.GetTargetDirection());
+        context.movement.LookAt(detection.GetTargetPosition());
     }
 
     private void UpdateDisplay()

@@ -12,6 +12,7 @@ public class EnemyAwarenessComponent : MonoBehaviour
     {
         isAware = true;
         currentAwareness += amount * Time.deltaTime;
+        currentAwareness = Mathf.Max(0, currentAwareness);
         HUDManager.UpdateMostAwareEnemy(this);
         if (currentAwareness >= maxAwareness) return true;
         return false;

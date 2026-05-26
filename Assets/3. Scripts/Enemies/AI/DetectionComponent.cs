@@ -30,6 +30,7 @@ public class DetectionComponent : MonoBehaviour
     [SerializeField] private ITarget playerTarget;
     private Transform playerPos;
     [SerializeField] private Transform eyes;
+    [SerializeField] private LayerMask ignoreLayers;
 
     [SerializeField] private GameObject detectingMark;
 
@@ -45,15 +46,11 @@ public class DetectionComponent : MonoBehaviour
         playerPos = playerTarget.GetTransform();
     }
 
-    public void Start()
-    {
-        
-    }
-
     public void Update()
     {
         UpdateDetectionIcon();
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -105,7 +102,7 @@ public class DetectionComponent : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = playerPos.position - eyes.position;
 
-        if (Physics.Raycast(eyes.position, direction, out hit))
+        if (Physics.Raycast(eyes.position, direction, out hit, detectionDistance, ~ignoreLayers))
         {
             ITarget target = hit.collider.GetComponent<ITarget>();
             return ReferenceEquals(playerTarget, target);
