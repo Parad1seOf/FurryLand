@@ -35,5 +35,8 @@ public class AlertSystem : MonoBehaviour
         if (IsAlreadyTriggered) return;
         IsAlreadyTriggered = true;
         OnAlertTriggered?.Invoke();
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Start_Phase2");
     }
 }

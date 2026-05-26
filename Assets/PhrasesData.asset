@@ -13,10 +13,32 @@ MonoBehaviour:
   m_Name: PhrasesData
   m_EditorClassIdentifier: Assembly-CSharp::PhrasesData
   phraseslist:
+  - id: Start_Game
+    text: "Hace un d\xEDa soleado. Los p\xE1jaros cantan y todos comparten un d\xEDa
+      feliz de camping. \xA1Es un gran d\xEDa para delinquir! "
+  - id: Enter_ForbiddenArea
+    text: "Uy, parece que esta zona levanta sospechas... Ser\xE1 mejor ir con cuidado."
   - id: Wood_Pickup
-    text: "Entonces, nuestro intrepido mapache se di\xF3 cuenta de que pod\xEDa utilizar
+    text: "Entonces, nuestro intr\xE9pido mapache se dio cuenta de que pod\xEDa utilizar
       la madera para cerrar las entradas. "
+  - id: Block_Door
+    text: "\xA1BAM! \xA1BAM! Puerta sellada."
   - id: C4_Placed
-    text: "La hora de la verdad lleg\xF3 y ya solo  tocaba resistir."
+    text: "La hora de la verdad lleg\xF3 y ya solo tocaba resistir."
   - id: C4_Explode
-    text: BOOM!
+    text: "\xA1BOOM!"
+  - id: C4_Checkpoint
+    text: "\xA1R\xE1pido, a por la siguiente carga! "
+  - id: Elephant_Spawns
+    text: "\xA1PUM, PUM, PUM! El tit\xE1n se acerca, arrasando con todo. "
+  - id: Low_Health
+    text: "Mapache est\xE1 a punto de caer. \xA1Tiene que cubrirse! "
+  - id: Start_Phase2
+    text: "\xA1Han descubierto a Mapache Malo!"
+  - id: FurryConstitucion_Pickup
+    text: "El secreto que guarda el camping es... \xA1LA GRAN CONSTITUCI\xD3N FURRA!
+      Mapache Malo tiene en su poder un documento sagrado, debe huir de inmediato."
+  - id: Weapon_Stealth
+    text: Vaya, El Mapache Malo es algo impaciente...
+  - id: Exit_Approach
+    text: "\xA1Un \xFAltimo sprint! Ya se huele la libertad."

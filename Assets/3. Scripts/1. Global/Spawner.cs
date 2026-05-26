@@ -51,6 +51,9 @@ public class Spawner : InteractableAction
         SpawnerManager.instance.AddBlockedDoor(this);
         blockingObject.SetActive(true);
         activator.enabled = false;
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Block_Door");
     }
 
     public void BreakBlock()
@@ -83,6 +86,10 @@ public class Spawner : InteractableAction
 
         elephant.SetActive(true);
         elephant.GetComponent<EnemyStateMachine>().Respawn(spawnpoint.position);
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Elephant_Spawns");
+
         return elephant;
     }
 }

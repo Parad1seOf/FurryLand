@@ -8,7 +8,9 @@ public class PlayerHealth : HealthSystem
     private float timer;
     [SerializeField] private float healingPerSecond = 10;
 
-    
+    private bool lowHealthWarningTriggered = false;
+
+
 
     // Update is called once per frame
     void Update()
@@ -28,5 +30,13 @@ public class PlayerHealth : HealthSystem
         base.TakeDamage(amount);
 
         timer = timeToStartHealing;
+
+        if (base.HealthNormalised <= 0.25f && !lowHealthWarningTriggered && base.Health > 0)
+        {
+            lowHealthWarningTriggered = true;
+
+            if (ComicPanelManager.Instance != null)
+                ComicPanelManager.Instance.ShowPhraseByID("Low_Health");
+        }
     } 
 }

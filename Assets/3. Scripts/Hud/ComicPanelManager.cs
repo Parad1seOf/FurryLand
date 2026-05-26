@@ -36,4 +36,20 @@ public class ComicPanelManager : MonoBehaviour
     }
 
     private void HidePanel() => container.SetActive(false);
+
+    public void StartC4Reminder(string id, float duration)
+    {
+        CancelInvoke(nameof(TriggerC4Reminder));
+        Invoke(nameof(TriggerC4Reminder), duration);
+    }
+
+    private void TriggerC4Reminder()
+    {
+        ShowPhraseByID("C4_Checkpoint");
+    }
+
+    public void CancelC4Reminder()
+    {
+        CancelInvoke(nameof(TriggerC4Reminder));
+    }
 }

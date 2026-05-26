@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         currentWalkSpeed = walkSpeed;
         currentRunSpeed = runSpeed;
+
+        StartCoroutine(ShowStartComicPanel());
     }
 
     private void Update()
@@ -176,5 +178,13 @@ public class PlayerController : MonoBehaviour
 
         currentWalkSpeed = Mathf.Max(walkSpeed + modifier, 0);
         currentRunSpeed = Mathf.Max(runSpeed + modifier, 0);
+    }
+
+    private System.Collections.IEnumerator ShowStartComicPanel()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Start_Game", 5f);
     }
 }

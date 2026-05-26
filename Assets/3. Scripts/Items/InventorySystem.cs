@@ -13,6 +13,9 @@ public class InventorySystem : MonoBehaviour
         items.TryGetValue(type, out int current);
         items[type] = current + amount;
         OnItemChanged?.Invoke(type, items[type]);
+
+        if (type == ItemType.Wood && ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Wood_Pickup");
     }
 
     public bool ConsumeItem(ItemType type, int amount = 1)

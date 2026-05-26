@@ -14,6 +14,8 @@ public class WeaponToggle : MonoBehaviour
     private InputReader input;
     private float drawTimer;
 
+    private bool hasTriggeredComicPanel = false;
+
     public bool IsWeaponDrawn => weaponObject != null && weaponObject.activeSelf;
 
     private void Awake()
@@ -77,6 +79,14 @@ public class WeaponToggle : MonoBehaviour
         SuspicionComponent sus = GetComponent<SuspicionComponent>();
         if (weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
         else sus?.LowerSuspicion(suspiciousness);
+
+        if (!hasTriggeredComicPanel && AlertSystem.Instance != null && !AlertSystem.Instance.IsAlreadyTriggered)
+        {
+            hasTriggeredComicPanel = true;
+
+            if (ComicPanelManager.Instance != null)
+                ComicPanelManager.Instance.ShowPhraseByID("Weapon_Stealth");
+        }
     }
 
     public void Alarm()

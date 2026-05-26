@@ -66,6 +66,10 @@ public class Explosives : InteractableAction
         if (currentExplosions < explosionCount)
         {
             trigger.SetActive(true);
+
+            if (ComicPanelManager.Instance != null)
+                ComicPanelManager.Instance.StartC4Reminder("C4_Checkpoint", 30f);
+
             return;
         }
 
@@ -80,6 +84,9 @@ public class Explosives : InteractableAction
         gameObject.SetActive(true);
         trigger.SetActive(false);
         ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.CancelC4Reminder();
     }
 
     [ContextMenu("Ejecutar")]

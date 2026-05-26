@@ -8,6 +8,10 @@ public class FurryConstitution : MonoBehaviour
         if (player != null)
         {
             ScoreManager.instance.ObtainFurryConstitution();
+
+            if (ComicPanelManager.Instance != null)
+                ComicPanelManager.Instance.ShowPhraseByID("FurryConstitucion_Pickup");
+
             gameObject.SetActive(false);
         }
     }
