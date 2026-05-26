@@ -158,6 +158,8 @@ GameObject:
   - component: {fileID: 2735840296143931868}
   - component: {fileID: 4944752368024775681}
   - component: {fileID: 4785178888932596359}
+  - component: {fileID: 1496219244949177622}
+  - component: {fileID: 7325564401908678578}
   m_Layer: 6
   m_Name: Sloth
   m_TagString: Untagged
@@ -655,6 +657,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SniperAnimationController
   animator: {fileID: 6615669095388930099}
+--- !u!114 &1496219244949177622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999828997862323489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cf4bb5a9cbf4b47ae0a2ff8be767a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
+  maxAwareness: 100
+  awarenessDecayPerSecond: 100
+  display: {fileID: 0}
+--- !u!114 &7325564401908678578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999828997862323489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
+  label: {fileID: 4131768485242358627}
+  offset: {x: 0, y: 2.2, z: 0}
+  faceCamera: 1
 --- !u!1 &4238478995638358348
 GameObject:
   m_ObjectHideFlags: 0
