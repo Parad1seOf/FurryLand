@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2249474758627956426}
   - component: {fileID: 1670162074459905653}
   - component: {fileID: 8069500413814986924}
-  m_Layer: 0
+  - component: {fileID: -1337853078518588111}
+  m_Layer: 14
   m_Name: rock3_wall_low 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,3 +91,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1337853078518588111
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363641752504736749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8589374688747052655, guid: d4445ead912b8a440954853d7c914f9f, type: 3}
