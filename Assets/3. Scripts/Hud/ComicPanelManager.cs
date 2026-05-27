@@ -9,6 +9,7 @@ public class ComicPanelManager : MonoBehaviour
     [SerializeField] private PhrasesData phrasesData;
     [SerializeField] private GameObject container;
     [SerializeField] private TextMeshProUGUI panelText;
+    [SerializeField] private float duration = 5f;
 
     private void Awake()
     {
@@ -19,8 +20,10 @@ public class ComicPanelManager : MonoBehaviour
             container.SetActive(false);
     }
     
-    public void ShowPhraseByID(string id, float duration = 3f)
+    public void ShowPhraseByID(string id, float duration = -1f)
     {
+        if (duration < 0) duration = this.duration;
+
         if(container == null || panelText == null || phrasesData == null) return;
 
         string displayText = phrasesData.GetPhrase(id);
