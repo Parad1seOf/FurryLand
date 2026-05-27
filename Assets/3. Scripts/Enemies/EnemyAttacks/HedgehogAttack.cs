@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+//Esta clase esta fatal, hay que arreglarlo
 public class HedgehogAttack : EnemyAttack
 {
     
@@ -9,6 +11,8 @@ public class HedgehogAttack : EnemyAttack
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private float timeToHit = 0.15f;
+    private float hitTimer;
     private float cooldownTimer;
 
     private void Awake()
@@ -29,6 +33,14 @@ public class HedgehogAttack : EnemyAttack
             animator.SetTrigger("Attack");
         }
 
+        isAttacking = true;
+
+        cooldownTimer = cooldown;
+        hitTimer = timeToHit;
+    }
+
+    public void RealAttack()
+    {
         RaycastHit hit;
         Vector3 direction = transform.forward;
 
@@ -42,14 +54,27 @@ public class HedgehogAttack : EnemyAttack
             }
         }
 
-        cooldownTimer = cooldown;
+        isAttacking = false;
+        Debug.Log("Golpe de conejo");
     }
 
     public void Update()
     {
-        if (cooldownTimer > 0)
+        if (cooldownTimer >= 0)
         {
             cooldownTimer -= Time.deltaTime;
+        }
+
+        if (!isAttacking) return;
+
+        if (hitTimer >= 0)
+        {
+            hitTimer -= Time.deltaTime;
+        }
+
+        if (hitTimer <= 0)
+        {
+            RealAttack();
         }
     }
 }

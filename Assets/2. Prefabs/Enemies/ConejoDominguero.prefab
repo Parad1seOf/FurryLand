@@ -762,9 +762,10 @@ MonoBehaviour:
   damage: 10
   isAttacking: 0
   distance: 2
-  cooldown: 1
+  cooldown: 3
   origin: {fileID: 1465875343441286744}
   animator: {fileID: 0}
+  timeToHit: 1.5
 --- !u!114 &8881172715360659621
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class ElephantBehaviour : MonoBehaviour, IAIBehaviour
 
     public IEnemyState OnStart()
     {
-        return new EnemyDeadState(context);
+        return new EnemyDeactivatedState(context);
     }
 
     public IEnemyState OnSuspicion()

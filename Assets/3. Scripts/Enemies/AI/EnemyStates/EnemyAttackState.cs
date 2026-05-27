@@ -48,6 +48,6 @@ public class EnemyAttackState : IEnemyState
 
     private void Rotate()
     {
-        context.movement.LookAt(detection.GetTargetDirection());
+        context.movement.LookAt(detection.GetTargetPosition());
     }
 }

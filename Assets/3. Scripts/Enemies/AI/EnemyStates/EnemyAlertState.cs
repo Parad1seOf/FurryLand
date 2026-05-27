@@ -24,7 +24,7 @@ public class EnemyAlertState : IEnemyState
         if (!alert.IsAlreadyTriggered) alert.TriggerAlert();
 
         timer = time;
-        context.movement.LookAt(detection.GetTargetDirection());
+        context.movement.LookAt(detection.GetTargetPosition());
         display.ChangeLabel("!", Color.red);
     }
 
