@@ -357,6 +357,13 @@ MonoBehaviour:
   trigger: {fileID: 7088063247072793936}
   timer: 0
   inProgress: 0
+  brazo: {fileID: 0}
+  oreja: {fileID: 0}
+  ortaoreja: {fileID: 0}
+  cabeza: {fileID: 0}
+  torso: {fileID: 0}
+  pierna: {fileID: 0}
+  otro_brazo: {fileID: 0}
 --- !u!1001 &1227022250140093568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +412,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8186028323186391307, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: -6516078944263673848, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: -4274774859533674460, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: -4020924224465817570, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: -3390596725427417026, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
     - target: {fileID: 919132149155446097, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
       propertyPath: m_Name
       value: EstatuasModular
@@ -413,6 +440,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 5638f76b3e2f866489fef95e35db491c, type: 2}
+    - target: {fileID: 5053104483858649199, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: 6054140826855891635, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
+    - target: {fileID: 6652213841388810358, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -547,6 +586,13 @@ MonoBehaviour:
   trigger: {fileID: 7088063247072793936}
   timer: 0
   inProgress: 0
+  brazo: {fileID: 0}
+  oreja: {fileID: 0}
+  ortaoreja: {fileID: 0}
+  cabeza: {fileID: 0}
+  torso: {fileID: 0}
+  pierna: {fileID: 0}
+  otro_brazo: {fileID: 0}
 --- !u!4 &1794758418474030180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecde934a62c64b54aa16b936fa6cdd3a, type: 3}
