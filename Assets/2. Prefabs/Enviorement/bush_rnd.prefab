@@ -123,9 +123,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9159462784174982715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26182ff5c7499b14fbee6bebeb51c271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bush
   speedReduction: 5
+  postProcessVolume: {fileID: 0}
+  transitionSpeed: 2

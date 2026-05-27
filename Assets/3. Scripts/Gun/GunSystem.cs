@@ -2,6 +2,7 @@
 // despacha daño a IDamageable, consulta BodyPart para multiplicadores y llama a AudioManager para el audio.
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,61 +11,69 @@ public class GunSystem : MonoBehaviour
     #region Inspector Fields
 
     [Header("References")]
-    public Transform        muzzlePoint;
+    public Transform muzzlePoint;
+
     [Header("Damage")]
-    public int   damage = 25;
-    public float range  = 100f;
+    public int damage = 25;
+    public float range = 100f;
     public LayerMask hitMask = ~0;
 
+    [Header("Bullet Distance")]
+    public float bulletDistance;
+
     [Header("Impact")]
-    [Tooltip("Fuerza con la que el disparo empuja al ragdoll cuando mata a un enemigo. Subir para efecto más cinematográfico.")]
     public float bulletImpactForce = 15f;
 
     [Header("Fire Rate")]
     public float timeBetweenShots = 0.1f;
-    public bool  allowHoldToFire  = true;
+    public bool allowHoldToFire = true;
 
     [Header("Spread")]
     public float spread = 0.00f;
     private float currentSpread;
-    [Tooltip("Si está activo, el primer perdigón del disparo sale siempre centrado (sin dispersión) para que apuntar al punto de mira nunca falle el target.")]
-    public bool  guaranteeCenterPellet = true;
+
+    public bool guaranteeCenterPellet = true;
 
     [Header("Shotgun Pellets")]
-    [Tooltip("Mínimo de perdigones por disparo (inclusive).")]
     public int minPellets = 6;
-    [Tooltip("Máximo de perdigones por disparo (inclusive).")]
     public int maxPellets = 10;
 
     [Header("Magazine")]
-    public int   magazineCapacity = 30;
-    public int   totalMagazines   = 3;
-    public float reloadTime       = 1.8f;
+    public int magazineCapacity = 30;
+    public int totalMagazines = 3;
+    public float reloadTime = 1.8f;
 
     [Header("VFX")]
     public GameObject muzzleFlashPrefab;
     public GameObject bulletHolePrefab;
 
-
     [Header("Animation")]
-    public Animation     weaponAnimation;
+    public Animation weaponAnimation;
     public AnimationClip idleClip;
     public AnimationClip shootClip;
     public AnimationClip reloadClip;
-    public float         shootBlendIn  = 0.05f;
-    public float         shootBlendOut = 0.1f;
+    public float shootBlendIn = 0.05f;
+    public float shootBlendOut = 0.1f;
 
     #endregion
 
     #region Private State
 
-    private int  bulletsLeft;
-    private int  magazinesLeft;
+    private int bulletsLeft;
+    private int magazinesLeft;
     private bool readyToShoot = true;
-    private bool isReloading  = false;
+    private bool isReloading = false;
 
     private Coroutine resetShotCoroutine;
     private Coroutine reloadCoroutine;
+
+    private struct BulletGizmo
+    {
+        public Vector3 start;
+        public Vector3 end;
+    }
+
+    private readonly List<BulletGizmo> bulletGizmos = new List<BulletGizmo>();
 
     #endregion
 
@@ -72,9 +81,11 @@ public class GunSystem : MonoBehaviour
 
     private void Awake()
     {
-        bulletsLeft   = magazineCapacity;
+        bulletsLeft = magazineCapacity;
         magazinesLeft = totalMagazines;
-        readyToShoot  = true;
+        readyToShoot = true;
+
+        bulletDistance = range;
 
         RegisterClip(idleClip);
         RegisterClip(shootClip);
@@ -84,25 +95,24 @@ public class GunSystem : MonoBehaviour
     }
 
     #endregion
+
     private void RegisterClip(AnimationClip clip)
     {
         if (weaponAnimation == null || clip == null) return;
 
-        // Borra cualquier estado con ese nombre por si está mal registrado
         weaponAnimation.RemoveClip(clip.name);
-
-        // Lo vuelve a añadir con el nombre exacto que usa CrossFade/Play
         weaponAnimation.AddClip(clip, clip.name);
 
         Debug.Log("Registrado clip en Animation: " + clip.name);
     }
+
     #region Shooting
 
     public bool TryShoot(Vector3 origin, Vector3 direction)
     {
         if (Time.timeScale == 0f) return false;
-        
-        if (readyToShoot  && !isReloading)
+
+        if (readyToShoot && !isReloading)
         {
             if (bulletsLeft > 0)
             {
@@ -110,7 +120,9 @@ public class GunSystem : MonoBehaviour
                 return true;
             }
             else
+            {
                 Reload();
+            }
         }
         return false;
     }
@@ -118,24 +130,18 @@ public class GunSystem : MonoBehaviour
     private void Shoot(Vector3 origin, Vector3 direction)
     {
         readyToShoot = false;
-        bulletsLeft--;   // sólo 1 bala consumida por disparo, aunque salgan N perdigones
+        bulletsLeft--;
 
         PlayShootAnimation();
         SpawnMuzzleFlash();
 
-        // Número de perdigones aleatorio dentro del margen
         int pellets = UnityEngine.Random.Range(minPellets, maxPellets + 1);
-
         Quaternion rotation = Quaternion.LookRotation(direction);
-
-        bool hasDamagedPlayerThisShot = false;  //evita golpear más de una vez al player
 
         for (int i = 0; i < pellets; i++)
         {
             float x, y;
 
-            // El primer perdigón sale centrado para garantizar impacto en el target apuntado.
-            // El resto conservan dispersión cuadrada normal (X e Y independientes => coincide con el hitmarker cuadrado).
             if (guaranteeCenterPellet && i == 0)
             {
                 x = 0f;
@@ -152,18 +158,55 @@ public class GunSystem : MonoBehaviour
 
             try
             {
-                if (Physics.Raycast(origin, spreadDirection, out RaycastHit hit, range,
-                                    hitMask, QueryTriggerInteraction.Ignore))
-                {
-                    if (hit.collider.CompareTag("Player"))
-                    {
-                        if (hasDamagedPlayerThisShot) continue;
+                RaycastHit[] hits = Physics.RaycastAll(
+                    origin,
+                    spreadDirection,
+                    bulletDistance,
+                    hitMask,
+                    QueryTriggerInteraction.Ignore
+                );
 
-                        hasDamagedPlayerThisShot = true;
+                Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+                bool hitPlayerOnce = false;
+
+                foreach (var hit in hits)
+                {
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("MAP"))
+                    {
+                        bulletGizmos.Add(new BulletGizmo
+                        {
+                            start = origin,
+                            end = hit.point
+                        });
+
+                        ProcessHit(hit, spreadDirection);
+                        SpawnBulletHole(hit);
+                        break;
                     }
 
-                    Debug.Log($"PELLET HIT: {hit.collider.name} | Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        if (hitPlayerOnce) continue;
+                        hitPlayerOnce = true;
+                    }
+
+                    bulletGizmos.Add(new BulletGizmo
+                    {
+                        start = origin,
+                        end = hit.point
+                    });
+
                     ProcessHit(hit, spreadDirection);
+                }
+
+                if (hits.Length == 0)
+                {
+                    bulletGizmos.Add(new BulletGizmo
+                    {
+                        start = origin,
+                        end = origin + spreadDirection * bulletDistance
+                    });
                 }
             }
             catch (Exception e)
@@ -172,9 +215,11 @@ public class GunSystem : MonoBehaviour
             }
         }
 
-        ResetSpread();   // se llama una sola vez, al final
+        ResetSpread();
 
-        if (resetShotCoroutine != null) StopCoroutine(resetShotCoroutine);
+        if (resetShotCoroutine != null)
+            StopCoroutine(resetShotCoroutine);
+
         resetShotCoroutine = StartCoroutine(ResetShotRoutine());
     }
 
@@ -194,21 +239,15 @@ public class GunSystem : MonoBehaviour
 
         if (damageable != null)
         {
-            float    finalDamage = damage;
-            BodyPart bodyPart    = hit.collider.GetComponent<BodyPart>();
+            float finalDamage = damage;
+
+            BodyPart bodyPart = hit.collider.GetComponent<BodyPart>();
 
             if (bodyPart != null)
-            {
                 finalDamage *= bodyPart.damageMultiplier;
-                /*if (bodyPart.partType == BodyPartType.Head)
-                    audioManager?.Headshot();
-                else
-                    audioManager?.BodyHit();*/
-            }
 
-            // Notificar al DeathExplosion del enemigo qué zona se ha impactado,
-            // dónde, en qué dirección y con cuánta fuerza, para que el ragdoll reaccione bien.
             DeathExplosion de = hit.collider.GetComponentInParent<DeathExplosion>();
+
             if (de != null)
             {
                 BodyPartType partType = bodyPart != null ? bodyPart.partType : BodyPartType.Default;
@@ -245,13 +284,14 @@ public class GunSystem : MonoBehaviour
         if (totalMagazines != -1 && magazinesLeft <= 0) return;
         if (isReloading) return;
 
-        Debug.Log("Recargando con clip: " + (reloadClip != null ? reloadClip.name : "NULL"));
-
         isReloading = true;
+
         PlayAnimation(reloadClip);
         QueueAnimation(idleClip);
 
-        if (reloadCoroutine != null) StopCoroutine(reloadCoroutine);
+        if (reloadCoroutine != null)
+            StopCoroutine(reloadCoroutine);
+
         reloadCoroutine = StartCoroutine(ReloadRoutine());
     }
 
@@ -269,13 +309,23 @@ public class GunSystem : MonoBehaviour
 
     public void ResetGun()
     {
-        if (resetShotCoroutine != null) { StopCoroutine(resetShotCoroutine); resetShotCoroutine = null; }
-        if (reloadCoroutine    != null) { StopCoroutine(reloadCoroutine);    reloadCoroutine    = null; }
+        if (resetShotCoroutine != null)
+        {
+            StopCoroutine(resetShotCoroutine);
+            resetShotCoroutine = null;
+        }
 
-        bulletsLeft   = magazineCapacity;
+        if (reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+            reloadCoroutine = null;
+        }
+
+        bulletsLeft = magazineCapacity;
         magazinesLeft = totalMagazines;
-        isReloading   = false;
-        readyToShoot  = true;
+        isReloading = false;
+        readyToShoot = true;
+
         PlayAnimation(idleClip);
     }
 
@@ -284,10 +334,10 @@ public class GunSystem : MonoBehaviour
         magazinesLeft += amount;
     }
 
-    public int  BulletsLeft      => bulletsLeft;
-    public int  MagazineCapacity => magazineCapacity;
-    public int  MagazinesLeft    => magazinesLeft;
-    public bool InfiniteAmmo     => totalMagazines == -1;
+    public int BulletsLeft => bulletsLeft;
+    public int MagazineCapacity => magazineCapacity;
+    public int MagazinesLeft => magazinesLeft;
+    public bool InfiniteAmmo => totalMagazines == -1;
 
     #endregion
 
@@ -296,16 +346,20 @@ public class GunSystem : MonoBehaviour
     private void SpawnMuzzleFlash()
     {
         if (muzzleFlashPrefab == null || muzzlePoint == null) return;
+
         GameObject flash = Instantiate(muzzleFlashPrefab, muzzlePoint.position,
-                                       Quaternion.identity, muzzlePoint);
+            Quaternion.identity, muzzlePoint);
+
         Destroy(flash, 0.05f);
     }
 
     private void SpawnBulletHole(RaycastHit hit)
     {
         if (bulletHolePrefab == null) return;
+
         GameObject hole = Instantiate(bulletHolePrefab, hit.point,
-                                      Quaternion.LookRotation(hit.normal));
+            Quaternion.LookRotation(hit.normal));
+
         Destroy(hole, 5f);
     }
 
@@ -341,10 +395,15 @@ public class GunSystem : MonoBehaviour
     #endregion
 
 #if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
-        Vector3 origin = muzzlePoint != null ? muzzlePoint.position : transform.position;
+
+        foreach (var g in bulletGizmos)
+        {
+            Gizmos.DrawLine(g.start, g.end);
+            Gizmos.DrawSphere(g.end, 0.02f);
+        }
     }
 #endif
 }
