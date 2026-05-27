@@ -14,7 +14,7 @@ public class GunSystem : MonoBehaviour
     [Header("Damage")]
     public int   damage = 25;
     public float range  = 100f;
-    public LayerMask hitMask = ~0;   // <— nuevo
+    public LayerMask hitMask = ~0;
 
     [Header("Impact")]
     [Tooltip("Fuerza con la que el disparo empuja al ragdoll cuando mata a un enemigo. Subir para efecto más cinematográfico.")]
@@ -27,6 +27,8 @@ public class GunSystem : MonoBehaviour
     [Header("Spread")]
     public float spread = 0.00f;
     private float currentSpread;
+    [Tooltip("Si está activo, el primer perdigón del disparo sale siempre centrado (sin dispersión) para que apuntar al punto de mira nunca falle el target.")]
+    public bool  guaranteeCenterPellet = true;
 
     [Header("Shotgun Pellets")]
     [Tooltip("Mínimo de perdigones por disparo (inclusive).")]
@@ -130,9 +132,20 @@ public class GunSystem : MonoBehaviour
 
         for (int i = 0; i < pellets; i++)
         {
-            // Dispersión cuadrada: X e Y independientes => coincide con el hitmarker cuadrado
-            float x = UnityEngine.Random.Range(-spread, spread);
-            float y = UnityEngine.Random.Range(-spread, spread);
+            float x, y;
+
+            // El primer perdigón sale centrado para garantizar impacto en el target apuntado.
+            // El resto conservan dispersión cuadrada normal (X e Y independientes => coincide con el hitmarker cuadrado).
+            if (guaranteeCenterPellet && i == 0)
+            {
+                x = 0f;
+                y = 0f;
+            }
+            else
+            {
+                x = UnityEngine.Random.Range(-spread, spread);
+                y = UnityEngine.Random.Range(-spread, spread);
+            }
 
             Vector3 spreadDirection = rotation * new Vector3(x, y, 1f);
             spreadDirection.Normalize();
