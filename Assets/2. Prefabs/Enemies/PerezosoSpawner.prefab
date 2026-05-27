@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881d91daabd1ec4dab4e9a2b634e99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximityEnemySpawner
-  enemyPrefab: {fileID: 0}
-  playerDetectionRadius: 8
+  sloth: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  playerDetectionRadius: 34.3
   playerTag: Player
+  minRespawnDelay: 10
+  maxRespawnDelay: 20
+  minSecondDelay: 4
+  maxSecondDelay: 8
