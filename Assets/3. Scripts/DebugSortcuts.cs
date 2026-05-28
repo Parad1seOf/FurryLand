@@ -18,17 +18,17 @@ public class DebugShortcuts : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)) playerController.GetInventory()?.AddItem(ItemType.Wood, 1);
     }
 
-    private void OnGUI()
-    {
-        if (playerController == null) return;
+    //private void OnGUI()
+    //{
+    //    if (playerController == null) return;
 
-        InventorySystem inv = playerController.GetInventory();
-        int wood = inv != null ? inv.GetCount(ItemType.Wood) : 0;
+    //    InventorySystem inv = playerController.GetInventory();
+    //    int wood = inv != null ? inv.GetCount(ItemType.Wood) : 0;
 
-        GUI.Label(new Rect(10, 10, 300, 80),
-            $"HP: {playerController.Health:F0} / {playerController.maxHealth:F0} (press '1' or '2')\n" +
-            $"Stamina: {playerController.Stamina:F0} / {playerController.maxStamina:F0}\n" +
-            $"Wood: {wood} (press 'M')"
-        );
-    }
+    //    GUI.Label(new Rect(10, 10, 300, 80),
+    //       // $"HP: {playerController.Health:F0} / {playerController.maxHealth:F0} (press '1' or '2')\n" +
+    //        //$"Stamina: {playerController.Stamina:F0} / {playerController.maxStamina:F0}\n" +
+    //        //$"Wood: {wood} (press 'M')"
+    //    );
+    //}
 }

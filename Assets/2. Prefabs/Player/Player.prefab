@@ -5051,7 +5051,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685784303718246658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10030,7 +10030,7 @@ Transform:
   - {fileID: 3989827053824837385}
   - {fileID: 9205398471241345179}
   m_Father: {fileID: 5305883870465019621}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180.001, y: 180, z: -900.001}
 --- !u!111 &1183039612802929891
 Animation:
   m_ObjectHideFlags: 0
@@ -15781,15 +15781,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5184126540511960561, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.569
+      value: 0.61688024
       objectReference: {fileID: 0}
     - target: {fileID: 5184126540511960561, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -96.004
+      value: -96.573395
       objectReference: {fileID: 0}
     - target: {fileID: 5184126540511960561, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 362.16
+      value: 2.8762994
       objectReference: {fileID: 0}
     - target: {fileID: 5826422176957484129, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_Name
@@ -15801,15 +15801,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151254186701256337, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.424
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151254186701256337, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8151254186701256337, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151254186701256337, guid: a6ae1c4faac11f6489e94f981ca43ebf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -34,7 +34,39 @@ Transform:
   - {fileID: 6866420995852604039}
   - {fileID: 1171752564476677853}
   - {fileID: 1625231298109156203}
+  - {fileID: 4440304638738705886}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5180667248422158728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4440304638738705886}
+  m_Layer: 0
+  m_Name: Constitucion Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4440304638738705886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180667248422158728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.013, y: 0.34, z: 1.016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2181967514372149630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5715854524609920462
 GameObject:
@@ -353,6 +385,7 @@ MonoBehaviour:
   timeToExplode: 5
   explosionCount: 3
   retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
+  retrievedItemPoint: {fileID: 0}
   objectToExplode: {fileID: 2437111608023197247}
   trigger: {fileID: 7088063247072793936}
   timer: 0
@@ -459,13 +492,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3935405175537820606, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089946330613308238}
   m_SourcePrefab: {fileID: 100100000, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
 --- !u!4 &1625231298109156203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
   m_PrefabInstance: {fileID: 1227022250140093568}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2853624187328900926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3935405175537820606, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+  m_PrefabInstance: {fileID: 1227022250140093568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1089946330613308238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853624187328900926}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.016814245, y: 0.015264004, z: 0.0029512884}
+  m_Center: {x: -0.000000059604645, y: 0.000000059604645, z: 0}
 --- !u!1001 &2261645084413145999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -598,6 +660,7 @@ MonoBehaviour:
   timeToExplode: 15
   explosionCount: 3
   retrievedObject: {fileID: 8031306051009044690, guid: c12a3493f834f3148b8909406f73f209, type: 3}
+  retrievedItemPoint: {fileID: 4440304638738705886}
   objectToExplode: {fileID: 5715854524609920462}
   trigger: {fileID: 7088063247072793936}
   timer: 0
