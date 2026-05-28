@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 4785178888932596359}
   - component: {fileID: 1496219244949177622}
   - component: {fileID: 7325564401908678578}
+  - component: {fileID: 2115106611021877093}
   m_Layer: 6
   m_Name: Sloth
   m_TagString: Untagged
@@ -416,6 +417,7 @@ MonoBehaviour:
   timeBetweenShots: 0.1
   allowHoldToFire: 1
   spread: 0
+  guaranteeCenterPellet: 1
   minPellets: 6
   maxPellets: 10
   magazineCapacity: 30
@@ -687,6 +689,24 @@ MonoBehaviour:
   label: {fileID: 4131768485242358627}
   offset: {x: 0, y: 2.2, z: 0}
   faceCamera: 1
+--- !u!114 &2115106611021877093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999828997862323489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911ef0dbb8c8353439bdd3809e0d0299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagdollController
+  animator: {fileID: 6615669095388930099}
+  agent: {fileID: 6089141724876198967}
+  mainCollider: {fileID: 1407539811169566508}
+  ragdollBodies: []
+  ragdollColliders: []
+  zeroVelocityOnEnable: 0
 --- !u!1 &4238478995638358348
 GameObject:
   m_ObjectHideFlags: 0

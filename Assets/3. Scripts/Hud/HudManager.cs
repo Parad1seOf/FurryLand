@@ -1,7 +1,8 @@
+using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
 public class HUDManager : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class HUDManager : MonoBehaviour
 
     [Header("Enemy suspicion")]
     [SerializeField] private TextMeshProUGUI enemySuspicion;
+    [SerializeField] private Image questionMarkEmpty;
+    [SerializeField] private Image questionMarkFill;
+    [SerializeField] private Image exclamationMark;
+    [SerializeField] private float exclamationMarkTime = 2f;
 
     [Header("ExplosivesProgression")]
     [SerializeField] private GameObject explosivesProgressionSliderGameObject;
@@ -106,6 +111,11 @@ public class HUDManager : MonoBehaviour
             previousHealth   = playerController.HealthNormalised;
             SetDelayedRect(delayedFillValue);
         }
+
+        questionMarkEmpty.gameObject.SetActive(false);
+        questionMarkFill.gameObject.SetActive(false);
+        exclamationMark.gameObject.SetActive(false);
+        AlertSystem.Instance.OnAlertTriggered += Exclamation;
     }
 
     private void OnDestroy()
@@ -288,18 +298,30 @@ public class HUDManager : MonoBehaviour
         if (enemyAwareness == null)
         {
             enemyAwareness = awareness;
+            Debug.Log(enemyAwareness.name);
             return;
         }
-        if (enemyAwareness.GetAwareness() < awareness.GetAwareness()) enemyAwareness = awareness;
+        if (enemyAwareness.GetAwareness() < awareness.GetAwareness()) { enemyAwareness = awareness; }
+
+        
     }
 
     private void UpdateEnemySuspicion()
     {
         enemySuspicion.text = Mathf.FloorToInt(enemyAwareness.GetAwareness()).ToString();
+
+        questionMarkEmpty.gameObject.SetActive(true);
+        questionMarkFill.gameObject.SetActive(true);
+
+        questionMarkFill.fillAmount = enemyAwareness.GetAwareness() / 100;
+
         if (enemyAwareness.GetAwareness() == 0)
         {
             enemyAwareness = null;
             enemySuspicion.text = "";
+
+            questionMarkEmpty.gameObject.SetActive(false);
+            questionMarkFill.gameObject.SetActive(false);
         }
     }
 
@@ -309,5 +331,18 @@ public class HUDManager : MonoBehaviour
         explosivesProgressionSliderGameObject.SetActive(explosives.inProgress);
         explosivesProgressionSlider.enabled = true;
         explosivesProgressionSlider.value = explosives.GetProgress();
+    }
+
+    public void Exclamation()
+    {
+        exclamationMark.gameObject.SetActive(!(exclamationMark.gameObject.activeSelf));
+        StartCoroutine(Corutine());
+    }
+
+    IEnumerator Corutine()
+    {
+        yield return new WaitForSeconds(exclamationMarkTime);
+
+        exclamationMark.gameObject.SetActive(!(exclamationMark.gameObject.activeSelf));
     }
 }
