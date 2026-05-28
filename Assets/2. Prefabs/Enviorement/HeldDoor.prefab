@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 8134547552581574220}
   - component: {fileID: 1367558165308430050}
   - component: {fileID: 3590800600829028823}
+  - component: {fileID: 1499311805588463173}
   m_Layer: 8
   m_Name: HeldDoor
   m_TagString: Untagged
@@ -384,3 +385,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7602532, y: 1.2858144, z: 0.22827137}
   m_Center: {x: 0.13843715, y: -0.14290664, z: -0.2939841}
+--- !u!114 &1499311805588463173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541987888797673959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp

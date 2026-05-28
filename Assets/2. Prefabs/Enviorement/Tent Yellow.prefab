@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1027174630275755723}
   - component: {fileID: 4224053702456686571}
   - component: {fileID: 4152410914663550156}
+  - component: {fileID: 8326377829848234568}
   m_Layer: 10
   m_Name: Tent Yellow
   m_TagString: Untagged
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.4377685, y: 3.118303, z: 3.3855493}
   m_Center: {x: -0.031476498, y: -1.5213403e-10, z: 0.19717306}
+--- !u!114 &8326377829848234568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217630555216474110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp

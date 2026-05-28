@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6680553407646908855}
   - component: {fileID: 1243019801725702163}
   - component: {fileID: 49847874681959386}
+  - component: {fileID: 6814953551695367207}
   m_Layer: 10
   m_Name: Tent Green
   m_TagString: Untagged
@@ -113,3 +114,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7928283671761670029, guid: 4718bb7a1d02cb24faaf8b929bc86861, type: 3}
+--- !u!114 &6814953551695367207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889500357330043895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
