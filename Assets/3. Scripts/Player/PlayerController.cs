@@ -185,6 +185,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         if (ComicPanelManager.Instance != null)
-            ComicPanelManager.Instance.ShowPhraseByID("Start_Game", 5f);
+            ComicPanelManager.Instance.ShowPhraseByID("Start_Game");
     }
 }

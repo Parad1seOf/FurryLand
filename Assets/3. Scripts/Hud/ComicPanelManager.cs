@@ -20,9 +20,9 @@ public class ComicPanelManager : MonoBehaviour
             container.SetActive(false);
     }
     
-    public void ShowPhraseByID(string id, float duration = -1f)
+    public void ShowPhraseByID(string id, float duration = 0f)
     {
-        if (duration < 0) duration = this.duration;
+        if (duration <= 0) duration = this.duration;
 
         if(container == null || panelText == null || phrasesData == null) return;
 
