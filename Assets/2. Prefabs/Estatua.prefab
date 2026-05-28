@@ -372,6 +372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2181967514372149630}
     m_Modifications:
+    - target: {fileID: -9070964651969378275, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 901597cebae93284c858e8708bc1e4e6, type: 2}
     - target: {fileID: -8679921383154817045, guid: 324372196ecb28f40afcbdb16347fec3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0015283132
@@ -593,7 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   timeToExplode: 15
   explosionCount: 3
-  retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
+  retrievedObject: {fileID: 8031306051009044690, guid: c12a3493f834f3148b8909406f73f209, type: 3}
   objectToExplode: {fileID: 5715854524609920462}
   trigger: {fileID: 7088063247072793936}
   timer: 0
