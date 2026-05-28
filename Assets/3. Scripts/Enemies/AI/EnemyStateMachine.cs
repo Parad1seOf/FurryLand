@@ -56,6 +56,9 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     public void Die()
     {
+        if (ScoreManager.instance != null)
+            ScoreManager.instance.scoreKill();
+
         ChangeState(behaviour.OnDie());
     }
 

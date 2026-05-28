@@ -11,9 +11,6 @@ public class EnemyDeadState : IEnemyState
 
     public void Enter()
     {
-        if (ScoreManager.instance != null)
-            ScoreManager.instance.scoreKill();
-
         RagdollController ragdoll = context.gameObject.GetComponent<RagdollController>();
 
         if (ragdoll == null)
