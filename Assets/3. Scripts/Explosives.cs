@@ -6,6 +6,7 @@ public class Explosives : InteractableAction
     [SerializeField] private int explosionCount = 3;
     private int currentExplosions;
     [SerializeField] private GameObject retrievedObject;
+    [SerializeField] private Transform retrievedItemPoint;
     [SerializeField] private GameObject objectToExplode;
     [SerializeField] private GameObject trigger;
     public float timer;
@@ -33,6 +34,9 @@ public class Explosives : InteractableAction
         {
             Explode();
         }
+
+        if (retrievedItemPoint == null)
+            retrievedItemPoint = transform;
     }
 
     public void Explode()
@@ -73,7 +77,7 @@ public class Explosives : InteractableAction
             return;
         }
 
-        Instantiate(retrievedObject, transform.position, transform.rotation);
+        Instantiate(retrievedObject, retrievedItemPoint.position, retrievedItemPoint.rotation);
         objectToExplode.SetActive(false);
         inProgress = false;
     }
