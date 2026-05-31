@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540990909016665826}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5000005, y: 0.49999973, z: 0.49999988, w: -0.49999994}
-  m_LocalPosition: {x: 0.215, y: -0.322, z: -0.28}
+  m_LocalRotation: {x: -0.4903495, y: 0.50946796, z: 0.5094673, w: 0.49034968}
+  m_LocalPosition: {x: 1.015, y: -0.322, z: -0.306}
   m_LocalScale: {x: 25.043503, y: 50.087013, z: 24.208723}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3964497146457243204}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -450}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -627.809}
 --- !u!33 &3043594153489077018
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -205,13 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942632688805799859}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5000002, z: -0.4999998, w: -0.50000006}
-  m_LocalPosition: {x: 0.07, y: -0.32, z: -0.21}
+  m_LocalRotation: {x: -0.49797797, y: -0.50201404, z: -0.5020141, w: 0.4979776}
+  m_LocalPosition: {x: -0.62287396, y: -0.3199997, z: -0.27392352}
   m_LocalScale: {x: 25.043503, y: 50.087013, z: 24.208723}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3964497146457243204}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -270}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90.463}
 --- !u!33 &6001559354288052644
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1367558165308430050}
   - component: {fileID: 3590800600829028823}
   - component: {fileID: 1499311805588463173}
+  - component: {fileID: 3987697220884008515}
   m_Layer: 8
   m_Name: HeldDoor
   m_TagString: Untagged
@@ -397,3 +398,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+--- !u!95 &3987697220884008515
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541987888797673959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 394e50972c2c61e44af9627332fa9847, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
