@@ -385,12 +385,12 @@ MonoBehaviour:
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
   distance: 10
-  followSpeed: 6
+  followSpeed: 5
   timeToShoot: 1.5
   beamCollisionMask:
     serializedVersion: 2
     m_Bits: 8379
-  aimingColor: {r: 0, g: 0.7768485, b: 0.9019608, a: 1}
+  aimingColor: {r: 0, g: 0.7768485, b: 0.9019608, a: 0.84705883}
   warningColor: {r: 0.9169811, g: 0.07742937, b: 0.046714056, a: 1}
   shootColor1: {r: 1, g: 1, b: 1, a: 1}
   shootColor2: {r: 1, g: 0.78665775, b: 0, a: 1}
@@ -492,22 +492,22 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.31928974
-        inSlope: -0.33889952
-        outSlope: -0.33889952
+        time: 0.0019874573
+        value: 0.0806288
+        inSlope: -0.055595387
+        outSlope: -0.055595387
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.15400296
+        outWeight: 0.13880478
       - serializedVersion: 3
         time: 1
-        value: 0.05000019
-        inSlope: -0.54886365
-        outSlope: -0.54886365
+        value: 0.023480415
+        inSlope: -0.04349651
+        outSlope: -0.04349651
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.15155008
+        inWeight: 0.12065548
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -548,7 +548,7 @@ LineRenderer:
     textureMode: 4
     textureScale: {x: 1, y: 1}
     shadowBias: 0
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
