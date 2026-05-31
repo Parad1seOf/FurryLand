@@ -41,7 +41,7 @@ public class GunSystem : MonoBehaviour
     [Header("Magazine")]
     public int magazineCapacity = 30;
     public int totalMagazines = 3;
-    public float reloadTime = 1.8f;
+    public float reloadTime = 1.0f;
 
     [Header("VFX")]
     public GameObject muzzleFlashPrefab;
