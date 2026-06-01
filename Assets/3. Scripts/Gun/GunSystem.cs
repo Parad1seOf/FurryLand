@@ -102,8 +102,6 @@ public class GunSystem : MonoBehaviour
 
         weaponAnimation.RemoveClip(clip.name);
         weaponAnimation.AddClip(clip, clip.name);
-
-        Debug.Log("Registrado clip en Animation: " + clip.name);
     }
 
     #region Shooting
@@ -211,7 +209,6 @@ public class GunSystem : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.LogException(e);
             }
         }
 
@@ -379,7 +376,6 @@ public class GunSystem : MonoBehaviour
 
         if (weaponAnimation.GetClip(clip.name) == null)
         {
-            Debug.LogWarning("No existe en Animation: " + clip.name);
             return;
         }
 

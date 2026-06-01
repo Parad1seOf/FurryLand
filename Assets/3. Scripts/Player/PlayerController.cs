@@ -143,7 +143,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath()
     {
-        Debug.Log("[PlayerController] Player died.");
 
         GameResultUI resultsUI = FindFirstObjectByType<GameResultUI>();
 

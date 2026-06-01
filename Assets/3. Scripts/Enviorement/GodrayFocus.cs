@@ -16,7 +16,7 @@ public class GodrayFocus : MonoBehaviour
     public float fadeOutDuration = 2f;
 
     [Header("Smoothness")]
-    [Tooltip("Cuanto más alto, más rápido reaccionará el alpha.")]
+    [Tooltip("Cuanto mï¿½s alto, mï¿½s rï¿½pido reaccionarï¿½ el alpha.")]
     public float alphaSmoothSpeed = 5f;
 
     private ParticleSystem.MainModule mainModule;
@@ -31,7 +31,6 @@ public class GodrayFocus : MonoBehaviour
     {
         if (targetParticleSystem == null)
         {
-            Debug.LogError("No Particle System assigned.");
             enabled = false;
             return;
         }
@@ -41,7 +40,7 @@ public class GodrayFocus : MonoBehaviour
         // Empezar invisible
         SetAlpha(0f);
 
-        // Reproducir partículas
+        // Reproducir partï¿½culas
         if (!targetParticleSystem.isPlaying)
         {
             targetParticleSystem.Play();
@@ -53,7 +52,7 @@ public class GodrayFocus : MonoBehaviour
         if (finished || player == null)
             return;
 
-        // Si ya empezó la secuencia final no seguimos calculando distancia
+        // Si ya empezï¿½ la secuencia final no seguimos calculando distancia
         if (!sequenceStarted)
         {
             float distance = Vector3.Distance(player.position, transform.position);
@@ -63,7 +62,7 @@ public class GodrayFocus : MonoBehaviour
             {
                 targetAlpha = 0f;
             }
-            // Dentro del radio máximo
+            // Dentro del radio mï¿½ximo
             else if (distance <= fullVisibleRadius)
             {
                 targetAlpha = 1f;
@@ -72,7 +71,7 @@ public class GodrayFocus : MonoBehaviour
             }
             else
             {
-                // Interpolación según distancia
+                // Interpolaciï¿½n segï¿½n distancia
                 targetAlpha = Mathf.InverseLerp(
                     appearRadius,
                     fullVisibleRadius,
@@ -95,7 +94,7 @@ public class GodrayFocus : MonoBehaviour
     {
         sequenceStarted = true;
 
-        // Forzar alpha máximo
+        // Forzar alpha mï¿½ximo
         targetAlpha = 1f;
 
         yield return new WaitForSeconds(stayVisibleTime);
@@ -134,10 +133,10 @@ public class GodrayFocus : MonoBehaviour
         mainModule.startColor = color;
     }
 
-    // Visualización de radios
+    // Visualizaciï¿½n de radios
     private void OnDrawGizmosSelected()
     {
-        // Radio aparición
+        // Radio apariciï¿½n
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, appearRadius);
 

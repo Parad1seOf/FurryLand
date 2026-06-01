@@ -14,7 +14,6 @@ public class PickupAction : InteractableAction
                 var gun = player.GetComponentInChildren<GunSystem>();
                 if (gun == null)
                 {
-                    Debug.LogWarning("[_PickupAction] El jugador no tiene _GunSystem.");
                     return;
                 }
                 gun.AddMagazines(amount);
@@ -24,14 +23,12 @@ public class PickupAction : InteractableAction
                 var inventory = player.GetComponent<InventorySystem>();
                 if (inventory == null)
                 {
-                    Debug.LogWarning("[_PickupAction] El jugador no tiene _InventorySystem.");
                     return;
                 }
                 inventory.AddItem(itemType, amount);
                 break;
         }
 
-        Debug.Log($"[_PickupAction] Recogido {amount}x {itemType}");
         Destroy(gameObject);
     }
 }

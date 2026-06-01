@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponToggle : MonoBehaviour
 {
@@ -15,27 +16,55 @@ public class WeaponToggle : MonoBehaviour
     private float drawTimer;
 
     private bool hasTriggeredComicPanel = false;
-
-    public bool IsWeaponDrawn => weaponObject != null && weaponObject.activeSelf;
+    private bool drawn = false;
+    public bool IsWeaponDrawn => drawn;
 
     private void Awake()
     {
         input = GetComponent<InputReader>();
-        weaponObject?.SetActive(false); // empieza guardada
+        Holster();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Holster();
     }
 
     private void Start()
     {
-        AlertSystem.Instance.OnAlertTriggered += Alarm;
+        if (AlertSystem.Instance != null)
+            AlertSystem.Instance.OnAlertTriggered += Alarm;
+
         if (hudManager == null)
             hudManager = Object.FindFirstObjectByType<HUDManager>();
     }
 
+    private void OnDestroy()
+    {
+        if (AlertSystem.Instance != null)
+            AlertSystem.Instance.OnAlertTriggered -= Alarm;
+    }
+
+    private void Holster()
+    {
+        drawn = false;
+        weaponObject?.SetActive(false);
+        drawTimer = 0f;
+        if (hudManager != null) hudManager.SetWeaponHoldProgress(0f, false);
+    }
+
     private void Update()
     {
-        // Si el arma ya está sacada, no hay nada que rellenar.
-        // (Se mantiene la funcionalidad original: una vez sacada se queda sacada,
-        //  porque el Toggle() original siempre hace SetActive(true).)
         if (IsWeaponDrawn)
         {
             if (drawTimer != 0f)
@@ -47,8 +76,6 @@ public class WeaponToggle : MonoBehaviour
         }
 
         if (input == null) return;
-
-        // Mantener la tecla → rellenar el radial
         if (input.WeaponHeld)
         {
             drawTimer += Time.deltaTime;
@@ -64,7 +91,6 @@ public class WeaponToggle : MonoBehaviour
         }
         else
         {
-            // Se soltó la tecla antes de completar → cancelar, la próxima vez empieza desde 0
             if (drawTimer > 0f)
             {
                 drawTimer = 0f;
@@ -75,9 +101,10 @@ public class WeaponToggle : MonoBehaviour
 
     private void Toggle()
     {
+        drawn = true;
         weaponObject?.SetActive(true);
         SuspicionComponent sus = GetComponent<SuspicionComponent>();
-        if (weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
+        if (weaponObject != null && weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
         else sus?.LowerSuspicion(suspiciousness);
 
         if (!hasTriggeredComicPanel && AlertSystem.Instance != null && !AlertSystem.Instance.IsAlreadyTriggered)
@@ -91,7 +118,6 @@ public class WeaponToggle : MonoBehaviour
 
     public void Alarm()
     {
-        // La alarma saca el arma al instante, sin necesidad de mantener la tecla.
         Toggle();
     }
 }

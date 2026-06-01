@@ -55,7 +55,6 @@ public class HedgehogAttack : EnemyAttack
         }
 
         isAttacking = false;
-        Debug.Log("Golpe de conejo");
     }
 
     public void Update()

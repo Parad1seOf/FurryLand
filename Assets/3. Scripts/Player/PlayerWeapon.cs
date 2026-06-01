@@ -3,8 +3,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    
-
     [Header("References")]
     [SerializeField] private GunSystem gun;
     [SerializeField] private AudioManager audioManager;
@@ -21,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     private Vector3 impactVelocity;
 
     private bool trigger;
+    private WeaponToggle weaponToggle;
 
     public void GrabMagazine(int amount)
     {
@@ -33,6 +32,7 @@ public class PlayerWeapon : MonoBehaviour
         audioManager = AudioManager.Instance;
 
         characterController = GetComponent<CharacterController>();
+        weaponToggle = GetComponentInParent<WeaponToggle>();
     }
 
     public void Update()
@@ -60,12 +60,12 @@ public class PlayerWeapon : MonoBehaviour
             ? Input.GetKey(KeyCode.Mouse0)
             : Input.GetKeyDown(KeyCode.Mouse0);
         if (trigger) TryShoot();
-        
     }
 
     private void TryShoot()
     {
-        
+        if (weaponToggle != null && !weaponToggle.IsWeaponDrawn) return;
+
         float spreadIncrease = 0;
         if (playerController != null && playerController.IsRunning) spreadIncrease = runSpread;
         else if (playerController != null && playerController.IsWalking) spreadIncrease = walkSpread;

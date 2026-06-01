@@ -29,13 +29,10 @@ public class OpenDoorAction : InteractableAction
     {
         if (door == null)
         {
-            Debug.LogWarning("[OpenDoorAction] No hay ninguna puerta asignada.");
             return;
         }
 
         isOpen = !isOpen;
-        Debug.Log(isOpen ? "Puerta abierta" : "Puerta cerrada");
-
         if (anim != null) StopCoroutine(anim);
         anim = StartCoroutine(AnimateDoor(isOpen ? openRot : closedRot));
     }

@@ -298,7 +298,6 @@ public class HUDManager : MonoBehaviour
         if (enemyAwareness == null)
         {
             enemyAwareness = awareness;
-            Debug.Log(enemyAwareness.name);
             return;
         }
         if (enemyAwareness.GetAwareness() < awareness.GetAwareness()) { enemyAwareness = awareness; }

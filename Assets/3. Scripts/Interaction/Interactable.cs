@@ -27,7 +27,6 @@ public class Interactable : MonoBehaviour, IInteractable
         if(action == null)
             action = GetComponent<InteractableAction>();
         if (action == null)
-            Debug.LogWarning($"[Interactable] '{gameObject.name}' no tiene ninguna InteractableAction en el mismo GameObject.");
         if (condition == null)
             condition = GetComponent<Condition>();
     }

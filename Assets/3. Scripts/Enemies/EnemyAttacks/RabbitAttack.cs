@@ -47,8 +47,6 @@ public class RabbitAttack : EnemyAttack
 
     private void PrepareJump()
     {
-        Debug.Log("preparin");
-
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -60,8 +58,6 @@ public class RabbitAttack : EnemyAttack
 
     private void Launch()
     {
-        Debug.Log("launch");
-
         state = State.JUMPING;
         rb.isKinematic = false;
 
@@ -88,7 +84,6 @@ public class RabbitAttack : EnemyAttack
 
     private void Jumping()
     {
-        Debug.Log("jumpin");
         if (groundCheckTimer > 0)
             groundCheckTimer -= Time.deltaTime;
         else

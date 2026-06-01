@@ -14,7 +14,6 @@ public class ShowMessageAction : InteractableAction
         HUDManager hud = Object.FindFirstObjectByType<HUDManager>();
         if (hud == null)
         {
-            Debug.LogWarning("[ShowMessageAction] No se encontró HUDManager en la escena.");
             return;
         }
         hud.ShowMessage(message, duration);
