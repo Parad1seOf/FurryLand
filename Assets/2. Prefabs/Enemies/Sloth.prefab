@@ -98,6 +98,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 195244217885679776}
+  - {fileID: 7260809382875669997}
   m_Father: {fileID: 2045832084910133810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975026853888754732
@@ -124,12 +125,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975026853888754732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.254, y: 0.004, z: 0.795}
+  m_LocalRotation: {x: -0, y: -0.99831957, z: -0, w: 0.057948794}
+  m_LocalPosition: {x: -0.461, y: 0.01, z: -2.318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2045832084910133810}
+  m_Father: {fileID: 8217772904335376961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999828997862323489
 GameObject:
@@ -182,7 +183,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8961574393670686684}
-  - {fileID: 7260809382875669997}
   - {fileID: 388676600486304195}
   - {fileID: 1534845757427116451}
   - {fileID: 8217772904335376961}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementComponent
   agent: {fileID: 0}
   moveSpeed: 0
-  rotationSpeed: 5
+  rotationSpeed: 2.7
   animator: {fileID: 0}
 --- !u!114 &9216503724008643117
 MonoBehaviour:
