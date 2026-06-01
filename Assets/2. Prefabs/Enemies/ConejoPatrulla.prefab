@@ -721,6 +721,8 @@ MonoBehaviour:
   moveSpeed: 4
   rotationSpeed: 0
   animator: {fileID: 0}
+  turnAnimationMinAnglePerFrame: 0.4
+  turnAnimationMaxMoveSpeed: 0.1
 --- !u!114 &2068536838184627172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,6 +1811,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0aa5801835000aa4daeb0ad58c9a3edf, type: 2}
+    - target: {fileID: 5866666021909216657, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6621823396367300760, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_IsActive
       value: 1
