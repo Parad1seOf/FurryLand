@@ -461,7 +461,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2e98a30ff881de04983148b97d2f8535, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropComponent
   drop: {fileID: 5067011286007837141, guid: f643580923b38b742a5709491f27c068, type: 3}
-  probability: 50
+  probability: 100
 --- !u!114 &4785178888932596359
 MonoBehaviour:
   m_ObjectHideFlags: 0
