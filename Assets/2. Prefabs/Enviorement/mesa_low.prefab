@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7017988111017826669
+--- !u!1 &6594357956854060469
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3711138838659565481}
-  - component: {fileID: 4102563248325293896}
-  - component: {fileID: 783474095085188020}
-  - component: {fileID: 8599648363409531349}
+  - component: {fileID: 343578950176885170}
+  - component: {fileID: 6355142828279039285}
+  - component: {fileID: 1805130105203655438}
   m_Layer: 0
   m_Name: mesa_low
   m_TagString: Untagged
@@ -19,36 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3711138838659565481
+--- !u!4 &343578950176885170
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017988111017826669}
+  m_GameObject: {fileID: 6594357956854060469}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -19.054592, y: 0, z: 0}
+  m_LocalPosition: {x: 40.14, y: 0, z: 0}
   m_LocalScale: {x: 50.08702, y: 50.08702, z: 50.08702}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
---- !u!33 &4102563248325293896
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6355142828279039285
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017988111017826669}
-  m_Mesh: {fileID: -2228417370725966487, guid: 0eefd6c4dd492194fb0b31401a0daf72, type: 3}
---- !u!23 &783474095085188020
+  m_GameObject: {fileID: 6594357956854060469}
+  m_Mesh: {fileID: -8425142950584729998, guid: 6e8dcd7c207dd6149859e15d15e62fd6, type: 3}
+--- !u!23 &1805130105203655438
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017988111017826669}
+  m_GameObject: {fileID: 6594357956854060469}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -67,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88c59b8064ec01f4b9082bb880980d59, type: 2}
+  - {fileID: 2100000, guid: 87ef2a5dccab47146ad00860d188229a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,15 +90,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8599648363409531349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017988111017826669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
