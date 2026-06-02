@@ -30,7 +30,8 @@ public class EnemySuspicionState : IEnemyState
     {
         awareness.BecomeUnaware();
 
-        display.ChangeLabel("", Color.white);
+        //display.ChangeLabel("", Color.white);
+        display.HideSuspicion();
     }
 
     public  void Update()
@@ -62,6 +63,8 @@ public class EnemySuspicionState : IEnemyState
 
     private void UpdateDisplay()
     {
-        display.ChangeLabel(Mathf.FloorToInt(awareness.GetAwareness()).ToSafeString(), Color.darkViolet);
+        //display.ChangeLabel(Mathf.FloorToInt(awareness.GetAwareness()).ToSafeString(), Color.darkViolet);
+
+        display.ShowSuspicion(awareness.GetAwareness());
     }
 }

@@ -1,10 +1,16 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDisplay : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshPro label;
+
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Image questionMarkEmpty;
+    [SerializeField] private Image questionMarkFill;
+    [SerializeField] private Image exclamationMark;
 
     [Header("Settings")]
     [SerializeField] private Vector3 offset = new Vector3(0f, 2.2f, 0f);
@@ -17,6 +23,13 @@ public class EnemyDisplay : MonoBehaviour
         cam = Camera.main;
     }
 
+    private void Start()
+    {
+        questionMarkEmpty.gameObject.SetActive(false);
+        questionMarkFill.gameObject.SetActive(false);
+        exclamationMark.gameObject.SetActive(false);
+    }
+
     private void LateUpdate()
     {
 
@@ -27,27 +40,32 @@ public class EnemyDisplay : MonoBehaviour
         if (faceCamera && cam != null)
             label.transform.forward = cam.transform.forward;
 
-        // Texto + sospecha
-        /*string stateName = stateMachine.CurrentStateName;
-        float  sus       = stateMachine.SuspicionLevel;
-
-        label.text = sus > 0f
-            ? $"{stateName}\n<size=70%>{sus:F0} / 100</size>"
-            : stateName;
-
-        // Color según estado
-        label.color = stateName switch
-        {
-            nameof(EnemyIdleState)      => Color.white,
-            nameof(EnemySuspicionState) => Color.yellow,
-            nameof(EnemyAlertState)     => Color.red,
-            _                           => Color.white
-        };*/
+        if (faceCamera && cam != null)
+            canvas.transform.forward = cam.transform.forward;
     }
 
     public void ChangeLabel(string str, Color color)
     {
         label.text = str;
         label.color = color;
+    }
+
+    public void ShowSuspicion(float sus)
+    {
+        questionMarkEmpty.gameObject.SetActive(true);
+        questionMarkFill.gameObject.SetActive(true);
+
+        questionMarkFill.fillAmount = sus / 100;
+    }
+
+    public void HideSuspicion()
+    {
+        questionMarkEmpty.gameObject.SetActive(false);
+        questionMarkFill.gameObject.SetActive(false);
+    }
+
+    public void Exclamation()
+    {
+        exclamationMark.gameObject.SetActive(!(exclamationMark.gameObject.activeSelf));
     }
 }

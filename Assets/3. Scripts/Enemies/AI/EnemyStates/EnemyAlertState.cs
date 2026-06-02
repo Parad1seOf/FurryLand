@@ -25,12 +25,14 @@ public class EnemyAlertState : IEnemyState
 
         timer = time;
         context.movement.LookAt(detection.GetTargetPosition());
-        display.ChangeLabel("!", Color.red);
+        //display.ChangeLabel("!", Color.red);
+        display.Exclamation();
     }
 
     public void Exit()
     {
-        display.ChangeLabel("", Color.white);
+        //display.ChangeLabel("", Color.white);
+        display.Exclamation();
     }
 
     public void Update()
