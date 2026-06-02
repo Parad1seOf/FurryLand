@@ -1,6 +1,9 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static PhrasesData;
+using static System.Net.Mime.MediaTypeNames;
 
 public class ComicPanelManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class ComicPanelManager : MonoBehaviour
     [SerializeField] private GameObject container;
     [SerializeField] private TextMeshProUGUI panelText;
     [SerializeField] private float duration = 5f;
+    [SerializeField] private float width = 600;
 
     private void Awake()
     {
@@ -32,6 +36,7 @@ public class ComicPanelManager : MonoBehaviour
         {
             panelText.text = displayText;
             container.SetActive(true);
+            Adjust();
 
             CancelInvoke(nameof(HidePanel));
             Invoke(nameof(HidePanel), duration);
@@ -54,5 +59,14 @@ public class ComicPanelManager : MonoBehaviour
     public void CancelC4Reminder()
     {
         CancelInvoke(nameof(TriggerC4Reminder));
+    }
+
+    private void Adjust()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(panelText.rectTransform);
+
+        float height = panelText.preferredHeight;
+
+        GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
     }
 }

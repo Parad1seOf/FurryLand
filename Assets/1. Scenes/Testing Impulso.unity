@@ -42339,6 +42339,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 414000648079546378, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1042561033232252519, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_text
       value: "pulsa [F] para sacar \nla escopeta"
@@ -42439,6 +42443,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 200.83102
       objectReference: {fileID: 0}
+    - target: {fileID: 1877585772429523526, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2494650264287573265, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_Color.a
       value: 0.7607843
@@ -42497,11 +42505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4882121776134043963, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1324
+      value: -664
       objectReference: {fileID: 0}
     - target: {fileID: 4882121776134043963, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4957575686359285871, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -42657,11 +42665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7858939695910859487, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7858939695910859487, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8264057761064444019, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_Pivot.x
@@ -101816,6 +101824,8 @@ MonoBehaviour:
   trigger: {fileID: 1214865364}
   timer: 0
   inProgress: 0
+  explosionParticles: {fileID: 0}
+  explosionSound: {fileID: 0}
   brazo: {fileID: 0}
   oreja: {fileID: 0}
   ortaoreja: {fileID: 0}
