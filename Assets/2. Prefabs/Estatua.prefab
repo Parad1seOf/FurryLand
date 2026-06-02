@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   timeToExplode: 5
+  explosionSound: {fileID: 0}
   explosionCount: 3
   retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
   retrievedItemPoint: {fileID: 0}
@@ -658,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   timeToExplode: 15
+  explosionSound: {fileID: 8300000, guid: ee3453ea468dbce4088c42d758d243be, type: 3}
   explosionCount: 3
   retrievedObject: {fileID: 8031306051009044690, guid: c12a3493f834f3148b8909406f73f209, type: 3}
   retrievedItemPoint: {fileID: 4440304638738705886}

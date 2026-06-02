@@ -15,6 +15,10 @@ public class ComicPanelManager : MonoBehaviour
     [SerializeField] private float duration = 5f;
     [SerializeField] private float width = 600;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip appearSound;
+    [SerializeField] private AudioClip disappearSound;
+
     private void Awake()
     {
         if(Instance == null) Instance = this;
@@ -38,12 +42,20 @@ public class ComicPanelManager : MonoBehaviour
             container.SetActive(true);
             Adjust();
 
+            if (appearSound != null && AudioManager.Instance != null)
+                AudioManager.Instance.sfxSource.PlayOneShot(appearSound);
+
             CancelInvoke(nameof(HidePanel));
             Invoke(nameof(HidePanel), duration);
         }
     }
 
-    private void HidePanel() => container.SetActive(false);
+    private void HidePanel() {
+        if (disappearSound != null && AudioManager.Instance != null && container.activeSelf)
+            AudioManager.Instance.sfxSource.PlayOneShot(disappearSound);
+
+        container.SetActive(false);
+    }
 
     public void StartC4Reminder(string id, float duration)
     {

@@ -3,8 +3,10 @@ using UnityEngine;
 public class Explosives : InteractableAction
 {
     [SerializeField] private float timeToExplode;
+    [SerializeField] private AudioClip explosionSound;
     [SerializeField] private int explosionCount = 3;
     private int currentExplosions;
+
     [SerializeField] private GameObject retrievedObject;
     [SerializeField] private Transform retrievedItemPoint;
     [SerializeField] private GameObject objectToExplode;
@@ -42,6 +44,9 @@ public class Explosives : InteractableAction
     public void Explode()
     {
         currentExplosions++;
+
+        if (explosionSound != null && AudioManager.Instance != null)
+            AudioManager.Instance.sfxSource.PlayOneShot(explosionSound);
 
         ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
