@@ -17,9 +17,11 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Sources")]
     public AudioSource sfxSource;
     public AudioSource stepsSource;
+    public AudioSource musicSource;
 
     [Header("Clips — Jugador")]
     public AudioClip shootClip;
+    public AudioClip reloadClip;
     public AudioClip playerHitClip;
     public AudioClip footstepsClip;
 
@@ -27,6 +29,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip headShotClip;
     public AudioClip bodyHitClip;
     public AudioClip meleeSwipeClip;
+
+    [Header("Clips — Victoria")]
+    public AudioClip victoryMusicClip;
+    public AudioClip defeatMusicClip;
+
+    [Header("Clips — Ambiente")]
+    public AudioClip birdsClip;
 
     #endregion
 
@@ -44,6 +53,7 @@ public class AudioManager : MonoBehaviour
     #region Public API
 
     public void Shooting()    => PlayOneShot(sfxSource, shootClip);
+    public void Reloading() => PlayOneShot(sfxSource, reloadClip);
     public void PlayerHit()   => PlayOneShot(sfxSource, playerHitClip);
     public void BodyHit()     => PlayOneShot(sfxSource, bodyHitClip);
     public void MeleeSwipe()  => PlayOneShot(sfxSource, meleeSwipeClip);
@@ -67,6 +77,22 @@ public class AudioManager : MonoBehaviour
     {
         if (stepsSource != null && stepsSource.isPlaying)
             stepsSource.Stop();
+    }
+
+    public void PlayBirdsAmbience()
+    {
+        if (musicSource == null || birdsClip == null) return;
+
+        musicSource.clip = birdsClip;
+        musicSource.loop = true;
+        musicSource.ignoreListenerPause = false;
+        musicSource.Play();
+    }
+
+    public void StopBirdsAmbience()
+    {
+        if (musicSource != null && musicSource.isPlaying)
+            musicSource.Stop();
     }
 
     #endregion

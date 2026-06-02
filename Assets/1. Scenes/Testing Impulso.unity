@@ -99902,6 +99902,7 @@ GameObject:
   - component: {fileID: 1917393049}
   - component: {fileID: 1917393047}
   - component: {fileID: 1917393048}
+  - component: {fileID: 1917393050}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -99923,12 +99924,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sfxSource: {fileID: 1917393048}
   stepsSource: {fileID: 0}
+  musicSource: {fileID: 1917393050}
   shootClip: {fileID: 8300000, guid: 15778af0dc126ea4d8aefc9b96215f7a, type: 3}
+  reloadClip: {fileID: 8300000, guid: 0ccc46512293e984f884d1e193d4bc34, type: 3}
   playerHitClip: {fileID: 8300000, guid: 9668153a9bc14234e8f74508bcbf25b4, type: 3}
   footstepsClip: {fileID: 0}
   headShotClip: {fileID: 8300000, guid: 9668153a9bc14234e8f74508bcbf25b4, type: 3}
   bodyHitClip: {fileID: 0}
   meleeSwipeClip: {fileID: 8300000, guid: c9eb136ffbc9fce4db5432b2b2990188, type: 3}
+  victoryMusicClip: {fileID: 0}
+  defeatMusicClip: {fileID: 0}
+  birdsClip: {fileID: 8300000, guid: f63e9a9c7e46e5d4697c965ca0fdc41f, type: 3}
 --- !u!82 &1917393048
 AudioSource:
   m_ObjectHideFlags: 0
@@ -100041,6 +100047,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1917393050
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917393046}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: f63e9a9c7e46e5d4697c965ca0fdc41f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1919229294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101824,8 +101927,6 @@ MonoBehaviour:
   trigger: {fileID: 1214865364}
   timer: 0
   inProgress: 0
-  explosionParticles: {fileID: 0}
-  explosionSound: {fileID: 0}
   brazo: {fileID: 0}
   oreja: {fileID: 0}
   ortaoreja: {fileID: 0}

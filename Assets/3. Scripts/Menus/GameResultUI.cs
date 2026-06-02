@@ -11,13 +11,17 @@ public class GameResultUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI resultText;
     [SerializeField] TextMeshProUGUI numberOfKills;
     [SerializeField] TextMeshProUGUI totalTime;
-    [SerializeField] TextMeshProUGUI detectiveLevel;
     [SerializeField] TextMeshProUGUI shootingAccuracy;
     [SerializeField] TextMeshProUGUI totalReceivedDamage;
 
     [Header("Result sprites")]
     [SerializeField] Sprite victorySprite;
     [SerializeField] Sprite defeatSprite; //Esto habrá que cambiarlo más adelante
+
+    [Header("Clips — Victoria")]
+    [SerializeField] private AudioSource localAudioSource;
+    [SerializeField] private AudioClip victoryMusic;
+    [SerializeField] private AudioClip defeatMusic;
 
     //public static GameResultUI instance { get; private set; }
 
@@ -27,6 +31,19 @@ public class GameResultUI : MonoBehaviour
         resultText.text = isVictory ? "VICTORIA":"DERROTA";
         resultImage.sprite = isVictory ? victorySprite : defeatSprite;
 
+        AudioListener.pause = true;
+
+        if (localAudioSource != null)
+        {
+            localAudioSource.ignoreListenerPause = true;
+
+            AudioClip clipToPlay = isVictory ? victoryMusic : defeatMusic;
+            if (clipToPlay != null)
+            {
+                localAudioSource.clip = clipToPlay;
+                localAudioSource.Play();
+            }
+        }
 
         int kills = ScoreManager.instance.GetKillCount();
         int minutes = Timer.instance.GetMinutes();
@@ -41,7 +58,7 @@ public class GameResultUI : MonoBehaviour
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                damage = playerHealth.totalDamage;
+                    damage = playerHealth.totalDamage;
             }
         }
 
@@ -49,9 +66,6 @@ public class GameResultUI : MonoBehaviour
         totalTime.text = string.Format("Tiempo: {0:00}:{1:00}", minutes, seconds);
         shootingAccuracy.text = "Precisión: " + accuracy + "%";
         totalReceivedDamage.text = "Daño recibido: " + Mathf.RoundToInt(damage) + " HP";
-
-        //Falta calcular el nivel de detective
-        detectiveLevel.text = "Nivel detective: x%";
 
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

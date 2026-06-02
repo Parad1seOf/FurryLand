@@ -36,6 +36,9 @@ public class AlertSystem : MonoBehaviour
         IsAlreadyTriggered = true;
         OnAlertTriggered?.Invoke();
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopBirdsAmbience();
+
         if (ComicPanelManager.Instance != null)
             ComicPanelManager.Instance.ShowPhraseByID("Start_Phase2");
     }

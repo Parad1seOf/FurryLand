@@ -286,6 +286,9 @@ public class GunSystem : MonoBehaviour
         PlayAnimation(reloadClip);
         QueueAnimation(idleClip);
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.Reloading();
+
         if (reloadCoroutine != null)
             StopCoroutine(reloadCoroutine);
 
