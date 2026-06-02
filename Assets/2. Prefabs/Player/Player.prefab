@@ -4947,6 +4947,31 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   playerController: {fileID: 8168884295756889035}
   fpsCam: {fileID: 0}
+  shakeDuration: 0.35
+  shakeStrength:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3999939
+      inSlope: -0.3999939
+      outSlope: -0.3999939
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.3999939
+      outSlope: -0.3999939
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   walkSpread: 0.02
   runSpread: 0.05
   characterController: {fileID: 0}

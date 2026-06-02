@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(InputReader))]
@@ -33,5 +34,26 @@ public class FirstPersonLook : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, Yaw, 0f);
         if (pitchController != null)
             pitchController.localRotation = Quaternion.Euler(Pitch, 0f, 0f);
+    }
+
+    public void ShakeCamera(float duration, AnimationCurve strength)
+    {
+        StartCoroutine(Shake(duration, strength));
+    }
+
+    public IEnumerator Shake(float duration, AnimationCurve strength)
+    {
+        Transform cam = Camera.main.transform;
+        float timer = duration;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            float currentStrength = strength.Evaluate(timer / duration);
+            cam.position = pitchController.position + Random.insideUnitSphere * currentStrength;
+            yield return null;
+        }
+
+        cam.position = pitchController.position;
     }
 }

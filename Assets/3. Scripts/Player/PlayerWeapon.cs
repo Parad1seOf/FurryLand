@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,6 +9,8 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Camera fpsCam;
+    [SerializeField] private float shakeDuration;
+    [SerializeField] private AnimationCurve shakeStrength;
 
     [Header("Spread")]
     public float walkSpread = 0.02f;
@@ -85,6 +88,7 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
 
+        GetComponent<FirstPersonLook>().ShakeCamera(shakeDuration, shakeStrength);
         AlertSystem.Instance.TriggerAlert();
     }
 }
