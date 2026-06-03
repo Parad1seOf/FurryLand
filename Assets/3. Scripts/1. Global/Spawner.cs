@@ -14,6 +14,8 @@ public class Spawner : InteractableAction
     [SerializeField] private AudioClip doorBreakSound;
     [SerializeField] private GameObject doorExplosionPrefab;
 
+    [SerializeField] private ParticleSystem doorExplosionParticle;
+
     [SerializeField] private GameObject elephant;
 
     private EnemyPool pool;
@@ -36,7 +38,6 @@ public class Spawner : InteractableAction
             if (spawnTimer < 0) wantsToSpawn = true;
             return;
         }
-
 
         GameObject enemy = pool.GetEnemy();
         if (enemy == null) return;
@@ -64,6 +65,9 @@ public class Spawner : InteractableAction
 
         if (doorBreakSound != null && AudioManager.Instance != null)
             AudioManager.Instance.sfxSource.PlayOneShot(doorBreakSound);
+
+        if (doorExplosionParticle != null)
+            doorExplosionParticle.Play();
 
         if (doorExplosionPrefab != null && blockingObject != null)
             Instantiate(doorExplosionPrefab, blockingObject.transform.position, Quaternion.identity);
