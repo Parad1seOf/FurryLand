@@ -11,6 +11,7 @@ public class Spawner : InteractableAction
     [SerializeField] Interactable activator;
     private bool alarmed;
     private bool alreadyBroken = false;
+    [SerializeField] private AudioClip doorBreakSound;
     [SerializeField] private GameObject doorExplosionPrefab;
 
     [SerializeField] private GameObject elephant;
@@ -60,6 +61,9 @@ public class Spawner : InteractableAction
     public void BreakBlock()
     {
         isBlocked = false;
+
+        if (doorBreakSound != null && AudioManager.Instance != null)
+            AudioManager.Instance.sfxSource.PlayOneShot(doorBreakSound);
 
         if (doorExplosionPrefab != null && blockingObject != null)
             Instantiate(doorExplosionPrefab, blockingObject.transform.position, Quaternion.identity);
