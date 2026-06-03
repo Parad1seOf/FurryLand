@@ -11,6 +11,7 @@ public class Spawner : InteractableAction
     [SerializeField] Interactable activator;
     private bool alarmed;
     private bool alreadyBroken = false;
+    [SerializeField] private GameObject doorExplosionPrefab;
 
     [SerializeField] private GameObject elephant;
 
@@ -59,6 +60,10 @@ public class Spawner : InteractableAction
     public void BreakBlock()
     {
         isBlocked = false;
+
+        if (doorExplosionPrefab != null && blockingObject != null)
+            Instantiate(doorExplosionPrefab, blockingObject.transform.position, Quaternion.identity);
+
         blockingObject.SetActive(false);
         alreadyBroken = true;
     }

@@ -13377,6 +13377,7 @@ MonoBehaviour:
   spawnpoint: {fileID: 0}
   blockingObject: {fileID: 0}
   activator: {fileID: 255455018}
+  doorExplosionPrefab: {fileID: 0}
   elephant: {fileID: 0}
 --- !u!4 &255455020
 Transform:
@@ -68399,6 +68400,14 @@ PrefabInstance:
       propertyPath: timeToSpawn
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8837440231122077556, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
+      propertyPath: doorExplosionPrefab
+      value: 
+      objectReference: {fileID: 1635850976}
+    - target: {fileID: 8856890680052198569, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8942227032328987338, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
       propertyPath: m_Name
       value: Puerta
@@ -71802,6 +71811,7 @@ MonoBehaviour:
   spawnpoint: {fileID: 0}
   blockingObject: {fileID: 945459255}
   activator: {fileID: 1377273676}
+  doorExplosionPrefab: {fileID: 0}
   elephant: {fileID: 0}
 --- !u!4 &1377273678
 Transform:
@@ -75452,6 +75462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1126309488}
     - target: {fileID: 4157696682834613277, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 1789180630}
+    - target: {fileID: 4157696682834613277, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
       propertyPath: timeToExplode
       value: 40
       objectReference: {fileID: 0}
@@ -75463,6 +75477,18 @@ PrefabInstance:
       propertyPath: objectToExplode
       value: 
       objectReference: {fileID: 1375888574}
+    - target: {fileID: 4157696682834613277, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
+      propertyPath: 'explosionPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1327599468}
+    - target: {fileID: 4157696682834613277, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
+      propertyPath: 'explosionPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1564227495}
+    - target: {fileID: 4157696682834613277, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
+      propertyPath: 'explosionPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 774235773}
     - target: {fileID: 5180667248422158728, guid: a4354a2650e866b42a1888179e8cbf51, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -85198,6 +85224,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4f403f76c196349a1fb7062585d7f3, type: 3}
+--- !u!1 &1635850976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 480896048184780496, guid: 852b834650fd9ab4186b873111f2bdb7, type: 3}
+  m_PrefabInstance: {fileID: 1597579170984336186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1637887314
 GameObject:
   m_ObjectHideFlags: 0
@@ -93682,6 +93713,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1769862907310839216, guid: cf113081036d6cc499ac51b859ef1eca, type: 3}
+--- !u!1 &1789180630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8606795836535549983, guid: d1ef30ce91204a743972736037f1d5e6, type: 3}
+  m_PrefabInstance: {fileID: 471971404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1789307910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98644,6 +98680,7 @@ MonoBehaviour:
   spawnpoint: {fileID: 0}
   blockingObject: {fileID: 0}
   activator: {fileID: 1885110006}
+  doorExplosionPrefab: {fileID: 0}
   elephant: {fileID: 0}
 --- !u!4 &1885110008
 Transform:
@@ -102180,6 +102217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   timeToExplode: 0
   explosionSound: {fileID: 0}
+  explosionPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  smokePrefab: {fileID: 0}
   explosionCount: 3
   retrievedObject: {fileID: 1187131414217639667, guid: c0baa57eab63be747baa54f174ff7d32, type: 3}
   retrievedItemPoint: {fileID: 0}

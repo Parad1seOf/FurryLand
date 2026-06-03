@@ -4,6 +4,8 @@ public class Explosives : InteractableAction
 {
     [SerializeField] private float timeToExplode;
     [SerializeField] private AudioClip explosionSound;
+    [SerializeField] private GameObject[] explosionPrefabs = new GameObject[3];
+    [SerializeField] private GameObject smokePrefab;
     [SerializeField] private int explosionCount = 3;
     private int currentExplosions;
 
@@ -48,6 +50,15 @@ public class Explosives : InteractableAction
         if (explosionSound != null && AudioManager.Instance != null)
             AudioManager.Instance.sfxSource.PlayOneShot(explosionSound);
 
+        int index = currentExplosions - 1;
+
+        if (explosionPrefabs[index] != null)
+        {
+            GameObject nuevaExplosion = Instantiate(explosionPrefabs[index], transform.position, Quaternion.identity);
+
+            nuevaExplosion.SetActive(true);
+        }
+
         ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
         EnemyPool.instance.Explosion();
@@ -67,6 +78,13 @@ public class Explosives : InteractableAction
         {
             torso.SetActive(false);
             pierna.SetActive(false);
+
+            if (smokePrefab != null)
+            {
+                GameObject smokeClone = Instantiate(smokePrefab, transform.position, Quaternion.identity);
+                smokeClone.SetActive(true);
+            }
+
         }
 
         gameObject.SetActive(false);
