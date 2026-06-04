@@ -5,7 +5,7 @@ public class ForbiddenArea : MonoBehaviour
     [SerializeField]
     private float suspicionValue;
 
-    private bool hasTriggeredComic = false;
+    private static bool hasTriggeredComic = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,4 +30,6 @@ public class ForbiddenArea : MonoBehaviour
 
         sus.LowerSuspicion(suspicionValue);
     }
+
+    public static void ResetComicTrigger() => hasTriggeredComic = false;
 }

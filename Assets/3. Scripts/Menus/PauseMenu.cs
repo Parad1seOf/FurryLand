@@ -1,4 +1,3 @@
-using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +39,8 @@ public class PauseMenu : MonoBehaviour
         if (pauseVisualContent != null) pauseVisualContent.SetActive(true);
         if (optionsPanel != null) optionsPanel.SetActive(false);
 
+        AudioListener.pause = true;
+
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -48,8 +49,9 @@ public class PauseMenu : MonoBehaviour
     public void Continue()
     {
         gamePaused = false;
+        AudioListener.pause = false;
 
-        if(pauseMenuUI != null) pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         if (pauseVisualContent != null) pauseVisualContent.SetActive(false);
         if (optionsPanel != null) optionsPanel.SetActive(false);
         if (controlsPanel != null) controlsPanel.SetActive(false);
@@ -62,6 +64,7 @@ public class PauseMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
+        ForbiddenArea.ResetComicTrigger();
         SceneManager.LoadScene(0);
     }
 
