@@ -16,20 +16,30 @@ public class GameResultUI : MonoBehaviour
 
     [Header("Result sprites")]
     [SerializeField] Sprite victorySprite;
-    [SerializeField] Sprite defeatSprite; //Esto habrá que cambiarlo más adelante
+    [SerializeField] Sprite rabbitKillerSprite;
+    [SerializeField] Sprite sniperKillerSprite;
 
-    [Header("Clips — Victoria")]
+    [Header("Clips — Victory")]
     [SerializeField] private AudioSource localAudioSource;
     [SerializeField] private AudioClip victoryMusic;
     [SerializeField] private AudioClip defeatMusic;
 
     //public static GameResultUI instance { get; private set; }
 
-    public void ShowResults(bool isVictory)
+    public void ShowResults(bool isVictory, string killerType = "")
     {
         mainPanel.SetActive(true);
         resultText.text = isVictory ? "VICTORIA":"DERROTA";
-        resultImage.sprite = isVictory ? victorySprite : defeatSprite;
+
+        if (isVictory)
+            resultImage.sprite = victorySprite;
+        else
+        {
+            if (killerType == "Rabbit")
+                resultImage.sprite = rabbitKillerSprite;
+            else
+                resultImage.sprite = sniperKillerSprite;
+        }
 
         AudioListener.pause = true;
 
@@ -75,6 +85,12 @@ public class GameResultUI : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBirdsAmbience();
+        }
 
         if (FadeManager.Instance != null)
         {

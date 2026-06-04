@@ -684,7 +684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1169932083217262539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9459,7 +9459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5412425865534462475
 Transform:
   m_ObjectHideFlags: 0
@@ -9528,7 +9528,8 @@ MonoBehaviour:
   shootingAccuracy: {fileID: 6898179024287864527}
   totalReceivedDamage: {fileID: 8576578105820128199}
   victorySprite: {fileID: 21300000, guid: 7e8275b5badb1f44abc803eed03ecde0, type: 3}
-  defeatSprite: {fileID: 21300000, guid: dc5a525cbc9321b4ba46efbf133bf1c6, type: 3}
+  rabbitKillerSprite: {fileID: 21300000, guid: d7bc081bdebca90488278fc2232eb7cc, type: 3}
+  sniperKillerSprite: {fileID: 21300000, guid: baf30ae3d531e384ab25ab59fb21bac5, type: 3}
   localAudioSource: {fileID: 3813381230205370426}
   victoryMusic: {fileID: 8300000, guid: 9317742a69e174c46bb9fedfb2983821, type: 3}
   defeatMusic: {fileID: 0}

@@ -143,6 +143,14 @@ public class SlothAttack : EnemyAttack
         if (sniperAnimation != null)
             sniperAnimation.Shoot();
 
+        Vector3 direction = (target - origin.position).normalized;
+        if (Physics.Raycast(origin.position, direction, out RaycastHit hit, Mathf.Infinity, beamCollisionMask))
+        {
+            PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+                playerHealth.TakeDamage(damage, "Sniper");
+        }
+
         gun.TryShoot(origin.position, target - origin.position);
 
         EndAttack();
