@@ -82,6 +82,9 @@ public class Phase2FXManager : MonoBehaviour
         Cursor.visible = false;
 
         AudioListener.pause = false;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayBirdsAmbience();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

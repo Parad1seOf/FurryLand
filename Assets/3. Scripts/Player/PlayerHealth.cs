@@ -9,7 +9,7 @@ public class PlayerHealth : HealthSystem
     [SerializeField] private float healingPerSecond = 10;
 
     private bool lowHealthWarningTriggered = false;
-
+    private string lastAttackerType = "";
 
 
     // Update is called once per frame
@@ -25,11 +25,27 @@ public class PlayerHealth : HealthSystem
         base.Restore(healingPerSecond * Time.deltaTime);
     }
 
+    public void TakeDamage(float amount, string attackerType)
+    {
+        if (base.Health <= 0) return;
+        lastAttackerType = attackerType;
+        TakeDamage(amount);
+    }
+
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
 
         timer = timeToStartHealing;
+
+        if (base.Health <= 0)
+        {
+            GameResultUI resultUI = FindFirstObjectByType<GameResultUI>();
+            if (resultUI != null)
+                resultUI.ShowResults(false, lastAttackerType);
+
+            return;
+        }
 
         if (base.HealthNormalised <= 0.25f && !lowHealthWarningTriggered && base.Health > 0)
         {

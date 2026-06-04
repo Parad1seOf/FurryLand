@@ -46,13 +46,21 @@ public class HedgehogAttack : EnemyAttack
 
         if (Physics.Raycast(origin.position, direction, out hit, distance))
         {
+            PlayerHealth health = hit.collider.GetComponent<PlayerHealth>();
+
+            if (health != null)
+                health.TakeDamage(damage, "Rabbit");
+        }
+
+        /*if (Physics.Raycast(origin.position, direction, out hit, distance))
+        {
             HealthSystem health = hit.collider.GetComponent<PlayerHealth>();
 
             if (health != null)
             {
                 health.TakeDamage(damage);
             }
-        }
+        }*/
 
         isAttacking = false;
     }
