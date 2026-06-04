@@ -48,16 +48,18 @@ public class MeleeAttack : MonoBehaviour
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, radius, enemyLayer);
 
         bool hasHitEnemy = false;
+        System.Collections.Generic.List<IDamageable> targetsDamaged = new System.Collections.Generic.List<IDamageable>();
 
         foreach (Collider enemy in hitEnemies)
         {
-            //if(enemy.CompareTag("Player")) continue;
-
             IDamageable damageable = enemy.GetComponentInParent<IDamageable>();
 
             if (damageable != null)
             {
+                if (targetsDamaged.Contains(damageable)) continue;
+
                 damageable.TakeDamage(damage);
+                targetsDamaged.Add(damageable);
                 hasHitEnemy = true;
             }
         }
@@ -65,7 +67,7 @@ public class MeleeAttack : MonoBehaviour
         if (hasHitEnemy)
         {
             StartCoroutine(ShowAndHideSlash());
-            if (ScoreManager.instance != null) ScoreManager.instance.RegisterHit();
+            //if (ScoreManager.instance != null) ScoreManager.instance.RegisterHit();
         }
     }
 

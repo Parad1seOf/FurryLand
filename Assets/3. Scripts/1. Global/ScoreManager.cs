@@ -64,16 +64,15 @@ public class ScoreManager : MonoBehaviour
 
     public void RegisterHit()
     {
-        if (hitShots < totalShots)
-            hitShots++;
+        hitShots++;
     }
 
     public int GetAccuracy()
     {
         if (totalShots == 0) return 0;
 
-        float ratio = (float) hitShots / totalShots;
-        if (ratio > 1f) ratio = 1f;
+        float validHits = Mathf.Min(hitShots, totalShots);
+        float ratio = validHits / totalShots;
 
         return Mathf.RoundToInt(ratio * 100f);
     }
