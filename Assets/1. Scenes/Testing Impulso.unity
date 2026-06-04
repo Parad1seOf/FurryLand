@@ -62946,6 +62946,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118727087010681811, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1673676331}
+    - target: {fileID: 118727087010681811, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseProfile1
+      objectReference: {fileID: 0}
+    - target: {fileID: 118727087010681811, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Phase2FXManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 118727087010681811, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 880586744980475105, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -62965,6 +62981,38 @@ PrefabInstance:
     - target: {fileID: 2006521784050788386, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1673676331}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseProfile2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Phase2FXManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543425867377216312, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988254878260576102, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+      propertyPath: m_Name
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 3507165355072441271, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
       propertyPath: mainCamera
@@ -115419,6 +115467,9 @@ MonoBehaviour:
   phase2Volume: {fileID: 1941176237}
   healthVolume: {fileID: 471128898}
   healthSystem: {fileID: 1850325163}
+  option1: {fileID: 11400000, guid: 02585775b9b1d204c8bb831135663a12, type: 2}
+  option2: {fileID: 11400000, guid: 6f4245d8803f08641aa48e1a00e781d3, type: 2}
+  postProcessSelectorCanvas: {fileID: 2131568221}
   increaseAmount: 0.2
   decaySpeed: 0.5
   delay: 3
@@ -147590,6 +147641,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 41518379706584723, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
   m_PrefabInstance: {fileID: 2130649780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2131568221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6148570151381068862, guid: d3fe51cf9d08c574482fce2e0779fe60, type: 3}
+  m_PrefabInstance: {fileID: 942913629}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2133490718
 GameObject:

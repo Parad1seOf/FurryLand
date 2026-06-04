@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider FOVSlider;
     [SerializeField] private Toggle fogToggle;
 
+    public static int PostProcessingChoice = 0;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -57,6 +59,11 @@ public class MainMenu : MonoBehaviour
     public void ShowExtras(bool show) => extrasPanel.SetActive(show);
     public void ShowCredits(bool show) => creditsPanel.SetActive(show);
 
+    #endregion
+
+    #region Post Processing
+    public void SelectFXOption1() => PostProcessingChoice = 0;
+    public void SelectFXOption2() => PostProcessingChoice = 1;
     #endregion
 
     #region Cinematics
