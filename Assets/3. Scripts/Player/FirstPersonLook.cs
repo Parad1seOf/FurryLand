@@ -44,11 +44,11 @@ public class FirstPersonLook : MonoBehaviour
     public IEnumerator Shake(float duration, AnimationCurve strength)
     {
         Transform cam = Camera.main.transform;
-        float timer = duration;
+        float timer = 0f;
 
-        while (timer > 0)
+        while (timer < duration)
         {
-            timer -= Time.deltaTime;
+            timer += Time.deltaTime;
             float currentStrength = strength.Evaluate(timer / duration);
             cam.position = pitchController.position + Random.insideUnitSphere * currentStrength;
             yield return null;
