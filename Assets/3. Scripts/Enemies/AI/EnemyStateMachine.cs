@@ -56,8 +56,8 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
 
     public void Die()
     {
-        if (ScoreManager.instance != null)
-            ScoreManager.instance.scoreKill();
+        ScoreManager.instance.scoreKill();
+        GetComponent<IEnemySounds>()?.PlayDeath();
 
         ChangeState(behaviour.OnDie());
     }

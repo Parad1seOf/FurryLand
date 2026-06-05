@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 //Esta clase esta fatal, hay que arreglarlo
-public class HedgehogAttack : EnemyAttack
+public class HedgehogAttack : EnemyAttack, IAnimatedAttack
 {
     
     [SerializeField] private float distance = 2f;
@@ -12,7 +12,6 @@ public class HedgehogAttack : EnemyAttack
     [SerializeField] private Animator animator;
 
     [SerializeField] private float timeToHit = 0.15f;
-    private float hitTimer;
     private float cooldownTimer;
 
     private void Awake()
@@ -36,7 +35,6 @@ public class HedgehogAttack : EnemyAttack
         isAttacking = true;
 
         cooldownTimer = cooldown;
-        hitTimer = timeToHit;
     }
 
     public void RealAttack()
@@ -62,6 +60,8 @@ public class HedgehogAttack : EnemyAttack
             }
         }*/
 
+        AudioManager.Instance.RabbitAttack(transform.position);
+
         isAttacking = false;
     }
 
@@ -71,17 +71,10 @@ public class HedgehogAttack : EnemyAttack
         {
             cooldownTimer -= Time.deltaTime;
         }
+    }
 
-        if (!isAttacking) return;
-
-        if (hitTimer >= 0)
-        {
-            hitTimer -= Time.deltaTime;
-        }
-
-        if (hitTimer <= 0)
-        {
-            RealAttack();
-        }
+    public void AnimatedAttack()
+    {
+        RealAttack();
     }
 }

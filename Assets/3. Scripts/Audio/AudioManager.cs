@@ -1,5 +1,8 @@
 // Script sing de audio. PlayerController y GunSystem llaman sus métodos...
 // para reproducir sonidos de disparo etcc
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -36,6 +39,20 @@ public class AudioManager : MonoBehaviour
 
     [Header("Clips — Ambiente")]
     public AudioClip birdsClip;
+
+    [Header("Clips — Enemigos")]
+    public AudioClip suspicion;
+    public AudioClip alert;
+    public AudioClip rabbitStepClip;
+    public AudioClip bigRabbitStepClip;
+    public AudioClip rabbitDeathClip;
+    public AudioClip bigRabbitDeathClip;
+    public AudioClip rabbitAttackClip;
+    public AudioClip sniperShootClip;
+
+    [Header("Clips - Interactuables")]
+    public AudioClip pickUpWoodClip;
+    public AudioClip blockDoorClip;
 
     #endregion
 
@@ -95,6 +112,18 @@ public class AudioManager : MonoBehaviour
             musicSource.Stop();
     }
 
+    public void Suspicion(Vector3 position) => PlayOneShot(suspicion, position);
+    public void Alert(Vector3 position) => PlayOneShot(alert, position);
+    public void RabbitStep(Vector3 position) => PlayOneShot(rabbitStepClip, position);
+    public void BigRabbitStep(Vector3 position) => PlayOneShot(bigRabbitStepClip, position);
+    public void RabbitDeath(Vector3 position) => PlayOneShot(rabbitDeathClip, position);
+    public void BigRabbitDeath(Vector3 position) => PlayOneShot(bigRabbitDeathClip, position);
+    public void RabbitAttack(Vector3 position) => PlayOneShot(rabbitAttackClip, position);
+    public void SniperShoot(Vector3 position) => PlayOneShot(sniperShootClip, position);
+    public void PickUpWood(Vector3 position) => PlayOneShot(pickUpWoodClip, position);
+    public void BlockDoor(Vector3 position) => PlayOneShot(blockDoorClip, position);
+
+
     #endregion
 
     #region Helpers
@@ -103,6 +132,16 @@ public class AudioManager : MonoBehaviour
     {
         if (source == null || clip == null) return;
         source.PlayOneShot(clip);
+    }
+
+    private void PlayOneShot(AudioClip clip, Vector3 position)
+    {
+        GameObject soundGameObject = new GameObject("Sound");
+        soundGameObject.transform.position = position;
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 1;
+        audioSource.PlayOneShot(clip);
+        Destroy(audioSource, clip.length);
     }
 
     #endregion
