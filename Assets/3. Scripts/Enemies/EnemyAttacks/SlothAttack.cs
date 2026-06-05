@@ -152,7 +152,7 @@ public class SlothAttack : EnemyAttack
         }
 
         gun.TryShoot(origin.position, target - origin.position);
-        GetComponent<IEnemySounds>()?.PlayAttack();
+        AudioManager.Instance.SniperShoot(origin.position);
 
         EndAttack();
     }
