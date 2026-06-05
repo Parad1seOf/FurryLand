@@ -27,6 +27,7 @@ public class EnemyAlertState : IEnemyState
         context.movement.LookAt(detection.GetTargetPosition());
         //display.ChangeLabel("!", Color.red);
         display.Exclamation();
+        AudioManager.Instance.Alert(context.transform.position);
     }
 
     public void Exit()
