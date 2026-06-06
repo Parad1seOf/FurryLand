@@ -24,6 +24,8 @@ public class Explosives : InteractableAction
     [SerializeField] private GameObject pierna;
     [SerializeField] private GameObject otro_brazo;
 
+    private bool hasShownComicPanel = false;
+
     public void OnEnable()
     {
         timer = timeToExplode;
@@ -103,6 +105,9 @@ public class Explosives : InteractableAction
         Instantiate(retrievedObject, retrievedItemPoint.position, retrievedItemPoint.rotation);
         objectToExplode.SetActive(false);
         inProgress = false;
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Constitucion_Spawned");
     }
 
     public override void Execute(PlayerController player)
@@ -110,7 +115,12 @@ public class Explosives : InteractableAction
         inProgress = true;
         gameObject.SetActive(true);
         trigger.SetActive(false);
-        ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
+
+        if (!hasShownComicPanel)
+        {
+            ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
+            hasShownComicPanel = true;
+        }
 
         if (ComicPanelManager.Instance != null)
             ComicPanelManager.Instance.CancelC4Reminder();

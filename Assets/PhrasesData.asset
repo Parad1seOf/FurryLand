@@ -21,8 +21,19 @@ MonoBehaviour:
   - id: Wood_Pickup
     text: "Entonces, nuestro intr\xE9pido mapache se dio cuenta de que pod\xEDa utilizar
       la madera para cerrar las entradas. "
+  - id: Ammo_Pickup
+    text: "Munici\xF3n... qu\xE9 buen recibimiento."
+  - id: Parkour_Tip
+    text: 'Mapache se percata de que puede ganar altura saltando sobre las caravanas
+      y se dispone a explotar la estatua central. '
   - id: Block_Door
     text: "\xA1BAM! \xA1BAM! Puerta sellada."
+  - id: Break_Block
+    text: "\xA1Barrera destruida!"
+  - id: Weapon_Stealth
+    text: Vaya, Don Mapache Malo es algo impaciente...
+  - id: Start_Phase2
+    text: "\xA1Han descubierto a Mapache Malo!"
   - id: C4_Placed
     text: "La hora de la verdad lleg\xF3 y ya solo tocaba resistir."
   - id: C4_Explode
@@ -31,14 +42,15 @@ MonoBehaviour:
     text: "\xA1R\xE1pido, a por la siguiente carga! "
   - id: Elephant_Spawns
     text: "\xA1PUM, PUM, PUM! El tit\xE1n se acerca, arrasando con todo. "
+  - id: Elephant_Watering
+    text: "El tit\xE1n est\xE1 neutralizando la carga del explosivo, \xA1hay que
+      detenerlo!"
   - id: Low_Health
     text: "Y entonces... Mapache estuvo a punto de caer. Ten\xEDa que huir. "
-  - id: Start_Phase2
-    text: "\xA1Han descubierto a Mapache Malo!"
+  - id: Constitucion_Spawned
+    text: La estatua se ha roto... y su secreto al fin queda revelado.
   - id: FurryConstitucion_Pickup
     text: "El secreto que guarda el camping es... \xA1LA GRAN CONSTITUCI\xD3N FURRA!
       Mapache Malo tiene en su poder un documento sagrado, debe huir de inmediato."
-  - id: Weapon_Stealth
-    text: Vaya, Don Mapache Malo es algo impaciente...
   - id: Exit_Approach
     text: "\xA1Un \xFAltimo sprint! Ya se huele la libertad."

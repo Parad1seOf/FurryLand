@@ -22,6 +22,9 @@ public class ElephantBehaviour : MonoBehaviour, IAIBehaviour
 
     public IEnemyState OnDestination()
     {
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Elephant_Watering");
+
         return new EnemyWatergunState(context);
     }
 

@@ -65,6 +65,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         ForbiddenArea.ResetComicTrigger();
+        AmmoItem.ResetAmmoTrigger();
+        Spawner.ResetParkourTrigger();
         SceneManager.LoadScene(0);
     }
 

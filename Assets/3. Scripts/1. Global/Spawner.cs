@@ -20,6 +20,8 @@ public class Spawner : InteractableAction
 
     private EnemyPool pool;
 
+    private static bool hasShownComicPanel = false;
+
     public void Start()
     {
         SpawnerManager.instance.AddSpawner(this);
@@ -57,6 +59,12 @@ public class Spawner : InteractableAction
 
         if (ComicPanelManager.Instance != null)
             ComicPanelManager.Instance.ShowPhraseByID("Block_Door");
+
+        if (!hasShownComicPanel)
+        {
+            StartCoroutine(ShowParkourPanel());
+            hasShownComicPanel = true;
+        }
     }
 
     public void BreakBlock()
@@ -65,6 +73,9 @@ public class Spawner : InteractableAction
 
         if (doorBreakSound != null && AudioManager.Instance != null)
             AudioManager.Instance.sfxSource.PlayOneShot(doorBreakSound);
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Break_Block");
 
         if (doorExplosionParticle != null)
             doorExplosionParticle.Play();
@@ -104,5 +115,15 @@ public class Spawner : InteractableAction
             ComicPanelManager.Instance.ShowPhraseByID("Elephant_Spawns");
 
         return elephant;
+    }
+
+    public static void ResetParkourTrigger() => hasShownComicPanel = false;
+
+    private System.Collections.IEnumerator ShowParkourPanel()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        if (ComicPanelManager.Instance != null)
+            ComicPanelManager.Instance.ShowPhraseByID("Parkour_Tip");
     }
 }
