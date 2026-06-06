@@ -92418,6 +92418,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2462859724850123514, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2462859724850123514, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735840296143931868, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: bloodVFX
+      value: 
+      objectReference: {fileID: 3924240818638244326, guid: bc331fac8dd13124182b3d50e3c415ed, type: 3}
+    - target: {fileID: 2735840296143931868, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: explosionVFX
+      value: 
+      objectReference: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
+    - target: {fileID: 2735840296143931868, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: bloodVFXYOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735840296143931868, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: bloodVFXLifetime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735840296143931868, guid: e584a0624924e954baecfb862801f927, type: 3}
+      propertyPath: bloodVFXFaceHitDirection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4944752368024775681, guid: e584a0624924e954baecfb862801f927, type: 3}
       propertyPath: drop
       value: 

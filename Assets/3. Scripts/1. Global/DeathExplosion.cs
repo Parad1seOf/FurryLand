@@ -9,6 +9,17 @@ public class DeathExplosion : MonoBehaviour
     [SerializeField] private GameObject explosionVFX;
     [SerializeField] private float vfxLifetime = 5f;
 
+    [Header("Blood VFX (VFX Graph)")]
+    [Tooltip("Nuevo prefab de sangre (VFX Graph). Se instancia con offset y rotación configurables.")]
+    [SerializeField] private GameObject bloodVFX;
+    [Tooltip("Desplazamiento vertical respecto al pivote (0,0,0) del enemigo. Negativo = hacia abajo.")]
+    [SerializeField] private float bloodVFXYOffset = -1.8f;
+    [Tooltip("Si está activo, orienta el VFX en la dirección del disparo (hacia donde iba la bala, lejos del arma). Si no, usa la rotación fija de abajo.")]
+    [SerializeField] private bool bloodVFXFaceHitDirection = false;
+    [Tooltip("Rotación (euler) del prefab. Si 'Face Hit Direction' está activo, se suma como offset.")]
+    [SerializeField] private Vector3 bloodVFXEulerRotation;
+    [SerializeField] private float bloodVFXLifetime = 5f;
+
     [Header("Cabeza")]
     [Tooltip("GameObject de la cabeza skinneada (la separada en 3ds Max). Se oculta al recibir headshot.")]
     [SerializeField] private GameObject attachedHead;
@@ -82,6 +93,8 @@ public class DeathExplosion : MonoBehaviour
 
     private void OnDeath()
     {
+        SpawnBloodVFX();
+
         if (lastHitPart == BodyPartType.Head) DeathByHeadshot();
         else                                  DeathByBodyshot();
     }
@@ -131,6 +144,22 @@ public class DeathExplosion : MonoBehaviour
 
         if (despawnRoutine != null) StopCoroutine(despawnRoutine);
         despawnRoutine = StartCoroutine(DespawnRoutine(bodyDespawnDelay));
+    }
+
+    private void SpawnBloodVFX()
+    {
+        if (bloodVFX == null) return;
+
+        Vector3 pos = transform.position + new Vector3(0f, bloodVFXYOffset, 0f);
+
+        Quaternion rot;
+        if (bloodVFXFaceHitDirection && lastHitDirection.sqrMagnitude > 0.0001f)
+            rot = Quaternion.LookRotation(lastHitDirection) * Quaternion.Euler(bloodVFXEulerRotation);
+        else
+            rot = Quaternion.Euler(bloodVFXEulerRotation);
+
+        GameObject vfx = Instantiate(bloodVFX, pos, rot);
+        if (bloodVFXLifetime > 0f) Destroy(vfx, bloodVFXLifetime);
     }
 
     private void ApplyHitImpulseToRagdoll()
