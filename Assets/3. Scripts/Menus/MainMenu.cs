@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject endingCinematicButton;
 
+    public static bool FromExtras = false;
+
     [Header("Options components")]
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider FOVSlider;
@@ -23,11 +25,20 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        if(controlsPanel != null) controlsPanel.SetActive(false);
-        if(optionsPanel != null) optionsPanel.SetActive(false);
-        if(extrasPanel != null) extrasPanel.SetActive(false);
+        if (controlsPanel != null) controlsPanel.SetActive(false);
+        if (optionsPanel != null) optionsPanel.SetActive(false);
 
-        if(endingCinematicButton != null)
+        if (FromExtras)
+        {
+            FromExtras = false;
+            if (extrasPanel != null) extrasPanel.SetActive(true);
+        }
+        else
+        {
+            if (extrasPanel != null) extrasPanel.SetActive(false);
+        }
+
+        if (endingCinematicButton != null)
         {
             bool gameCompleted = PlayerPrefs.GetInt("GameCompleted", 0) == 1;
             endingCinematicButton.SetActive(gameCompleted);
@@ -38,7 +49,8 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        // Time.timeScale = 1f;
+        FromExtras = false;
+
         if (FadeManager.Instance != null)
             FadeManager.Instance.ChangeSceneFade(1);
 
@@ -46,10 +58,7 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(1);
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
+    public void Exit() => Application.Quit();
 
     #endregion
 
@@ -58,7 +67,6 @@ public class MainMenu : MonoBehaviour
     public void ShowOptions(bool show) => optionsPanel.SetActive(show);
     public void ShowExtras(bool show) => extrasPanel.SetActive(show);
     public void ShowCredits(bool show) => creditsPanel.SetActive(show);
-
     #endregion
 
     #region Post Processing
@@ -67,14 +75,17 @@ public class MainMenu : MonoBehaviour
     #endregion
 
     #region Cinematics
-    public void ReproduceInitialCinematic()
+    public void ReproduceIntroCinematic()
     {
+        FromExtras = true;
 
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.ChangeSceneFade(1);
+
+        else
+            SceneManager.LoadScene(1);
     }
 
-    public void ReproduceEndingCinematic()
-    {
-
-    }
+    public void ReproduceEndingCinematic() { }
     #endregion
 }
