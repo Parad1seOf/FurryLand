@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5417726766145921591}
   - component: {fileID: 3557593750613445395}
   - component: {fileID: 7413207726423869079}
+  - component: {fileID: 8274344065437437803}
   m_Layer: 0
   m_Name: MapSign
   m_TagString: Untagged
@@ -203,3 +204,15 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8274344065437437803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996327627549856027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp

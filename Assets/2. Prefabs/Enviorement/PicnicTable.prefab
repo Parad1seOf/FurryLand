@@ -1354,6 +1354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5107688307033041098}
   - component: {fileID: 1324173849671643531}
+  - component: {fileID: 5496778911807878384}
   m_Layer: 12
   m_Name: PicnicTable
   m_TagString: Untagged
@@ -1417,6 +1418,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5982351, y: 2.5473735, z: 6.470576}
   m_Center: {x: 0.058672868, y: 0.7736867, z: -2.986933}
+--- !u!114 &5496778911807878384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778684388851065709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
 --- !u!1 &7550701211609446113
 GameObject:
   m_ObjectHideFlags: 0

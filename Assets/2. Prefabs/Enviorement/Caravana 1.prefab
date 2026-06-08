@@ -730,6 +730,7 @@ GameObject:
   - component: {fileID: 8288048170523063295}
   - component: {fileID: 4984725214304006040}
   - component: {fileID: 2887291468039196390}
+  - component: {fileID: 3014965413024437189}
   m_Layer: 16
   m_Name: Cristales
   m_TagString: Untagged
@@ -831,6 +832,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4125360494216708925, guid: 2d6e86c0fafb6bc45acdc3f58337e40d, type: 3}
+--- !u!114 &3014965413024437189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224224667542561546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
 --- !u!1 &7973425035630214922
 GameObject:
   m_ObjectHideFlags: 0

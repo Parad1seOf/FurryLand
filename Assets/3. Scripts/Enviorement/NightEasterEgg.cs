@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,9 @@ public class NightEasterEgg : MonoBehaviour
     public Color nightEquatorColor = Color.black;
     public Color nightGroundColor = Color.black;
 
+    [Header("Farola")]
+    public Material emissiveMaterial;
+
     [Header("Settings")]
     public float requiredTimeInBush = 5f;
     public float fadeDuration = 1f;
@@ -25,6 +29,8 @@ public class NightEasterEgg : MonoBehaviour
     private float currentTimeInBush = 0f;
     private bool playerInside = false;
     private bool isTransitioning = false;
+
+    private List<GameObject> lightLayerObjects = new List<GameObject>();
 
     private void Start()
     {
@@ -36,6 +42,13 @@ public class NightEasterEgg : MonoBehaviour
             color.a = 0f;
             fadePanel.color = color;
         }
+
+        if (emissiveMaterial != null)
+        {
+            emissiveMaterial.DisableKeyword("_EMISSION");
+        }
+
+        DisableLightLayerObjects();
     }
 
     private void Update()
@@ -122,7 +135,52 @@ public class NightEasterEgg : MonoBehaviour
 
         Debug.Log("[NightEasterEgg] Environment Lighting cambiado.");
 
+        EnableLightLayerObjects();
+
+        if (emissiveMaterial != null)
+        {
+            emissiveMaterial.EnableKeyword("_EMISSION");
+            Debug.Log("[NightEasterEgg] Emission activada en el material de la farola.");
+        }
+
         DynamicGI.UpdateEnvironment();
+    }
+
+    private void DisableLightLayerObjects()
+    {
+        int lightLayer = LayerMask.NameToLayer("Luz");
+
+        if (lightLayer == -1)
+        {
+            Debug.LogWarning("[NightEasterEgg] No existe el layer 'Luz'.");
+            return;
+        }
+
+        GameObject[] allObjects = FindObjectsOfType<GameObject>(true);
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.layer == lightLayer)
+            {
+                lightLayerObjects.Add(obj);
+                obj.SetActive(false);
+            }
+        }
+
+        Debug.Log("[NightEasterEgg] Objetos del layer 'Luz' desactivados: " + lightLayerObjects.Count);
+    }
+
+    private void EnableLightLayerObjects()
+    {
+        foreach (GameObject obj in lightLayerObjects)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
+        }
+
+        Debug.Log("[NightEasterEgg] Objetos del layer 'Luz' activados: " + lightLayerObjects.Count);
     }
 
     private IEnumerator Fade(float startAlpha, float endAlpha)
