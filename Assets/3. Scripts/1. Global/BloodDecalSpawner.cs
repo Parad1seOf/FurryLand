@@ -8,8 +8,13 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
     [Tooltip("Lista de prefabs de decal de sangre. Cada impacto de partícula elige uno al azar de esta lista.")]
     public List<GameObject> decalPrefabs = new List<GameObject>();
 
+    [Tooltip("Giro aleatorio (en grados) del decal alrededor del eje de proyección, para romper el patrón.")]
     public float randomRotation = 360f;
+
+    [Tooltip("Separación del decal respecto a la superficie a lo largo de la normal, para evitar z-fighting.")]
     public float normalOffset = 0.01f;
+
+    [Tooltip("Tamaño base de la HUELLA del decal (en metros). Se le aplica una variación aleatoria.")]
     public float decalSize = 0.5f;
 
     [Header("Decal overlap (parche para evitar zonas negras)")]
@@ -47,18 +52,19 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
             Vector3 pos = e.intersection;
             Vector3 normal = e.normal;
 
-            Quaternion rot = Quaternion.LookRotation(normal);
-            rot *= Quaternion.Euler(0, 0, UnityEngine.Random.Range(0f, randomRotation));
+            Quaternion rot = Quaternion.LookRotation(-normal);
+
+            rot *= Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, randomRotation));
 
             pos += normal * normalOffset;
 
             GameObject decal = Instantiate(prefab, pos, rot);
 
             float size = decalSize * UnityEngine.Random.Range(0.8f, 1.2f);
-            decal.transform.localScale = Vector3.one * size;
+            decal.transform.localScale = new Vector3(size, size, 1f);
 
             if (e.colliderComponent != null)
-                decal.transform.SetParent(e.colliderComponent.transform);
+                decal.transform.SetParent(e.colliderComponent.transform, true);
 
             RegisterDecal(decal);
         }
