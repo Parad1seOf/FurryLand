@@ -4,7 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class BloodDecalSpawnerV2 : MonoBehaviour
 {
-    public GameObject decalPrefab;
+    [Header("Decals")]
+    [Tooltip("Lista de prefabs de decal de sangre. Cada impacto de partícula elige uno al azar de esta lista.")]
+    public List<GameObject> decalPrefabs = new List<GameObject>();
 
     public float randomRotation = 360f;
     public float normalOffset = 0.01f;
@@ -23,8 +25,6 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
     private ParticleSystem ps;
     private List<ParticleCollisionEvent> collisionEvents;
 
-    // Registro global compartido por todos los spawners. Lista (no Queue) para poder iterar y
-    // eliminar elementos del medio cuando detectamos solape.
     private static readonly List<GameObject> activeDecals = new List<GameObject>();
 
     void Awake()
@@ -41,6 +41,9 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
         {
             var e = collisionEvents[i];
 
+            GameObject prefab = GetRandomDecalPrefab();
+            if (prefab == null) continue;
+
             Vector3 pos = e.intersection;
             Vector3 normal = e.normal;
 
@@ -49,7 +52,7 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
 
             pos += normal * normalOffset;
 
-            GameObject decal = Instantiate(decalPrefab, pos, rot);
+            GameObject decal = Instantiate(prefab, pos, rot);
 
             float size = decalSize * UnityEngine.Random.Range(0.8f, 1.2f);
             decal.transform.localScale = Vector3.one * size;
@@ -61,10 +64,28 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
         }
     }
 
-    // PARCHE (Bug fix decals negros): el problema raíz es que dos URP Decal Projectors solapados
-    // producen artefactos negros por culpa del blending del DBuffer. Evitamos el solape destruyendo
-    // cualquier decal anterior que esté más cerca de `minDecalSpacing` del nuevo. Además, mantenemos
-    // un tope total `maxActiveDecals` como red de seguridad para que no se acumulen indefinidamente.
+    private GameObject GetRandomDecalPrefab()
+    {
+        if (decalPrefabs == null || decalPrefabs.Count == 0)
+            return null;
+
+        int index = UnityEngine.Random.Range(0, decalPrefabs.Count);
+        if (decalPrefabs[index] != null)
+            return decalPrefabs[index];
+
+        List<GameObject> valid = new List<GameObject>(decalPrefabs.Count);
+        for (int i = 0; i < decalPrefabs.Count; i++)
+        {
+            if (decalPrefabs[i] != null)
+                valid.Add(decalPrefabs[i]);
+        }
+
+        if (valid.Count == 0)
+            return null;
+
+        return valid[UnityEngine.Random.Range(0, valid.Count)];
+    }
+
     private void RegisterDecal(GameObject newDecal)
     {
         if (newDecal == null) return;
@@ -72,7 +93,6 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
         Vector3 newPos = newDecal.transform.position;
         float sqrMin = minDecalSpacing * minDecalSpacing;
 
-        // 1) Destruir cualquier decal previo demasiado cerca del nuevo (y de paso limpiar nulls)
         for (int i = activeDecals.Count - 1; i >= 0; i--)
         {
             GameObject existing = activeDecals[i];
@@ -89,10 +109,8 @@ public class BloodDecalSpawnerV2 : MonoBehaviour
             }
         }
 
-        // 2) Registrar el nuevo
         activeDecals.Add(newDecal);
 
-        // 3) Red de seguridad: si pasamos del tope global, eliminamos los más antiguos (FIFO)
         while (activeDecals.Count > maxActiveDecals)
         {
             GameObject oldest = activeDecals[0];
