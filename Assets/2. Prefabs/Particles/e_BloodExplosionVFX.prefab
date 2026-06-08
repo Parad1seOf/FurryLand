@@ -4907,7 +4907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da421d00a1f24442bf04a508745dfad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloodDecalSpawnerV2
-  decalPrefab: {fileID: 1580628379244996289, guid: 306368bd5126ac0438cb5f955b8218df, type: 3}
+  decalPrefabs:
+  - {fileID: 1580628379244996289, guid: 306368bd5126ac0438cb5f955b8218df, type: 3}
   randomRotation: 360
   normalOffset: 0.01
   decalSize: 0.5
