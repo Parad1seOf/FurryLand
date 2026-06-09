@@ -159277,7 +159277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6881806697086102379, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 29.999756
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7534528991419225922, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
       propertyPath: m_Name
@@ -273490,6 +273490,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773633195873826983, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: maxTimeToRotate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773633195873826983, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: minTimeToRotate
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7537748201499314286, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
       propertyPath: maxAwareness
       value: 100
@@ -273497,6 +273505,22 @@ PrefabInstance:
     - target: {fileID: 7537748201499314286, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
       propertyPath: awarenessDecayPerSecond
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959133361852928321, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959133361852928321, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959133361852928321, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: maxIdleBreakTime
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959133361852928321, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
+      propertyPath: minIdleBreakTime
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8385236165593996864, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
       propertyPath: suspiciousDistance

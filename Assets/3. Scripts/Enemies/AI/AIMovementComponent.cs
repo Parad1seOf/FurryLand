@@ -16,6 +16,16 @@ public class AIMovementComponent : MonoBehaviour
 
     private float lastYRotation;
 
+    //IdleTypes and breaks
+    [SerializeField] private float idleType = 0f;
+
+    [Header("Idle Breaks")]
+    [SerializeField] private bool useIdleBreaks = false;
+    [SerializeField] private float minIdleBreakTime = 4f;
+    [SerializeField] private float maxIdleBreakTime = 9f;
+
+    private float idleBreakTimer;
+
     public void Awake()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
@@ -28,6 +38,11 @@ public class AIMovementComponent : MonoBehaviour
         agent.speed = moveSpeed;
 
         lastYRotation = transform.eulerAngles.y; // para el turn
+
+        if (animator != null)
+            animator.SetFloat("IdleType", idleType);
+
+        ResetIdleBreakTimer();
     }
 
     private void Update()
@@ -59,7 +74,9 @@ public class AIMovementComponent : MonoBehaviour
         animator.SetBool("IsTurning", isTurning);
 
         lastYRotation = currentYRotation;
-    
+
+        UpdateIdleBreaks(speed01);
+
     }
 
     public void MoveTo(Vector3 destination)
@@ -109,5 +126,51 @@ public class AIMovementComponent : MonoBehaviour
             targetRotation,
             rotationSpeed * Time.deltaTime
         );
+    }
+
+    //Idle Breaks
+
+    private void UpdateIdleBreaks(float speed01)
+    {
+        if (!useIdleBreaks) return;
+        if (animator == null) return;
+
+        bool isIdle = speed01 < 0.05f;
+        bool isTurning = animator.GetBool("IsTurning");
+
+        if (!isIdle || isTurning)
+        {
+            ResetIdleBreakTimer();
+            return;
+        }
+
+        idleBreakTimer -= Time.deltaTime;
+
+        if (idleBreakTimer > 0f)
+            return;
+
+        TryPlayIdleBreak();
+        ResetIdleBreakTimer();
+    }
+
+    private void TryPlayIdleBreak()
+    {
+        int type = Mathf.RoundToInt(idleType);
+
+        Debug.Log("Intentando IdleBreak. IdleType = " + type);
+
+        if (type == 4)
+        {
+            animator.SetTrigger("EatBreak");
+        }
+        else if (type == 0 || type == 3)
+        {
+            animator.SetTrigger("WaveBreak");
+        }
+    }
+
+    private void ResetIdleBreakTimer()
+    {
+        idleBreakTimer = Random.Range(minIdleBreakTime, maxIdleBreakTime);
     }
 }
