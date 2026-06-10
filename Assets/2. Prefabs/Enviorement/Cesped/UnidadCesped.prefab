@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1697, y: 1.1981237, z: 1.1697}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3105756621980225174}
@@ -73,7 +73,25 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.08633179
+  - screenRelativeHeight: 0.5908187
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4643259633072590063}
+    - renderer: {fileID: 3646466511663361913}
+    - renderer: {fileID: 7170070245878940326}
+    - renderer: {fileID: 939022240375860214}
+  - screenRelativeHeight: 0.41797394
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4643259633072590063}
+    - renderer: {fileID: 3646466511663361913}
+    - renderer: {fileID: 939022240375860214}
+  - screenRelativeHeight: 0.21309635
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4643259633072590063}
+    - renderer: {fileID: 3646466511663361913}
+  - screenRelativeHeight: 0.06814709
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4643259633072590063}
