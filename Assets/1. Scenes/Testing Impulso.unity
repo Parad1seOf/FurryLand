@@ -101093,6 +101093,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8892759894916833752, guid: 07fbf1c65e4959f40be59c58d2bfde69, type: 3}
   m_PrefabInstance: {fileID: 576248837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &578741551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3797289304396512813, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+  m_PrefabInstance: {fileID: 847008993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &579232063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3964962669799241946, guid: d8d168fe195c0c8428fd5c99c641ac74, type: 3}
@@ -159531,11 +159536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf65a91a34147458b98716be2188bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HudManager
---- !u!1 &847008995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2499163185644939754, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
-  m_PrefabInstance: {fileID: 847008993}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &847948486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244709,7 +244709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7452387510339424157, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
       propertyPath: interactLabel
-      value: Bloquear Puerta
+      value: '[E] Bloquear Puerta'
       objectReference: {fileID: 0}
     - target: {fileID: 8837440231122077556, guid: fe3dd28c3faa4aa449a6fee72f9316ae, type: 3}
       propertyPath: elephant
@@ -340152,7 +340152,11 @@ PrefabInstance:
     - target: {fileID: 2036638204846599081, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: crosshairObject
       value: 
-      objectReference: {fileID: 847008995}
+      objectReference: {fileID: 578741551}
+    - target: {fileID: 2036638204846599081, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: ammoDisplayObject
+      value: 
+      objectReference: {fileID: 1901828263}
     - target: {fileID: 2353116595861554607, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_Layer
       value: 19
@@ -355435,6 +355439,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 41518379706584723, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
   m_PrefabInstance: {fileID: 271301354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1901828263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 296527092329166042, guid: cfeedc5bab9a6044d9c633bb350da42c, type: 3}
+  m_PrefabInstance: {fileID: 847008993}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1904122211
 PrefabInstance:
