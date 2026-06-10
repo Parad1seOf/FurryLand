@@ -6,6 +6,9 @@ public class WeaponToggle : MonoBehaviour
     [SerializeField] private GameObject weaponObject;
     [SerializeField] private float suspiciousness;
 
+    [Header("UI Crosshair")]
+    [SerializeField] private GameObject crosshairObject;
+
     [Header("Hold to Draw")]
     [Tooltip("Segundos que hay que mantener pulsada la tecla del arma para sacarla.")]
     [SerializeField] private float drawHoldTime = 1.2f;
@@ -61,6 +64,8 @@ public class WeaponToggle : MonoBehaviour
         weaponObject?.SetActive(false);
         drawTimer = 0f;
         if (hudManager != null) hudManager.SetWeaponHoldProgress(0f, false);
+
+        if (crosshairObject != null) crosshairObject.SetActive(false);
     }
 
     private void Update()
@@ -103,6 +108,9 @@ public class WeaponToggle : MonoBehaviour
     {
         drawn = true;
         weaponObject?.SetActive(true);
+
+        if (crosshairObject != null) crosshairObject.SetActive(true);
+
         SuspicionComponent sus = GetComponent<SuspicionComponent>();
         if (weaponObject != null && weaponObject.activeSelf) sus?.RiseSuspicion(suspiciousness);
         else sus?.LowerSuspicion(suspiciousness);
