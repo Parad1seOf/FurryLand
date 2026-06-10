@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 6157863792207143063}
   - component: {fileID: 8473047008069776727}
   - component: {fileID: 5536254920015412046}
+  - component: {fileID: 5795812756075165367}
   m_Layer: 11
   m_Name: tree3
   m_TagString: Untagged
@@ -340,6 +341,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8817720648526450030}
+  - {fileID: 1774593412828400875}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6157863792207143063
@@ -421,6 +423,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1364536, y: 1.0401369, z: 5.5472326}
   m_Center: {x: -0.15722656, y: -0.069872424, z: 2.0719883}
+--- !u!95 &5795812756075165367
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070877093552089239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1aebb80fbaf59f84298a37c1ebf08dfc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8158247086129448322
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,3 +536,65 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &5835973217079474033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8892759894916833752}
+    m_Modifications:
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.154
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988113857266232885, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+      propertyPath: m_Name
+      value: DecalArbol
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+--- !u!4 &1774593412828400875 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5214348093945133978, guid: de3706e7a7dfea24f8a6bf5878183974, type: 3}
+  m_PrefabInstance: {fileID: 5835973217079474033}
+  m_PrefabAsset: {fileID: 0}
