@@ -7499,6 +7499,7 @@ GameObject:
   - component: {fileID: 4428972958971233916}
   - component: {fileID: 330594097609850139}
   - component: {fileID: 281191476992991566}
+  - component: {fileID: 4785516145508122829}
   m_Layer: 0
   m_Name: ProfileSelector
   m_TagString: Untagged
@@ -7592,6 +7593,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4785516145508122829
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148570151381068862}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6455781239114969492
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,11 +49,20 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        FromExtras = false;
+        MainMenu.FromExtras = false;
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.ChangeSceneFade(2);
+        else
+            SceneManager.LoadScene(2);
+    }
+
+    public void OnPostProcessingSelected(int choice)
+    {
+        PostProcessingChoice = choice;
 
         if (FadeManager.Instance != null)
             FadeManager.Instance.ChangeSceneFade(1);
-
         else
             SceneManager.LoadScene(1);
     }

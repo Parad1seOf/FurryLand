@@ -1215,7 +1215,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 02585775b9b1d204c8bb831135663a12, type: 2}
+  sharedProfile: {fileID: 0}
 --- !u!4 &196215197
 Transform:
   m_ObjectHideFlags: 0
@@ -2442,6 +2442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroSceneManager
   cinematicDuration: 94.2
+  introVolume: {fileID: 196215196}
+  profileOne: {fileID: 11400000, guid: 02585775b9b1d204c8bb831135663a12, type: 2}
+  profileTwo: {fileID: 11400000, guid: 6f4245d8803f08641aa48e1a00e781d3, type: 2}
 --- !u!4 &486606749
 Transform:
   m_ObjectHideFlags: 0
