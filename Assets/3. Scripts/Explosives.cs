@@ -24,7 +24,19 @@ public class Explosives : InteractableAction
     [SerializeField] private GameObject pierna;
     [SerializeField] private GameObject otro_brazo;
 
+    [SerializeField] private GameObject[] visuals;
+    private int visualsIndex = 0;
+
     private bool hasShownComicPanel = false;
+
+    public void Start()
+    {
+        foreach (GameObject gameObject in visuals)
+        {
+            gameObject?.SetActive(false);
+        }
+        visuals[0].SetActive(true);
+    }
 
     public void OnEnable()
     {
@@ -62,10 +74,10 @@ public class Explosives : InteractableAction
         }
 
         ElephantManager.instance.wantsToSpawnElephant = true;
-        ComicPanelManager.Instance.ShowPhraseByID("C4_Explode");
+        ComicPanelManager.Instance?.ShowPhraseByID("C4_Explode");
         EnemyPool.instance.Explosion();
 
-        if (currentExplosions == 1)
+        /*if (currentExplosions == 1)
         {
             brazo.SetActive(false);
             oreja.SetActive(false);
@@ -87,8 +99,15 @@ public class Explosives : InteractableAction
                 smokeClone.SetActive(true);
             }
 
-        }
+        }*/
 
+        ChangeVisual();
+        if (currentExplosions == 3 && smokePrefab != null)
+        {
+            GameObject smokeClone = Instantiate(smokePrefab, transform.position, Quaternion.identity);
+            smokeClone.SetActive(true);
+        }
+        
         gameObject.SetActive(false);
         timer = timeToExplode;
 
@@ -110,6 +129,13 @@ public class Explosives : InteractableAction
             ComicPanelManager.Instance.ShowPhraseByID("Constitucion_Spawned");
     }
 
+    private void ChangeVisual()
+    {
+        visuals[visualsIndex].SetActive(false);
+        visualsIndex = Mathf.Min(visualsIndex + 1, visuals.Length - 1);
+        visuals[visualsIndex]?.SetActive(true);
+    }
+
     public override void Execute(PlayerController player)
     {
         inProgress = true;
@@ -118,7 +144,7 @@ public class Explosives : InteractableAction
 
         if (!hasShownComicPanel)
         {
-            ComicPanelManager.Instance.ShowPhraseByID("C4_Placed");
+            ComicPanelManager.Instance?.ShowPhraseByID("C4_Placed");
             hasShownComicPanel = true;
         }
 
