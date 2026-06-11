@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5011723927818063792}
   - component: {fileID: 2916974051493185611}
+  - component: {fileID: 7160957142434976162}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -226,3 +227,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+--- !u!65 &7160957142434976162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610219860589520821}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7121423, y: 0.050821047, z: 1.3892645}
+  m_Center: {x: 0.00065379817, y: 0.51119184, z: -0.34265992}

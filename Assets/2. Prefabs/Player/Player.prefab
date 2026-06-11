@@ -4890,6 +4890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponToggle
   weaponObject: {fileID: 4321300985517358224}
   suspiciousness: 50
+  crosshairObject: {fileID: 0}
+  ammoDisplayObject: {fileID: 0}
   drawHoldTime: 1.2
   hudManager: {fileID: 0}
 --- !u!114 &850858617409661531
@@ -10972,7 +10974,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

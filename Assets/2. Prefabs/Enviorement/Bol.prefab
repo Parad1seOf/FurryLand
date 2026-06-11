@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8479665217956800593}
   - component: {fileID: 5881384863981024916}
   - component: {fileID: 8057190416158769205}
+  - component: {fileID: 102540810188471575}
   m_Layer: 0
   m_Name: Bol
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 132.1155, y: 0.49177065, z: 25.53729}
-  m_LocalScale: {x: 49.177063, y: 49.177063, z: 49.177063}
+  m_LocalScale: {x: 33.52843, y: 33.52843, z: 33.52843}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,3 +91,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &102540810188471575
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181640820272819581}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7377584795223154047, guid: df4d160dcaacf864f9e2deb016967222, type: 3}
