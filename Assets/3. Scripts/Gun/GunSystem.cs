@@ -52,8 +52,17 @@ public class GunSystem : MonoBehaviour
     public AnimationClip idleClip;
     public AnimationClip shootClip;
     public AnimationClip reloadClip;
+    public AnimationClip walkClip;
     public float shootBlendIn = 0.05f;
     public float shootBlendOut = 0.1f;
+
+    [Header("Weapon Movement Animation")]
+    [SerializeField] private CharacterController characterController;
+    [SerializeField] private float walkAnimSpeed = 1f;
+    [SerializeField] private float runAnimSpeed = 1.5f;
+    [SerializeField] private float minMoveSpeedToAnimate = 0.1f;
+
+    private bool isPlayingMoveAnimation;
 
     #endregion
 
@@ -90,8 +99,15 @@ public class GunSystem : MonoBehaviour
         RegisterClip(idleClip);
         RegisterClip(shootClip);
         RegisterClip(reloadClip);
+        RegisterClip(walkClip);
+
+        SetAnimationWrapModes();
 
         PlayAnimation(idleClip);
+    }
+    private void Update()
+    {
+        UpdateWeaponMovementAnimation();
     }
 
     #endregion
@@ -102,6 +118,23 @@ public class GunSystem : MonoBehaviour
 
         weaponAnimation.RemoveClip(clip.name);
         weaponAnimation.AddClip(clip, clip.name);
+    }
+
+    private void SetAnimationWrapModes()
+    {
+        if (weaponAnimation == null) return;
+
+        if (idleClip != null && weaponAnimation[idleClip.name] != null)
+            weaponAnimation[idleClip.name].wrapMode = WrapMode.Loop;
+
+        if (walkClip != null && weaponAnimation[walkClip.name] != null)
+            weaponAnimation[walkClip.name].wrapMode = WrapMode.Loop;
+
+        if (shootClip != null && weaponAnimation[shootClip.name] != null)
+            weaponAnimation[shootClip.name].wrapMode = WrapMode.Once;
+
+        if (reloadClip != null && weaponAnimation[reloadClip.name] != null)
+            weaponAnimation[reloadClip.name].wrapMode = WrapMode.Once;
     }
 
     #region Shooting
@@ -366,7 +399,64 @@ public class GunSystem : MonoBehaviour
     #endregion
 
     #region Animation
+    private void UpdateWeaponMovementAnimation()
+    {
+        if (weaponAnimation == null) return;
+        if (idleClip == null || walkClip == null) return;
 
+        // No pisar recarga
+        if (isReloading) return;
+
+        // No pisar el disparo mientras se está reproduciendo
+        if (shootClip != null && weaponAnimation.IsPlaying(shootClip.name))
+            return;
+
+        if (characterController == null)
+            characterController = GetComponentInParent<CharacterController>();
+
+        float currentSpeed = 0f;
+
+        if (characterController != null)
+            currentSpeed = characterController.velocity.magnitude;
+
+        bool isMoving = currentSpeed > minMoveSpeedToAnimate;
+
+        if (isMoving)
+        {
+            AnimationState walkState = weaponAnimation[walkClip.name];
+
+            if (walkState != null)
+            {
+                walkState.speed = IsRunning() ? runAnimSpeed : walkAnimSpeed;
+            }
+
+            if (!weaponAnimation.IsPlaying(walkClip.name))
+            {
+                weaponAnimation.CrossFade(walkClip.name, 0.15f);
+            }
+
+            isPlayingMoveAnimation = true;
+        }
+        else
+        {
+            if (isPlayingMoveAnimation || !weaponAnimation.IsPlaying(idleClip.name))
+            {
+                AnimationState idleState = weaponAnimation[idleClip.name];
+
+                if (idleState != null)
+                    idleState.speed = 1f;
+
+                weaponAnimation.CrossFade(idleClip.name, 0.15f);
+            }
+
+            isPlayingMoveAnimation = false;
+        }
+    }
+
+    private bool IsRunning()
+    {
+        return Input.GetKey(KeyCode.LeftShift);
+    }
     private void PlayAnimation(AnimationClip clip, float fadeTime = 0.1f)
     {
         if (weaponAnimation == null || clip == null) return;
