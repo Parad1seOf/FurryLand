@@ -18,7 +18,7 @@ public class EnemyChaseState : IEnemyState
     }
     public void Enter()
     {
-        
+        movement.UseCombatIdle();
     }
 
     public void Exit()
