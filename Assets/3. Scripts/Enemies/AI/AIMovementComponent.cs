@@ -18,6 +18,7 @@ public class AIMovementComponent : MonoBehaviour
 
     //IdleTypes and breaks
     [SerializeField] private float idleType = 0f;
+    private float defaultIdleType;
 
     [Header("Idle Breaks")]
     [SerializeField] private bool useIdleBreaks = false;
@@ -25,6 +26,7 @@ public class AIMovementComponent : MonoBehaviour
     [SerializeField] private float maxIdleBreakTime = 9f;
 
     private float idleBreakTimer;
+    private bool usingCombatIdle;
 
     public void Awake()
     {
@@ -38,6 +40,8 @@ public class AIMovementComponent : MonoBehaviour
         agent.speed = moveSpeed;
 
         lastYRotation = transform.eulerAngles.y; // para el turn
+
+        defaultIdleType = idleType;
 
         if (animator != null)
             animator.SetFloat("IdleType", idleType);
@@ -134,6 +138,7 @@ public class AIMovementComponent : MonoBehaviour
     {
         if (!useIdleBreaks) return;
         if (animator == null) return;
+        if (usingCombatIdle) return;
 
         bool isIdle = speed01 < 0.05f;
         bool isTurning = animator.GetBool("IsTurning");
@@ -172,5 +177,29 @@ public class AIMovementComponent : MonoBehaviour
     private void ResetIdleBreakTimer()
     {
         idleBreakTimer = Random.Range(minIdleBreakTime, maxIdleBreakTime);
+    }
+
+    public void UseDefaultIdle()
+    {
+        usingCombatIdle = false;
+
+        idleType = defaultIdleType;
+
+        if (animator != null)
+            animator.SetFloat("IdleType", idleType);
+
+        ResetIdleBreakTimer();
+    }
+
+    public void UseCombatIdle()
+    {
+        usingCombatIdle = true;
+
+        idleType = 0f;
+
+        if (animator != null)
+            animator.SetFloat("IdleType", idleType);
+
+        ResetIdleBreakTimer();
     }
 }

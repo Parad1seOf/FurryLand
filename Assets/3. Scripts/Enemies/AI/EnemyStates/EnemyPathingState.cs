@@ -22,6 +22,8 @@ public class EnemyPathingState : IEnemyState
 
     public void Enter()
     {
+        movement.UseDefaultIdle();
+
         nextPoint = pathing.GetClosestPoint();
         movement.MoveTo(nextPoint);
     }
