@@ -1,115 +1,70 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class RabbitAttack : EnemyAttack
+
+//Esta clase esta fatal, hay que arreglarlo
+public class RabbitAttack : EnemyAttack, IAnimatedAttack
 {
-    private enum State
-    {
-        PREPARING,
-        JUMPING,
-        NOTHING
-    }
-
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private GroundCheck groundCheck;
-    [SerializeField] private float timeBeforeJump = 0.5f;
+    [SerializeField] private float damage = 10;
     [SerializeField] private float distance = 2f;
-    [SerializeField] private float height = 1f;
+    [SerializeField] private float cooldown = 1f;
+    [SerializeField] private Transform origin;
 
-    private State state;
-    private float timer;
-    private Vector3 direction;
-    private float groundCheckOffset;
-    private float groundCheckTimer;
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private float timeToHit = 0.15f;
+    private float cooldownTimer;
+
+    private void Awake()
+    {
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+    }
 
     public override void Attack(Vector3 targetDirection)
     {
+        if (cooldownTimer > 0)
+        {
+            return;
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+        }
+
         isAttacking = true;
-        direction = targetDirection;
-        GetComponent<HealthSystem>().OnDeath += EndAttack;
+
+        cooldownTimer = cooldown;
+    }
+
+    public void RealAttack()
+    {
+        RaycastHit hit;
+        Vector3 direction = transform.forward;
+
+        if (Physics.Raycast(origin.position, direction, out hit, distance))
+        {
+            PlayerHealth health = hit.collider.GetComponent<PlayerHealth>();
+
+            if (health != null)
+                health.TakeDamage(damage, "Rabbit");
+        }
+
+        AudioManager.Instance.RabbitAttack(transform.position);
+
+        isAttacking = false;
     }
 
     public void Update()
     {
-        if (!isAttacking) return;
-
-        switch (state)
+        if (cooldownTimer >= 0)
         {
-            case State.PREPARING:
-                PrepareJump();
-                break;
-
-            case State.JUMPING:
-                Jumping();
-                break;
+            cooldownTimer -= Time.deltaTime;
         }
     }
 
-    private void PrepareJump()
+    public void AnimatedAttack()
     {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            return;
-        }
-
-        Launch();
-    }
-
-    private void Launch()
-    {
-        state = State.JUMPING;
-        rb.isKinematic = false;
-
-        float g = Mathf.Abs(Physics.gravity.y);
-
-        float vy = Mathf.Sqrt(2f * g * height);
-
-        float timeUp = vy / g;
-        float totalTime = timeUp * 2f;
-
-        groundCheckOffset = totalTime / 2;
-        groundCheckTimer = groundCheckOffset;
-
-        float horizontalSpeed = distance / totalTime;
-
-        Vector3 horizontalVelocity =
-            direction.normalized * horizontalSpeed;
-
-        Vector3 velocity =
-            horizontalVelocity + Vector3.up * vy;
-
-        rb.linearVelocity = velocity;
-    }
-
-    private void Jumping()
-    {
-        if (groundCheckTimer > 0)
-            groundCheckTimer -= Time.deltaTime;
-        else
-            if (groundCheck.IsGrounded()) EndAttack();
-    }
-
-    private void EndAttack()
-    {
-        isAttacking = false;
-        state = State.NOTHING;
-        rb.isKinematic = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (state != State.JUMPING) return;
-
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
-
-        IDamageable damageable =
-            collision.gameObject.GetComponent<IDamageable>();
-
-        if (damageable != null)
-        {
-            damageable.TakeDamage(damage);
-        }
+        RealAttack();
     }
 }

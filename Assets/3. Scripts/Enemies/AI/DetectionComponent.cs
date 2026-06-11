@@ -36,7 +36,6 @@ public class DetectionComponent : MonoBehaviour
 
     public void Awake()
     {
-        //ESTO ES JODIDAMENTE HORRIBLE Y HAY QUE CAMBIARLO
         if (playerSus == null)
             playerSus = GameObject.FindGameObjectWithTag("Player").GetComponent<SuspicionComponent>();
         if (playerTarget == null)

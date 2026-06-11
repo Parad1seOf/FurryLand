@@ -148,9 +148,17 @@ public class SlothAttack : EnemyAttack
         {
             PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
             if (playerHealth != null)
-                playerHealth.TakeDamage(damage, "Sniper");
+            {
+                //Esto da error porque he quitado la variable de daño de la clase abstracta.
+                //Esta clase no deberia de contener el daño aqui porque hace de adaptador al arma
+                //que es quien tiene que tener el daño.
+                //De hecho, se esta llamando abajo al disparo, asi que hace daño 2 veces (mal).
+                //Comento la linea
+                //playerHealth.TakeDamage(damage, "Sniper");
+            }
         }
 
+        //Aqui se esta llamando al disparo
         gun.TryShoot(origin.position, target - origin.position);
         AudioManager.Instance.SniperShoot(origin.position);
 
