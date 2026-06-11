@@ -457,6 +457,7 @@ public class GunSystem : MonoBehaviour
     {
         return Input.GetKey(KeyCode.LeftShift);
     }
+
     private void PlayAnimation(AnimationClip clip, float fadeTime = 0.1f)
     {
         if (weaponAnimation == null || clip == null) return;
