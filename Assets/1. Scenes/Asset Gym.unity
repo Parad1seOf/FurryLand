@@ -9714,6 +9714,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 396843015747420641, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396843015747420641, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 396843015747420641, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1857525147244283955, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
       propertyPath: m_RenderingLayersMask.m_Bits
       value: 1
@@ -15380,7 +15392,6 @@ SceneRoots:
   - {fileID: 3729662394194867610}
   - {fileID: 5418052747239694073}
   - {fileID: 2126389055723205271}
-  - {fileID: 4168073670092996096}
   - {fileID: 4111034788732134438}
   - {fileID: 2527057615846422424}
   - {fileID: 2928919374761907738}
@@ -15394,3 +15405,4 @@ SceneRoots:
   - {fileID: 4608774520685331637}
   - {fileID: 1279062012689634642}
   - {fileID: 1847020620375939481}
+  - {fileID: 4168073670092996096}
