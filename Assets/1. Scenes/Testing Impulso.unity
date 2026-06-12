@@ -133902,7 +133902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RagdollController
   animator: {fileID: 1372546757}
   agent: {fileID: 1372546756}
-  mainCollider: {fileID: 0}
+  mainColliders: []
   ragdollBodies: []
   ragdollColliders: []
   zeroVelocityOnEnable: 0
@@ -149792,7 +149792,7 @@ PrefabInstance:
     - target: {fileID: 8508869825856674044, guid: 10278ae05dbc7ca4083fce0aa8de5ac9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b81edb7867d789a448e4016945741b4e, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -182500,12 +182500,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1231762710971154228, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1634002587720715652, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 847008994}
+    - target: {fileID: 1685784303718246658, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2036638204846599081, guid: 1ce6b1a80f78ba740a8f93f396fc52aa, type: 3}
       propertyPath: hudManager
       value: 

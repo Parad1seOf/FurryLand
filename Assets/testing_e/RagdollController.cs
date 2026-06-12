@@ -6,16 +6,16 @@ public class RagdollController : MonoBehaviour
     [Header("Refs principales (desactivar al hacer ragdoll)")]
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Collider mainCollider;
+    [SerializeField] private Collider[] mainColliders;
 
     [Header("Huesos del ragdoll")]
     [Tooltip("Si está vacío se auto-rellena con todos los Rigidbody hijos.")]
     [SerializeField] private Rigidbody[] ragdollBodies;
-    [Tooltip("Si está vacío se auto-rellena con todos los Collider hijos (excluye mainCollider).")]
+
+    [Tooltip("Si está vacío se auto-rellena con todos los Collider hijos.")]
     [SerializeField] private Collider[] ragdollColliders;
 
     [Header("Comportamiento")]
-    [Tooltip("Si true, al activar ragdoll resetea la velocidad de los huesos. Déjalo en false si quieres conservar la inercia del cuerpo (correr, caer, etc.).")]
     [SerializeField] private bool zeroVelocityOnEnable = false;
 
     private void Awake()
@@ -31,23 +31,52 @@ public class RagdollController : MonoBehaviour
 
     public void SetRagdoll(bool active)
     {
-        if (animator     != null) animator.enabled     = !active;
-        if (agent        != null) agent.enabled        = !active;
-        if (mainCollider != null) mainCollider.enabled = !active;
+        if (animator != null)
+            animator.enabled = !active;
+
+        if (agent != null)
+            agent.enabled = !active;
+
+        if (mainColliders != null)
+        {
+            foreach (Collider col in mainColliders)
+            {
+                if (col == null) continue;
+                col.enabled = !active;
+            }
+        }
 
         foreach (Rigidbody rb in ragdollBodies)
         {
             if (rb == null) continue;
-            rb.isKinematic      = !active;
+
+            rb.isKinematic = !active;
             rb.detectCollisions = active;
-            if (active && zeroVelocityOnEnable) rb.linearVelocity = Vector3.zero;
+
+            if (active && zeroVelocityOnEnable)
+                rb.linearVelocity = Vector3.zero;
         }
 
         foreach (Collider col in ragdollColliders)
         {
-            if (col == null || col == mainCollider) continue;
-            col.enabled = active ? true : col.enabled;
+            if (col == null) continue;
+            if (IsMainCollider(col)) continue;
+
+            col.enabled = active;
         }
+    }
+
+    private bool IsMainCollider(Collider col)
+    {
+        if (mainColliders == null) return false;
+
+        foreach (Collider main in mainColliders)
+        {
+            if (main == col)
+                return true;
+        }
+
+        return false;
     }
 
     public void AddExplosionForce(Vector3 origin, float force, float radius, float upMod)
@@ -63,12 +92,20 @@ public class RagdollController : MonoBehaviour
     {
         Rigidbody best = null;
         float bestDist = float.MaxValue;
+
         foreach (Rigidbody rb in ragdollBodies)
         {
             if (rb == null) continue;
+
             float d = (rb.worldCenterOfMass - worldPos).sqrMagnitude;
-            if (d < bestDist) { bestDist = d; best = rb; }
+
+            if (d < bestDist)
+            {
+                bestDist = d;
+                best = rb;
+            }
         }
+
         return best;
     }
 }
