@@ -6,9 +6,9 @@ public class MeleeAttack : MonoBehaviour
 {
     [Header("Attack parameters")]
     [SerializeField] float damage = 100f;
-    [SerializeField] float range = 2f;
-    [SerializeField] float radius = 1.5f;
-    [SerializeField] float coolDown = 1f;
+    [SerializeField] float range = 1.5f;
+    [SerializeField] float radius = 1f;
+    [SerializeField] float coolDown = 2f;
     [SerializeField] LayerMask enemyLayer;
     private float nextAttackTime = 0f;
 
@@ -65,10 +65,7 @@ public class MeleeAttack : MonoBehaviour
         }
 
         if (hasHitEnemy)
-        {
             StartCoroutine(ShowAndHideSlash());
-            //if (ScoreManager.instance != null) ScoreManager.instance.RegisterHit();
-        }
     }
 
     private IEnumerator ShowAndHideArm()

@@ -16,14 +16,6 @@ public class Explosives : InteractableAction
     public float timer;
     public bool inProgress;    
 
-    [SerializeField] private GameObject brazo;
-    [SerializeField] private GameObject oreja;
-    [SerializeField] private GameObject ortaoreja;
-    [SerializeField] private GameObject cabeza;
-    [SerializeField] private GameObject torso;
-    [SerializeField] private GameObject pierna;
-    [SerializeField] private GameObject otro_brazo;
-
     [SerializeField] private GameObject[] visuals;
     private int visualsIndex = 0;
 
@@ -76,30 +68,6 @@ public class Explosives : InteractableAction
         ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance?.ShowPhraseByID("C4_Explode");
         EnemyPool.instance.Explosion();
-
-        /*if (currentExplosions == 1)
-        {
-            brazo.SetActive(false);
-            oreja.SetActive(false);
-        }
-        else if (currentExplosions == 2)
-        {
-            cabeza.SetActive(false);
-            otro_brazo.SetActive(false);
-            ortaoreja.SetActive(false);
-        }
-        else if (currentExplosions == 3)
-        {
-            torso.SetActive(false);
-            pierna.SetActive(false);
-
-            if (smokePrefab != null)
-            {
-                GameObject smokeClone = Instantiate(smokePrefab, transform.position, Quaternion.identity);
-                smokeClone.SetActive(true);
-            }
-
-        }*/
 
         ChangeVisual();
         if (currentExplosions == 3 && smokePrefab != null)

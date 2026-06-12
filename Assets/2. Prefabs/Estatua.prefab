@@ -765,13 +765,6 @@ MonoBehaviour:
   trigger: {fileID: 7088063247072793936}
   timer: 0
   inProgress: 0
-  brazo: {fileID: 0}
-  oreja: {fileID: 0}
-  ortaoreja: {fileID: 0}
-  cabeza: {fileID: 0}
-  torso: {fileID: 0}
-  pierna: {fileID: 0}
-  otro_brazo: {fileID: 0}
   visuals: []
 --- !u!1001 &93620719190432433
 PrefabInstance:
@@ -1467,13 +1460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade1d8db411652f4bbde239cb26a97e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
-  timeToExplode: 15
+  timeToExplode: 40
   explosionSound: {fileID: 8300000, guid: ee3453ea468dbce4088c42d758d243be, type: 3}
-  explosionPrefabs:
-  - {fileID: 3618917839950981415}
-  - {fileID: 4738651491240755895}
-  - {fileID: 5160093104603385802}
-  - {fileID: 8149474390409038192}
+  explosionPrefabs: []
   smokePrefab: {fileID: 0}
   explosionCount: 3
   retrievedObject: {fileID: 8031306051009044690, guid: c12a3493f834f3148b8909406f73f209, type: 3}
@@ -1482,13 +1471,6 @@ MonoBehaviour:
   trigger: {fileID: 7088063247072793936}
   timer: 0
   inProgress: 0
-  brazo: {fileID: 0}
-  oreja: {fileID: 0}
-  ortaoreja: {fileID: 0}
-  cabeza: {fileID: 0}
-  torso: {fileID: 0}
-  pierna: {fileID: 0}
-  otro_brazo: {fileID: 0}
   visuals:
   - {fileID: 3618917839950981415}
   - {fileID: 4738651491240755895}

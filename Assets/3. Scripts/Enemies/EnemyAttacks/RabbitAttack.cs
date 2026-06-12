@@ -39,12 +39,20 @@ public class RabbitAttack : EnemyAttack, IAnimatedAttack
 
     public void RealAttack()
     {
-        RaycastHit hit;
         Vector3 direction = transform.forward;
+        PlayerController playerTarget = Object.FindFirstObjectByType<PlayerController>();
 
+        if (playerTarget != null)
+        {
+            Vector3 targetCenter = playerTarget.transform.position + Vector3.up * 1f;
+            direction = (targetCenter - origin.position).normalized;
+        }
+
+        RaycastHit hit;
+       
         if (Physics.Raycast(origin.position, direction, out hit, distance))
         {
-            PlayerHealth health = hit.collider.GetComponent<PlayerHealth>();
+            PlayerHealth health = hit.collider.GetComponentInParent<PlayerHealth>();
 
             if (health != null)
                 health.TakeDamage(damage, "Rabbit");

@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6132762684560304446}
   - component: {fileID: -6389534377258093693}
+  - component: {fileID: 7437407744268205559}
   m_Layer: 0
   m_Name: UnidadFlores
   m_TagString: Untagged
@@ -139,13 +140,35 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.20844221
+  - screenRelativeHeight: 0.116649896
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6369450389053488705}
     - renderer: {fileID: 6911105739872052337}
     - renderer: {fileID: 6500346322377480425}
   m_Enabled: 1
+--- !u!95 &7437407744268205559
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4439212915768308378}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba760eda37e994e44ace572885eb8003, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4439740412181264805
 GameObject:
   m_ObjectHideFlags: 0

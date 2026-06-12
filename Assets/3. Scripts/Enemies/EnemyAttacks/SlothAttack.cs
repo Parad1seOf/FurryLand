@@ -143,23 +143,11 @@ public class SlothAttack : EnemyAttack
         if (sniperAnimation != null)
             sniperAnimation.Shoot();
 
-        Vector3 direction = (target - origin.position).normalized;
-        if (Physics.Raycast(origin.position, direction, out RaycastHit hit, Mathf.Infinity, beamCollisionMask))
+        if (gun != null)
         {
-            PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                //Esto da error porque he quitado la variable de daño de la clase abstracta.
-                //Esta clase no deberia de contener el daño aqui porque hace de adaptador al arma
-                //que es quien tiene que tener el daño.
-                //De hecho, se esta llamando abajo al disparo, asi que hace daño 2 veces (mal).
-                //Comento la linea
-                //playerHealth.TakeDamage(damage, "Sniper");
-            }
+            gun.TryShoot(origin.position, target - origin.position, true);
         }
 
-        //Aqui se esta llamando al disparo
-        gun.TryShoot(origin.position, target - origin.position);
         AudioManager.Instance.SniperShoot(origin.position);
 
         EndAttack();
