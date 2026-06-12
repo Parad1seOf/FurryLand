@@ -12,9 +12,12 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (ScoreManager.instance.HasFurryConstitution())
+        if (other.CompareTag("Player"))
         {
-            FinishGame();
+            if (ScoreManager.instance.HasFurryConstitution())
+            {
+                FinishGame();
+            }
         }
     }
 
