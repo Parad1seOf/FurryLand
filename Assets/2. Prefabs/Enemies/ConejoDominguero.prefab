@@ -850,6 +850,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   turnAnimationMinAnglePerFrame: 0.4
   turnAnimationMaxMoveSpeed: 0.1
+  idleType: 0
+  useIdleBreaks: 0
+  minIdleBreakTime: 4
+  maxIdleBreakTime: 9
 --- !u!114 &2068536838184627172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,8 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 10
   isAttacking: 0
+  damage: 10
   distance: 2
   cooldown: 3
   origin: {fileID: 1465875343441286744}
@@ -908,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 6968467944225890045}
   canvas: {fileID: 2338332576281014207}
   questionMarkEmpty: {fileID: 1964050422798172305}
   questionMarkFill: {fileID: 8556129139168437545}
@@ -929,7 +932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
   maxAwareness: 100
   awarenessDecayPerSecond: 100
-  display: {fileID: 0}
 --- !u!114 &11243036595908223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,6 +993,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  bloodVFX: {fileID: 0}
+  bloodVFXYOffset: -1.8
+  bloodVFXEulerRotation: {x: 0, y: 0, z: 0}
+  bloodVFXFlattenDirection: 1
+  bloodVFXLifetime: 5
   attachedHead: {fileID: 1718438958819903298}
   attachedHeadExtras:
   - {fileID: 5980890463049185474}
@@ -1025,7 +1032,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RagdollController
   animator: {fileID: 7943142096412256989}
   agent: {fileID: 6004881030038440313}
-  mainCollider: {fileID: 2327830755521584065}
+  mainColliders:
+  - {fileID: 2327830755521584065}
+  - {fileID: 8284091804284601384}
   ragdollBodies: []
   ragdollColliders: []
   zeroVelocityOnEnable: 0
@@ -1973,6 +1982,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7899892058465786598, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: -7317084911896235150, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.9941432
@@ -2021,6 +2034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.0345286
       objectReference: {fileID: 0}
+    - target: {fileID: -1196930438909889544, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: -894116959380155148, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2041,6 +2058,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+    - target: {fileID: -618669591006502731, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 657315579608241511, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -6.019641
@@ -2097,6 +2118,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 174.45451
       objectReference: {fileID: 0}
+    - target: {fileID: 3254148416800390368, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283423885536239159, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5643117242730664863, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.0000018996619
@@ -2108,6 +2137,10 @@ PrefabInstance:
     - target: {fileID: 5643117242730664863, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 27.690653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761863417263814419, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_Controller
@@ -2125,9 +2158,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -10.400732
       objectReference: {fileID: 0}
+    - target: {fileID: 6225966929984089188, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517538056252192446, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6621823396367300760, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656912836178474723, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6892159879642282785, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2145,10 +2190,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.09142603
       objectReference: {fileID: 0}
+    - target: {fileID: 7867105192333289519, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8000445863410901475, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+    - target: {fileID: 8300997457294268883, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8733282122716709346, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
