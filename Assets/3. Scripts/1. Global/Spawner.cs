@@ -22,16 +22,51 @@ public class Spawner : InteractableAction
 
     private static bool hasShownComicPanel = false;
 
+    [SerializeField] private Animator doorAnimator;
+    [SerializeField] private string clipName = "Puerta";
+
     public void Start()
     {
         SpawnerManager.instance.AddSpawner(this);
         pool = EnemyPool.instance;
         AlertSystem.Instance.OnAlertTriggered += Alarmed;
         spawnTimer = timeToSpawn;
+
+        if (blockingObject != null)
+        {
+            blockingObject.SetActive(true); 
+        }
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.Play(clipName, 0, 0f);
+            doorAnimator.speed = 0f;
+            doorAnimator.Update(0f); 
+        }
     }
 
     public void Update()
     {
+        if (!isBlocked && doorAnimator != null && !alreadyBroken)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                doorAnimator.speed = 1f;
+
+                AnimatorStateInfo stateInfo = doorAnimator.GetCurrentAnimatorStateInfo(0);
+                if (stateInfo.IsName(clipName) && stateInfo.normalizedTime >= 1f)
+                {
+                    Block();
+                }
+            }
+            else
+            {
+                doorAnimator.speed = 0f;
+                doorAnimator.Play(clipName, 0, 0f);
+                doorAnimator.Update(0f); 
+            }
+        }
+
         if (!alarmed || isBlocked) return;
 
         if (!wantsToSpawn)
@@ -56,6 +91,13 @@ public class Spawner : InteractableAction
         SpawnerManager.instance.AddBlockedDoor(this);
         blockingObject.SetActive(true);
         activator.enabled = false;
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.Play(clipName, 0, 1f);
+            doorAnimator.speed = 0f;
+            doorAnimator.Update(0f);
+        }
 
         if (ComicPanelManager.Instance != null)
             ComicPanelManager.Instance.ShowPhraseByID("Block_Door");
@@ -83,14 +125,27 @@ public class Spawner : InteractableAction
         if (doorExplosionPrefab != null && blockingObject != null)
             Instantiate(doorExplosionPrefab, blockingObject.transform.position, Quaternion.identity);
 
-        blockingObject.SetActive(false);
+        if (blockingObject != null)
+        {
+            blockingObject.SetActive(false);
+        }
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.speed = 0f;
+            doorAnimator.Play(clipName, 0, 0f);
+            doorAnimator.Update(0f);
+        }
+
         alreadyBroken = true;
     }
 
     public override void Execute(PlayerController player)
     {
         if (alreadyBroken) return;
-        Block();
+
+        if (!isBlocked)
+            Block();
     }
 
     public void Alarmed()
@@ -105,7 +160,6 @@ public class Spawner : InteractableAction
 
     public GameObject SpawnElephant()
     {
-        //if (!alarmed) return null;
         if (isBlocked) return null;
 
         elephant.SetActive(true);
