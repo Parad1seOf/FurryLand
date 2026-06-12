@@ -850,6 +850,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   turnAnimationMinAnglePerFrame: 0.4
   turnAnimationMaxMoveSpeed: 0.1
+  idleType: 0
+  useIdleBreaks: 0
+  minIdleBreakTime: 4
+  maxIdleBreakTime: 9
 --- !u!114 &2068536838184627172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,8 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3965dcd7aa9c3489ffa3b3d82fc8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HedgehogAttack
-  damage: 10
   isAttacking: 0
+  damage: 10
   distance: 2
   cooldown: 3
   origin: {fileID: 1465875343441286744}
@@ -908,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 6968467944225890045}
   canvas: {fileID: 2338332576281014207}
   questionMarkEmpty: {fileID: 1964050422798172305}
   questionMarkFill: {fileID: 8556129139168437545}
@@ -929,7 +932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
   maxAwareness: 100
   awarenessDecayPerSecond: 100
-  display: {fileID: 0}
 --- !u!114 &11243036595908223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +992,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
+  explosionVFXPositionOffset: {x: 0, y: 0, z: 0}
+  explosionVFXEulerRotation: {x: 0, y: 0, z: 0}
   vfxLifetime: 5
+  bloodVFX: {fileID: 3924240818638244326, guid: bc331fac8dd13124182b3d50e3c415ed, type: 3}
+  bloodVFXYOffset: 2.5
+  bloodVFXEulerRotation: {x: 0, y: -90, z: 0}
+  bloodVFXFlattenDirection: 1
+  bloodVFXLifetime: 2
   attachedHead: {fileID: 1718438958819903298}
   attachedHeadExtras:
   - {fileID: 5980890463049185474}

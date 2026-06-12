@@ -445,6 +445,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   turnAnimationMinAnglePerFrame: 0.4
   turnAnimationMaxMoveSpeed: 0.1
+  idleType: 0
+  useIdleBreaks: 0
+  minIdleBreakTime: 4
+  maxIdleBreakTime: 9
 --- !u!114 &9216503724008643117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601eb9ac58d258741ad5efeac57ef36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlothAttack
-  damage: 2.5
   isAttacking: 0
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
@@ -564,8 +567,13 @@ MonoBehaviour:
   idleClip: {fileID: 0}
   shootClip: {fileID: 0}
   reloadClip: {fileID: 0}
+  walkClip: {fileID: 0}
   shootBlendIn: 0.05
   shootBlendOut: 0.1
+  characterController: {fileID: 0}
+  walkAnimSpeed: 1
+  runAnimSpeed: 1.5
+  minMoveSpeedToAnimate: 0.1
 --- !u!120 &9211522671246928718
 LineRenderer:
   serializedVersion: 3
@@ -719,7 +727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 4131768485242358627}
   canvas: {fileID: 5420984718465904893}
   questionMarkEmpty: {fileID: 5420095196862091444}
   questionMarkFill: {fileID: 2509136974867577011}
@@ -752,7 +759,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
+  explosionVFXPositionOffset: {x: 0, y: 0, z: 0}
+  explosionVFXEulerRotation: {x: 0, y: 0, z: 0}
   vfxLifetime: 5
+  bloodVFX: {fileID: 3924240818638244326, guid: bc331fac8dd13124182b3d50e3c415ed, type: 3}
+  bloodVFXYOffset: 2.5
+  bloodVFXEulerRotation: {x: 0, y: -90, z: 0}
+  bloodVFXFlattenDirection: 0
+  bloodVFXLifetime: 2
   attachedHead: {fileID: 0}
   attachedHeadExtras: []
   headBone: {fileID: 0}
@@ -812,7 +826,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
   maxAwareness: 100
   awarenessDecayPerSecond: 100
-  display: {fileID: 0}
 --- !u!114 &7325564401908678578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 4131768485242358627}
   canvas: {fileID: 5420984718465904893}
   questionMarkEmpty: {fileID: 5420095196862091444}
   questionMarkFill: {fileID: 2509136974867577011}

@@ -4,8 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(HealthSystem))]
 public class DeathExplosion : MonoBehaviour
 {
-    [Header("VFX")]
+    [Header("Explosion VFX")]
     [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private Vector3 explosionVFXPositionOffset;
+    [SerializeField] private Vector3 explosionVFXEulerRotation;
     [SerializeField] private float vfxLifetime = 5f;
 
     [Header("Blood VFX (VFX Graph)")]
@@ -106,11 +108,7 @@ public class DeathExplosion : MonoBehaviour
             if (detachedHeadLifetime > 0f) Destroy(head, detachedHeadLifetime);
         }
 
-        if (explosionVFX != null)
-        {
-            GameObject vfx = Instantiate(explosionVFX, spawnPos, Quaternion.identity);
-            Destroy(vfx, vfxLifetime);
-        }
+        SpawnExplosionVFX(spawnPos);
 
         if (ragdoll != null) ragdoll.SetRagdoll(true);
         ApplyHitImpulseToRagdoll();
@@ -127,6 +125,23 @@ public class DeathExplosion : MonoBehaviour
 
         if (despawnRoutine != null) StopCoroutine(despawnRoutine);
         despawnRoutine = StartCoroutine(DespawnRoutine(bodyDespawnDelay));
+    }
+
+    private void SpawnExplosionVFX(Vector3 position)
+    {
+        if (explosionVFX == null) return;
+
+        Vector3 dir = lastHitDirection.sqrMagnitude > 0.0001f
+                      ? lastHitDirection
+                      : -transform.forward;
+
+        Quaternion rot = Quaternion.LookRotation(dir.normalized)
+                         * Quaternion.Euler(explosionVFXEulerRotation);
+
+        Vector3 pos = position + rot * explosionVFXPositionOffset;
+
+        GameObject vfx = Instantiate(explosionVFX, pos, rot);
+        if (vfxLifetime > 0f) Destroy(vfx, vfxLifetime);
     }
 
     private void SpawnBloodVFX()
