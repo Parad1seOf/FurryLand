@@ -73,5 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9872ba1984e8c244bcc35ae8709e364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecalDestroyer
-  lifeTime: 8
-  maxLifeTime: 30
+  lifeTime: 2
+  maxLifeTime: 15
+  fadeDuration: 15
