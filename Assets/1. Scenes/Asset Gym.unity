@@ -9657,6 +9657,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1857525147244283955, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_RenderingLayersMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260296170382589631, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260296170382589631, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5525735154835521651, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.91
@@ -9700,6 +9712,14 @@ PrefabInstance:
     - target: {fileID: 6471080361877697476, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
       propertyPath: m_Name
       value: Farola
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571886595539504314, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571886595539504314, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12779,63 +12799,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &7066518936394043232
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 133.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 310534439460179723, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6237216869879299187, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
-      propertyPath: m_Name
-      value: Farola
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0e00cd2dae89be74794593fe1df05d7e, type: 3}
 --- !u!1001 &7096744944528046777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15364,7 +15327,6 @@ SceneRoots:
   - {fileID: 4111034788732134438}
   - {fileID: 2527057615846422424}
   - {fileID: 2928919374761907738}
-  - {fileID: 7066518936394043232}
   - {fileID: 3114203089482666491}
   - {fileID: 8434462971612294381}
   - {fileID: 1144844991257024473}
