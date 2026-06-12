@@ -162,7 +162,7 @@ MonoBehaviour:
   holdDuration: 2
   suspiciousness: 0
   oneTimeInteraction: 0
-  action: {fileID: 0}
+  action: {fileID: 5380038179212326294}
   condition: {fileID: 0}
 --- !u!114 &5380038179212326294
 MonoBehaviour:
@@ -176,9 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870592a3b79c93a419cacc6286cd0d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenDoorAction
-  door: {fileID: 3964497146457243204}
-  openAngle: 90
-  animSpeed: 4
+  animator: {fileID: 3987697220884008515}
+  clipName: Puertas
 --- !u!1 &6942632688805799859
 GameObject:
   m_ObjectHideFlags: 0

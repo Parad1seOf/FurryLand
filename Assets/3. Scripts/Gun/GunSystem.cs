@@ -158,6 +158,85 @@ public class GunSystem : MonoBehaviour
         return false;
     }
 
+    public bool TryShoot(Vector3 origin, Vector3 direction, bool forcePerfectAccuracy)
+    {
+        if (Time.timeScale == 0f) return false;
+
+        if (readyToShoot && !isReloading)
+        {
+            if (bulletsLeft > 0)
+            {
+                if (forcePerfectAccuracy)
+                {
+                    readyToShoot = false;
+                    bulletsLeft--;
+
+                    PlayShootAnimation();
+                    SpawnMuzzleFlash();
+
+                    Vector3 spreadDirection = direction.normalized;
+
+                    try
+                    {
+                        RaycastHit[] hits = Physics.RaycastAll(
+                            origin,
+                            spreadDirection,
+                            bulletDistance,
+                            hitMask,
+                            QueryTriggerInteraction.Ignore
+                        );
+
+                        Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+                        bool hitPlayerOnce = false;
+
+                        foreach (var hit in hits)
+                        {
+                            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("MAP"))
+                            {
+                                bulletGizmos.Add(new BulletGizmo { start = origin, end = hit.point });
+                                ProcessHit(hit, spreadDirection);
+                                SpawnBulletHole(hit);
+                                break;
+                            }
+
+                            if (hit.collider.CompareTag("Player"))
+                            {
+                                if (hitPlayerOnce) continue;
+                                hitPlayerOnce = true;
+                            }
+
+                            bulletGizmos.Add(new BulletGizmo { start = origin, end = hit.point });
+                            ProcessHit(hit, spreadDirection);
+                        }
+
+                        if (hits.Length == 0)
+                        {
+                            bulletGizmos.Add(new BulletGizmo { start = origin, end = origin + spreadDirection * bulletDistance });
+                        }
+                    }
+                    catch (Exception) { }
+
+                    ResetSpread();
+
+                    if (resetShotCoroutine != null) StopCoroutine(resetShotCoroutine);
+                    resetShotCoroutine = StartCoroutine(ResetShotRoutine());
+
+                    return true;
+                }
+                else
+                {
+                    return TryShoot(origin, direction);
+                }
+            }
+            else
+            {
+                Reload();
+            }
+        }
+        return false;
+    }
+
     private void Shoot(Vector3 origin, Vector3 direction)
     {
         readyToShoot = false;
