@@ -445,6 +445,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   turnAnimationMinAnglePerFrame: 0.4
   turnAnimationMaxMoveSpeed: 0.1
+  idleType: 0
+  useIdleBreaks: 0
+  minIdleBreakTime: 4
+  maxIdleBreakTime: 9
 --- !u!114 &9216503724008643117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601eb9ac58d258741ad5efeac57ef36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlothAttack
-  damage: 2.5
   isAttacking: 0
   gun: {fileID: 5598460371897832367}
   origin: {fileID: 7260809382875669997}
@@ -564,8 +567,13 @@ MonoBehaviour:
   idleClip: {fileID: 0}
   shootClip: {fileID: 0}
   reloadClip: {fileID: 0}
+  walkClip: {fileID: 0}
   shootBlendIn: 0.05
   shootBlendOut: 0.1
+  characterController: {fileID: 0}
+  walkAnimSpeed: 1
+  runAnimSpeed: 1.5
+  minMoveSpeedToAnimate: 0.1
 --- !u!120 &9211522671246928718
 LineRenderer:
   serializedVersion: 3
@@ -719,7 +727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 4131768485242358627}
   canvas: {fileID: 5420984718465904893}
   questionMarkEmpty: {fileID: 5420095196862091444}
   questionMarkFill: {fileID: 2509136974867577011}
@@ -753,6 +760,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathExplosion
   explosionVFX: {fileID: 3246258330966961802, guid: 1e6958a9df788434a91852628b9b5f91, type: 3}
   vfxLifetime: 5
+  bloodVFX: {fileID: 0}
+  bloodVFXYOffset: -1.8
+  bloodVFXEulerRotation: {x: 0, y: 0, z: 0}
+  bloodVFXFlattenDirection: 1
+  bloodVFXLifetime: 5
   attachedHead: {fileID: 0}
   attachedHeadExtras: []
   headBone: {fileID: 0}
@@ -812,7 +824,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAwarenessComponent
   maxAwareness: 100
   awarenessDecayPerSecond: 100
-  display: {fileID: 0}
 --- !u!114 &7325564401908678578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536b206b5d631439405b50e044a597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
-  label: {fileID: 4131768485242358627}
   canvas: {fileID: 5420984718465904893}
   questionMarkEmpty: {fileID: 5420095196862091444}
   questionMarkFill: {fileID: 2509136974867577011}
@@ -846,7 +856,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RagdollController
   animator: {fileID: 6615669095388930099}
   agent: {fileID: 6089141724876198967}
-  mainCollider: {fileID: 1407539811169566508}
+  mainColliders:
+  - {fileID: 1407539811169566508}
+  - {fileID: 4895537175126393409}
   ragdollBodies: []
   ragdollColliders: []
   zeroVelocityOnEnable: 0
@@ -1610,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7899892058465786598, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: -7111090777435933700, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1622,10 +1638,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7c33ff0c9b3afd7428b6a1ff706d3dd6, type: 2}
+    - target: {fileID: -1196930438909889544, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: -894116959380155148, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7c33ff0c9b3afd7428b6a1ff706d3dd6, type: 2}
+    - target: {fileID: -787748116831314041, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: -787748116831314041, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1634,18 +1658,58 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7c33ff0c9b3afd7428b6a1ff706d3dd6, type: 2}
+    - target: {fileID: -618669591006502731, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: m_Name
       value: SniperAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254148416800390368, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283423885536239159, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761863417263814419, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225966929984089188, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517538056252192446, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656912836178474723, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720349915988249042, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6892159879642282785, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7c33ff0c9b3afd7428b6a1ff706d3dd6, type: 2}
+    - target: {fileID: 7867105192333289519, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8000445863410901475, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7c33ff0c9b3afd7428b6a1ff706d3dd6, type: 2}
+    - target: {fileID: 8300997457294268883, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8733282122716709346, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2311,6 +2375,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1580709621750751713}
     m_Modifications:
+    - target: {fileID: 3828797517615010194, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5559056183133027084, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.433067
@@ -2366,6 +2434,10 @@ PrefabInstance:
     - target: {fileID: 5675132437367208220, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675132437367208220, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
