@@ -24,7 +24,7 @@ public class EnemySuspicionState : IEnemyState
     public void Enter()
     {
         context.movement.Stop();
-        AudioManager.Instance.Suspicion(context.transform.position);
+        AudioManager.Instance?.Suspicion(context.transform.position);
     }
 
     public void Exit()

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class EnemyDisplay : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private TextMeshPro label;
-
     [SerializeField] private Canvas canvas;
     [SerializeField] private Image questionMarkEmpty;
     [SerializeField] private Image questionMarkFill;
@@ -32,22 +30,8 @@ public class EnemyDisplay : MonoBehaviour
 
     private void LateUpdate()
     {
-
-        // Posición sobre la cabeza
-        label.transform.position = transform.position + offset;
-
-        // Siempre mira a la cámara
-        if (faceCamera && cam != null)
-            label.transform.forward = cam.transform.forward;
-
         if (faceCamera && cam != null)
             canvas.transform.forward = cam.transform.forward;
-    }
-
-    public void ChangeLabel(string str, Color color)
-    {
-        label.text = str;
-        label.color = color;
     }
 
     public void ShowSuspicion(float sus)

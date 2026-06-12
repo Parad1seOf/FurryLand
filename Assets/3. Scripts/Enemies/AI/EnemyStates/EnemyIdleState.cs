@@ -30,11 +30,6 @@ public class EnemyIdleState : IEnemyState
     public void Update()
     {
         LookForSuspiciousActivity();
-
-
-        //Algo mas?
-        if (changeState == null)
-            Debug.Log("noup");
     }
 
     private void LookForSuspiciousActivity()

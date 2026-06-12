@@ -50,7 +50,7 @@ public class RabbitAttack : EnemyAttack, IAnimatedAttack
                 health.TakeDamage(damage, "Rabbit");
         }
 
-        AudioManager.Instance.RabbitAttack(transform.position);
+        AudioManager.Instance?.RabbitAttack(transform.position);
 
         isAttacking = false;
     }

@@ -24,8 +24,8 @@ public class EnemyStateMachine : MonoBehaviour, IChangeState
         if (currentState != null) return;
         if (AlertSystem.Instance.IsAlreadyTriggered) ChangeState(behaviour.OnRespawn());
         else ChangeState(behaviour.OnStart());
-
-        if (!gameObject.activeSelf) ChangeState(behaviour.OnDie());
+        if (currentState != null) ChangeState(behaviour.OnStart());
+        //if (!gameObject.activeSelf) ChangeState(behaviour.OnDie());
 
     }
 

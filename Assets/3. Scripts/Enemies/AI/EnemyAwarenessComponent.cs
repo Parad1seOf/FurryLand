@@ -5,7 +5,6 @@ public class EnemyAwarenessComponent : MonoBehaviour
     private float currentAwareness;
     [SerializeField] private float maxAwareness = 100f;
     [SerializeField] private float awarenessDecayPerSecond = 100f;
-    [SerializeField] private EnemyDisplay display;
     private bool isAware = false;
 
     public bool UpdateAwareness(float amount)
@@ -32,8 +31,6 @@ public class EnemyAwarenessComponent : MonoBehaviour
             currentAwareness -= Time.deltaTime * awarenessDecayPerSecond;
             currentAwareness = Mathf.Min(currentAwareness, 0);
         }
-            
-        //display.ChangeLabel(Mathf.FloorToInt(currentAwareness).ToString(), Color.darkViolet);
     }
 
     public float GetAwareness() { return currentAwareness; }
