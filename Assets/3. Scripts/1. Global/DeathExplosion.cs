@@ -5,29 +5,20 @@ using UnityEngine;
 public class DeathExplosion : MonoBehaviour
 {
     [Header("VFX")]
-    [Tooltip("Prefab con ParticleSystem (Collision ON) + BloodDecalSpawnerV2")]
     [SerializeField] private GameObject explosionVFX;
     [SerializeField] private float vfxLifetime = 5f;
 
     [Header("Blood VFX (VFX Graph)")]
-    [Tooltip("Nuevo prefab de sangre (VFX Graph). Se instancia con offset y rotación configurables.")]
     [SerializeField] private GameObject bloodVFX;
-    [Tooltip("Desplazamiento vertical respecto al pivote (0,0,0) del enemigo. Negativo = hacia abajo.")]
     [SerializeField] private float bloodVFXYOffset = -1.8f;
-    [Tooltip("Si está activo, orienta el VFX en la dirección del disparo (hacia donde iba la bala, lejos del arma). Si no, usa la rotación fija de abajo.")]
-    [SerializeField] private bool bloodVFXFaceHitDirection = false;
-    [Tooltip("Rotación (euler) del prefab. Si 'Face Hit Direction' está activo, se suma como offset.")]
     [SerializeField] private Vector3 bloodVFXEulerRotation;
+    [SerializeField] private bool bloodVFXFlattenDirection = true;
     [SerializeField] private float bloodVFXLifetime = 5f;
 
     [Header("Cabeza")]
-    [Tooltip("GameObject de la cabeza skinneada (la separada en 3ds Max). Se oculta al recibir headshot.")]
     [SerializeField] private GameObject attachedHead;
-    [Tooltip("Objetos extra que deben ocultarse junto con la cabeza (orejas, pelo, gafas, etc.).")]
     [SerializeField] private GameObject[] attachedHeadExtras;
-    [Tooltip("Hueso de la cabeza — referencia para spawnear el VFX y la cabeza física en su posición.")]
     [SerializeField] private Transform headBone;
-    [Tooltip("Prefab de la cabeza física: mesh + Rigidbody + Collider.")]
     [SerializeField] private GameObject detachedHeadPrefab;
     [SerializeField] private float headLaunchForce = 6f;
     [SerializeField] private float headExtraTorque = 8f;
@@ -35,20 +26,18 @@ public class DeathExplosion : MonoBehaviour
 
     [Header("Ragdoll")]
     [SerializeField] private RagdollController ragdoll;
-    [Tooltip("Multiplicador aplicado a la fuerza del disparo cuando se traduce a impulso del ragdoll.")]
     [SerializeField] private float hitImpulseMultiplier = 1f;
 
-    [Header("Bodyshot — desaparición del cuerpo entero")]
+    [Header("Bodyshot")]
     [SerializeField] private float bodyDespawnDelay = 6f;
 
-    [Header("Empuje en área (afecta a otros, no a sí mismo)")]
+    [Header("Empuje en area")]
     [SerializeField] private float explosionRadius = 3f;
     [SerializeField] private float explosionForce = 500f;
     [SerializeField] private float upwardsModifier = 1f;
     [SerializeField] private LayerMask affectedLayers = ~0;
 
-    [Header("Daño en área (opcional)")]
-    [Tooltip("0 = sin daño")]
+    [Header("Dano en area")]
     [SerializeField] private float damageRadius = 0f;
     [SerializeField] private float damageAmount = 0f;
 
@@ -77,12 +66,6 @@ public class DeathExplosion : MonoBehaviour
 
     public void NotifyHit(BodyPartType part, Vector3 hitPoint, Vector3 hitDirection, float force)
     {
-        // PARCHE (Bug fix sangre headshot): priorizamos Head. Si ya registramos un impacto en la
-        // cabeza durante la vida del enemigo, no permitimos que un perdigón posterior del shotgun
-        // que impacte en otra zona lo "sobrescriba". Así, basta con que UN solo perdigón del disparo
-        // dé en la cabeza para que muera por headshot y se spawnee el VFX de sangre.
-        // hitPoint / hitDirection / hitForce se siguen actualizando para que el ragdoll reaccione
-        // al último impacto físico real (lo único que conservamos es el "tipo" como Head).
         bool keepAsHead = (lastHitPart == BodyPartType.Head && part != BodyPartType.Head);
 
         lastHitPart      = keepAsHead ? BodyPartType.Head : part;
@@ -152,11 +135,18 @@ public class DeathExplosion : MonoBehaviour
 
         Vector3 pos = transform.position + new Vector3(0f, bloodVFXYOffset, 0f);
 
-        Quaternion rot;
-        if (bloodVFXFaceHitDirection && lastHitDirection.sqrMagnitude > 0.0001f)
-            rot = Quaternion.LookRotation(lastHitDirection) * Quaternion.Euler(bloodVFXEulerRotation);
-        else
-            rot = Quaternion.Euler(bloodVFXEulerRotation);
+        Vector3 dir = lastHitDirection.sqrMagnitude > 0.0001f
+                      ? lastHitDirection
+                      : -transform.forward;
+
+        if (bloodVFXFlattenDirection)
+        {
+            dir.y = 0f;
+            if (dir.sqrMagnitude < 0.0001f) dir = -transform.forward;
+        }
+
+        Quaternion rot = Quaternion.LookRotation(dir.normalized)
+                         * Quaternion.Euler(bloodVFXEulerRotation);
 
         GameObject vfx = Instantiate(bloodVFX, pos, rot);
         if (bloodVFXLifetime > 0f) Destroy(vfx, bloodVFXLifetime);
