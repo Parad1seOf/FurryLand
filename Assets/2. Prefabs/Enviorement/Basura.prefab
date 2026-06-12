@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4470620324470399040}
   - component: {fileID: 7887937995153164474}
   - component: {fileID: 7755432229771499665}
+  - component: {fileID: 7203995494989400549}
   m_Layer: 0
   m_Name: Basura
   m_TagString: Untagged
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.019999994, z: 0.020492326}
   m_Center: {x: -4.6566126e-10, y: 4.6566118e-10, z: 0.00024616573}
+--- !u!114 &7203995494989400549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4685206030784391206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp

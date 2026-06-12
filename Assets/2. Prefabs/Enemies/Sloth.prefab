@@ -526,10 +526,10 @@ MonoBehaviour:
   beamCollisionMask:
     serializedVersion: 2
     m_Bits: 254139
-  aimingColor: {r: 0, g: 0.7768485, b: 0.9019608, a: 0.84705883}
-  warningColor: {r: 0.9169811, g: 0.07742937, b: 0.046714056, a: 1}
-  shootColor1: {r: 1, g: 1, b: 1, a: 1}
-  shootColor2: {r: 1, g: 0.78665775, b: 0, a: 1}
+  aimingMaterial: {fileID: 2100000, guid: 2e98a30ff881de04983148b97d2f8535, type: 2}
+  warningMaterial: {fileID: 2100000, guid: 16436368c5f1d3f46a49bde8f0e2affd, type: 2}
+  shootMaterial1: {fileID: 2100000, guid: 4980441b0c873da439bde3d636647ca2, type: 2}
+  shootMaterial2: {fileID: 2100000, guid: 90c52311336f6034fa5f8be8b7e0f7d5, type: 2}
   sniperAnimation: {fileID: 4785178888932596359}
   timer: 9
 --- !u!114 &5598460371897832367
@@ -1692,7 +1692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6720349915988249042, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6892159879642282785, guid: 6595968a4baa1df4e991550dabf9db23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2377,7 +2377,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3828797517615010194, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5559056183133027084, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
       propertyPath: m_LocalScale.x
@@ -2437,7 +2437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5675132437367208220, guid: ce7788e94505091419dfc09dcdb20d1d, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

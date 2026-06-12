@@ -12,10 +12,10 @@ public class SlothAttack : EnemyAttack
     // NUEVO: layers con los que sí puede colisionar el raycast
     [SerializeField] private LayerMask beamCollisionMask = ~0;
 
-    [SerializeField] private Color aimingColor = Color.blue;
-    [SerializeField] private Color warningColor = Color.red;
-    [SerializeField] private Color shootColor1 = Color.black;
-    [SerializeField] private Color shootColor2 = Color.white;
+    [SerializeField] private Material aimingMaterial;
+    [SerializeField] private Material warningMaterial;
+    [SerializeField] private Material shootMaterial1;
+    [SerializeField] private Material shootMaterial2;
 
     [SerializeField] private SniperAnimationController sniperAnimation;
 
@@ -52,8 +52,7 @@ public class SlothAttack : EnemyAttack
             warningActive = false;
             shootingFlash = false;
 
-            beam.startColor = aimingColor;
-            beam.endColor = aimingColor;
+            beam.material = aimingMaterial;
 
             beam.enabled = true;
 
@@ -99,8 +98,7 @@ public class SlothAttack : EnemyAttack
                 if (warningActive)
                 {
                     warningActive = false;
-                    beam.startColor = aimingColor;
-                    beam.endColor = aimingColor;
+                    beam.material = aimingMaterial;
                 }
             }
             else
@@ -110,8 +108,7 @@ public class SlothAttack : EnemyAttack
                 if (!warningActive && timer <= 1f)
                 {
                     warningActive = true;
-                    beam.startColor = warningColor;
-                    beam.endColor = warningColor;
+                    beam.material = warningMaterial;
                 }
             }
         }
@@ -125,19 +122,16 @@ public class SlothAttack : EnemyAttack
     {
         shootingFlash = true;
 
-        // NEGRO
-        beam.startColor = shootColor1;
-        beam.endColor = shootColor1;
+        // Primer material
+        beam.material = shootMaterial1;
         yield return new WaitForSeconds(0.03f);
 
-        // BLANCO
-        beam.startColor = shootColor2;
-        beam.endColor = shootColor2;
+        // Segundo material
+        beam.material = shootMaterial2;
         yield return new WaitForSeconds(0.03f);
 
-        // ROJO
-        beam.startColor = warningColor;
-        beam.endColor = warningColor;
+        // Material de advertencia
+        beam.material = warningMaterial;
         yield return new WaitForSeconds(0.05f);
 
         if (sniperAnimation != null)

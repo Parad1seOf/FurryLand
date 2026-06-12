@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5881384863981024916}
   - component: {fileID: 8057190416158769205}
   - component: {fileID: 102540810188471575}
+  - component: {fileID: 2081000285364672032}
   m_Layer: 0
   m_Name: Bol
   m_TagString: Untagged
@@ -113,3 +114,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7377584795223154047, guid: df4d160dcaacf864f9e2deb016967222, type: 3}
+--- !u!114 &2081000285364672032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181640820272819581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp

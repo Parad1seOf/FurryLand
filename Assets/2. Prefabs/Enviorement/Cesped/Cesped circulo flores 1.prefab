@@ -188,13 +188,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnidadCesped
       objectReference: {fileID: 0}
+    - target: {fileID: 2099558871217298541, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099558871217298541, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
+      propertyPath: m_LODs.Array.data[1].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4654028190090370513, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.56
+      value: -0.563
       objectReference: {fileID: 0}
     - target: {fileID: 4654028190090370513, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 4654028190090370513, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -229,7 +237,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1087521302489827949, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
@@ -1056,6 +1065,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnidadCesped (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2099558871217298541, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099558871217298541, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
+      propertyPath: m_LODs.Array.data[1].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4654028190090370513, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51000977
@@ -1097,7 +1114,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1087521302489827949, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
@@ -1242,6 +1260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnidadCesped
       objectReference: {fileID: 0}
+    - target: {fileID: 2099558871217298541, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[1].renderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4654028190090370513, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.045
@@ -1283,7 +1305,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2411394552359885540, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b07d3a672a1d93b4ab3abd3fe704c01f, type: 3}
