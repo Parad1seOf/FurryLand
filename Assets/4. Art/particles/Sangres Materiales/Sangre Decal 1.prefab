@@ -47,17 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
   m_Material: {fileID: 2100000, guid: e0ab88ab2c98cc5428b05718b7a9e767, type: 2}
   m_DrawDistance: 50
-  m_FadeScale: 0.9
+  m_FadeScale: 1
   m_StartAngleFade: 180
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
   m_RenderingLayerMask:
     serializedVersion: 0
-    m_Bits: 1
+    m_Bits: 4294967295
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 2.5, y: 2.5, z: 0.5}
+  m_Size: {x: 2.5, y: 2.5, z: 1}
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1

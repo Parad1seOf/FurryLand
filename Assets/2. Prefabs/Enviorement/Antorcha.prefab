@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3661585608790153098}
   - component: {fileID: 931249507714499403}
   - component: {fileID: 9149062435170620764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2450310320526594973}
   - component: {fileID: 6783756631225479344}
   - component: {fileID: 7324872601351105209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Antorcha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 6182515781802920411}
   - component: {fileID: 6436567519980055082}
   - component: {fileID: 707647619157141061}
-  m_Layer: 18
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 6786108210170591770}
   - component: {fileID: 4010390208374084871}
   - component: {fileID: 3605072413355291314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,6 +442,10 @@ PrefabInstance:
     - target: {fileID: 7655717713199199364, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
       propertyPath: m_Name
       value: Humo Peque
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655717713199199364, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8071355511012531306, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
       propertyPath: m_LocalScale.x

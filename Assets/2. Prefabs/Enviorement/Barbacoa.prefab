@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1524399334089322882}
   - component: {fileID: 2488267980072517159}
   - component: {fileID: 390948687437859565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barbacoa_Grill_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5865181354133998211}
   - component: {fileID: 3081508805465077631}
   - component: {fileID: 1751541187435561437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barbacoa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 7026004470103830614}
   - component: {fileID: 8003861834093879810}
   - component: {fileID: 6012918761037970832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 4717434090358143695}
   - component: {fileID: 8563712179756496234}
   - component: {fileID: 5853726870545269152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barbacoa_Cubo_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 8056615612104820524}
   - component: {fileID: 6368374251028793481}
   - component: {fileID: 9189021000346385475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barbacoa_Patas_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,6 +480,10 @@ PrefabInstance:
     - target: {fileID: 7655717713199199364, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
       propertyPath: m_Name
       value: Humo Peque
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655717713199199364, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8071355511012531306, guid: 1bd949285bff94d4c90fcd2523906bc1, type: 3}
       propertyPath: m_LocalScale.x
