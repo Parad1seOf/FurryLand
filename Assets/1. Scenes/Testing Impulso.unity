@@ -10724,6 +10724,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4add6f5e92a05d64997f47a74acec3f5, type: 2}
+    - target: {fileID: 8274344065437437803, guid: 6e708e3ec10e79a4b9d5617b18903139, type: 3}
+      propertyPath: breakParticles
+      value: 
+      objectReference: {fileID: 3839626453220196527, guid: 9ebc4ac17879aa641acecddb8f2c8e0d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15360,6 +15364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &218682390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15560,6 +15566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &220828011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22855,6 +22863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1 &324468900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8206352185048201678, guid: 14fbe57806a87604aad17329678e1b99, type: 3}
@@ -32897,6 +32907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!135 &466191340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -36170,7 +36182,6 @@ GameObject:
   - component: {fileID: 512309928}
   - component: {fileID: 512309927}
   - component: {fileID: 512309926}
-  - component: {fileID: 512309931}
   - component: {fileID: 512309930}
   m_Layer: 8
   m_Name: Quad (1)
@@ -36285,18 +36296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
---- !u!114 &512309931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512309925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 3839626453220196527, guid: 9ebc4ac17879aa641acecddb8f2c8e0d, type: 3}
+  particlesLifetime: 3
 --- !u!1001 &512554133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41811,6 +41812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1 &597434688
 GameObject:
   m_ObjectHideFlags: 0
@@ -43293,6 +43296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &613002960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74542,6 +74547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &1074047810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77880,6 +77887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &1115850785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85885,6 +85894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &1230877248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86155,6 +86166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!135 &1238556385
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -89177,6 +89190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!135 &1281158064
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -97202,6 +97217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!1001 &1384091986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102462,6 +102479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fence (177)
       objectReference: {fileID: 0}
+    - target: {fileID: 677263606380009315, guid: 055b026d529bb7749955199a90854588, type: 3}
+      propertyPath: breakParticles
+      value: 
+      objectReference: {fileID: 3839626453220196527, guid: 9ebc4ac17879aa641acecddb8f2c8e0d, type: 3}
     - target: {fileID: 1536517669164715962, guid: 055b026d529bb7749955199a90854588, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.44
@@ -119364,6 +119385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!135 &1694105695
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -132377,6 +132400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
 --- !u!135 &1870408938
 SphereCollider:
   m_ObjectHideFlags: 0
