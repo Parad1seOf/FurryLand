@@ -493,6 +493,7 @@ MonoBehaviour:
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
   idle: {fileID: 0}
+  faceExpression: {fileID: 0}
 --- !u!114 &3993688958312960704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSystem
   muzzlePoint: {fileID: 0}
-  damage: 3
+  damage: 33
   range: 40
   hitMask:
     serializedVersion: 2

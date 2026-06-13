@@ -27,6 +27,7 @@ public class SlothAttack : EnemyAttack
 
     private bool warningActive;
     private bool shootingFlash;
+    private bool hasShot;
 
     public void Awake()
     {
@@ -43,6 +44,7 @@ public class SlothAttack : EnemyAttack
 
     public override void Attack(Vector3 target)
     {
+        if (hasShot) return;
         if (!isAttacking)
         {
             follow = target;
@@ -121,16 +123,14 @@ public class SlothAttack : EnemyAttack
     private IEnumerator ShootFlash()
     {
         shootingFlash = true;
+        hasShot = true;
 
-        // Primer material
         beam.material = shootMaterial1;
         yield return new WaitForSeconds(0.03f);
 
-        // Segundo material
         beam.material = shootMaterial2;
         yield return new WaitForSeconds(0.03f);
 
-        // Material de advertencia
         beam.material = warningMaterial;
         yield return new WaitForSeconds(0.05f);
 
@@ -143,6 +143,8 @@ public class SlothAttack : EnemyAttack
         }
 
         AudioManager.Instance.SniperShoot(origin.position);
+
+        yield return new WaitForSeconds(0.4f);
 
         EndAttack();
     }
