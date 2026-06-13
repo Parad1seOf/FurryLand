@@ -11,6 +11,8 @@ public class IntroSceneManager : MonoBehaviour
     [SerializeField] private VolumeProfile profileOne;
     [SerializeField] private VolumeProfile profileTwo;
 
+    private bool finishing = false;
+
     void Start()
     {
         ApplySelectedFilter();
@@ -20,7 +22,7 @@ public class IntroSceneManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CancelInvoke(nameof(FinishCinematic));
             FinishCinematic();
@@ -43,6 +45,8 @@ public class IntroSceneManager : MonoBehaviour
 
     private void FinishCinematic()
     {
+        if (finishing) return;
+        finishing = true;
         Time.timeScale = 1f;
 
         if (FadeManager.Instance != null)
