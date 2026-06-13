@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject endingCinematicButton;
 
     public static bool FromExtras = false;
+    public static bool GameCompletedInSession = false;
 
     [Header("Options components")]
     [SerializeField] private Slider volumeSlider;
@@ -33,16 +34,15 @@ public class MainMenu : MonoBehaviour
             FromExtras = false;
             if (extrasPanel != null) extrasPanel.SetActive(true);
         }
+
         else
         {
             if (extrasPanel != null) extrasPanel.SetActive(false);
         }
 
         if (endingCinematicButton != null)
-        {
-            bool gameCompleted = PlayerPrefs.GetInt("GameCompleted", 0) == 1;
-            endingCinematicButton.SetActive(gameCompleted);
-        }
+            endingCinematicButton.SetActive(GameCompletedInSession);
+
     }
 
     #region Navigation
@@ -95,6 +95,16 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(1);
     }
 
-    public void ReproduceEndingCinematic() { }
+    public void ReproduceEndingCinematic()
+    {
+        if (!GameCompletedInSession) return;
+
+        FromExtras = true;
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.ChangeSceneFade(3);
+        else
+            SceneManager.LoadScene(3);
+    }
     #endregion
 }
