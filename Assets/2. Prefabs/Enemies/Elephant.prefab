@@ -227,12 +227,12 @@ GameObject:
   - component: {fileID: 6710462825465767503}
   - component: {fileID: 7240827731558049768}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Audio Source Agua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6710462825465767503
 Transform:
   m_ObjectHideFlags: 0
@@ -241,12 +241,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4935905632318031412}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.68857616, w: 0.72516406}
+  m_LocalPosition: {x: 0.13476253, y: 5.603759, z: -0.13192713}
+  m_LocalScale: {x: 1.646226, y: 1.646226, z: 1.646226}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1086805811899414373}
+  m_Father: {fileID: 7268696297117293867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7240827731558049768
 AudioSource:
@@ -263,7 +263,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -666,10 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2836026549711476841, guid: c109916cbc0076c4dbdb217974396514, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6710462825465767503}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c109916cbc0076c4dbdb217974396514, type: 3}
 --- !u!198 &432911784540331973 stripped
@@ -1058,6 +1055,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b7f81b5e0e3adb4186e6fe1a60974f8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5998893055216814492}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b7f81b5e0e3adb4186e6fe1a60974f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6710462825465767503}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7f81b5e0e3adb4186e6fe1a60974f8, type: 3}
 --- !u!4 &7268696297117293867 stripped
