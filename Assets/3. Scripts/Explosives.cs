@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Explosives : InteractableAction
 {
@@ -87,6 +88,15 @@ public class Explosives : InteractableAction
                 ComicPanelManager.Instance.StartC4Reminder("C4_Checkpoint", 30f);
 
             return;
+        }
+
+        GameObject[] radios = GameObject.FindGameObjectsWithTag("Radio");
+
+        foreach (GameObject radio in radios)
+        {
+            AudioSource audioSource = radio.GetComponent<AudioSource>();
+            if (audioSource != null)
+                audioSource.Stop();
         }
 
         Instantiate(retrievedObject, retrievedItemPoint.position, retrievedItemPoint.rotation);
