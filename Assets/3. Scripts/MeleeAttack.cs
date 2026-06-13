@@ -65,7 +65,12 @@ public class MeleeAttack : MonoBehaviour
         }
 
         if (hasHitEnemy)
+        {
             StartCoroutine(ShowAndHideSlash());
+
+            if (AlertSystem.Instance != null)
+                AlertSystem.Instance.TriggerAlert();
+        }
     }
 
     private IEnumerator ShowAndHideArm()
