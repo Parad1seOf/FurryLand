@@ -24,15 +24,33 @@ public class GameResultUI : MonoBehaviour
     [SerializeField] private AudioClip victoryMusic;
     [SerializeField] private AudioClip defeatMusic;
 
-    //public static GameResultUI instance { get; private set; }
+    [Header("Buttons Configuration")]
+    [SerializeField] private GameObject retryButton;
+    [SerializeField] private GameObject watchEndingButton;
+
 
     public void ShowResults(bool isVictory, string killerType = "")
     {
         mainPanel.SetActive(true);
         resultText.text = isVictory ? "VICTORIA":"DERROTA";
 
+        if (retryButton != null) retryButton.SetActive(false);
+        if (watchEndingButton != null) watchEndingButton.SetActive(false);
+
+        if (isVictory)
+        {
+            if (watchEndingButton != null) watchEndingButton.SetActive(true);
+            MainMenu.GameCompletedInSession = true;
+        }
+
+        else
+        {
+            if (retryButton != null) retryButton.SetActive(true);
+        }
+
         if (isVictory)
             resultImage.sprite = victorySprite;
+
         else
         {
             if (killerType == "Rabbit")
@@ -104,5 +122,17 @@ public class GameResultUI : MonoBehaviour
         
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void WatchEnding()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.ChangeSceneFade(3);
+
+        else
+            SceneManager.LoadScene(3);
     }
 }
