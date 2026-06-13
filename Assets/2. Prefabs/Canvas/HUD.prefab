@@ -4153,10 +4153,16 @@ MonoBehaviour:
   phrasesData: {fileID: 11400000, guid: a335b09ba0b7013488e5997ecde14324, type: 2}
   container: {fileID: 3506114360280911293}
   panelText: {fileID: 1877585772429523526}
-  duration: 6.5
+  duration: 6
   width: 600
   appearSound: {fileID: 8300000, guid: de5c24de881e6e345a59d858bf2b7dc4, type: 3}
   disappearSound: {fileID: 8300000, guid: 5fd91a7641e936b49a69cf851fa7c353, type: 3}
+  horizontalPadding: 100
+  verticalPadding: 100
+  minDistanceFromEdge: 80
+  maxDistanceFromEdge: 350
+  maxTopY: 300
+  minBottomY: -400
 --- !u!1 &7655966382776582072
 GameObject:
   m_ObjectHideFlags: 0
