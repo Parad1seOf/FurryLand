@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 7515738040575822262, guid: 4a258e7f94d5e9e4492a42850be74c6f, type: 3}
+  particlesLifetime: 3
 --- !u!136 &7324872601351105209
 CapsuleCollider:
   m_ObjectHideFlags: 0

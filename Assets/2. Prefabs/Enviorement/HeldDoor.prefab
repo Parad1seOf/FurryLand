@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDoorAction
   animator: {fileID: 3987697220884008515}
   clipName: Puertas
+  doorCollider: {fileID: 0}
 --- !u!1 &6942632688805799859
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 7515738040575822262, guid: 8350429f9e30a0d4c978cd9c9be9108b, type: 3}
+  particlesLifetime: 3
 --- !u!95 &3987697220884008515
 Animator:
   serializedVersion: 7
