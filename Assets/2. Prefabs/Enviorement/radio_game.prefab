@@ -45,7 +45,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 96ad1e35b57e7554cb33916e69ae7c31, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -53,8 +53,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 12.373688
-  MaxDistance: 34.704025
+  MinDistance: 3.8594208
+  MaxDistance: 18.728073
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -264,3 +264,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd595d709c77d439c3447dae0b0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBreakableProp
+  breakParticles: {fileID: 0}
+  particlesLifetime: 3
