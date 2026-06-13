@@ -19,6 +19,12 @@ public class EnemyChaseState : IEnemyState
     public void Enter()
     {
         movement.UseCombatIdle();
+
+        if (context.idle != null)
+            context.idle.active = false;
+
+        if (context.faceExpression != null)
+            context.faceExpression.SetAngryFace();
     }
 
     public void Exit()

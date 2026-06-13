@@ -13,6 +13,7 @@ public class AIContext : MonoBehaviour
     public AIPathingComponent pathing;
     public WaterGun waterGun;
     public IdleMovements idle;
+    public RabbitFaceExpression faceExpression;
 
 
     void Awake()
@@ -37,6 +38,8 @@ public class AIContext : MonoBehaviour
             waterGun = GetComponent<WaterGun>();
         if (idle == null)
             idle = GetComponent<IdleMovements>();
+        if (faceExpression == null)
+            faceExpression = GetComponent<RabbitFaceExpression>();
 
     }
 }

@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 1937672339436279855}
   - component: {fileID: 3067579504798398215}
   - component: {fileID: 780748298670851429}
+  - component: {fileID: 1074214050792174609}
   m_Layer: 6
   m_Name: Sit
   m_TagString: Untagged
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
   idle: {fileID: 0}
+  faceExpression: {fileID: 0}
 --- !u!114 &7302187447657705651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,6 +1226,22 @@ MonoBehaviour:
   - 0
   - 180
   active: 0
+--- !u!114 &1074214050792174609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587818622633843448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139e45d992b9bc14697c0757aebbccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RabbitFaceExpression
+  headRenderer: {fileID: 4736676014695826854}
+  normalFaceMaterial: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+  angryFaceMaterial: {fileID: 2100000, guid: f9df2aacbf694064b898f8c7856edd03, type: 2}
+  faceMaterialIndex: 0
 --- !u!1 &3625700161940918555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2515,11 @@ MonoBehaviour:
 --- !u!4 &4430069788472106130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+  m_PrefabInstance: {fileID: 4247031325840423801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4736676014695826854 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8884601236467384031, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
   m_PrefabInstance: {fileID: 4247031325840423801}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5591912960543169484 stripped

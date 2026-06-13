@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 3928644071774524818}
   - component: {fileID: 5990308610741306820}
   - component: {fileID: 6773633195873826983}
+  - component: {fileID: 6767651965311981491}
   m_Layer: 6
   m_Name: ConejoDominguero
   m_TagString: Untagged
@@ -1056,6 +1057,22 @@ MonoBehaviour:
   - 0
   - 180
   active: 0
+--- !u!114 &6767651965311981491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953276385587282638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139e45d992b9bc14697c0757aebbccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RabbitFaceExpression
+  headRenderer: {fileID: 4908169120357837203}
+  normalFaceMaterial: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+  angryFaceMaterial: {fileID: 2100000, guid: f9df2aacbf694064b898f8c7856edd03, type: 2}
+  faceMaterialIndex: 0
 --- !u!1 &4002025979601686883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2514,11 @@ MonoBehaviour:
 --- !u!4 &4097037002881855655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+  m_PrefabInstance: {fileID: 4562463146481686348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4908169120357837203 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8884601236467384031, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
   m_PrefabInstance: {fileID: 4562463146481686348}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5204801382063978489 stripped

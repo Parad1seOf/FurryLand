@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 2366693760387668084}
   - component: {fileID: 445162999614934903}
   - component: {fileID: 6516968324201174763}
+  - component: {fileID: 6372219781672091208}
   m_Layer: 6
   m_Name: TomandoElSol
   m_TagString: Untagged
@@ -1290,6 +1291,7 @@ MonoBehaviour:
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
   idle: {fileID: 0}
+  faceExpression: {fileID: 0}
 --- !u!114 &2352799732876811365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1383,22 @@ MonoBehaviour:
   - 0
   - 180
   active: 0
+--- !u!114 &6372219781672091208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665336139547007497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139e45d992b9bc14697c0757aebbccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RabbitFaceExpression
+  headRenderer: {fileID: 3941318068834997830}
+  normalFaceMaterial: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+  angryFaceMaterial: {fileID: 2100000, guid: f9df2aacbf694064b898f8c7856edd03, type: 2}
+  faceMaterialIndex: 0
 --- !u!1 &8021948455881596616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,6 +2561,11 @@ CapsuleCollider:
   m_Height: 0.004527665
   m_Direction: 1
   m_Center: {x: -0.00006608154, y: 0.002276067, z: 0.0001560369}
+--- !u!137 &3941318068834997830 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8884601236467384031, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+  m_PrefabInstance: {fileID: 5619980128720218265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4221039906667350060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -618669591006502731, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}

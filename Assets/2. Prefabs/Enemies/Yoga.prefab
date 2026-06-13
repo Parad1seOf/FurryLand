@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 4033750762945276700}
   - component: {fileID: 6781030134184165389}
   - component: {fileID: 2758709058998034459}
+  - component: {fileID: 2271854500321461855}
   m_Layer: 6
   m_Name: Yoga
   m_TagString: Untagged
@@ -1325,6 +1326,7 @@ MonoBehaviour:
   pathing: {fileID: 0}
   waterGun: {fileID: 0}
   idle: {fileID: 0}
+  faceExpression: {fileID: 0}
 --- !u!114 &8204105906760133415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,6 +1418,22 @@ MonoBehaviour:
   - 0
   - 180
   active: 0
+--- !u!114 &2271854500321461855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231702255783434529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139e45d992b9bc14697c0757aebbccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RabbitFaceExpression
+  headRenderer: {fileID: 3203852869964489858}
+  normalFaceMaterial: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
+  angryFaceMaterial: {fileID: 2100000, guid: f9df2aacbf694064b898f8c7856edd03, type: 2}
+  faceMaterialIndex: 0
 --- !u!1 &6507782517245951703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,6 +2600,11 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!137 &3203852869964489858 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8884601236467384031, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
+  m_PrefabInstance: {fileID: 6285387862376127069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4060427098653157797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1196930438909889544, guid: d5c6f5e80548e7847a139fa7788cf37e, type: 3}
