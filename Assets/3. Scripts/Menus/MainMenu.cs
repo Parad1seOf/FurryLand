@@ -22,6 +22,11 @@ public class MainMenu : MonoBehaviour
 
     public static int PostProcessingChoice = 0;
 
+    private static float SavedVolume = 50f;
+    private static float SavedFOV = 90f;
+    private static bool SavedFog = true;
+    private static bool OptionsAlreadyInitialized = false;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -34,7 +39,6 @@ public class MainMenu : MonoBehaviour
             FromExtras = false;
             if (extrasPanel != null) extrasPanel.SetActive(true);
         }
-
         else
         {
             if (extrasPanel != null) extrasPanel.SetActive(false);
@@ -43,6 +47,48 @@ public class MainMenu : MonoBehaviour
         if (endingCinematicButton != null)
             endingCinematicButton.SetActive(GameCompletedInSession);
 
+        if (!OptionsAlreadyInitialized)
+        {
+            if (volumeSlider != null) SavedVolume = volumeSlider.value;
+            if (FOVSlider != null) SavedFOV = FOVSlider.value;
+            if (fogToggle != null) SavedFog = fogToggle.isOn;
+            OptionsAlreadyInitialized = true;
+        }
+        else
+        {
+            if (volumeSlider != null) volumeSlider.value = SavedVolume;
+            if (FOVSlider != null) FOVSlider.value = SavedFOV;
+            if (fogToggle != null) fogToggle.isOn = SavedFog;
+        }
+
+        ApplyAllSettings();
+    }
+
+    public void ChangeVolume(float val)
+    {
+        SavedVolume = val;
+        ApplyAllSettings();
+    }
+
+    public void ChangeFOV(float val)
+    {
+        SavedFOV = val;
+        ApplyAllSettings();
+    }
+
+    public void ChangeFog(bool val)
+    {
+        SavedFog = val;
+        ApplyAllSettings();
+    }
+
+    private void ApplyAllSettings()
+    {
+        AudioListener.volume = SavedVolume;
+        RenderSettings.fog = SavedFog;
+
+        if (Camera.main != null)
+            Camera.main.fieldOfView = SavedFOV;
     }
 
     #region Navigation
