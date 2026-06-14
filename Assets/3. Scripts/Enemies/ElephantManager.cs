@@ -53,6 +53,22 @@ public class ElephantManager : MonoBehaviour
         timer = Random.Range(timeToSpawnMin, timeToSpawnMax);
     }
 
+    public void StopElephants()
+    {
+        wantsToSpawnElephant = false;
+
+        if (currentElephant != null)
+        {
+            HealthSystem elephant = currentElephant.GetComponent<HealthSystem>();
+            if (elephant != null)
+            {
+                elephant.OnDeath -= ElephantDies;
+                elephant.Kill();
+            }
+            currentElephant = null;
+        }
+    }
+
     private bool Timer()
     {
         timer -= Time.deltaTime;

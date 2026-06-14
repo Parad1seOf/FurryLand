@@ -62,26 +62,29 @@ public class Explosives : InteractableAction
         if (explosionPrefabs[index] != null)
         {
             GameObject nuevaExplosion = Instantiate(explosionPrefabs[index], transform.position, Quaternion.identity);
-
             nuevaExplosion.SetActive(true);
         }
 
-        ElephantManager.instance.wantsToSpawnElephant = true;
         ComicPanelManager.Instance?.ShowPhraseByID("C4_Explode");
         EnemyPool.instance.Explosion();
 
         ChangeVisual();
+
         if (currentExplosions == 3 && smokePrefab != null)
         {
             GameObject smokeClone = Instantiate(smokePrefab, transform.position, Quaternion.identity);
             smokeClone.SetActive(true);
+
+            ElephantManager.instance.StopElephants();
         }
-        
+
         gameObject.SetActive(false);
         timer = timeToExplode;
 
         if (currentExplosions < explosionCount)
         {
+            ElephantManager.instance.wantsToSpawnElephant = true;
+
             trigger.SetActive(true);
 
             if (ComicPanelManager.Instance != null)
@@ -91,7 +94,6 @@ public class Explosives : InteractableAction
         }
 
         GameObject[] radios = GameObject.FindGameObjectsWithTag("Radio");
-
         foreach (GameObject radio in radios)
         {
             AudioSource audioSource = radio.GetComponent<AudioSource>();

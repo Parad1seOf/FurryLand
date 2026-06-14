@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class EndingSceneManager : MonoBehaviour
 {
-    [SerializeField] private float cinematicDuration = 20f;
+    [SerializeField] private float cinematicDuration = 130f;
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class EndingSceneManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CancelInvoke(nameof(FinishCinematic));
             FinishCinematic();
