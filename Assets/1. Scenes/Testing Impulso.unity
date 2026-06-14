@@ -9083,7 +9083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 41518379706584723, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 58.63
+      value: 58.78
       objectReference: {fileID: 0}
     - target: {fileID: 41518379706584723, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9121,6 +9121,14 @@ PrefabInstance:
       propertyPath: postProcessVolume
       value: 
       objectReference: {fileID: 1250772905}
+    - target: {fileID: 5645050189698980722, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63c76dd5c2c03294a8feedc1eaea1a52, type: 2}
+    - target: {fileID: 5645050189698980722, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 788bef7590173a94fb75ee8b93e820ca, type: 2}
     - target: {fileID: 9159462784174982715, guid: dfa84835043ea074db801dfc2044db0e, type: 3}
       propertyPath: m_Name
       value: bush_rnd (127)
@@ -113206,6 +113214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1545898961689085131, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5525735154835521651, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 246.56876
@@ -113249,6 +113261,10 @@ PrefabInstance:
     - target: {fileID: 6471080361877697476, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
       propertyPath: m_Name
       value: Farola (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845899915318690481, guid: 7c37f52eb3bd7d548b2bf0632c538e99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
