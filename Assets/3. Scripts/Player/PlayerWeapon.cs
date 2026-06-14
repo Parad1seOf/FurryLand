@@ -83,11 +83,24 @@ public class PlayerWeapon : MonoBehaviour
             gun.hitMask = originalMask & ~(1 << playerLayer);
 
         bool shotFired = gun.TryShoot(fpsCam.transform.position, direction);
+
+        LayerMask accuracyMask = gun.hitMask;
+
         gun.hitMask = originalMask;
 
         if (!shotFired) return;
 
-        if (ScoreManager.instance != null) ScoreManager.instance.RegisterShot();
+        /*PRECISIÓN DE LA BALA CENTRAL*/
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.RegisterShot();
+
+            if (Physics.Raycast(fpsCam.transform.position, direction, out RaycastHit hit, 100f, accuracyMask))
+            {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+                    ScoreManager.instance.RegisterHit();
+            }
+        }
 
         audioManager?.Shooting();
         if (characterController != null)

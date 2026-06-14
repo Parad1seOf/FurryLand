@@ -105,14 +105,13 @@ public class GameResultUI : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayBirdsAmbience();
+
         ForbiddenArea.ResetComicTrigger();
         AmmoItem.ResetAmmoTrigger();
         Spawner.ResetParkourTrigger();
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.StopBirdsAmbience();
-        }
 
         if (FadeManager.Instance != null)
         {
