@@ -27,6 +27,9 @@ public class MainMenu : MonoBehaviour
     private static bool SavedFog = true;
     private static bool OptionsAlreadyInitialized = false;
 
+    [Header("Menu Audio")]
+    [SerializeField] private AudioSource menuAudioSource;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -62,6 +65,18 @@ public class MainMenu : MonoBehaviour
         }
 
         ApplyAllSettings();
+
+        AudioListener.pause = false;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopBirdsAmbience();
+
+        if (menuAudioSource != null)
+        {
+            menuAudioSource.enabled = true;
+            if (!menuAudioSource.isPlaying)
+                menuAudioSource.Play();
+        }
     }
 
     public void ChangeVolume(float val)
@@ -101,6 +116,9 @@ public class MainMenu : MonoBehaviour
             FadeManager.Instance.ChangeSceneFade(2);
         else
             SceneManager.LoadScene(2);
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayBirdsAmbience();
     }
 
     public void OnPostProcessingSelected(int choice)

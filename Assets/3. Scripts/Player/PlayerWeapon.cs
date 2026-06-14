@@ -75,8 +75,18 @@ public class PlayerWeapon : MonoBehaviour
         gun.IncreaseSpread(spreadIncrease);
 
         Vector3 direction = fpsCam.transform.forward;
+        LayerMask originalMask = gun.hitMask;
 
-        if (!gun.TryShoot(fpsCam.transform.position, direction)) return;
+        int playerLayer = LayerMask.NameToLayer("Player");
+
+        if (playerLayer != -1)
+            gun.hitMask = originalMask & ~(1 << playerLayer);
+
+        bool shotFired = gun.TryShoot(fpsCam.transform.position, direction);
+        gun.hitMask = originalMask;
+
+        if (!shotFired) return;
+
         if (ScoreManager.instance != null) ScoreManager.instance.RegisterShot();
 
         audioManager?.Shooting();
