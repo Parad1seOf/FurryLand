@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7206372731340997049}
   - component: {fileID: 5157239818119483093}
   - component: {fileID: 2385444567041440034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TerrainCartoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2369679123016077008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 3131098040507260522}
   - component: {fileID: 5781400616950903197}
   - component: {fileID: 7636473834712174373}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +189,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -210,9 +212,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7636473834712174373
 BoxCollider:
@@ -247,7 +251,7 @@ GameObject:
   - component: {fileID: 1880340384314219134}
   - component: {fileID: 3384277720764725907}
   - component: {fileID: 6867982041682793978}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,6 +301,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -318,9 +324,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6867982041682793978
 BoxCollider:
@@ -355,7 +363,7 @@ GameObject:
   - component: {fileID: 1281086093539471135}
   - component: {fileID: 433199431877386908}
   - component: {fileID: 2753899961044739746}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,6 +413,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -426,9 +436,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2753899961044739746
 BoxCollider:
@@ -463,7 +475,7 @@ GameObject:
   - component: {fileID: 1908166839989660114}
   - component: {fileID: 2969273945411177756}
   - component: {fileID: 2768399026321634521}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,6 +525,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -534,9 +548,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2768399026321634521
 BoxCollider:
@@ -571,7 +587,7 @@ GameObject:
   - component: {fileID: 2576702999340010636}
   - component: {fileID: 4962136675108879844}
   - component: {fileID: 5148578670786012491}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,6 +637,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -642,9 +660,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5148578670786012491
 BoxCollider:
@@ -679,7 +699,7 @@ GameObject:
   - component: {fileID: 7790475415258024911}
   - component: {fileID: 3261937121326259758}
   - component: {fileID: 213022708106751140}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,6 +749,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -750,9 +772,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &213022708106751140
 BoxCollider:
@@ -787,7 +811,7 @@ GameObject:
   - component: {fileID: 3560643433703319640}
   - component: {fileID: 9083130913404849009}
   - component: {fileID: 817452665492775301}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,6 +861,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -858,9 +884,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &817452665492775301
 BoxCollider:
@@ -892,7 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3033035180685388460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SeaEnvironmentStylized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +965,7 @@ GameObject:
   - component: {fileID: 5818882135199184297}
   - component: {fileID: 6530104151716213270}
   - component: {fileID: 1395108556783812776}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,6 +1015,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1008,9 +1038,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1395108556783812776
 BoxCollider:
@@ -1045,7 +1077,7 @@ GameObject:
   - component: {fileID: 2470186610697038205}
   - component: {fileID: 5729956158845939689}
   - component: {fileID: 1019109651591349356}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,6 +1127,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1116,9 +1150,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1019109651591349356
 BoxCollider:
@@ -1153,7 +1189,7 @@ GameObject:
   - component: {fileID: 4038724152314745880}
   - component: {fileID: 4244685990316955}
   - component: {fileID: 2559310600175639826}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1203,6 +1239,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1224,9 +1262,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2559310600175639826
 BoxCollider:
@@ -1261,7 +1301,7 @@ GameObject:
   - component: {fileID: 1173341509255667713}
   - component: {fileID: 5408063158823900657}
   - component: {fileID: 7228523254629600441}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,6 +1351,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1332,9 +1374,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7228523254629600441
 BoxCollider:
@@ -1369,7 +1413,7 @@ GameObject:
   - component: {fileID: 6778326980842520395}
   - component: {fileID: 4044681256506393742}
   - component: {fileID: 457537833908358555}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Water (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,6 +1463,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1440,9 +1486,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &457537833908358555
 BoxCollider:
