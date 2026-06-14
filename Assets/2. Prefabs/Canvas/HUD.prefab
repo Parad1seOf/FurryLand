@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4157,12 +4157,12 @@ MonoBehaviour:
   width: 600
   appearSound: {fileID: 8300000, guid: de5c24de881e6e345a59d858bf2b7dc4, type: 3}
   disappearSound: {fileID: 8300000, guid: 5fd91a7641e936b49a69cf851fa7c353, type: 3}
-  horizontalPadding: 100
-  verticalPadding: 100
   minDistanceFromEdge: 80
   maxDistanceFromEdge: 350
   maxTopY: 300
   minBottomY: -400
+  horizontalPadding: 100
+  verticalPadding: 100
 --- !u!1 &7655966382776582072
 GameObject:
   m_ObjectHideFlags: 0

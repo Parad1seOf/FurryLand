@@ -857,7 +857,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "PRODUCTOR\r\nAdri\xE1n Valero Fern\xE1ndez\r\n\r\nDISE\xD1ADORES\r\nAdri\xE1n
-    Valero Fern\xE1ndez\r\nNoelia Bocardo \r\n\r\nARTISTAS\r\nGerard De la Torre
+    Valero Fern\xE1ndez\r\nNoelia Bocardo Paz\r\n\r\nARTISTAS\r\nGerard De la Torre
     \r\nJoel Pacheco Ib\xE1\xF1ez\r\nArnau Segu\xED Borrell\r\n\r\nPROGRAMADORES\r\nEric
     Fenollar\r\nEnric Guinovart \r\n\r\nSONIDO\r\nH\xE9ctor Moreno Navarro\r\nAlbert
     del Rey \r\nXavi Sol\xE9\r\nJoana \r\nJordi Ros Torra\r\nLuc\xEDa Larrosa Corral\r\nBruc
@@ -1236,54 +1236,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483334738}
   m_CullTransparentMesh: 1
---- !u!1 &486606747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 486606749}
-  - component: {fileID: 486606748}
-  m_Layer: 0
-  m_Name: IntroManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &486606748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486606747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06441ffd6b239e4990ea01db75292a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntroSceneManager
-  cinematicDuration: 94.2
-  introVolume: {fileID: 0}
-  profileOne: {fileID: 0}
-  profileTwo: {fileID: 0}
---- !u!4 &486606749
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486606747}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1417.0771, y: 441.8758, z: -90.40232}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &516750631
 GameObject:
   m_ObjectHideFlags: 0
@@ -5723,5 +5675,4 @@ SceneRoots:
   - {fileID: 1420231099}
   - {fileID: 1382186466}
   - {fileID: 196215197}
-  - {fileID: 486606749}
   - {fileID: 1111854394}
