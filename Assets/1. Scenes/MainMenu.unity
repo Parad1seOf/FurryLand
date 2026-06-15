@@ -119,6 +119,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &349653770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6301740686473450835, guid: b76835941384caa4695a45701a81111b, type: 3}
+  m_PrefabInstance: {fileID: 643642662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &349653777
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349653770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c517362baafb8145b76ee23e539c8d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &643642662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,7 +393,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6301740686473450835, guid: b76835941384caa4695a45701a81111b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349653777}
   m_SourcePrefab: {fileID: 100100000, guid: b76835941384caa4695a45701a81111b, type: 3}
 --- !u!1 &1027688288
 GameObject:
@@ -556,9 +586,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 096e87c5aa8947d47bd299d0c3dea37b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 24a0823812fd57c42ad8ffdbee2c1058, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.111
+  m_Volume: 0.176
   m_Pitch: 1
   Loop: 1
   Mute: 0
