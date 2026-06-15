@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class RadioMusicBalancer : MonoBehaviour
 {
     [Header("Audio de fondo que será atenuado")]
@@ -10,28 +9,13 @@ public class RadioMusicBalancer : MonoBehaviour
     [Range(0f, 1f)]
     public float maxBackgroundVolume = 0.6f;
 
-    [Header("Distancias de influencia")]
-    public float innerRadius = 5f;
-    public float outerRadius = 20f;
-
+    private AudioSource radioAudio;
     private Transform player;
-    private bool playerInside = false;
-    private SphereCollider triggerCollider;
-
-    private void Awake()
-    {
-        // Crea (o reutiliza) un SphereCollider como Trigger
-        triggerCollider = GetComponent<SphereCollider>();
-
-        if (triggerCollider == null)
-            triggerCollider = gameObject.AddComponent<SphereCollider>();
-
-        triggerCollider.isTrigger = true;
-        triggerCollider.radius = outerRadius;
-    }
 
     private void Start()
     {
+        radioAudio = GetComponent<AudioSource>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
         if (playerObj != null)
@@ -43,84 +27,59 @@ public class RadioMusicBalancer : MonoBehaviour
 
     private void Update()
     {
-        // Mantener el radio actualizado si lo cambias desde el Inspector
-        if (triggerCollider.radius != outerRadius)
-            triggerCollider.radius = outerRadius;
-
-        if (!playerInside)
+        if (backgroundMusic == null)
             return;
 
-        if (backgroundMusic == null || player == null)
+        if (player == null || radioAudio == null)
+        {
+            backgroundMusic.volume = maxBackgroundVolume;
             return;
+        }
 
         float distance = Vector3.Distance(player.position, transform.position);
 
+        float minDistance = radioAudio.minDistance;
+        float maxDistance = radioAudio.maxDistance;
+
         float targetVolume;
 
-        if (distance <= innerRadius)
+        if (distance <= minDistance)
         {
             targetVolume = 0f;
         }
-        else if (distance >= outerRadius)
+        else if (distance >= maxDistance)
         {
             targetVolume = maxBackgroundVolume;
         }
         else
         {
-            float t = (distance - innerRadius) / (outerRadius - innerRadius);
+            float t = (distance - minDistance) / (maxDistance - minDistance);
+
             targetVolume = Mathf.Lerp(0f, maxBackgroundVolume, t);
         }
 
         backgroundMusic.volume = targetVolume;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-
-        playerInside = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-
-        playerInside = false;
-
-        if (backgroundMusic != null)
-            backgroundMusic.volume = maxBackgroundVolume;
-    }
-
     private void OnDestroy()
     {
         if (backgroundMusic != null)
+        {
             backgroundMusic.volume = maxBackgroundVolume;
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+            return;
+
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, innerRadius);
+        Gizmos.DrawWireSphere(transform.position, audioSource.minDistance);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, outerRadius);
+        Gizmos.DrawWireSphere(transform.position, audioSource.maxDistance);
     }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (outerRadius < innerRadius)
-            outerRadius = innerRadius;
-
-        SphereCollider col = GetComponent<SphereCollider>();
-
-        if (col != null)
-        {
-            col.isTrigger = true;
-            col.radius = outerRadius;
-        }
-    }
-#endif
 }
