@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7515738040575822262}
   - component: {fileID: 8372470536095466257}
   m_Layer: 0
-  m_Name: PolvoParticulasBarbacoa
+  m_Name: SUPERPolvoParticulasComunes 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689822465173487308}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 246.88, y: 60.09, z: 292.79}
   m_LocalScale: {x: 0.73129, y: 0.73129, z: 0.73129}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9152601729451874911}
+  - {fileID: 2727213931078753357}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &7515738040575822262
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.74
+      scalar: 2.41
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.9456916
+      scalar: 2.23
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -227,8 +227,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.2528302, g: 0.2528302, b: 0.2528302, a: 0.7176471}
-        key1: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0.77254903}
+        key0: {r: 0.7660377, g: 0.67011625, b: 0.4726308, a: 0.7176471}
+        key1: {r: 0.6226415, g: 0.55118155, b: 0.44994658, a: 0.77254903}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -288,8 +288,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 0.5
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -612,7 +612,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.4
+      scalar: -0.3
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4904,7 +4904,7 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
---- !u!1 &5200762119945800152
+--- !u!1 &1603104678491676919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4912,8 +4912,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9152601729451874911}
-  - component: {fileID: 7499631865385286689}
+  - component: {fileID: 2727213931078753357}
+  - component: {fileID: 1754199446069228606}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -4921,33 +4921,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9152601729451874911
+--- !u!4 &2727213931078753357
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200762119945800152}
+  m_GameObject: {fileID: 1603104678491676919}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2867328692121279797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7499631865385286689
+--- !u!82 &1754199446069228606
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200762119945800152}
+  m_GameObject: {fileID: 1603104678491676919}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 09833f2f53ef5a3419aca4d50542d50c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 475d4a36db5c8804ab2ff218bde0d3a6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
