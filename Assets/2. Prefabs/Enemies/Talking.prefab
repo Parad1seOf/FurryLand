@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 400562530325219301}
   - component: {fileID: 36131989441659347}
   - component: {fileID: 1307263100037189056}
+  - component: {fileID: 7656446645268997782}
   m_Layer: 6
   m_Name: Talking
   m_TagString: Untagged
@@ -1952,6 +1953,20 @@ MonoBehaviour:
   normalFaceMaterial: {fileID: 2100000, guid: fd097a750a9562f46b4f43068ccec2c2, type: 2}
   angryFaceMaterial: {fileID: 2100000, guid: f9df2aacbf694064b898f8c7856edd03, type: 2}
   faceMaterialIndex: 0
+--- !u!114 &7656446645268997782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949191852129843961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea78d59c106c3b24fa52d1ea0a6a4621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomScale
+  minScale: 1.14
+  maxScale: 1.54
 --- !u!1001 &870044770673618536
 PrefabInstance:
   m_ObjectHideFlags: 0
